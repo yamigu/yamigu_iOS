@@ -1,0 +1,844 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01DA3566ED289EDDEC22B120 /* Pods_yamigu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175D11DF3039304A79860BB8 /* Pods_yamigu.framework */; };
+		03EF63060EFD1AB6F8CF6CBA /* Pods_yamiguTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */; };
+		5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8823407A4000461B2A /* AppDelegate.swift */; };
+		5528EA8B23407A4000461B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8A23407A4000461B2A /* ViewController.swift */; };
+		5528EA8E23407A4000461B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA8C23407A4000461B2A /* Main.storyboard */; };
+		5528EA9123407A4000461B2A /* yamigu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8F23407A4000461B2A /* yamigu.xcdatamodeld */; };
+		5528EA9323407A4200461B2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA9223407A4200461B2A /* Assets.xcassets */; };
+		5528EA9623407A4200461B2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA9423407A4200461B2A /* LaunchScreen.storyboard */; };
+		5528EAA123407A4200461B2A /* yamiguTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EAA023407A4200461B2A /* yamiguTests.swift */; };
+		5528EAAC23407A4200461B2A /* yamiguUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EAAB23407A4200461B2A /* yamiguUITests.swift */; };
+		5528EABB23407F6F00461B2A /* MainOnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EABA23407F6F00461B2A /* MainOnBoarding.storyboard */; };
+		5528EABD23408B3500461B2A /* font in Resources */ = {isa = PBXBuildFile; fileRef = 5528EABC23408B3500461B2A /* font */; };
+		5528EABF23408C7600461B2A /* MainOnBoardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EABE23408C7600461B2A /* MainOnBoardingVC.swift */; };
+		5528EAC1234092AB00461B2A /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EAC0234092AB00461B2A /* Extension.swift */; };
+		5528EAC52340963100461B2A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EAC32340963100461B2A /* LoginVC.swift */; };
+		5528EAC82340964200461B2A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EAC72340964200461B2A /* Login.storyboard */; };
+		5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */; };
+		5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */; };
+		55DD1BBA23475F6D00CC820D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1BB923475F6D00CC820D /* HomeVC.swift */; };
+		55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DD1BBC23475F8200CC820D /* Home.storyboard */; };
+		55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1BC123476DCC00CC820D /* HomeExpectedTableViewCell.swift */; };
+		55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55DD1BC223476DCC00CC820D /* HomeExpectedTableViewCell.xib */; };
+		55DD1BC923476DEB00CC820D /* HomeMyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1BC723476DEB00CC820D /* HomeMyTableViewCell.swift */; };
+		55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55DD1BC823476DEB00CC820D /* HomeMyTableViewCell.xib */; };
+		55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1BCD23476E0B00CC820D /* HomeCollectionViewCell.swift */; };
+		55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55DD1BCE23476E0B00CC820D /* HomeCollectionViewCell.xib */; };
+		6FB79E4141E4D5A1E31FF2EC /* Pods_yamiguUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5528EA9D23407A4200461B2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5528EA7D23407A4000461B2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5528EA8423407A4000461B2A;
+			remoteInfo = yamigu;
+		};
+		5528EAA823407A4200461B2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5528EA7D23407A4000461B2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5528EA8423407A4000461B2A;
+			remoteInfo = yamigu;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamiguTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		175D11DF3039304A79860BB8 /* Pods_yamigu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamigu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		287145A19783A812AE2535F9 /* Pods-yamiguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguUITests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguUITests/Pods-yamiguUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		38F428581F082323AF225DA3 /* Pods-yamigu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.debug.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.debug.xcconfig"; sourceTree = "<group>"; };
+		3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamiguUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		492A156B580C7A2348935908 /* Pods-yamiguUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguUITests.release.xcconfig"; path = "Target Support Files/Pods-yamiguUITests/Pods-yamiguUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5525915645B74EDD8AAF86BD /* Pods-yamiguTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.release.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.release.xcconfig"; sourceTree = "<group>"; };
+		5528EA8523407A4000461B2A /* yamigu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamigu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5528EA8823407A4000461B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5528EA8A23407A4000461B2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5528EA8D23407A4000461B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5528EA9023407A4000461B2A /* yamigu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = yamigu.xcdatamodel; sourceTree = "<group>"; };
+		5528EA9223407A4200461B2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5528EA9523407A4200461B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5528EA9723407A4200461B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5528EA9C23407A4200461B2A /* yamiguTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yamiguTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5528EAA023407A4200461B2A /* yamiguTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yamiguTests.swift; sourceTree = "<group>"; };
+		5528EAA223407A4200461B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5528EAA723407A4200461B2A /* yamiguUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yamiguUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5528EAAB23407A4200461B2A /* yamiguUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yamiguUITests.swift; sourceTree = "<group>"; };
+		5528EAAD23407A4200461B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5528EABA23407F6F00461B2A /* MainOnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainOnBoarding.storyboard; sourceTree = "<group>"; };
+		5528EABC23408B3500461B2A /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = font; sourceTree = "<group>"; };
+		5528EABE23408C7600461B2A /* MainOnBoardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainOnBoardingVC.swift; sourceTree = "<group>"; };
+		5528EAC0234092AB00461B2A /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		5528EAC32340963100461B2A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		5528EAC72340964200461B2A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterMeeting.storyboard; sourceTree = "<group>"; };
+		5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMeetingVC.swift; sourceTree = "<group>"; };
+		55DD1BB923475F6D00CC820D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		55DD1BBC23475F8200CC820D /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		55DD1BC123476DCC00CC820D /* HomeExpectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeExpectedTableViewCell.swift; sourceTree = "<group>"; };
+		55DD1BC223476DCC00CC820D /* HomeExpectedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeExpectedTableViewCell.xib; sourceTree = "<group>"; };
+		55DD1BC723476DEB00CC820D /* HomeMyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMyTableViewCell.swift; sourceTree = "<group>"; };
+		55DD1BC823476DEB00CC820D /* HomeMyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeMyTableViewCell.xib; sourceTree = "<group>"; };
+		55DD1BCD23476E0B00CC820D /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		55DD1BCE23476E0B00CC820D /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		8E60FCBB3F4C51FBD213527C /* Pods-yamiguTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.release.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5528EA8223407A4000461B2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				01DA3566ED289EDDEC22B120 /* Pods_yamigu.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5528EA9923407A4200461B2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03EF63060EFD1AB6F8CF6CBA /* Pods_yamiguTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5528EAA423407A4200461B2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FB79E4141E4D5A1E31FF2EC /* Pods_yamiguUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5528EA7C23407A4000461B2A = {
+			isa = PBXGroup;
+			children = (
+				5528EA8723407A4000461B2A /* yamigu */,
+				5528EA9F23407A4200461B2A /* yamiguTests */,
+				5528EAAA23407A4200461B2A /* yamiguUITests */,
+				5528EA8623407A4000461B2A /* Products */,
+				8216F2CC0B7EC11D7514A476 /* Pods */,
+				E5B000252B1BBE7A11FA8795 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5528EA8623407A4000461B2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5528EA8523407A4000461B2A /* yamigu.app */,
+				5528EA9C23407A4200461B2A /* yamiguTests.xctest */,
+				5528EAA723407A4200461B2A /* yamiguUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5528EA8723407A4000461B2A /* yamigu */ = {
+			isa = PBXGroup;
+			children = (
+				55DD1BBB23475F7700CC820D /* Home */,
+				5528EAC92340A07700461B2A /* RegisterMeeting */,
+				5528EABC23408B3500461B2A /* font */,
+				5528EAC22340961C00461B2A /* Login */,
+				5528EAB923407E9600461B2A /* MainOnBoarding */,
+				5528EA8823407A4000461B2A /* AppDelegate.swift */,
+				5528EAC0234092AB00461B2A /* Extension.swift */,
+				5528EA8A23407A4000461B2A /* ViewController.swift */,
+				5528EA8C23407A4000461B2A /* Main.storyboard */,
+				5528EA9223407A4200461B2A /* Assets.xcassets */,
+				5528EA9423407A4200461B2A /* LaunchScreen.storyboard */,
+				5528EA9723407A4200461B2A /* Info.plist */,
+				5528EA8F23407A4000461B2A /* yamigu.xcdatamodeld */,
+			);
+			path = yamigu;
+			sourceTree = "<group>";
+		};
+		5528EA9F23407A4200461B2A /* yamiguTests */ = {
+			isa = PBXGroup;
+			children = (
+				5528EAA023407A4200461B2A /* yamiguTests.swift */,
+				5528EAA223407A4200461B2A /* Info.plist */,
+			);
+			path = yamiguTests;
+			sourceTree = "<group>";
+		};
+		5528EAAA23407A4200461B2A /* yamiguUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5528EAAB23407A4200461B2A /* yamiguUITests.swift */,
+				5528EAAD23407A4200461B2A /* Info.plist */,
+			);
+			path = yamiguUITests;
+			sourceTree = "<group>";
+		};
+		5528EAB923407E9600461B2A /* MainOnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				5528EABA23407F6F00461B2A /* MainOnBoarding.storyboard */,
+				5528EABE23408C7600461B2A /* MainOnBoardingVC.swift */,
+			);
+			path = MainOnBoarding;
+			sourceTree = "<group>";
+		};
+		5528EAC22340961C00461B2A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5528EAC32340963100461B2A /* LoginVC.swift */,
+				5528EAC72340964200461B2A /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5528EAC92340A07700461B2A /* RegisterMeeting */ = {
+			isa = PBXGroup;
+			children = (
+				5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */,
+				5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */,
+			);
+			path = RegisterMeeting;
+			sourceTree = "<group>";
+		};
+		55DD1BBB23475F7700CC820D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				55DD1BBE23476D8700CC820D /* HomeCell */,
+				55DD1BB923475F6D00CC820D /* HomeVC.swift */,
+				55DD1BBC23475F8200CC820D /* Home.storyboard */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		55DD1BBE23476D8700CC820D /* HomeCell */ = {
+			isa = PBXGroup;
+			children = (
+				55DD1BC123476DCC00CC820D /* HomeExpectedTableViewCell.swift */,
+				55DD1BC223476DCC00CC820D /* HomeExpectedTableViewCell.xib */,
+				55DD1BC723476DEB00CC820D /* HomeMyTableViewCell.swift */,
+				55DD1BC823476DEB00CC820D /* HomeMyTableViewCell.xib */,
+				55DD1BCD23476E0B00CC820D /* HomeCollectionViewCell.swift */,
+				55DD1BCE23476E0B00CC820D /* HomeCollectionViewCell.xib */,
+			);
+			path = HomeCell;
+			sourceTree = "<group>";
+		};
+		8216F2CC0B7EC11D7514A476 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38F428581F082323AF225DA3 /* Pods-yamigu.debug.xcconfig */,
+				D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */,
+				8E60FCBB3F4C51FBD213527C /* Pods-yamiguTests.debug.xcconfig */,
+				5525915645B74EDD8AAF86BD /* Pods-yamiguTests.release.xcconfig */,
+				287145A19783A812AE2535F9 /* Pods-yamiguUITests.debug.xcconfig */,
+				492A156B580C7A2348935908 /* Pods-yamiguUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E5B000252B1BBE7A11FA8795 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				175D11DF3039304A79860BB8 /* Pods_yamigu.framework */,
+				08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */,
+				3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5528EA8423407A4000461B2A /* yamigu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5528EAB023407A4200461B2A /* Build configuration list for PBXNativeTarget "yamigu" */;
+			buildPhases = (
+				C717D300622917E915675C28 /* [CP] Check Pods Manifest.lock */,
+				5528EA8123407A4000461B2A /* Sources */,
+				5528EA8223407A4000461B2A /* Frameworks */,
+				5528EA8323407A4000461B2A /* Resources */,
+				2CBCB53D3D398773BC27459D /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = yamigu;
+			productName = yamigu;
+			productReference = 5528EA8523407A4000461B2A /* yamigu.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5528EA9B23407A4200461B2A /* yamiguTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5528EAB323407A4200461B2A /* Build configuration list for PBXNativeTarget "yamiguTests" */;
+			buildPhases = (
+				F238065635CD653964805568 /* [CP] Check Pods Manifest.lock */,
+				5528EA9823407A4200461B2A /* Sources */,
+				5528EA9923407A4200461B2A /* Frameworks */,
+				5528EA9A23407A4200461B2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5528EA9E23407A4200461B2A /* PBXTargetDependency */,
+			);
+			name = yamiguTests;
+			productName = yamiguTests;
+			productReference = 5528EA9C23407A4200461B2A /* yamiguTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5528EAA623407A4200461B2A /* yamiguUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5528EAB623407A4200461B2A /* Build configuration list for PBXNativeTarget "yamiguUITests" */;
+			buildPhases = (
+				91F04FA0973FC30FD254EEF2 /* [CP] Check Pods Manifest.lock */,
+				5528EAA323407A4200461B2A /* Sources */,
+				5528EAA423407A4200461B2A /* Frameworks */,
+				5528EAA523407A4200461B2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5528EAA923407A4200461B2A /* PBXTargetDependency */,
+			);
+			name = yamiguUITests;
+			productName = yamiguUITests;
+			productReference = 5528EAA723407A4200461B2A /* yamiguUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5528EA7D23407A4000461B2A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = Yoon;
+				TargetAttributes = {
+					5528EA8423407A4000461B2A = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					5528EA9B23407A4200461B2A = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 5528EA8423407A4000461B2A;
+					};
+					5528EAA623407A4200461B2A = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 5528EA8423407A4000461B2A;
+					};
+				};
+			};
+			buildConfigurationList = 5528EA8023407A4000461B2A /* Build configuration list for PBXProject "yamigu" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5528EA7C23407A4000461B2A;
+			productRefGroup = 5528EA8623407A4000461B2A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5528EA8423407A4000461B2A /* yamigu */,
+				5528EA9B23407A4200461B2A /* yamiguTests */,
+				5528EAA623407A4200461B2A /* yamiguUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5528EA8323407A4000461B2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5528EABB23407F6F00461B2A /* MainOnBoarding.storyboard in Resources */,
+				55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */,
+				5528EA9623407A4200461B2A /* LaunchScreen.storyboard in Resources */,
+				5528EAC82340964200461B2A /* Login.storyboard in Resources */,
+				5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */,
+				5528EABD23408B3500461B2A /* font in Resources */,
+				5528EA9323407A4200461B2A /* Assets.xcassets in Resources */,
+				5528EA8E23407A4000461B2A /* Main.storyboard in Resources */,
+				55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */,
+				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
+				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5528EA9A23407A4200461B2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5528EAA523407A4200461B2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2CBCB53D3D398773BC27459D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yamigu/Pods-yamigu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-yamigu/Pods-yamigu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-yamigu/Pods-yamigu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91F04FA0973FC30FD254EEF2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-yamiguUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C717D300622917E915675C28 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-yamigu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F238065635CD653964805568 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-yamiguTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5528EA8123407A4000461B2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5528EAC1234092AB00461B2A /* Extension.swift in Sources */,
+				55DD1BBA23475F6D00CC820D /* HomeVC.swift in Sources */,
+				55DD1BC923476DEB00CC820D /* HomeMyTableViewCell.swift in Sources */,
+				5528EA8B23407A4000461B2A /* ViewController.swift in Sources */,
+				5528EAC52340963100461B2A /* LoginVC.swift in Sources */,
+				5528EA9123407A4000461B2A /* yamigu.xcdatamodeld in Sources */,
+				55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */,
+				5528EABF23408C7600461B2A /* MainOnBoardingVC.swift in Sources */,
+				5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */,
+				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
+				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5528EA9823407A4200461B2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5528EAA123407A4200461B2A /* yamiguTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5528EAA323407A4200461B2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5528EAAC23407A4200461B2A /* yamiguUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5528EA9E23407A4200461B2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5528EA8423407A4000461B2A /* yamigu */;
+			targetProxy = 5528EA9D23407A4200461B2A /* PBXContainerItemProxy */;
+		};
+		5528EAA923407A4200461B2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5528EA8423407A4000461B2A /* yamigu */;
+			targetProxy = 5528EAA823407A4200461B2A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5528EA8C23407A4000461B2A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5528EA8D23407A4000461B2A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5528EA9423407A4200461B2A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5528EA9523407A4200461B2A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5528EAAE23407A4200461B2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5528EAAF23407A4200461B2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5528EAB123407A4200461B2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38F428581F082323AF225DA3 /* Pods-yamigu.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8ZPS2688S;
+				INFOPLIST_FILE = yamigu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yamigu.www.yamigu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5528EAB223407A4200461B2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z8ZPS2688S;
+				INFOPLIST_FILE = yamigu/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yamigu.www.yamigu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5528EAB423407A4200461B2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E60FCBB3F4C51FBD213527C /* Pods-yamiguTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = yamiguTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yamigu.www.yamiguTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/yamigu.app/yamigu";
+			};
+			name = Debug;
+		};
+		5528EAB523407A4200461B2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5525915645B74EDD8AAF86BD /* Pods-yamiguTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = yamiguTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yamigu.www.yamiguTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/yamigu.app/yamigu";
+			};
+			name = Release;
+		};
+		5528EAB723407A4200461B2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 287145A19783A812AE2535F9 /* Pods-yamiguUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = yamiguUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yamigu.www.yamiguUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = yamigu;
+			};
+			name = Debug;
+		};
+		5528EAB823407A4200461B2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 492A156B580C7A2348935908 /* Pods-yamiguUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = yamiguUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.yamigu.www.yamiguUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = yamigu;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5528EA8023407A4000461B2A /* Build configuration list for PBXProject "yamigu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5528EAAE23407A4200461B2A /* Debug */,
+				5528EAAF23407A4200461B2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5528EAB023407A4200461B2A /* Build configuration list for PBXNativeTarget "yamigu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5528EAB123407A4200461B2A /* Debug */,
+				5528EAB223407A4200461B2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5528EAB323407A4200461B2A /* Build configuration list for PBXNativeTarget "yamiguTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5528EAB423407A4200461B2A /* Debug */,
+				5528EAB523407A4200461B2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5528EAB623407A4200461B2A /* Build configuration list for PBXNativeTarget "yamiguUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5528EAB723407A4200461B2A /* Debug */,
+				5528EAB823407A4200461B2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5528EA8F23407A4000461B2A /* yamigu.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5528EA9023407A4000461B2A /* yamigu.xcdatamodel */,
+			);
+			currentVersion = 5528EA9023407A4000461B2A /* yamigu.xcdatamodel */;
+			path = yamigu.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5528EA7D23407A4000461B2A /* Project object */;
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yamigu_logo_large" translatesAutoresizingMaskIntoConstraints="NO" id="y2E-pu-UW8">
+                                <rect key="frame" x="29" y="101" width="242" height="213"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yamigu_inc" translatesAutoresizingMaskIntoConstraints="NO" id="Nfp-8S-jhT">
+                                <rect key="frame" x="163.66666666666666" y="677" width="87" height="18"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="y2E-pu-UW8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="81" id="NFh-Uu-B6t"/>
+                            <constraint firstItem="y2E-pu-UW8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="29" id="TGK-Db-prJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nfp-8S-jhT" secondAttribute="bottom" constant="41" id="hDf-0y-tkQ"/>
+                            <constraint firstItem="Nfp-8S-jhT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="oPF-Qn-cOy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.173913043478265" y="374.18478260869568"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Qi2-Mq-B3D">
+            <objects>
+                <viewController id="rRK-bZ-Zwd" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E7B-IA-097">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yamigu_logo_small" translatesAutoresizingMaskIntoConstraints="NO" id="sbj-kS-vyd">
+                                <rect key="frame" x="137" y="276.33333333333331" width="140" height="65"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yamigu_inc" translatesAutoresizingMaskIntoConstraints="NO" id="hK2-eR-38a">
+                                <rect key="frame" x="163.66666666666666" y="677" width="87" height="18"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sbj-kS-vyd" firstAttribute="top" secondItem="vUz-3A-HOd" secondAttribute="top" constant="256.30000000000001" id="III-eH-FGQ"/>
+                            <constraint firstItem="hK2-eR-38a" firstAttribute="centerX" secondItem="vUz-3A-HOd" secondAttribute="centerX" id="OO7-zR-FnX"/>
+                            <constraint firstItem="sbj-kS-vyd" firstAttribute="centerX" secondItem="vUz-3A-HOd" secondAttribute="centerX" id="W1t-08-dAz"/>
+                            <constraint firstItem="vUz-3A-HOd" firstAttribute="bottom" secondItem="hK2-eR-38a" secondAttribute="bottom" constant="41" id="yMx-hG-gFj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="vUz-3A-HOd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hgR-dx-fJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750.72463768115949" y="373.36956521739131"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="yamigu_inc" width="87" height="18"/>
+        <image name="yamigu_logo_large" width="242" height="213"/>
+        <image name="yamigu_logo_small" width="139.66667175292969" height="65.333335876464844"/>
+    </resources>
+</document>

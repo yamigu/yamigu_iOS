@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Binggrae-Bold.ttf">
+            <string>Binggrae-Bold</string>
+        </array>
+        <array key="Binggrae.ttf">
+            <string>Binggrae</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HomeMyTableViewCell" customModule="yamigu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="166"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="165.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:2 미팅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdu-86-6w8">
+                        <rect key="frame" x="30" y="7" width="99" height="24"/>
+                        <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="99" id="0Nr-JF-put"/>
+                            <constraint firstAttribute="height" constant="24" id="IB0-fQ-kRk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="80R-Th-7fO">
+                        <rect key="frame" x="221" y="8" width="116" height="17"/>
+                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="12"/>
+                        <state key="normal" title=" 신청내역 수정하기" image="icon_setting">
+                            <color key="titleColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="건대/왕십리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rz-JY-fCG">
+                        <rect key="frame" x="30" y="62.5" width="165" height="40.5"/>
+                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="30"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-RK-ha6">
+                        <rect key="frame" x="30" y="123.5" width="74" height="31"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <state key="normal" title="신청팀 보기">
+                            <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2팀 신청!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVp-Q4-GLX">
+                        <rect key="frame" x="30" y="110.5" width="68.5" height="21.5"/>
+                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="DAP-7S-FoU">
+                        <rect key="frame" x="0.0" y="160.5" width="375" height="5"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-ci-PNk">
+                        <rect key="frame" x="259" y="123.5" width="74" height="31"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <state key="normal" title="대기팀 보기">
+                            <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="80R-Th-7fO" secondAttribute="trailing" constant="38" id="186-JI-KUu"/>
+                    <constraint firstItem="DAP-7S-FoU" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1IK-wv-FhD"/>
+                    <constraint firstItem="dwT-ci-PNk" firstAttribute="centerY" secondItem="XGT-RK-ha6" secondAttribute="centerY" id="3JT-Jo-kt1"/>
+                    <constraint firstAttribute="bottom" secondItem="DAP-7S-FoU" secondAttribute="bottom" id="FBB-so-buC"/>
+                    <constraint firstItem="3Rz-JY-fCG" firstAttribute="leading" secondItem="gdu-86-6w8" secondAttribute="leading" id="InB-cY-yaN"/>
+                    <constraint firstAttribute="trailing" secondItem="dwT-ci-PNk" secondAttribute="trailing" constant="42" id="Kp4-gO-TGH"/>
+                    <constraint firstAttribute="bottom" secondItem="XGT-RK-ha6" secondAttribute="bottom" constant="11" id="OOJ-mR-IJ3"/>
+                    <constraint firstItem="80R-Th-7fO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="UbQ-c8-cMS"/>
+                    <constraint firstItem="eVp-Q4-GLX" firstAttribute="leading" secondItem="XGT-RK-ha6" secondAttribute="leading" id="Xzy-Ri-ynX"/>
+                    <constraint firstItem="XGT-RK-ha6" firstAttribute="top" secondItem="eVp-Q4-GLX" secondAttribute="bottom" constant="-8.5" id="e7T-bD-GUD"/>
+                    <constraint firstItem="gdu-86-6w8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="fV9-zN-hw3"/>
+                    <constraint firstItem="XGT-RK-ha6" firstAttribute="leading" secondItem="gdu-86-6w8" secondAttribute="leading" id="k3h-fU-Ura"/>
+                    <constraint firstItem="3Rz-JY-fCG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lOd-GG-hvo"/>
+                    <constraint firstItem="DAP-7S-FoU" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="qdd-Ff-VIY"/>
+                    <constraint firstItem="gdu-86-6w8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="zBf-dg-oUe"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_setting" width="14" height="14"/>
+        <image name="view_bottomBar" width="375" height="5"/>
+    </resources>
+</document>
