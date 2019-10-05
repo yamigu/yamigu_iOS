@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		01DA3566ED289EDDEC22B120 /* Pods_yamigu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175D11DF3039304A79860BB8 /* Pods_yamigu.framework */; };
 		03EF63060EFD1AB6F8CF6CBA /* Pods_yamiguTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */; };
+		04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9F2348496D002DF8A8 /* Wating.storyboard */; };
+		04618BA223484980002DF8A8 /* WatingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BA123484980002DF8A8 /* WatingVC.swift */; };
+		04618BA623484D36002DF8A8 /* WatingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BA423484D36002DF8A8 /* WatingTableViewCell.swift */; };
+		04618BA723484D36002DF8A8 /* WatingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04618BA523484D36002DF8A8 /* WatingTableViewCell.xib */; };
 		5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8823407A4000461B2A /* AppDelegate.swift */; };
 		5528EA8B23407A4000461B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8A23407A4000461B2A /* ViewController.swift */; };
 		5528EA8E23407A4000461B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA8C23407A4000461B2A /* Main.storyboard */; };
@@ -63,6 +67,10 @@
 		04618B9923481723002DF8A8 /* NanumBrush.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumBrush.ttf; path = yamigu/font/NanumBrush.ttf; sourceTree = SOURCE_ROOT; };
 		04618B9A23481723002DF8A8 /* Binggrae-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Binggrae-Bold.ttf"; path = "yamigu/font/Binggrae-Bold.ttf"; sourceTree = SOURCE_ROOT; };
 		04618B9B23481723002DF8A8 /* NanumGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumGothicBold.ttf; path = yamigu/font/NanumGothicBold.ttf; sourceTree = SOURCE_ROOT; };
+		04618B9F2348496D002DF8A8 /* Wating.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wating.storyboard; sourceTree = "<group>"; };
+		04618BA123484980002DF8A8 /* WatingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatingVC.swift; sourceTree = "<group>"; };
+		04618BA423484D36002DF8A8 /* WatingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatingTableViewCell.swift; sourceTree = "<group>"; };
+		04618BA523484D36002DF8A8 /* WatingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatingTableViewCell.xib; sourceTree = "<group>"; };
 		08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamiguTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		175D11DF3039304A79860BB8 /* Pods_yamigu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamigu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		287145A19783A812AE2535F9 /* Pods-yamiguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguUITests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguUITests/Pods-yamiguUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +163,25 @@
 			path = MyPage;
 			sourceTree = "<group>";
 		};
+		04618B9E23484953002DF8A8 /* Wating */ = {
+			isa = PBXGroup;
+			children = (
+				04618BA323484D15002DF8A8 /* WatingCell */,
+				04618BA123484980002DF8A8 /* WatingVC.swift */,
+				04618B9F2348496D002DF8A8 /* Wating.storyboard */,
+			);
+			path = Wating;
+			sourceTree = "<group>";
+		};
+		04618BA323484D15002DF8A8 /* WatingCell */ = {
+			isa = PBXGroup;
+			children = (
+				04618BA423484D36002DF8A8 /* WatingTableViewCell.swift */,
+				04618BA523484D36002DF8A8 /* WatingTableViewCell.xib */,
+			);
+			path = WatingCell;
+			sourceTree = "<group>";
+		};
 		5528EA7C23407A4000461B2A = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +211,7 @@
 				5528EAC22340961C00461B2A /* Login */,
 				5528EAB923407E9600461B2A /* MainOnBoarding */,
 				55DD1BBB23475F7700CC820D /* Home */,
+				04618B9E23484953002DF8A8 /* Wating */,
 				04618B9C23482003002DF8A8 /* MyPage */,
 				5528EAC92340A07700461B2A /* RegisterMeeting */,
 				5528EA8823407A4000461B2A /* AppDelegate.swift */,
@@ -398,6 +426,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5528EABB23407F6F00461B2A /* MainOnBoarding.storyboard in Resources */,
+				04618BA723484D36002DF8A8 /* WatingTableViewCell.xib in Resources */,
 				55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */,
 				5528EA9623407A4200461B2A /* LaunchScreen.storyboard in Resources */,
 				5528EAC82340964200461B2A /* Login.storyboard in Resources */,
@@ -406,6 +435,7 @@
 				5528EA8E23407A4000461B2A /* Main.storyboard in Resources */,
 				55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */,
 				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
+				04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */,
 				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -518,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5528EAC1234092AB00461B2A /* Extension.swift in Sources */,
+				04618BA623484D36002DF8A8 /* WatingTableViewCell.swift in Sources */,
 				55DD1BBA23475F6D00CC820D /* HomeVC.swift in Sources */,
 				55DD1BC923476DEB00CC820D /* HomeMyTableViewCell.swift in Sources */,
 				5528EA8B23407A4000461B2A /* ViewController.swift in Sources */,
@@ -525,6 +556,7 @@
 				5528EA9123407A4000461B2A /* yamigu.xcdatamodeld in Sources */,
 				55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */,
 				5528EABF23408C7600461B2A /* MainOnBoardingVC.swift in Sources */,
+				04618BA223484980002DF8A8 /* WatingVC.swift in Sources */,
 				5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */,
 				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,

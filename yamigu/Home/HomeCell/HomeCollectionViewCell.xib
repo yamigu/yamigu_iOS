@@ -37,7 +37,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="술을잘못마셔요 배려해주실분계신가요" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="한명이 술을잘못마셔요 배려해주실분계신가요" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
                         <rect key="frame" x="0.0" y="60" width="293" height="71.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
@@ -85,12 +85,40 @@
                             <constraint firstItem="tj9-ha-cyl" firstAttribute="top" secondItem="1kR-h6-lej" secondAttribute="bottom" constant="3" id="m57-Hm-yGi"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8l-w7-liv" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="114" y="139" width="65" height="13"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="13"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="emptyBorderWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                <color key="value" red="1" green="0.51764705879999995" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="emptyColor">
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                <color key="value" red="1" green="0.51764705879999995" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                <integer key="value" value="0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="9fo-Fq-qzO" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="2Tz-CZ-fIn"/>
                 <constraint firstItem="9fo-Fq-qzO" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="CfF-0F-Eij"/>
                 <constraint firstItem="me6-yg-oN5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DZF-xM-ZmR"/>
+                <constraint firstItem="Ced-je-bF2" firstAttribute="top" secondItem="n8l-w7-liv" secondAttribute="bottom" constant="9.4000000000000004" id="DrU-1J-H7c"/>
                 <constraint firstAttribute="bottom" secondItem="Ced-je-bF2" secondAttribute="bottom" constant="55.5" id="FrP-5L-XxU"/>
                 <constraint firstAttribute="top" secondItem="GQW-Jp-u7s" secondAttribute="top" constant="-7" id="Ide-Gk-USu"/>
                 <constraint firstItem="9fo-Fq-qzO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="60" id="MlZ-aV-aOm"/>
@@ -99,6 +127,7 @@
                 <constraint firstAttribute="bottom" secondItem="me6-yg-oN5" secondAttribute="bottom" id="VJ4-EJ-tVY"/>
                 <constraint firstItem="Ced-je-bF2" firstAttribute="bottom" secondItem="me6-yg-oN5" secondAttribute="top" constant="-1" id="WgR-D7-ZhF"/>
                 <constraint firstItem="1kR-h6-lej" firstAttribute="top" secondItem="Ced-je-bF2" secondAttribute="bottom" constant="11" id="bks-0Q-H6c"/>
+                <constraint firstItem="n8l-w7-liv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="h5s-YX-etA"/>
                 <constraint firstAttribute="trailing" secondItem="me6-yg-oN5" secondAttribute="trailing" id="hmD-1h-sd8"/>
                 <constraint firstItem="Ced-je-bF2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="mgI-6w-dxJ"/>
                 <constraint firstItem="GQW-Jp-u7s" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="9" id="vto-og-Ldi"/>
