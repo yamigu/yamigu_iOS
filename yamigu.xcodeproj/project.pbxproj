@@ -148,6 +148,13 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		04618B9C23482003002DF8A8 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
 		5528EA7C23407A4000461B2A = {
 			isa = PBXGroup;
 			children = (
@@ -174,10 +181,11 @@
 			isa = PBXGroup;
 			children = (
 				04618B9123481713002DF8A8 /* fonts */,
-				55DD1BBB23475F7700CC820D /* Home */,
-				5528EAC92340A07700461B2A /* RegisterMeeting */,
 				5528EAC22340961C00461B2A /* Login */,
 				5528EAB923407E9600461B2A /* MainOnBoarding */,
+				55DD1BBB23475F7700CC820D /* Home */,
+				04618B9C23482003002DF8A8 /* MyPage */,
+				5528EAC92340A07700461B2A /* RegisterMeeting */,
 				5528EA8823407A4000461B2A /* AppDelegate.swift */,
 				5528EAC0234092AB00461B2A /* Extension.swift */,
 				5528EA8A23407A4000461B2A /* ViewController.swift */,

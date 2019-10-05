@@ -37,9 +37,8 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="술을잘못마셔요 배려해주실분계신가요" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
-                        <rect key="frame" x="26" y="47" width="240" height="75"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="술을잘못마셔요 배려해주실분계신가요" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
+                        <rect key="frame" x="0.0" y="60" width="293" height="71.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -50,46 +49,56 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me6-yg-oN5">
                         <rect key="frame" x="0.0" y="167.5" width="293" height="54.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kR-h6-lej">
-                                <rect key="frame" x="13" y="8" width="34" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임(30)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kR-h6-lej">
+                                <rect key="frame" x="19" y="10" width="67" height="17"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-ha-cyl">
-                                <rect key="frame" x="13" y="27" width="30" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연세대학교 전기전자공학부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-ha-cyl">
+                                <rect key="frame" x="19" y="30" width="139" height="14"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heP-ya-5By">
-                                <rect key="frame" x="254" y="9" width="30" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5월18일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heP-ya-5By">
+                                <rect key="frame" x="229.5" y="13" width="44.5" height="14"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUO-TH-X68">
-                                <rect key="frame" x="254" y="28" width="30" height="14"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신촌/홍대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUO-TH-X68">
+                                <rect key="frame" x="224" y="30" width="50" height="14"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.2196078431372549" green="0.21176470588235294" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="heP-ya-5By" firstAttribute="bottom" secondItem="1kR-h6-lej" secondAttribute="bottom" id="77g-Fy-YkE"/>
+                            <constraint firstItem="tj9-ha-cyl" firstAttribute="leading" secondItem="1kR-h6-lej" secondAttribute="leading" id="Nlv-LW-9BO"/>
+                            <constraint firstItem="1kR-h6-lej" firstAttribute="leading" secondItem="me6-yg-oN5" secondAttribute="leading" constant="19" id="Ou8-Ll-xnA"/>
+                            <constraint firstItem="xUO-TH-X68" firstAttribute="bottom" secondItem="tj9-ha-cyl" secondAttribute="bottom" id="ca8-Pc-q0k"/>
+                            <constraint firstAttribute="trailing" secondItem="heP-ya-5By" secondAttribute="trailing" constant="19" id="e4u-Jr-U2D"/>
+                            <constraint firstItem="xUO-TH-X68" firstAttribute="trailing" secondItem="heP-ya-5By" secondAttribute="trailing" id="g0L-UG-c1Q"/>
+                            <constraint firstItem="tj9-ha-cyl" firstAttribute="top" secondItem="1kR-h6-lej" secondAttribute="bottom" constant="3" id="m57-Hm-yGi"/>
+                        </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="9fo-Fq-qzO" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="2Tz-CZ-fIn"/>
+                <constraint firstItem="9fo-Fq-qzO" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="CfF-0F-Eij"/>
                 <constraint firstItem="me6-yg-oN5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="DZF-xM-ZmR"/>
                 <constraint firstAttribute="bottom" secondItem="Ced-je-bF2" secondAttribute="bottom" constant="55.5" id="FrP-5L-XxU"/>
                 <constraint firstAttribute="top" secondItem="GQW-Jp-u7s" secondAttribute="top" constant="-7" id="Ide-Gk-USu"/>
+                <constraint firstItem="9fo-Fq-qzO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="60" id="MlZ-aV-aOm"/>
+                <constraint firstItem="Ced-je-bF2" firstAttribute="top" secondItem="9fo-Fq-qzO" secondAttribute="bottom" constant="30" id="Pje-Gs-oNw"/>
                 <constraint firstItem="Ced-je-bF2" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Tuh-aA-3Fc"/>
                 <constraint firstAttribute="bottom" secondItem="me6-yg-oN5" secondAttribute="bottom" id="VJ4-EJ-tVY"/>
                 <constraint firstItem="Ced-je-bF2" firstAttribute="bottom" secondItem="me6-yg-oN5" secondAttribute="top" constant="-1" id="WgR-D7-ZhF"/>
+                <constraint firstItem="1kR-h6-lej" firstAttribute="top" secondItem="Ced-je-bF2" secondAttribute="bottom" constant="11" id="bks-0Q-H6c"/>
                 <constraint firstAttribute="trailing" secondItem="me6-yg-oN5" secondAttribute="trailing" id="hmD-1h-sd8"/>
                 <constraint firstItem="Ced-je-bF2" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="mgI-6w-dxJ"/>
                 <constraint firstItem="GQW-Jp-u7s" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="9" id="vto-og-Ldi"/>
