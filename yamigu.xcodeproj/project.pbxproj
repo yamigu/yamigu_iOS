@@ -32,6 +32,16 @@
 		5528EAC82340964200461B2A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EAC72340964200461B2A /* Login.storyboard */; };
 		5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */; };
 		5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */; };
+		55B09BE42349E996006051C2 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BE32349E996006051C2 /* More.storyboard */; };
+		55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE52349E9A4006051C2 /* MoreVC.swift */; };
+		55B09BEA2349E9D4006051C2 /* CooperatePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */; };
+		55B09BEB2349E9D4006051C2 /* CooperatePlaceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BE92349E9D4006051C2 /* CooperatePlaceTableViewCell.xib */; };
+		55B09BEE2349E9E2006051C2 /* MoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BEC2349E9E2006051C2 /* MoreTableViewCell.swift */; };
+		55B09BEF2349E9E2006051C2 /* MoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BED2349E9E2006051C2 /* MoreTableViewCell.xib */; };
+		55B09BF22349EA2C006051C2 /* WhatisTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BF02349EA2C006051C2 /* WhatisTableViewCell.swift */; };
+		55B09BF32349EA2C006051C2 /* WhatisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BF12349EA2C006051C2 /* WhatisTableViewCell.xib */; };
+		55B09BF62349EA3D006051C2 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BF42349EA3D006051C2 /* QuestionTableViewCell.swift */; };
+		55B09BF72349EA3D006051C2 /* QuestionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BF52349EA3D006051C2 /* QuestionTableViewCell.xib */; };
 		55DD1BBA23475F6D00CC820D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1BB923475F6D00CC820D /* HomeVC.swift */; };
 		55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DD1BBC23475F8200CC820D /* Home.storyboard */; };
 		55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1BC123476DCC00CC820D /* HomeExpectedTableViewCell.swift */; };
@@ -107,6 +117,16 @@
 		5528EAC72340964200461B2A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterMeeting.storyboard; sourceTree = "<group>"; };
 		5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMeetingVC.swift; sourceTree = "<group>"; };
+		55B09BE32349E996006051C2 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
+		55B09BE52349E9A4006051C2 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
+		55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceTableViewCell.swift; sourceTree = "<group>"; };
+		55B09BE92349E9D4006051C2 /* CooperatePlaceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CooperatePlaceTableViewCell.xib; sourceTree = "<group>"; };
+		55B09BEC2349E9E2006051C2 /* MoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewCell.swift; sourceTree = "<group>"; };
+		55B09BED2349E9E2006051C2 /* MoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreTableViewCell.xib; sourceTree = "<group>"; };
+		55B09BF02349EA2C006051C2 /* WhatisTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatisTableViewCell.swift; sourceTree = "<group>"; };
+		55B09BF12349EA2C006051C2 /* WhatisTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhatisTableViewCell.xib; sourceTree = "<group>"; };
+		55B09BF42349EA3D006051C2 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
+		55B09BF52349EA3D006051C2 /* QuestionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionTableViewCell.xib; sourceTree = "<group>"; };
 		55DD1BB923475F6D00CC820D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		55DD1BBC23475F8200CC820D /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		55DD1BC123476DCC00CC820D /* HomeExpectedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeExpectedTableViewCell.swift; sourceTree = "<group>"; };
@@ -233,6 +253,7 @@
 				55DD1BBB23475F7700CC820D /* Home */,
 				04618B9E23484953002DF8A8 /* Wating */,
 				04618B9C23482003002DF8A8 /* MyPage */,
+				55B09BE22349E982006051C2 /* More */,
 				5528EAC92340A07700461B2A /* RegisterMeeting */,
 				5528EA8823407A4000461B2A /* AppDelegate.swift */,
 				5528EAC0234092AB00461B2A /* Extension.swift */,
@@ -289,6 +310,31 @@
 				5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */,
 			);
 			path = RegisterMeeting;
+			sourceTree = "<group>";
+		};
+		55B09BE22349E982006051C2 /* More */ = {
+			isa = PBXGroup;
+			children = (
+				55B09BE72349E9A7006051C2 /* MoreCell */,
+				55B09BE32349E996006051C2 /* More.storyboard */,
+				55B09BE52349E9A4006051C2 /* MoreVC.swift */,
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		55B09BE72349E9A7006051C2 /* MoreCell */ = {
+			isa = PBXGroup;
+			children = (
+				55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */,
+				55B09BE92349E9D4006051C2 /* CooperatePlaceTableViewCell.xib */,
+				55B09BEC2349E9E2006051C2 /* MoreTableViewCell.swift */,
+				55B09BED2349E9E2006051C2 /* MoreTableViewCell.xib */,
+				55B09BF02349EA2C006051C2 /* WhatisTableViewCell.swift */,
+				55B09BF12349EA2C006051C2 /* WhatisTableViewCell.xib */,
+				55B09BF42349EA3D006051C2 /* QuestionTableViewCell.swift */,
+				55B09BF52349EA3D006051C2 /* QuestionTableViewCell.xib */,
+			);
+			path = MoreCell;
 			sourceTree = "<group>";
 		};
 		55DD1BBB23475F7700CC820D /* Home */ = {
@@ -446,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5528EABB23407F6F00461B2A /* MainOnBoarding.storyboard in Resources */,
+				55B09BE42349E996006051C2 /* More.storyboard in Resources */,
 				04618BAC23485F84002DF8A8 /* FilterView.xib in Resources */,
 				04618BA723484D36002DF8A8 /* WatingTableViewCell.xib in Resources */,
 				55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */,
@@ -454,8 +501,12 @@
 				5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */,
 				5528EA9323407A4200461B2A /* Assets.xcassets in Resources */,
 				5528EA8E23407A4000461B2A /* Main.storyboard in Resources */,
+				55B09BEB2349E9D4006051C2 /* CooperatePlaceTableViewCell.xib in Resources */,
 				55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */,
+				55B09BEF2349E9E2006051C2 /* MoreTableViewCell.xib in Resources */,
+				55B09BF32349EA2C006051C2 /* WhatisTableViewCell.xib in Resources */,
 				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
+				55B09BF72349EA3D006051C2 /* QuestionTableViewCell.xib in Resources */,
 				04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */,
 				04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */,
 				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
@@ -570,8 +621,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				04618BAA23485F78002DF8A8 /* FilterView.swift in Sources */,
+				55B09BF62349EA3D006051C2 /* QuestionTableViewCell.swift in Sources */,
 				5528EAC1234092AB00461B2A /* Extension.swift in Sources */,
 				04618BA623484D36002DF8A8 /* WatingTableViewCell.swift in Sources */,
+				55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */,
 				55DD1BBA23475F6D00CC820D /* HomeVC.swift in Sources */,
 				55DD1BC923476DEB00CC820D /* HomeMyTableViewCell.swift in Sources */,
 				5528EA8B23407A4000461B2A /* ViewController.swift in Sources */,
@@ -584,6 +637,9 @@
 				5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */,
 				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
+				55B09BF22349EA2C006051C2 /* WhatisTableViewCell.swift in Sources */,
+				55B09BEE2349E9E2006051C2 /* MoreTableViewCell.swift in Sources */,
+				55B09BEA2349E9D4006051C2 /* CooperatePlaceTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
