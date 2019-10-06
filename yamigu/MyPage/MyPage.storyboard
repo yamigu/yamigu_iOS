@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+        <array key="NanumGothicBold.ttf">
+            <string>NanumGothicBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="ZxE-0W-7wc">
+            <objects>
+                <navigationController id="T0q-dY-M4f" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TEl-xi-wwW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="6Fk-HZ-iur" kind="relationship" relationship="rootViewController" id="POX-xy-iy8"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Et-d0-S0s" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-820" y="115"/>
+        </scene>
+        <!--마이페이지-->
+        <scene sceneID="huy-H2-Zh0">
+            <objects>
+                <viewController id="6Fk-HZ-iur" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HKJ-Vt-y5H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pM-TC-aVr">
+                                <rect key="frame" x="8" y="57" width="398" height="209"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="mcV-Us-ZHh">
+                                        <rect key="frame" x="29" y="16" width="110" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="mCD-Cf-4gN"/>
+                                            <constraint firstAttribute="height" constant="110" id="rwd-IF-Zgc"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="55"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oz-rd-xlX">
+                                        <rect key="frame" x="69" y="111" width="30" height="30"/>
+                                        <state key="normal" image="icon_photo_circle"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwr-WX-vYa">
+                                        <rect key="frame" x="179" y="16.000000000000007" width="167" height="127.66666666666669"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전기전자공학부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKM-qE-DOe">
+                                                <rect key="frame" x="27.666666666666657" y="108" width="112" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연세대학교" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePe-Xb-H4x">
+                                                <rect key="frame" x="43.666666666666657" y="88.333333333333343" width="80" height="19.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.98431092499999995" green="0.97652727370000003" blue="0.97635596989999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="JKM-qE-DOe" firstAttribute="top" secondItem="ePe-Xb-H4x" secondAttribute="bottom" id="Bly-4M-xVt"/>
+                                            <constraint firstItem="ePe-Xb-H4x" firstAttribute="centerX" secondItem="JKM-qE-DOe" secondAttribute="centerX" id="MFq-Oy-RdQ"/>
+                                            <constraint firstItem="JKM-qE-DOe" firstAttribute="centerX" secondItem="xwr-WX-vYa" secondAttribute="centerX" id="Svu-zS-XGU"/>
+                                            <constraint firstAttribute="height" constant="127.68000000000001" id="e2C-M0-ErC"/>
+                                            <constraint firstAttribute="bottom" secondItem="JKM-qE-DOe" secondAttribute="bottom" id="xHO-Qc-iXP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="xwr-WX-vYa" firstAttribute="top" secondItem="mcV-Us-ZHh" secondAttribute="top" id="0Kp-zj-uDe"/>
+                                    <constraint firstAttribute="trailing" secondItem="xwr-WX-vYa" secondAttribute="trailing" constant="52" id="899-8E-9Jv"/>
+                                    <constraint firstAttribute="height" constant="209" id="Og5-Qk-CAu"/>
+                                    <constraint firstItem="xwr-WX-vYa" firstAttribute="leading" secondItem="mcV-Us-ZHh" secondAttribute="trailing" constant="40" id="b87-Dj-U6T"/>
+                                    <constraint firstItem="mcV-Us-ZHh" firstAttribute="leading" secondItem="5pM-TC-aVr" secondAttribute="leading" constant="29" id="k6W-mI-xHy"/>
+                                    <constraint firstItem="9oz-rd-xlX" firstAttribute="centerX" secondItem="mcV-Us-ZHh" secondAttribute="centerX" id="nxA-gM-nbC"/>
+                                    <constraint firstItem="9oz-rd-xlX" firstAttribute="centerY" secondItem="mcV-Us-ZHh" secondAttribute="bottom" id="xXP-eg-PfB"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증 완료" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w5y-y2-aYz">
+                                <rect key="frame" x="316" y="44" width="82" height="25.333333333333329"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25.300000000000001" id="12W-RJ-y75"/>
+                                    <constraint firstAttribute="width" constant="82" id="iC8-zu-7s5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
+                                <color key="textColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구초대코드 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWD-E0-Uuk">
+                                <rect key="frame" x="26.999999999999993" y="295" width="87.333333333333314" height="16.333333333333314"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="q1jsw2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfi-HB-QkD">
+                                <rect key="frame" x="117.33333333333333" y="295" width="47.333333333333329" height="16.333333333333314"/>
+                                <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="w5y-y2-aYz" firstAttribute="top" secondItem="1qd-n4-RmB" secondAttribute="top" id="7Nj-Vs-k2B"/>
+                            <constraint firstItem="kfi-HB-QkD" firstAttribute="leading" secondItem="CWD-E0-Uuk" secondAttribute="trailing" constant="3" id="93E-ta-gKK"/>
+                            <constraint firstItem="mcV-Us-ZHh" firstAttribute="top" secondItem="1qd-n4-RmB" secondAttribute="top" constant="29" id="LZs-qm-M75"/>
+                            <constraint firstItem="5pM-TC-aVr" firstAttribute="top" secondItem="1qd-n4-RmB" secondAttribute="top" constant="13" id="Nec-Sm-NV1"/>
+                            <constraint firstItem="5pM-TC-aVr" firstAttribute="leading" secondItem="1qd-n4-RmB" secondAttribute="leading" constant="8" id="cMP-PE-h3U"/>
+                            <constraint firstItem="CWD-E0-Uuk" firstAttribute="leading" secondItem="1qd-n4-RmB" secondAttribute="leading" constant="27" id="gFC-m2-KzW"/>
+                            <constraint firstItem="CWD-E0-Uuk" firstAttribute="top" secondItem="5pM-TC-aVr" secondAttribute="bottom" constant="29" id="hqf-fj-Hns"/>
+                            <constraint firstItem="1qd-n4-RmB" firstAttribute="trailing" secondItem="5pM-TC-aVr" secondAttribute="trailing" constant="8" id="lIo-dS-uqH"/>
+                            <constraint firstItem="1qd-n4-RmB" firstAttribute="trailing" secondItem="w5y-y2-aYz" secondAttribute="trailing" constant="16" id="wdF-uP-trN"/>
+                            <constraint firstItem="kfi-HB-QkD" firstAttribute="centerY" secondItem="CWD-E0-Uuk" secondAttribute="centerY" id="yFH-W0-eII"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1qd-n4-RmB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="마이페이지" id="Yaa-mV-xFm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ciH-9J-9vm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="129" y="118"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_photo_circle" width="30" height="30"/>
+        <image name="sample_profile" width="70" height="70"/>
+    </resources>
+</document>
