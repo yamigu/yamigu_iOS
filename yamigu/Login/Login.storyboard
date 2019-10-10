@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIM-ZU-Fn3">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Binggrae.ttf">
             <string>Binggrae</string>
+        </array>
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
         </array>
     </customFonts>
     <scenes>
@@ -22,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yamigu_logo_small" translatesAutoresizingMaskIntoConstraints="NO" id="VXa-nr-XLl">
-                                <rect key="frame" x="137.33333333333337" y="323.33333333333331" width="139.66666666666663" height="65.333333333333314"/>
+                                <rect key="frame" x="137.33333333333337" y="333.33333333333331" width="139.66666666666663" height="65.333333333333314"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zw-R7-Ki4">
                                 <rect key="frame" x="21" y="631" width="372" height="51"/>
@@ -54,7 +59,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교와 직장이 인증된 이성과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvs-3K-8Nb">
-                                <rect key="frame" x="118.00000000000001" y="418.66666666666669" width="178.33333333333337" height="19"/>
+                                <rect key="frame" x="118.00000000000001" y="428.66666666666669" width="178.33333333333337" height="19"/>
                                 <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -78,6 +83,7 @@
                         <outlet property="btn_login" destination="8zw-R7-Ki4" id="6Qq-OX-SW8"/>
                         <outlet property="btn_question" destination="tyn-A4-Bi6" id="wgC-KE-eAi"/>
                         <outlet property="lbl_description" destination="Wvs-3K-8Nb" id="LoZ-Dy-PYD"/>
+                        <segue destination="ddB-no-QXr" kind="show" identifier="segue_agreement" id="apv-ig-8eh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hu-tU-TuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -89,7 +95,7 @@
             <objects>
                 <navigationController id="ddB-no-QXr" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZD8-ud-UAF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
@@ -107,41 +113,41 @@
         <!--본인인증-->
         <scene sceneID="Lb5-Mc-rfT">
             <objects>
-                <viewController id="FA9-HM-e3Y" sceneMemberID="viewController">
+                <viewController id="FA9-HM-e3Y" customClass="RegisterVC_1" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wcB-Eo-Pou">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVM-oJ-Phy">
-                                <rect key="frame" x="0.0" y="44" width="414" height="140"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="140"/>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="Tm2-om-QHs"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_caution" translatesAutoresizingMaskIntoConstraints="NO" id="t8j-eR-nBL">
-                                <rect key="frame" x="187" y="53" width="40" height="40"/>
+                                <rect key="frame" x="187" y="73" width="40" height="40"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="휴대폰 본인 인증 + 학교/직장 인증" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EgI-7J-YMh">
-                                <rect key="frame" x="133" y="99" width="148.33333333333337" height="16.333333333333329"/>
+                                <rect key="frame" x="133" y="119" width="148.33333333333337" height="16.333333333333343"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="야미구는 이중 인증을 완료한 회원만이 이용 가능합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AgB-Vf-DqL">
-                                <rect key="frame" x="44.333333333333343" y="126.33333333333331" width="325.33333333333326" height="22"/>
+                                <rect key="frame" x="44.333333333333343" y="146.33333333333334" width="325.33333333333326" height="22"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구들과 안전한 미팅하세요! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyJ-xK-hDW">
-                                <rect key="frame" x="138.33333333333331" y="156" width="137.33333333333331" height="17.666666666666657"/>
+                                <rect key="frame" x="138.33333333333331" y="176" width="137.33333333333331" height="17.666666666666657"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="12"/>
                                 <color key="textColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_phone" translatesAutoresizingMaskIntoConstraints="NO" id="g6C-IL-9qF">
-                                <rect key="frame" x="123.66666666666669" y="349" width="167" height="167"/>
+                                <rect key="frame" x="123.66666666666669" y="359" width="167" height="167"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5A-0O-RLT">
                                 <rect key="frame" x="67.666666666666686" y="623" width="279" height="40"/>
@@ -154,7 +160,19 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.19607843137254902" green="0.64313725490196072" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="verificationBtnPressed:" destination="FA9-HM-e3Y" eventType="touchUpInside" id="mMF-es-PUs"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 핸드폰 인증은 허위중복가입을 막기 위한 인증입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2p-0W-FGg">
                                 <rect key="frame" x="79.666666666666671" y="672" width="232.66666666666663" height="16.333333333333371"/>
@@ -195,7 +213,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="본인인증" id="X9z-hZ-F9f"/>
                     <connections>
-                        <segue destination="BEl-li-YHk" kind="show" id="iT6-fd-50x"/>
+                        <segue destination="BEl-li-YHk" kind="show" identifier="segue_register2" id="iT6-fd-50x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDJ-Mg-Sde" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -205,72 +223,72 @@
         <!--회원가입-->
         <scene sceneID="B7y-s5-ClY">
             <objects>
-                <viewController id="BEl-li-YHk" sceneMemberID="viewController">
+                <viewController id="BEl-li-YHk" customClass="RegisterVC_2" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="19o-Tt-0Oi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSk-qa-bLY">
-                                <rect key="frame" x="0.0" y="44" width="414" height="140"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="140"/>
                                 <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="z03-2Y-pEr"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_caution" translatesAutoresizingMaskIntoConstraints="NO" id="Bsy-9V-58P">
-                                <rect key="frame" x="187" y="53" width="40" height="40"/>
+                                <rect key="frame" x="187" y="73" width="40" height="40"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="휴대폰 본인 인증 + 학교/직장 인증" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zao-g0-YZq">
-                                <rect key="frame" x="133" y="99" width="148.33333333333337" height="16.333333333333329"/>
+                                <rect key="frame" x="133" y="119" width="148.33333333333337" height="16.333333333333343"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="야미구는 이중 인증을 완료한 회원만이 이용 가능합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Miy-4c-W94">
-                                <rect key="frame" x="44.333333333333343" y="126.33333333333331" width="325.33333333333326" height="22"/>
+                                <rect key="frame" x="44.333333333333343" y="146.33333333333334" width="325.33333333333326" height="22"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구들과 안전한 미팅하세요! " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xjf-er-ORh">
-                                <rect key="frame" x="138.33333333333331" y="156" width="137.33333333333331" height="17.666666666666657"/>
+                                <rect key="frame" x="138.33333333333331" y="176" width="137.33333333333331" height="17.666666666666657"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="12"/>
                                 <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IZy-tb-2j8">
-                                <rect key="frame" x="0.0" y="184" width="414" height="140"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IZy-tb-2j8">
+                                <rect key="frame" x="0.0" y="204" width="414" height="140"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="Cu6-io-I4N"/>
                                 </constraints>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLh-KN-F4T">
-                                <rect key="frame" x="36" y="346" width="36.333333333333343" height="20.666666666666686"/>
+                                <rect key="frame" x="36" y="366" width="36.333333333333343" height="20.666666666666686"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
                                 <color key="textColor" red="0.12549019607843137" green="0.14509803921568626" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구코드" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTu-jX-gHT">
-                                <rect key="frame" x="36" y="423.66666666666669" width="48.666666666666657" height="20.666666666666686"/>
+                                <rect key="frame" x="36" y="443.66666666666669" width="48.666666666666657" height="20.666666666666686"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
                                 <color key="textColor" red="0.12549019607843137" green="0.14509803921568626" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소속" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMa-5N-yDN">
-                                <rect key="frame" x="36" y="501.33333333333331" width="24.333333333333329" height="20.666666666666686"/>
+                                <rect key="frame" x="36" y="521.33333333333337" width="24.333333333333329" height="20.666666666666629"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
                                 <color key="textColor" red="0.12549019607843137" green="0.14509803921568626" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용가능 합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Not-4P-rS1">
-                                <rect key="frame" x="85.333333333333329" y="353.33333333333331" width="58.999999999999986" height="13.333333333333314"/>
+                                <rect key="frame" x="85.333333333333329" y="373.33333333333331" width="58.999999999999986" height="13.333333333333314"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="9"/>
                                 <color key="textColor" red="0.25490196079999999" green="0.25490196079999999" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X6G-1o-BUp">
-                                <rect key="frame" x="36" y="371.66666666666669" width="342" height="36"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="자신의 개성을 표현해주세요!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X6G-1o-BUp">
+                                <rect key="frame" x="36" y="391.66666666666669" width="342" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Yjx-9m-30T"/>
                                 </constraints>
@@ -280,10 +298,22 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3O-9n-PM7">
-                                <rect key="frame" x="36" y="449.33333333333331" width="342" height="36"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="선택사항: 코드 입력시 친구에게 티켓 한장 제공!" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B3O-9n-PM7">
+                                <rect key="frame" x="36" y="469.33333333333331" width="342" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="GEn-3A-vvi"/>
                                 </constraints>
@@ -293,46 +323,100 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9h4-WU-ldC">
-                                <rect key="frame" x="36" y="527" width="165" height="42"/>
-                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="36" y="547" width="165" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="L2r-Cb-LRo"/>
                                 </constraints>
-                                <state key="normal" title="대학생"/>
+                                <state key="normal" title="대학생">
+                                    <color key="titleColor" red="1" green="0.78431372549019607" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.78431372549019607" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="collageBtnPrssed:" destination="BEl-li-YHk" eventType="touchUpInside" id="In5-8X-MFi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQg-KQ-Dd8">
-                                <rect key="frame" x="213" y="527" width="165" height="42"/>
-                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="213" y="547" width="165" height="42"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="s3d-Lj-bFx"/>
                                 </constraints>
-                                <state key="normal" title="직장인"/>
+                                <state key="normal" title="직장인">
+                                    <color key="titleColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="officeBtnPrssed:" destination="BEl-li-YHk" eventType="touchUpInside" id="vcd-Sd-r3M"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9F9-ek-a0D">
                                 <rect key="frame" x="36" y="674" width="342" height="42"/>
-                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="PRf-sz-112"/>
                                 </constraints>
-                                <state key="normal" title="인증하기"/>
+                                <state key="normal" title="인증하기">
+                                    <color key="titleColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="certiBtnPrssed:" destination="BEl-li-YHk" eventType="touchUpInside" id="H73-Io-vWo"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -379,7 +463,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="회원가입" id="1zB-bF-Eks"/>
                     <connections>
-                        <segue destination="3D2-e3-hsB" kind="show" id="usw-bH-WUs"/>
+                        <outlet property="button_certi" destination="9F9-ek-a0D" id="snL-59-4mt"/>
+                        <outlet property="button_collage" destination="9h4-WU-ldC" id="gcj-xx-tt8"/>
+                        <outlet property="button_office" destination="vQg-KQ-Dd8" id="RRQ-I6-fH6"/>
+                        <outlet property="tableView" destination="IZy-tb-2j8" id="LNc-iy-lct"/>
+                        <outlet property="textField_nickName" destination="X6G-1o-BUp" id="os6-yP-ez7"/>
+                        <segue destination="3D2-e3-hsB" kind="show" identifier="segue_register3" id="usw-bH-WUs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GeX-kc-skV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -395,25 +484,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdi-7a-c6o">
-                                <rect key="frame" x="36" y="51" width="52.333333333333343" height="20.666666666666671"/>
+                                <rect key="frame" x="36" y="71" width="52.333333333333343" height="20.666666666666671"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
                                 <color key="textColor" red="0.12549019607843137" green="0.14509803921568626" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전공 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5M-V7-oMI">
-                                <rect key="frame" x="36" y="128.66666666666666" width="52.333333333333343" height="20.666666666666657"/>
+                                <rect key="frame" x="36" y="148.66666666666666" width="52.333333333333343" height="20.666666666666657"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
                                 <color key="textColor" red="0.12549019607843137" green="0.14509803921568626" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 인증" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kr-ze-o3d">
-                                <rect key="frame" x="36" y="210.33333333333334" width="53" height="21"/>
+                                <rect key="frame" x="36" y="230.33333333333334" width="53" height="21"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
                                 <color key="textColor" red="0.12549019607843137" green="0.14509803921568626" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gZ7-88-Dki">
-                                <rect key="frame" x="36" y="76.666666666666671" width="342" height="36"/>
+                                <rect key="frame" x="36" y="96.666666666666671" width="342" height="36.000000000000014"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="goA-N1-Fkc"/>
                                 </constraints>
@@ -426,7 +515,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AqR-v7-7kz">
-                                <rect key="frame" x="36" y="154.33333333333334" width="342" height="36"/>
+                                <rect key="frame" x="36" y="174.33333333333334" width="342" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="oyI-9E-65i"/>
                                 </constraints>
@@ -440,38 +529,61 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CNP-y6-SMn">
                                 <rect key="frame" x="36" y="674" width="342" height="42"/>
-                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="Ajy-w2-VcF"/>
                                 </constraints>
-                                <state key="normal" title="바로 미팅하러 가기"/>
+                                <state key="normal" title="바로 미팅하러 가기">
+                                    <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-YE-iFb">
-                                <rect key="frame" x="36" y="247" width="342" height="128"/>
-                                <color key="backgroundColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-YE-iFb">
+                                <rect key="frame" x="36" y="267" width="342" height="128"/>
+                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128.30000000000001" id="RSa-Zi-DJN"/>
                                 </constraints>
-                                <state key="normal" title="인증하기"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
+                                <state key="normal" title="인증하기" image="icon_certification">
+                                    <color key="titleColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 전자 학생증도 가능해요 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8w-3S-pZ2">
-                                <rect key="frame" x="267.33333333333331" y="382" width="103.66666666666669" height="14.666666666666686"/>
+                                <rect key="frame" x="267.33333333333331" y="402" width="103.66666666666669" height="14.666666666666686"/>
                                 <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="10"/>
                                 <color key="textColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="descriptIon_register" translatesAutoresizingMaskIntoConstraints="NO" id="uyi-ng-Igb">
-                                <rect key="frame" x="90" y="422.66666666666669" width="234" height="89"/>
+                                <rect key="frame" x="90" y="442.66666666666669" width="234" height="89.000000000000057"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tq-kz-BLs">
                                 <rect key="frame" x="301" y="645" width="70" height="29"/>
@@ -520,6 +632,7 @@
     <resources>
         <image name="descriptIon_register" width="234" height="89"/>
         <image name="icon_caution" width="40" height="40"/>
+        <image name="icon_certification" width="24" height="24"/>
         <image name="icon_phone" width="167" height="167"/>
         <image name="kakao" width="13" height="13"/>
         <image name="yamigu_logo_small" width="139.66667175292969" height="65.333335876464844"/>

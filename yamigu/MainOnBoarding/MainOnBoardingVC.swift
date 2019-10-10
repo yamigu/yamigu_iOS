@@ -49,6 +49,42 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
             // subView의 x좌표를 기기의 너비 * index만큼 주어 각 페이지의 시작 x좌표를 설정
             subView.frame.origin.x = UIScreen.main.bounds.width * CGFloat(index)
             scrollView.addSubview(subView)
+            
+            let mainImage = UIImageView(image: UIImage(named: images[index]))
+            mainImage.frame.origin.x = (subView.bounds.width / 2 - (mainImage.frame.width / 2)) +  (UIScreen.main.bounds.width * CGFloat(index))
+            mainImage.frame.origin.y = 138.0
+            
+            scrollView.addSubview(mainImage)
+            
+            let titleLabel = UILabel()
+            titleLabel.text = titles[index]
+            titleLabel.textAlignment = .center
+            titleLabel.font = UIFont(name: "Binggrae", size: 24.0)
+            titleLabel.textColor = UIColor(rgb: 0xFF7B22)
+            titleLabel.sizeToFit()
+            
+            titleLabel.frame.origin.x = (subView.bounds.width / 2 - (titleLabel.frame.width / 2)) +  (UIScreen.main.bounds.width * CGFloat(index))
+            titleLabel.frame.origin.y = 351.0
+            
+            
+            scrollView.addSubview(titleLabel)
+            
+            let descriptionsLabel = UILabel()
+            descriptionsLabel.numberOfLines = 2
+            descriptionsLabel.textAlignment = .center
+            descriptionsLabel.font = UIFont(name: "NanumGothic", size: 14.0)
+            descriptionsLabel.textColor = UIColor(rgb: 0x433E3E)
+            descriptionsLabel.text = descriptions[index]
+            descriptionsLabel.sizeToFit()
+            descriptionsLabel.frame.size.width = subView.frame.width
+            
+            descriptionsLabel.frame.origin.x = (subView.bounds.width / 2 - (descriptionsLabel.frame.width / 2)) +  (UIScreen.main.bounds.width * CGFloat(index))
+            descriptionsLabel.frame.origin.y = 412.0
+            
+            
+            
+            
+            scrollView.addSubview(descriptionsLabel)
         }
         // scrollView에서 페이징이 가능하도록 설정
         scrollView.isPagingEnabled = true
@@ -64,17 +100,32 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
         // floor 내림, ceil 올림
         // contentOffset는 현재 스크롤된 좌표
         let currentPage = Int(floor(scrollView.contentOffset.x / UIScreen.main.bounds.width))
-        self.pageControl.set(progress: currentPage, animated: true)
-        self.mainImage.image = UIImage(named: images[currentPage])
-        self.lbl_description.text = descriptions[currentPage]
-        self.lbl_title.text = descriptions[currentPage]
+        let currentX = scrollView.contentOffset.x / UIScreen.main.bounds.width
+        if( currentPage >= 0 ) {
+            self.pageControl.set(progress: currentPage, animated: true)
+        }
+        
+        //self.mainImage.image = UIImage(named: images[currentPage])
+        //self.lbl_description.text = descriptions[currentPage]
+        //self.lbl_title.text = descriptions[currentPage]
+        print("pageNum = \(currentPage)")
+        print("currentX = \(currentX)")
         
         if currentPage == 3 {
             btn_start.isHidden = false
             lbl_start.isHidden = false
+            
+            if( currentX > 3.2 ) {
+                goNext()
+            }
         } else {
             btn_start.isHidden = true
             lbl_start.isHidden = true
         }
+    }
+    
+    func goNext() {
+        performSegue(withIdentifier: "segue_login", sender: self)
+        
     }
 }

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--MainTC-->
         <scene sceneID="J1w-aB-Del">
             <objects>
-                <tabBarController id="eQT-Ym-YfZ" sceneMemberID="viewController">
+                <tabBarController id="eQT-Ym-YfZ" customClass="MainTC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="497-LT-47h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="93" y="-407"/>
         </scene>
-        <!--Home-->
+        <!--MyPage-->
         <scene sceneID="4rf-fe-KiX">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="dhM-zG-vf2" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="MyPage" id="dhM-zG-vf2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="vRh-1l-UcF"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bur-Tv-xRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,6 +85,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tabbar_home" width="21.333333969116211" height="38.666667938232422"/>
+        <image name="tabbar_home" width="21.333333969116211" height="21.333333969116211"/>
     </resources>
 </document>

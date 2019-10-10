@@ -33,5 +33,6 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func kakaoLoginPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "segue_agreement", sender: self)
     }
 }
