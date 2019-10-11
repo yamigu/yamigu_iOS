@@ -40,7 +40,7 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
                         <rect key="frame" x="0.0" y="60" width="293" height="71.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>

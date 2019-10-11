@@ -58,7 +58,7 @@
                                     <action selector="questionPressed:" destination="eIM-ZU-Fn3" eventType="touchUpInside" id="xzt-1b-ALs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교와 직장이 인증된 이성과" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvs-3K-8Nb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교와 직장이 인증된 이성과" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvs-3K-8Nb">
                                 <rect key="frame" x="118.00000000000001" y="428.66666666666669" width="178.33333333333337" height="19"/>
                                 <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
