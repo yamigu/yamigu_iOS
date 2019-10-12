@@ -18,6 +18,16 @@
 		04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04618BAD23487152002DF8A8 /* MyPage.storyboard */; };
 		04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BAF23487162002DF8A8 /* MyPageVC.swift */; };
 		04618BB223519F9D002DF8A8 /* CooperatePlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BB123519F9D002DF8A8 /* CooperatePlaceVC.swift */; };
+		046418252351C706006F8080 /* Binggrae-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9A23481723002DF8A8 /* Binggrae-Bold.ttf */; };
+		046418262351C70A006F8080 /* Binggrae.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9223481723002DF8A8 /* Binggrae.ttf */; };
+		046418272351C70C006F8080 /* NanumBrush.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9923481723002DF8A8 /* NanumBrush.ttf */; };
+		046418282351C710006F8080 /* NanumGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9623481723002DF8A8 /* NanumGothic.ttf */; };
+		046418292351C713006F8080 /* NanumGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9B23481723002DF8A8 /* NanumGothicBold.ttf */; };
+		0464182A2351C716006F8080 /* NanumGothicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9423481723002DF8A8 /* NanumGothicExtraBold.ttf */; };
+		0464182B2351C718006F8080 /* NanumMyeongjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9323481723002DF8A8 /* NanumMyeongjo.ttf */; };
+		0464182C2351C71B006F8080 /* NanumMyeongjoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9523481723002DF8A8 /* NanumMyeongjoBold.ttf */; };
+		0464182D2351C71D006F8080 /* NanumMyeongjoExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9723481723002DF8A8 /* NanumMyeongjoExtraBold.ttf */; };
+		0464182E2351C71F006F8080 /* NanumPen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9823481723002DF8A8 /* NanumPen.ttf */; };
 		55224D8B234F0599003FBCA3 /* RegisterVC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */; };
 		55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */; };
 		55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8F234F0ED5003FBCA3 /* AgreementTableViewCell.swift */; };
@@ -520,11 +530,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				046418282351C710006F8080 /* NanumGothic.ttf in Resources */,
+				046418272351C70C006F8080 /* NanumBrush.ttf in Resources */,
 				5528EABB23407F6F00461B2A /* MainOnBoarding.storyboard in Resources */,
 				55B09BE42349E996006051C2 /* More.storyboard in Resources */,
+				0464182E2351C71F006F8080 /* NanumPen.ttf in Resources */,
 				04618BAC23485F84002DF8A8 /* FilterView.xib in Resources */,
+				046418262351C70A006F8080 /* Binggrae.ttf in Resources */,
 				04618BA723484D36002DF8A8 /* WatingTableViewCell.xib in Resources */,
 				55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */,
+				0464182D2351C71D006F8080 /* NanumMyeongjoExtraBold.ttf in Resources */,
+				046418252351C706006F8080 /* Binggrae-Bold.ttf in Resources */,
+				0464182C2351C71B006F8080 /* NanumMyeongjoBold.ttf in Resources */,
+				0464182B2351C718006F8080 /* NanumMyeongjo.ttf in Resources */,
 				5528EA9623407A4200461B2A /* LaunchScreen.storyboard in Resources */,
 				55224D92234F0ED5003FBCA3 /* AgreementTableViewCell.xib in Resources */,
 				5528EAC82340964200461B2A /* Login.storyboard in Resources */,
@@ -534,9 +552,11 @@
 				55B09BEB2349E9D4006051C2 /* CooperatePlaceTableViewCell.xib in Resources */,
 				55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */,
 				55B09BEF2349E9E2006051C2 /* MoreTableViewCell.xib in Resources */,
+				046418292351C713006F8080 /* NanumGothicBold.ttf in Resources */,
 				55B09BF32349EA2C006051C2 /* WhatisTableViewCell.xib in Resources */,
 				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
 				55B09BF72349EA3D006051C2 /* QuestionTableViewCell.xib in Resources */,
+				0464182A2351C716006F8080 /* NanumGothicExtraBold.ttf in Resources */,
 				04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */,
 				04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */,
 				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
