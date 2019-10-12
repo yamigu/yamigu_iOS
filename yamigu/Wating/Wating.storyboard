@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nHS-9n-F8v">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -7,6 +7,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Binggrae-Bold.ttf">
+            <string>Binggrae-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="wrL-M0-bZK">
@@ -27,28 +32,171 @@
             </objects>
             <point key="canvasLocation" x="-893" y="-273"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="jNJ-Sp-1Br">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hx1-hA-92m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tabBarController id="boh-Y1-YFN" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7vb-EO-3Wh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="nHS-9n-F8v" kind="relationship" relationship="viewControllers" id="DnQ-5g-6BZ"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="-894" y="475"/>
+        </scene>
         <!--대기팀 리스트-->
         <scene sceneID="cwh-l9-crg">
             <objects>
-                <viewController id="nHS-9n-F8v" sceneMemberID="viewController">
+                <viewController id="nHS-9n-F8v" customClass="WatingVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LqD-ag-Zot">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BIB-xt-kOt">
-                                <rect key="frame" x="87" y="44" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yK4-3q-K1Z">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-kN-tgV">
+                                        <rect key="frame" x="0.0" y="0.0" width="59" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <state key="normal" title="5/01">
+                                            <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-IL-4O1">
+                                        <rect key="frame" x="59" y="0.0" width="59.333333333333343" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <state key="normal" title="5/02">
+                                            <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-5U-5ou">
+                                        <rect key="frame" x="118.33333333333331" y="0.0" width="59" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <state key="normal" title="5/03">
+                                            <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gZ-1x-TVC">
+                                        <rect key="frame" x="177.33333333333334" y="0.0" width="59.333333333333343" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <state key="normal" title="5/04">
+                                            <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyh-JJ-Fu5">
+                                        <rect key="frame" x="236.66666666666663" y="0.0" width="59" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <state key="normal" title="5/05">
+                                            <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPv-h2-Fel">
+                                        <rect key="frame" x="295.66666666666669" y="0.0" width="59.333333333333314" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <state key="normal" title="5/06">
+                                            <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiG-zI-Kvz">
+                                        <rect key="frame" x="355" y="0.0" width="59" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <state key="normal" title="5/07">
+                                            <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="7DK-IL-4O1" firstAttribute="height" secondItem="yK4-3q-K1Z" secondAttribute="height" id="0pw-R5-kYX"/>
+                                    <constraint firstItem="gaX-kN-tgV" firstAttribute="leading" secondItem="yK4-3q-K1Z" secondAttribute="leading" id="2wU-pD-dt5"/>
+                                    <constraint firstItem="7DK-IL-4O1" firstAttribute="width" secondItem="yK4-3q-K1Z" secondAttribute="width" multiplier="1/7" id="5US-e3-TBj"/>
+                                    <constraint firstItem="jPv-h2-Fel" firstAttribute="width" secondItem="Lyh-JJ-Fu5" secondAttribute="width" id="5o7-UE-0Cu"/>
+                                    <constraint firstItem="7DK-IL-4O1" firstAttribute="leading" secondItem="gaX-kN-tgV" secondAttribute="trailing" id="6Z7-nw-lzP"/>
+                                    <constraint firstItem="jPv-h2-Fel" firstAttribute="trailing" secondItem="JiG-zI-Kvz" secondAttribute="leading" id="87j-nB-NtB"/>
+                                    <constraint firstItem="3gZ-1x-TVC" firstAttribute="height" secondItem="VSA-5U-5ou" secondAttribute="height" id="BW3-5g-PqG"/>
+                                    <constraint firstItem="3gZ-1x-TVC" firstAttribute="leading" secondItem="VSA-5U-5ou" secondAttribute="trailing" id="F9L-Vm-hVL"/>
+                                    <constraint firstAttribute="height" constant="50" id="Gmy-1E-XLr"/>
+                                    <constraint firstItem="jPv-h2-Fel" firstAttribute="leading" secondItem="Lyh-JJ-Fu5" secondAttribute="trailing" id="LES-BR-SoS"/>
+                                    <constraint firstItem="gaX-kN-tgV" firstAttribute="height" secondItem="yK4-3q-K1Z" secondAttribute="height" id="NWv-H9-VRR"/>
+                                    <constraint firstItem="VSA-5U-5ou" firstAttribute="leading" secondItem="7DK-IL-4O1" secondAttribute="trailing" id="OLw-8M-U0M"/>
+                                    <constraint firstItem="gaX-kN-tgV" firstAttribute="centerY" secondItem="7DK-IL-4O1" secondAttribute="centerY" id="Ph2-uM-E9n"/>
+                                    <constraint firstItem="Lyh-JJ-Fu5" firstAttribute="height" secondItem="3gZ-1x-TVC" secondAttribute="height" id="VhZ-Ey-7uY"/>
+                                    <constraint firstItem="Lyh-JJ-Fu5" firstAttribute="centerY" secondItem="3gZ-1x-TVC" secondAttribute="centerY" id="W5u-Bu-bCn"/>
+                                    <constraint firstItem="VSA-5U-5ou" firstAttribute="centerY" secondItem="7DK-IL-4O1" secondAttribute="centerY" id="YjI-Ww-TXF"/>
+                                    <constraint firstItem="JiG-zI-Kvz" firstAttribute="centerY" secondItem="jPv-h2-Fel" secondAttribute="centerY" id="Z7v-Em-7yR"/>
+                                    <constraint firstItem="Lyh-JJ-Fu5" firstAttribute="width" secondItem="3gZ-1x-TVC" secondAttribute="width" id="ZmH-oY-wMZ"/>
+                                    <constraint firstItem="JiG-zI-Kvz" firstAttribute="height" secondItem="jPv-h2-Fel" secondAttribute="height" id="asW-ca-8Da"/>
+                                    <constraint firstItem="3gZ-1x-TVC" firstAttribute="centerY" secondItem="VSA-5U-5ou" secondAttribute="centerY" id="bIr-qd-CdA"/>
+                                    <constraint firstItem="VSA-5U-5ou" firstAttribute="width" secondItem="7DK-IL-4O1" secondAttribute="width" id="bkd-Jt-k2m"/>
+                                    <constraint firstItem="VSA-5U-5ou" firstAttribute="height" secondItem="yK4-3q-K1Z" secondAttribute="height" id="d98-eK-yjb"/>
+                                    <constraint firstItem="jPv-h2-Fel" firstAttribute="height" secondItem="Lyh-JJ-Fu5" secondAttribute="height" id="dEk-lw-Wib"/>
+                                    <constraint firstItem="JiG-zI-Kvz" firstAttribute="width" secondItem="jPv-h2-Fel" secondAttribute="width" id="ddh-Sk-F5Q"/>
+                                    <constraint firstItem="jPv-h2-Fel" firstAttribute="centerY" secondItem="Lyh-JJ-Fu5" secondAttribute="centerY" id="gYP-Ob-lMl"/>
+                                    <constraint firstItem="7DK-IL-4O1" firstAttribute="centerY" secondItem="yK4-3q-K1Z" secondAttribute="centerY" id="ghY-0t-qdR"/>
+                                    <constraint firstItem="Lyh-JJ-Fu5" firstAttribute="leading" secondItem="3gZ-1x-TVC" secondAttribute="trailing" id="ilt-l9-1zp"/>
+                                    <constraint firstItem="gaX-kN-tgV" firstAttribute="width" secondItem="7DK-IL-4O1" secondAttribute="width" id="iu2-zU-xq6"/>
+                                    <constraint firstItem="3gZ-1x-TVC" firstAttribute="width" secondItem="VSA-5U-5ou" secondAttribute="width" id="mRJ-TB-G47"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bordercolor">
+                                        <color key="value" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderwidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-Gj-bBc">
+                                <rect key="frame" x="12.666666666666657" y="71" width="389" height="616"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1Vb-eF-MhK" firstAttribute="leading" secondItem="yK4-3q-K1Z" secondAttribute="leading" id="45F-d6-zy4"/>
+                            <constraint firstItem="Rnj-Gj-bBc" firstAttribute="leading" secondItem="1Vb-eF-MhK" secondAttribute="leading" constant="12.5" id="ANU-Gi-ZGG"/>
+                            <constraint firstItem="Rnj-Gj-bBc" firstAttribute="top" secondItem="yK4-3q-K1Z" secondAttribute="bottom" constant="21" id="Dru-wT-fvq"/>
+                            <constraint firstItem="1Vb-eF-MhK" firstAttribute="bottom" secondItem="Rnj-Gj-bBc" secondAttribute="bottom" id="VpG-a5-ntl"/>
+                            <constraint firstItem="1Vb-eF-MhK" firstAttribute="trailing" secondItem="Rnj-Gj-bBc" secondAttribute="trailing" constant="12.5" id="jsl-bz-NIC"/>
+                            <constraint firstItem="1Vb-eF-MhK" firstAttribute="trailing" secondItem="yK4-3q-K1Z" secondAttribute="trailing" id="prP-ms-giC"/>
+                            <constraint firstItem="yK4-3q-K1Z" firstAttribute="top" secondItem="1Vb-eF-MhK" secondAttribute="top" id="z0y-d8-arv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1Vb-eF-MhK"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="대기팀" image="tabbar_ready" id="Xjz-Go-vaD"/>
                     <navigationItem key="navigationItem" title="대기팀 리스트" id="FmV-ob-nNG"/>
+                    <connections>
+                        <outlet property="tableView" destination="Rnj-Gj-bBc" id="vNB-Tl-LKN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wsf-bQ-aOS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="133" y="76"/>
+            <point key="canvasLocation" x="131.8840579710145" y="75.815217391304358"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabbar_ready" width="21.333333969116211" height="21.333333969116211"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="DnQ-5g-6BZ"/>
+    </inferredMetricsTieBreakers>
 </document>

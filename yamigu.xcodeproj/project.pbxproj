@@ -17,6 +17,7 @@
 		04618BAC23485F84002DF8A8 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04618BAB23485F84002DF8A8 /* FilterView.xib */; };
 		04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04618BAD23487152002DF8A8 /* MyPage.storyboard */; };
 		04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BAF23487162002DF8A8 /* MyPageVC.swift */; };
+		04618BB223519F9D002DF8A8 /* CooperatePlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BB123519F9D002DF8A8 /* CooperatePlaceVC.swift */; };
 		55224D8B234F0599003FBCA3 /* RegisterVC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */; };
 		55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */; };
 		55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8F234F0ED5003FBCA3 /* AgreementTableViewCell.swift */; };
@@ -95,6 +96,7 @@
 		04618BAB23485F84002DF8A8 /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 		04618BAD23487152002DF8A8 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		04618BAF23487162002DF8A8 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
+		04618BB123519F9D002DF8A8 /* CooperatePlaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceVC.swift; sourceTree = "<group>"; };
 		08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamiguTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		175D11DF3039304A79860BB8 /* Pods_yamigu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamigu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		287145A19783A812AE2535F9 /* Pods-yamiguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguUITests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguUITests/Pods-yamiguUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				55B09BE72349E9A7006051C2 /* MoreCell */,
 				55B09BE32349E996006051C2 /* More.storyboard */,
 				55B09BE52349E9A4006051C2 /* MoreVC.swift */,
+				04618BB123519F9D002DF8A8 /* CooperatePlaceVC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				55B09BF62349EA3D006051C2 /* QuestionTableViewCell.swift in Sources */,
 				5528EAC1234092AB00461B2A /* Extension.swift in Sources */,
 				04618BA623484D36002DF8A8 /* WatingTableViewCell.swift in Sources */,
+				04618BB223519F9D002DF8A8 /* CooperatePlaceVC.swift in Sources */,
 				55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */,
 				55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */,
 				55DD1BBA23475F6D00CC820D /* HomeVC.swift in Sources */,
