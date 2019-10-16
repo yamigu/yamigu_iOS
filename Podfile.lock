@@ -109,7 +109,7 @@ DEPENDENCIES:
   - Firebase/Database
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - CHIPageControl
     - Cosmos
     - Firebase
@@ -151,4 +151,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: e7d43ed03bc689042daf0bdb7ac9f129d543ff5f
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3

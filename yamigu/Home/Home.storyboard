@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
@@ -24,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5m-9h-AH5">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
+                                <rect key="frame" x="0.0" y="22" width="414" height="57"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_home_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-Ym-i6X">
-                                        <rect key="frame" x="5.6666666666666679" y="20.666666666666668" width="16" height="16.000000000000004"/>
+                                        <rect key="frame" x="5.6666666666666714" y="-0.33333333333333215" width="243" height="58"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLn-vd-MlH">
                                         <rect key="frame" x="393.66666666666669" y="20.333333333333336" width="8" height="16.333333333333336"/>
@@ -36,10 +34,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_home_ticket" translatesAutoresizingMaskIntoConstraints="NO" id="SeY-Ft-dP4">
-                                        <rect key="frame" x="377.66666666666669" y="20.666666666666668" width="16" height="16.000000000000004"/>
+
+                                        <rect key="frame" x="347.66666666666669" y="5.6666666666666679" width="46" height="46"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_home_bell" translatesAutoresizingMaskIntoConstraints="NO" id="Z8t-b2-Z3P">
-                                        <rect key="frame" x="334.66666666666669" y="20.666666666666668" width="16" height="16.000000000000004"/>
+                                        <rect key="frame" x="288.66666666666669" y="9" width="32" height="39"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -56,26 +55,28 @@
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SL5-Rl-UJ6">
-                                <rect key="frame" x="0.0" y="57" width="414" height="1343"/>
+                                <rect key="frame" x="0.0" y="79" width="414" height="1321"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_home_main" translatesAutoresizingMaskIntoConstraints="NO" id="82w-nu-THA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="16"/>
+
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="338"/>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oyr-Ct-7Wx">
-                                        <rect key="frame" x="0.0" y="16" width="414" height="166"/>
+                                        <rect key="frame" x="0.0" y="338" width="414" height="166"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="166" id="l67-Id-1w5"/>
                                         </constraints>
                                     </tableView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="야미구 추천 미팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-JP-Qc9">
-                                        <rect key="frame" x="30" y="197.66666666666666" width="119" height="21"/>
+
+                                        <rect key="frame" x="30" y="519.66666666666663" width="119" height="21"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="po1-Py-6OO">
-                                        <rect key="frame" x="20" y="229.66666666666669" width="374" height="222"/>
+                                        <rect key="frame" x="20" y="551.66666666666663" width="374" height="222"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="222" id="7si-ef-NbT"/>
@@ -98,13 +99,13 @@
                                         </cells>
                                     </collectionView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 예정 미팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMf-QM-dTs">
-                                        <rect key="frame" x="30.000000000000007" y="466.66666666666663" width="103.66666666666669" height="21"/>
+                                        <rect key="frame" x="30.000000000000007" y="788.66666666666663" width="103.66666666666669" height="21"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IjA-R8-b6S">
-                                        <rect key="frame" x="20" y="498.66666666666663" width="374" height="86"/>
+                                        <rect key="frame" x="20" y="820.66666666666663" width="374" height="86"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="86" id="Lan-aW-Lgf"/>
@@ -137,15 +138,15 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SL5-Rl-UJ6" secondAttribute="bottom" id="4lF-sQ-XF9"/>
                             <constraint firstItem="SL5-Rl-UJ6" firstAttribute="top" secondItem="a5m-9h-AH5" secondAttribute="bottom" id="Awg-Qr-Z8e"/>
-                            <constraint firstItem="a5m-9h-AH5" firstAttribute="top" secondItem="igi-xl-EB8" secondAttribute="top" id="BeX-39-45p"/>
+                            <constraint firstItem="a5m-9h-AH5" firstAttribute="top" secondItem="igi-xl-EB8" secondAttribute="top" constant="22" id="BeX-39-45p"/>
                             <constraint firstItem="a5m-9h-AH5" firstAttribute="centerX" secondItem="igi-xl-EB8" secondAttribute="centerX" id="Bg3-dr-hqb"/>
                             <constraint firstAttribute="trailing" secondItem="SL5-Rl-UJ6" secondAttribute="trailing" id="D6c-MF-7y0"/>
                             <constraint firstItem="SL5-Rl-UJ6" firstAttribute="width" secondItem="igi-xl-EB8" secondAttribute="width" id="Rcw-oV-Hah"/>
                             <constraint firstItem="SL5-Rl-UJ6" firstAttribute="leading" secondItem="igi-xl-EB8" secondAttribute="leading" id="XnE-FJ-1To"/>
                             <constraint firstItem="a5m-9h-AH5" firstAttribute="width" secondItem="igi-xl-EB8" secondAttribute="width" id="eKT-zE-xh7"/>
-                            <constraint firstItem="SL5-Rl-UJ6" firstAttribute="height" secondItem="igi-xl-EB8" secondAttribute="height" constant="-57" id="fBF-7k-Ugz"/>
+                            <constraint firstItem="SL5-Rl-UJ6" firstAttribute="height" secondItem="igi-xl-EB8" secondAttribute="height" constant="-79" id="fBF-7k-Ugz"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="k6D-Gn-2Vq"/>
+                        <viewLayoutGuide key="safeArea" id="Oi6-Us-v0J"/> 
                     </view>
                     <tabBarItem key="tabBarItem" title="홈" image="tabbar_home" id="6Ry-wQ-tma">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>

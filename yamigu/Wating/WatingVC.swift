@@ -9,22 +9,58 @@
 import UIKit
 
 class WatingVC: UIViewController {
-
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupTableView()
 
         // Do any additional setup after loading the view.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension WatingVC: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "watingTableViewCell", for: indexPath)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.0
+        }
+        return 21.0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        
+        return 6
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 222.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let view = UIView()
+        view.backgroundColor = .clear
+        
+        return view
+    }
+    
+    func setupTableView() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        self.tableView.register(UINib(nibName: "WatingTableViewCell", bundle: nil), forCellReuseIdentifier: "watingTableViewCell")
+    }
 }

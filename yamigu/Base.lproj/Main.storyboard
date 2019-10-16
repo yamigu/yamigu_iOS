@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQT-Ym-YfZ">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQT-Ym-YfZ">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -63,20 +61,20 @@
             </objects>
             <point key="canvasLocation" x="92" y="-225"/>
         </scene>
-        <!--Home-->
+        <!--Wating-->
         <scene sceneID="2tU-kL-LOH">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="pXk-Q7-Ppr" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Wating" id="pXk-Q7-Ppr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="qRw-aC-gpM"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jE0-fj-TKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="93" y="-299"/>
         </scene>
-        <!--Home-->
+        <!--More-->
         <scene sceneID="AQ8-by-Lrl">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="zDp-oO-BaK" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="More" id="zDp-oO-BaK" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="5vt-cN-91l"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w97-IZ-ixT" userLabel="First Responder" sceneMemberID="firstResponder"/>
