@@ -8,6 +8,9 @@ target 'yamigu' do
   # Pods for yamigu
   pod 'CHIPageControl', '~> 0.1.3'
   pod 'Cosmos', '~> 20.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'yamiguTests' do
     inherit! :search_paths

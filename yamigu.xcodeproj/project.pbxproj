@@ -23,6 +23,11 @@
 		55224D92234F0ED5003FBCA3 /* AgreementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55224D90234F0ED5003FBCA3 /* AgreementTableViewCell.xib */; };
 		55224D94234F10FB003FBCA3 /* RegisterVC_3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D93234F10FA003FBCA3 /* RegisterVC_3.swift */; };
 		55224D96234F42B1003FBCA3 /* MainTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D95234F42B1003FBCA3 /* MainTC.swift */; };
+		55224DCD2356ECAA003FBCA3 /* LoginCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55224DCC2356ECAA003FBCA3 /* LoginCheck.storyboard */; };
+		55224DCF2356ECBF003FBCA3 /* LoginCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224DCE2356ECBF003FBCA3 /* LoginCheckVC.swift */; };
+		55224DD12356EEAE003FBCA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55224DD02356EEAE003FBCA3 /* GoogleService-Info.plist */; };
+		55224DD42356EFEB003FBCA3 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */; };
+		55224DD52356EFEB003FBCA3 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */; };
 		5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8823407A4000461B2A /* AppDelegate.swift */; };
 		5528EA8B23407A4000461B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8A23407A4000461B2A /* ViewController.swift */; };
 		5528EA8E23407A4000461B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA8C23407A4000461B2A /* Main.storyboard */; };
@@ -107,6 +112,11 @@
 		55224D90234F0ED5003FBCA3 /* AgreementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementTableViewCell.xib; sourceTree = "<group>"; };
 		55224D93234F10FA003FBCA3 /* RegisterVC_3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC_3.swift; sourceTree = "<group>"; };
 		55224D95234F42B1003FBCA3 /* MainTC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTC.swift; sourceTree = "<group>"; };
+		55224DCC2356ECAA003FBCA3 /* LoginCheck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginCheck.storyboard; sourceTree = "<group>"; };
+		55224DCE2356ECBF003FBCA3 /* LoginCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCheckVC.swift; sourceTree = "<group>"; };
+		55224DD02356EEAE003FBCA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoCommon.framework; path = "kakao-ios-sdk-1/KakaoCommon.framework"; sourceTree = "<group>"; };
+		55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "kakao-ios-sdk-1/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		5525915645B74EDD8AAF86BD /* Pods-yamiguTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.release.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.release.xcconfig"; sourceTree = "<group>"; };
 		5528EA8523407A4000461B2A /* yamigu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamigu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5528EA8823407A4000461B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -157,6 +167,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				01DA3566ED289EDDEC22B120 /* Pods_yamigu.framework in Frameworks */,
+				55224DD42356EFEB003FBCA3 /* KakaoCommon.framework in Frameworks */,
+				55224DD52356EFEB003FBCA3 /* KakaoOpenSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +297,7 @@
 				5528EA9423407A4200461B2A /* LaunchScreen.storyboard */,
 				5528EA9723407A4200461B2A /* Info.plist */,
 				5528EA8F23407A4000461B2A /* yamigu.xcdatamodeld */,
+				55224DD02356EEAE003FBCA3 /* GoogleService-Info.plist */,
 			);
 			path = yamigu;
 			sourceTree = "<group>";
@@ -325,6 +338,8 @@
 				55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */,
 				55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */,
 				55224D93234F10FA003FBCA3 /* RegisterVC_3.swift */,
+				55224DCC2356ECAA003FBCA3 /* LoginCheck.storyboard */,
+				55224DCE2356ECBF003FBCA3 /* LoginCheckVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -402,6 +417,8 @@
 		E5B000252B1BBE7A11FA8795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */,
+				55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */,
 				175D11DF3039304A79860BB8 /* Pods_yamigu.framework */,
 				08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */,
 				3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */,
@@ -520,6 +537,7 @@
 				5528EABB23407F6F00461B2A /* MainOnBoarding.storyboard in Resources */,
 				55B09BE42349E996006051C2 /* More.storyboard in Resources */,
 				04618BAC23485F84002DF8A8 /* FilterView.xib in Resources */,
+				55224DCD2356ECAA003FBCA3 /* LoginCheck.storyboard in Resources */,
 				04618BA723484D36002DF8A8 /* WatingTableViewCell.xib in Resources */,
 				55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */,
 				5528EA9623407A4200461B2A /* LaunchScreen.storyboard in Resources */,
@@ -535,6 +553,7 @@
 				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
 				55B09BF72349EA3D006051C2 /* QuestionTableViewCell.xib in Resources */,
 				04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */,
+				55224DD12356EEAE003FBCA3 /* GoogleService-Info.plist in Resources */,
 				04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */,
 				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
 			);
@@ -666,6 +685,7 @@
 				5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */,
 				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
+				55224DCF2356ECBF003FBCA3 /* LoginCheckVC.swift in Sources */,
 				55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */,
 				55B09BF22349EA2C006051C2 /* WhatisTableViewCell.swift in Sources */,
 				55224D96234F42B1003FBCA3 /* MainTC.swift in Sources */,
@@ -850,6 +870,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z8ZPS2688S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/kakao-ios-sdk-1",
+				);
 				INFOPLIST_FILE = yamigu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -870,6 +894,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z8ZPS2688S;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/kakao-ios-sdk-1",
+				);
 				INFOPLIST_FILE = yamigu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

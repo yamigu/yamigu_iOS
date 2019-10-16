@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import KakaoCommon
+import KakaoOpenSDK
 
 class LoginVC: UIViewController {
 
@@ -33,6 +35,15 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func kakaoLoginPressed(_ sender: Any) {
-        self.performSegue(withIdentifier: "segue_agreement", sender: self)
+        //
+        KOSession.shared()?.close()
+        
+        KOSession.shared()?.open(completionHandler: { (error) in
+            if (KOSession.shared()?.isOpen())! {
+                self.performSegue(withIdentifier: "segue_agreement", sender: self)
+            } else {
+                
+            }
+        })
     }
 }
