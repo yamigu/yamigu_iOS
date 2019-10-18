@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,6 +35,7 @@
                     </view>
                     <connections>
                         <segue destination="x1u-TV-OPE" kind="show" identifier="segue_onboarding" id="mfb-fH-0Tn"/>
+                        <segue destination="2Q1-Gc-lAa" kind="show" identifier="segue_main" id="jPY-ZM-j3p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8B3-v1-bQg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -49,6 +49,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqs-7l-Ysn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1016" y="29"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="FX4-I3-YdH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="2Q1-Gc-lAa" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Jw-Bo-PLw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="121"/>
         </scene>
     </scenes>
     <resources>

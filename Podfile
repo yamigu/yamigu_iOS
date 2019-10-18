@@ -11,6 +11,7 @@ target 'yamigu' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Toast'
 
   target 'yamiguTests' do
     inherit! :search_paths

@@ -23,9 +23,56 @@ class HomeVC: UIViewController {
         self.setupTableView()
         self.setupCollectionView()
         
+        self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
+    }
     
+    func getTodayMeeting(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            
+        })
+        task.resume()
+    }
     
 }
 

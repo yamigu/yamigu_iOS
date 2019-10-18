@@ -21,16 +21,14 @@ class LoginVC: UIViewController {
         lbl_description.text = "학교와 직장이 인증된 이성과\n일주일안에 미팅하기"
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        print("\(KOSession.shared()?.token?.accessToken)")
+        
+        if KOSession.shared()?.token?.accessToken != nil {
+            self.performSegue(withIdentifier: "segue_agreement", sender: self)
+        }
     }
-    */
+    
     @IBAction func questionPressed(_ sender: Any) {
     }
     
@@ -40,10 +38,51 @@ class LoginVC: UIViewController {
         
         KOSession.shared()?.open(completionHandler: { (error) in
             if (KOSession.shared()?.isOpen())! {
-                self.performSegue(withIdentifier: "segue_agreement", sender: self)
+                let access_token = (KOSession.shared()?.token?.accessToken)!
+                self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
             } else {
                 
             }
         })
+    }
+    
+    func postRequest(_ urlString: String, bodyString: String){
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        request.httpBody = body
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, String> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        // 동작 실행
+                        authKey = newValue["key"]!
+                        
+                        self.performSegue(withIdentifier: "segue_agreement", sender: self)
+                    }
+                } catch {
+                    print(error)
+                    // 회원가입 이력이 없는경우
+                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                }
+            }
+            }.resume()
     }
 }

@@ -56,9 +56,9 @@ extension MoreVC: UITableViewDelegate, UITableViewDataSource {
         } else if indexPath.section == 1 {
             performSegue(withIdentifier: "segue_place", sender: self)
         } else if indexPath.section == 2 {
-                   
+            performSegue(withIdentifier: "segue_guide", sender: self)
         } else if indexPath.section == 3 {
-                   
+            performSegue(withIdentifier: "segue_question", sender: self)
         }
     }
 }

@@ -17,17 +17,6 @@
 		04618BAC23485F84002DF8A8 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04618BAB23485F84002DF8A8 /* FilterView.xib */; };
 		04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04618BAD23487152002DF8A8 /* MyPage.storyboard */; };
 		04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BAF23487162002DF8A8 /* MyPageVC.swift */; };
-		04618BB223519F9D002DF8A8 /* CooperatePlaceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BB123519F9D002DF8A8 /* CooperatePlaceVC.swift */; };
-		046418252351C706006F8080 /* Binggrae-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9A23481723002DF8A8 /* Binggrae-Bold.ttf */; };
-		046418262351C70A006F8080 /* Binggrae.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9223481723002DF8A8 /* Binggrae.ttf */; };
-		046418272351C70C006F8080 /* NanumBrush.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9923481723002DF8A8 /* NanumBrush.ttf */; };
-		046418282351C710006F8080 /* NanumGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9623481723002DF8A8 /* NanumGothic.ttf */; };
-		046418292351C713006F8080 /* NanumGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9B23481723002DF8A8 /* NanumGothicBold.ttf */; };
-		0464182A2351C716006F8080 /* NanumGothicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9423481723002DF8A8 /* NanumGothicExtraBold.ttf */; };
-		0464182B2351C718006F8080 /* NanumMyeongjo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9323481723002DF8A8 /* NanumMyeongjo.ttf */; };
-		0464182C2351C71B006F8080 /* NanumMyeongjoBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9523481723002DF8A8 /* NanumMyeongjoBold.ttf */; };
-		0464182D2351C71D006F8080 /* NanumMyeongjoExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9723481723002DF8A8 /* NanumMyeongjoExtraBold.ttf */; };
-		0464182E2351C71F006F8080 /* NanumPen.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9823481723002DF8A8 /* NanumPen.ttf */; };
 		55224D8B234F0599003FBCA3 /* RegisterVC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */; };
 		55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */; };
 		55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8F234F0ED5003FBCA3 /* AgreementTableViewCell.swift */; };
@@ -39,6 +28,7 @@
 		55224DD12356EEAE003FBCA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55224DD02356EEAE003FBCA3 /* GoogleService-Info.plist */; };
 		55224DD42356EFEB003FBCA3 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */; };
 		55224DD52356EFEB003FBCA3 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */; };
+		55224DD923597439003FBCA3 /* WhatIsYamiguVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224DD823597439003FBCA3 /* WhatIsYamiguVC.swift */; };
 		5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8823407A4000461B2A /* AppDelegate.swift */; };
 		5528EA8B23407A4000461B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8A23407A4000461B2A /* ViewController.swift */; };
 		5528EA8E23407A4000461B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA8C23407A4000461B2A /* Main.storyboard */; };
@@ -111,7 +101,6 @@
 		04618BAB23485F84002DF8A8 /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 		04618BAD23487152002DF8A8 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		04618BAF23487162002DF8A8 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
-		04618BB123519F9D002DF8A8 /* CooperatePlaceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceVC.swift; sourceTree = "<group>"; };
 		08C18820F34ED97ACB1B0931 /* Pods_yamiguTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamiguTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		175D11DF3039304A79860BB8 /* Pods_yamigu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamigu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		287145A19783A812AE2535F9 /* Pods-yamiguUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguUITests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguUITests/Pods-yamiguUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +118,7 @@
 		55224DD02356EEAE003FBCA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoCommon.framework; path = "kakao-ios-sdk-1/KakaoCommon.framework"; sourceTree = "<group>"; };
 		55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "kakao-ios-sdk-1/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
+		55224DD823597439003FBCA3 /* WhatIsYamiguVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsYamiguVC.swift; sourceTree = "<group>"; };
 		5525915645B74EDD8AAF86BD /* Pods-yamiguTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.release.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.release.xcconfig"; sourceTree = "<group>"; };
 		5528EA8523407A4000461B2A /* yamigu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamigu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5528EA8823407A4000461B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -371,7 +361,7 @@
 				55B09BE72349E9A7006051C2 /* MoreCell */,
 				55B09BE32349E996006051C2 /* More.storyboard */,
 				55B09BE52349E9A4006051C2 /* MoreVC.swift */,
-				04618BB123519F9D002DF8A8 /* CooperatePlaceVC.swift */,
+				55224DD823597439003FBCA3 /* WhatIsYamiguVC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -547,20 +537,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				046418282351C710006F8080 /* NanumGothic.ttf in Resources */,
-				046418272351C70C006F8080 /* NanumBrush.ttf in Resources */,
 				5528EABB23407F6F00461B2A /* MainOnBoarding.storyboard in Resources */,
 				55B09BE42349E996006051C2 /* More.storyboard in Resources */,
-				0464182E2351C71F006F8080 /* NanumPen.ttf in Resources */,
 				04618BAC23485F84002DF8A8 /* FilterView.xib in Resources */,
 				55224DCD2356ECAA003FBCA3 /* LoginCheck.storyboard in Resources */,
-				046418262351C70A006F8080 /* Binggrae.ttf in Resources */,
 				04618BA723484D36002DF8A8 /* WatingTableViewCell.xib in Resources */,
 				55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */,
-				0464182D2351C71D006F8080 /* NanumMyeongjoExtraBold.ttf in Resources */,
-				046418252351C706006F8080 /* Binggrae-Bold.ttf in Resources */,
-				0464182C2351C71B006F8080 /* NanumMyeongjoBold.ttf in Resources */,
-				0464182B2351C718006F8080 /* NanumMyeongjo.ttf in Resources */,
 				5528EA9623407A4200461B2A /* LaunchScreen.storyboard in Resources */,
 				55224D92234F0ED5003FBCA3 /* AgreementTableViewCell.xib in Resources */,
 				5528EAC82340964200461B2A /* Login.storyboard in Resources */,
@@ -570,11 +552,9 @@
 				55B09BEB2349E9D4006051C2 /* CooperatePlaceTableViewCell.xib in Resources */,
 				55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */,
 				55B09BEF2349E9E2006051C2 /* MoreTableViewCell.xib in Resources */,
-				046418292351C713006F8080 /* NanumGothicBold.ttf in Resources */,
 				55B09BF32349EA2C006051C2 /* WhatisTableViewCell.xib in Resources */,
 				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
 				55B09BF72349EA3D006051C2 /* QuestionTableViewCell.xib in Resources */,
-				0464182A2351C716006F8080 /* NanumGothicExtraBold.ttf in Resources */,
 				04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */,
 				55224DD12356EEAE003FBCA3 /* GoogleService-Info.plist in Resources */,
 				04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */,
@@ -694,13 +674,13 @@
 				55B09BF62349EA3D006051C2 /* QuestionTableViewCell.swift in Sources */,
 				5528EAC1234092AB00461B2A /* Extension.swift in Sources */,
 				04618BA623484D36002DF8A8 /* WatingTableViewCell.swift in Sources */,
-				04618BB223519F9D002DF8A8 /* CooperatePlaceVC.swift in Sources */,
 				55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */,
 				55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */,
 				55DD1BBA23475F6D00CC820D /* HomeVC.swift in Sources */,
 				55DD1BC923476DEB00CC820D /* HomeMyTableViewCell.swift in Sources */,
 				5528EA8B23407A4000461B2A /* ViewController.swift in Sources */,
 				5528EAC52340963100461B2A /* LoginVC.swift in Sources */,
+				55224DD923597439003FBCA3 /* WhatIsYamiguVC.swift in Sources */,
 				04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */,
 				5528EA9123407A4000461B2A /* yamigu.xcdatamodeld in Sources */,
 				55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */,
@@ -899,6 +879,7 @@
 					"$(PROJECT_DIR)/kakao-ios-sdk-1",
 				);
 				INFOPLIST_FILE = yamigu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -923,6 +904,7 @@
 					"$(PROJECT_DIR)/kakao-ios-sdk-1",
 				);
 				INFOPLIST_FILE = yamigu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

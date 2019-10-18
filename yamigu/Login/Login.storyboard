@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,7 +26,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yamigu_logo_small" translatesAutoresizingMaskIntoConstraints="NO" id="VXa-nr-XLl">
-                                <rect key="frame" x="137.33333333333337" y="333.33333333333331" width="139.66666666666663" height="65.333333333333314"/>
+                                <rect key="frame" x="199" y="358" width="16" height="16"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zw-R7-Ki4">
                                 <rect key="frame" x="21" y="631" width="372" height="51"/>
@@ -58,8 +57,8 @@
                                     <action selector="questionPressed:" destination="eIM-ZU-Fn3" eventType="touchUpInside" id="xzt-1b-ALs"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교와 직장이 인증된 이성과" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvs-3K-8Nb">
-                                <rect key="frame" x="118.00000000000001" y="428.66666666666669" width="178.33333333333337" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교와 직장이 인증된 이성과" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvs-3K-8Nb">
+                                <rect key="frame" x="118.00000000000001" y="404" width="178.33333333333337" height="19"/>
                                 <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -470,6 +469,7 @@
                         <outlet property="button_office" destination="vQg-KQ-Dd8" id="RRQ-I6-fH6"/>
                         <outlet property="tableView" destination="IZy-tb-2j8" id="LNc-iy-lct"/>
                         <outlet property="textField_nickName" destination="X6G-1o-BUp" id="os6-yP-ez7"/>
+                        <outlet property="topConstraint" destination="rIl-ec-Pwl" id="ca6-DT-ayn"/>
                         <segue destination="3D2-e3-hsB" kind="show" identifier="segue_register3" id="usw-bH-WUs"/>
                     </connections>
                 </viewController>
@@ -480,7 +480,7 @@
         <!--본인인증-->
         <scene sceneID="cOZ-rc-Uxe">
             <objects>
-                <viewController id="3D2-e3-hsB" sceneMemberID="viewController">
+                <viewController id="3D2-e3-hsB" customClass="RegisterVC_3" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sWv-PM-9O9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -552,10 +552,22 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="goBtnPressed:" destination="3D2-e3-hsB" eventType="touchUpInside" id="qZb-hn-aOn"/>
+                                </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y4x-e6-pVZ">
+                                <rect key="frame" x="36" y="267" width="342" height="128"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USI-YE-iFb">
                                 <rect key="frame" x="36" y="267" width="342" height="128"/>
-                                <color key="backgroundColor" red="0.9882352941176471" green="0.9882352941176471" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128.30000000000001" id="RSa-Zi-DJN"/>
                                 </constraints>
@@ -577,6 +589,9 @@
                                         <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="certiBtnPressed:" destination="3D2-e3-hsB" eventType="touchUpInside" id="bKr-Rx-Zpb"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 전자 학생증도 가능해요 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o8w-3S-pZ2">
                                 <rect key="frame" x="267.33333333333331" y="402" width="103.66666666666669" height="14.666666666666686"/>
@@ -585,7 +600,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="descriptIon_register" translatesAutoresizingMaskIntoConstraints="NO" id="uyi-ng-Igb">
-                                <rect key="frame" x="90" y="442.66666666666669" width="234" height="89.000000000000057"/>
+                                <rect key="frame" x="199" y="442.66666666666669" width="16" height="16"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tq-kz-BLs">
                                 <rect key="frame" x="301" y="645" width="70" height="29"/>
@@ -598,16 +613,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CNP-y6-SMn" firstAttribute="top" secondItem="4Tq-kz-BLs" secondAttribute="bottom" id="2C6-NN-dB7"/>
+                            <constraint firstItem="Y4x-e6-pVZ" firstAttribute="leading" secondItem="USI-YE-iFb" secondAttribute="leading" id="5I9-Qn-RGs"/>
                             <constraint firstItem="gZ7-88-Dki" firstAttribute="top" secondItem="Kdi-7a-c6o" secondAttribute="bottom" constant="5" id="7e6-MB-gIT"/>
                             <constraint firstItem="USI-YE-iFb" firstAttribute="trailing" secondItem="AqR-v7-7kz" secondAttribute="trailing" id="Ab7-f6-JsY"/>
                             <constraint firstItem="5Kr-ze-o3d" firstAttribute="top" secondItem="AqR-v7-7kz" secondAttribute="bottom" constant="20" id="DO8-2x-e4s"/>
+                            <constraint firstItem="Y4x-e6-pVZ" firstAttribute="bottom" secondItem="USI-YE-iFb" secondAttribute="bottom" id="E0a-Cs-c5y"/>
                             <constraint firstItem="4Tq-kz-BLs" firstAttribute="trailing" secondItem="CNP-y6-SMn" secondAttribute="trailing" constant="-7" id="JxK-Hv-hcP"/>
+                            <constraint firstItem="Y4x-e6-pVZ" firstAttribute="top" secondItem="USI-YE-iFb" secondAttribute="top" id="LDw-6H-LOs"/>
                             <constraint firstItem="uyi-ng-Igb" firstAttribute="top" secondItem="o8w-3S-pZ2" secondAttribute="bottom" constant="26" id="LpI-Mc-UC8"/>
                             <constraint firstItem="AqR-v7-7kz" firstAttribute="top" secondItem="d5M-V7-oMI" secondAttribute="bottom" constant="5" id="NQT-F7-GNi"/>
                             <constraint firstItem="USI-YE-iFb" firstAttribute="top" secondItem="5Kr-ze-o3d" secondAttribute="bottom" constant="15.5" id="SHe-RH-Lh4"/>
                             <constraint firstItem="CgT-Lx-TGy" firstAttribute="trailing" secondItem="gZ7-88-Dki" secondAttribute="trailing" constant="36" id="TyJ-7i-1x6"/>
                             <constraint firstItem="CNP-y6-SMn" firstAttribute="centerX" secondItem="CgT-Lx-TGy" secondAttribute="centerX" id="U5s-KN-ouh"/>
                             <constraint firstItem="gZ7-88-Dki" firstAttribute="leading" secondItem="CgT-Lx-TGy" secondAttribute="leading" constant="36" id="UD8-Ou-prY"/>
+                            <constraint firstItem="Y4x-e6-pVZ" firstAttribute="trailing" secondItem="USI-YE-iFb" secondAttribute="trailing" id="We3-We-syN"/>
                             <constraint firstItem="CgT-Lx-TGy" firstAttribute="bottom" secondItem="CNP-y6-SMn" secondAttribute="bottom" constant="20" id="X7J-D0-tNN"/>
                             <constraint firstItem="Kdi-7a-c6o" firstAttribute="leading" secondItem="CgT-Lx-TGy" secondAttribute="leading" constant="36" id="edi-Y0-PuN"/>
                             <constraint firstItem="Kdi-7a-c6o" firstAttribute="top" secondItem="CgT-Lx-TGy" secondAttribute="top" constant="7" id="elX-Ew-2vp"/>
@@ -625,10 +644,26 @@
                         <viewLayoutGuide key="safeArea" id="CgT-Lx-TGy"/>
                     </view>
                     <navigationItem key="navigationItem" title="본인인증" id="bRx-Vv-2Ec"/>
+                    <connections>
+                        <outlet property="button_certi" destination="USI-YE-iFb" id="PL5-Y1-PGa"/>
+                        <outlet property="button_go" destination="CNP-y6-SMn" id="JhR-Lk-QSB"/>
+                        <outlet property="imageVIew_certi" destination="Y4x-e6-pVZ" id="01K-Ee-B8j"/>
+                        <outlet property="text_belong" destination="gZ7-88-Dki" id="DNw-fR-kQU"/>
+                        <outlet property="text_departmetn" destination="AqR-v7-7kz" id="SKk-pK-igB"/>
+                        <segue destination="Fgn-d0-dpk" kind="show" identifier="segue_main" id="F4E-gg-26S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUg-K2-GDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3628" y="-191"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="KiM-l6-f2t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="Fgn-d0-dpk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F0m-lb-wV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4248" y="-191"/>
         </scene>
     </scenes>
     <resources>
