@@ -17,6 +17,14 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var todayMeetingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var todayMeetingTableView: UITableView!
+    
+    var myMeetings = [Dictionary<String, Any>]()
+    var todayMeetings = [Dictionary<String, Any>]()
+    
+    let meetingType = ["2:2 소개팅", "3:3 미팅", "4:4 미팅"]
+    let places = ["신촌/홍대", "건대/왕십리", "강남", "수원역", "인천 송도", "부산 서면"]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,11 +32,13 @@ class HomeVC: UIViewController {
         self.setupCollectionView()
         
         self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
+        self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
+        self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
     }
     
     func getTodayMeeting(urlString : String) {
@@ -57,13 +67,18 @@ class HomeVC: UIViewController {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, Any> else {
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
                         print("invalid format")
                         return
                         
                     }
                     
                     DispatchQueue.main.async {
+                        for value in newValue {
+                            self.todayMeetings.append(value)
+                        }
+                        
+                        self.todayMeetingTableView.reloadData()
                     }
                 } catch {
                     print(error)
@@ -72,6 +87,60 @@ class HomeVC: UIViewController {
             
         })
         task.resume()
+    }
+    
+    func getMyMeeting(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        for value in newValue {
+                            self.myMeetings.append(value)
+                            
+                            
+                        }
+                        
+                        self.myMeetingTableView.reloadData()
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
+    func daysBetween(start: Date, end: Date) -> Int {
+        return Calendar.current.dateComponents([.day], from: start, to: end).day!
     }
     
 }
@@ -108,17 +177,44 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        
         if tableView == self.myMeetingTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
+            
+            let meetingDict = myMeetings[indexPath.section]
+            cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+            cell.label_place.text = meetingDict["place_type_name"] as! String
+            
+            let dateString = meetingDict["date"] as! String
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from:dateString)
+            
+            dateFormatter.dateFormat = "M월"
+            let monthString = dateFormatter.string(from: date!)
+            
+            dateFormatter.dateFormat = "d일"
+            let dayString = dateFormatter.string(from: date!)
+            
+            cell.label_month.text = monthString
+            cell.label_day.text = dayString
+            
+            if daysBetween(start: Date(), end: date!) == 0 {
+                cell.label_dday.text = "today"
+            } else {
+                cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
+            }
             
             return cell
         } else if tableView == self.todayMeetingTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeExpectedTableViewCell") as! HomeExpectedTableViewCell
-            
+            let meetingDict = todayMeetings[indexPath.section]
             cell.contentView.layer.borderColor = UIColor(rgb: 0xE5E5E5).cgColor
             cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.cornerRadius = 10.0
+            
+            cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+            cell.label_place.text = meetingDict["place_type_name"] as! String
             
             return cell
         }
@@ -128,10 +224,13 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        var height = 211.0 * 3 + 16.0 * (3 - 1)
+        let mymeetingCount = self.myMeetings.count
+        let todaymeetingCount = self.todayMeetings.count
+        
+        var height = 211.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1)
         
         self.myMeetingTableViewHeight.constant = CGFloat(height)
-        var height2 = 86.0 * 5 + 11.0 * (5 - 1)
+        var height2 = 86.0 * Double(todaymeetingCount) + 11.0 * Double(todaymeetingCount - 1)
         
         self.todayMeetingTableViewHeight.constant = CGFloat(height2)
         
@@ -140,14 +239,14 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         DispatchQueue.main.async {
             self.scrollView.layoutIfNeeded()
             self.myMeetingTableView.layoutIfNeeded()
-            self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + height)
+            self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height)
         }
         
         if tableView == self.myMeetingTableView {
             
-            return 3
+            return mymeetingCount
         } else if tableView == self.todayMeetingTableView {
-            return 5
+            return todaymeetingCount
         }
         
         return 1

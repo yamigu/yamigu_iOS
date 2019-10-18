@@ -25,6 +25,9 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     var isDate = false
     var isPlace = false
     
+    var selectedType = 0
+    var selectedPlace = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -156,11 +159,11 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         //- date: 날짜
         //- place_type: 장소
         //- appeal: 어필 문구
-        self.postRequest("http://147.47.208.44:9999/api/meetings/create", bodyString: "meeting_type=\(button_people.titleLabel?.text!)&date=\(button_date.titleLabel?.text!)&place_type=\(button_place.titleLabel?.text!)&appeal=\(self.textView.text!)")
+        self.postRequest("http://147.47.208.44:9999/api/meetings/create/")
         
     }
     
-    func postRequest(_ urlString: String, bodyString: String){
+    func postRequest(_ urlString: String){
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -170,13 +173,18 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         //request.httpBody = body
         
         var requestDict = Dictionary<String, String>()
-        requestDict["meeting_type"] = button_people.titleLabel?.text!
+        requestDict["meeting_type"] = "\((self.selectedType + 1))"
         requestDict["date"] = button_date.titleLabel?.text!
-        requestDict["place_type"] = button_place.titleLabel?.text!
+        requestDict["place"] = "\(self.selectedPlace + 1)"
         requestDict["appeal"] = self.textView.text!
-        let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
-        JSONSerialization.isValidJSONObject(requestDict)
-        request.httpBody = data
+        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
+        //JSONSerialization.isValidJSONObject(requestDict)
+        //request.httpBody = data
+        
+        if let data = try? JSONSerialization.data(withJSONObject: requestDict, options: .prettyPrinted),
+            let jsonString = String(data: data, encoding: .utf8) {
+            request.httpBody = jsonString.data(using: .utf8)
+        }
         
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
@@ -190,7 +198,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
@@ -199,6 +207,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                     DispatchQueue.main.async {
                         // 동작 실행
                         //authKey = newValue["key"]!
+                        self.dismiss(animated: true, completion: nil)
                     }
                 } catch {
                     print(error)
@@ -249,6 +258,8 @@ extension RegisterMeetingVC {
                 //self.button_date.sendActions(for: .allEvents)
                 self.dateBtnHandler()
             }
+            
+            self.selectedType = indexPath.row
         }
         
         if isDate {
@@ -262,7 +273,7 @@ extension RegisterMeetingVC {
         
         if isPlace {
             self.button_place.setTitle(label.text, for: .normal)
-            
+            self.selectedPlace = indexPath.row
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 self.textView.isHidden = false
                 self.label_caution.isHidden = false
@@ -270,6 +281,8 @@ extension RegisterMeetingVC {
                 self.tableView.isHidden = true
                 
             }
+            
+            
         }
     }
     
@@ -310,14 +323,14 @@ extension RegisterMeetingVC {
             
             if indexPath.row == 0 {
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd EE"
+                formatter.dateFormat = "M월 d일"
                 let result = formatter.string(from: date)
                 label.text = result
             } else if indexPath.row == 1 {
                 dateComponents.setValue(1, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd EE"
+                formatter.dateFormat = "M월 d일"
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -325,7 +338,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(2, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd EE"
+                formatter.dateFormat = "M월 d일"
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -333,7 +346,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(3, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd EE"
+                formatter.dateFormat = "M월 d일"
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -341,7 +354,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(4, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd EE"
+                formatter.dateFormat = "M월 d일"
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -349,7 +362,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(5, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd EE"
+                formatter.dateFormat = "M월 d일"
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -357,7 +370,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(6, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd EE"
+                formatter.dateFormat = "M월 d일"
                 let result = formatter.string(from: date)
                 label.text = result
                 

@@ -10,6 +10,11 @@ import UIKit
 
 class HomeExpectedTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var label_type: UILabel!
+    @IBOutlet weak var label_place: UILabel!
+    @IBOutlet weak var label_belong_age_1: UILabel!
+    @IBOutlet weak var label_belong_age_2: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

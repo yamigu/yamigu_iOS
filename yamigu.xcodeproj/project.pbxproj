@@ -29,6 +29,12 @@
 		55224DD42356EFEB003FBCA3 /* KakaoCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */; };
 		55224DD52356EFEB003FBCA3 /* KakaoOpenSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */; };
 		55224DD923597439003FBCA3 /* WhatIsYamiguVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224DD823597439003FBCA3 /* WhatIsYamiguVC.swift */; };
+		55224DDA2359DA4A003FBCA3 /* Binggrae-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9A23481723002DF8A8 /* Binggrae-Bold.ttf */; };
+		55224DDB2359DA4D003FBCA3 /* Binggrae.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9223481723002DF8A8 /* Binggrae.ttf */; };
+		55224DDC2359DA4F003FBCA3 /* NanumBrush.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9923481723002DF8A8 /* NanumBrush.ttf */; };
+		55224DDD2359DA54003FBCA3 /* NanumGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9623481723002DF8A8 /* NanumGothic.ttf */; };
+		55224DDE2359DA56003FBCA3 /* NanumGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9B23481723002DF8A8 /* NanumGothicBold.ttf */; };
+		55224DDF2359DA58003FBCA3 /* NanumGothicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9423481723002DF8A8 /* NanumGothicExtraBold.ttf */; };
 		5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8823407A4000461B2A /* AppDelegate.swift */; };
 		5528EA8B23407A4000461B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8A23407A4000461B2A /* ViewController.swift */; };
 		5528EA8E23407A4000461B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA8C23407A4000461B2A /* Main.storyboard */; };
@@ -543,6 +549,8 @@
 				55224DCD2356ECAA003FBCA3 /* LoginCheck.storyboard in Resources */,
 				04618BA723484D36002DF8A8 /* WatingTableViewCell.xib in Resources */,
 				55DD1BC423476DCC00CC820D /* HomeExpectedTableViewCell.xib in Resources */,
+				55224DDA2359DA4A003FBCA3 /* Binggrae-Bold.ttf in Resources */,
+				55224DDB2359DA4D003FBCA3 /* Binggrae.ttf in Resources */,
 				5528EA9623407A4200461B2A /* LaunchScreen.storyboard in Resources */,
 				55224D92234F0ED5003FBCA3 /* AgreementTableViewCell.xib in Resources */,
 				5528EAC82340964200461B2A /* Login.storyboard in Resources */,
@@ -550,14 +558,18 @@
 				5528EA9323407A4200461B2A /* Assets.xcassets in Resources */,
 				5528EA8E23407A4000461B2A /* Main.storyboard in Resources */,
 				55B09BEB2349E9D4006051C2 /* CooperatePlaceTableViewCell.xib in Resources */,
+				55224DDE2359DA56003FBCA3 /* NanumGothicBold.ttf in Resources */,
 				55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */,
+				55224DDD2359DA54003FBCA3 /* NanumGothic.ttf in Resources */,
 				55B09BEF2349E9E2006051C2 /* MoreTableViewCell.xib in Resources */,
+				55224DDC2359DA4F003FBCA3 /* NanumBrush.ttf in Resources */,
 				55B09BF32349EA2C006051C2 /* WhatisTableViewCell.xib in Resources */,
 				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
 				55B09BF72349EA3D006051C2 /* QuestionTableViewCell.xib in Resources */,
 				04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */,
 				55224DD12356EEAE003FBCA3 /* GoogleService-Info.plist in Resources */,
 				04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */,
+				55224DDF2359DA58003FBCA3 /* NanumGothicExtraBold.ttf in Resources */,
 				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

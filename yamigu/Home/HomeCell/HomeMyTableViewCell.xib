@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -198,7 +197,7 @@
                             <constraint firstItem="5le-Jb-Sag" firstAttribute="top" secondItem="a5P-zG-Ayb" secondAttribute="bottom" id="qAN-zL-C0q"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매칭 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-ds-GOL">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매칭 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-ds-GOL">
                         <rect key="frame" x="30" y="38.5" width="98" height="28.5"/>
                         <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="21"/>
                         <color key="textColor" red="1" green="0.51764705882352935" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -236,6 +235,20 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="button_applyTeam" destination="XGT-RK-ha6" id="trZ-P7-cBl"/>
+                <outlet property="button_edit" destination="80R-Th-7fO" id="DqA-eb-hdm"/>
+                <outlet property="button_watingTeam" destination="dwT-ci-PNk" id="ZI1-tX-z42"/>
+                <outlet property="label_chattingCount" destination="5le-Jb-Sag" id="oOu-dB-Qak"/>
+                <outlet property="label_chattingTime" destination="a5P-zG-Ayb" id="RVB-gw-10Y"/>
+                <outlet property="label_day" destination="0nZ-zu-5Mf" id="pKk-hB-RdL"/>
+                <outlet property="label_dday" destination="6Iz-9r-dZy" id="7uS-PH-t8O"/>
+                <outlet property="label_lastChat" destination="xK3-x8-cDp" id="7oJ-fU-4FX"/>
+                <outlet property="label_month" destination="bLi-Gb-EQc" id="FoJ-7S-ypS"/>
+                <outlet property="label_place" destination="3Rz-JY-fCG" id="yR6-ZP-Jwx"/>
+                <outlet property="label_teamCount" destination="eVp-Q4-GLX" id="3tc-Dd-Npx"/>
+                <outlet property="label_type" destination="gdu-86-6w8" id="qnU-3m-Adz"/>
+            </connections>
             <point key="canvasLocation" x="140" y="137"/>
         </tableViewCell>
     </objects>
