@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="293" height="222"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="293" height="222"/>
+                <rect key="frame" x="0.0" y="0.0" width="293" height="221.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:2 미팅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sD-j5-IM2">
@@ -40,7 +41,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IWg-Mt-nu2">
-                        <rect key="frame" x="0.0" y="167.5" width="293" height="54.5"/>
+                        <rect key="frame" x="0.0" y="167" width="293" height="54.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임(30)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qc-An-yRP">
                                 <rect key="frame" x="19" y="10" width="67" height="17"/>
@@ -80,8 +81,8 @@
                             <constraint firstItem="rbn-wF-inM" firstAttribute="bottom" secondItem="8Qc-An-yRP" secondAttribute="bottom" id="oYX-nz-qYH"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="cUl-nz-p2u">
-                        <rect key="frame" x="0.0" y="162.5" width="293" height="5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="cUl-nz-p2u">
+                        <rect key="frame" x="0.0" y="162" width="293" height="5"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="EGp-pQ-2A6">
                         <rect key="frame" x="20" y="49" width="70" height="70"/>
@@ -96,8 +97,11 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="연하가 좋구요! 저희는 중학교 친구들이라 서로 캐미도 좋고 텐션높게 재밌게 놀 수 있습니다! 물론 매너는 기본 옵션이고요. 좋은 추억 만들고 싶어 신청합니다." translatesAutoresizingMaskIntoConstraints="NO" id="3KM-00-YJK">
-                        <rect key="frame" x="108" y="39" width="170.5" height="80"/>
+                        <rect key="frame" x="108" y="44" width="170.5" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="b6B-IW-anB"/>
+                        </constraints>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="10"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -109,7 +113,7 @@
                         </userDefinedRuntimeAttributes>
                     </textView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VKp-Pb-bjv" customClass="CosmosView" customModule="Cosmos">
-                        <rect key="frame" x="114" y="140" width="65" height="13"/>
+                        <rect key="frame" x="114" y="139.5" width="65" height="13"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="starSize">
@@ -141,8 +145,7 @@
                     <constraint firstItem="cUl-nz-p2u" firstAttribute="bottom" secondItem="IWg-Mt-nu2" secondAttribute="top" id="8Ou-ez-p4X"/>
                     <constraint firstItem="cUl-nz-p2u" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="8dd-MY-hbt"/>
                     <constraint firstItem="9sD-j5-IM2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="9" id="9oM-Nr-rdt"/>
-                    <constraint firstItem="3KM-00-YJK" firstAttribute="bottom" secondItem="EGp-pQ-2A6" secondAttribute="bottom" id="GfR-Vk-m0G"/>
-                    <constraint firstItem="3KM-00-YJK" firstAttribute="top" secondItem="EGp-pQ-2A6" secondAttribute="top" constant="-10" id="LqB-g0-4pK"/>
+                    <constraint firstItem="3KM-00-YJK" firstAttribute="centerY" secondItem="EGp-pQ-2A6" secondAttribute="centerY" id="LqG-ek-02H"/>
                     <constraint firstItem="9sD-j5-IM2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Owe-ug-XZb"/>
                     <constraint firstItem="EGp-pQ-2A6" firstAttribute="top" secondItem="9sD-j5-IM2" secondAttribute="bottom" constant="18" id="Rft-gT-Xep"/>
                     <constraint firstItem="EGp-pQ-2A6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="RkQ-LX-ig3"/>
@@ -158,7 +161,7 @@
                     <userDefinedRuntimeAttribute type="number" keyPath="borderwidth">
                         <real key="value" value="1"/>
                     </userDefinedRuntimeAttribute>
-                    <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                         <real key="value" value="10"/>
                     </userDefinedRuntimeAttribute>
                 </userDefinedRuntimeAttributes>
@@ -168,13 +171,23 @@
                 <userDefinedRuntimeAttribute type="number" keyPath="borderwidth">
                     <real key="value" value="1"/>
                 </userDefinedRuntimeAttribute>
-                <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                     <real key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="color" keyPath="bordercolor">
                     <color key="value" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="image_profile" destination="EGp-pQ-2A6" id="15h-8M-kFb"/>
+                <outlet property="label_belong" destination="gBQ-ol-Cx8" id="Qe4-1c-Scc"/>
+                <outlet property="label_date" destination="rbn-wF-inM" id="9Ra-Lr-rks"/>
+                <outlet property="label_nickname" destination="8Qc-An-yRP" id="y7k-a3-IZV"/>
+                <outlet property="label_place" destination="wsx-Q1-Gmb" id="gq7-8v-vrA"/>
+                <outlet property="label_type" destination="9sD-j5-IM2" id="NYY-xw-n3D"/>
+                <outlet property="rating" destination="VKp-Pb-bjv" id="9R4-7m-1lX"/>
+                <outlet property="tv_description" destination="3KM-00-YJK" id="IeN-Dl-bEg"/>
+            </connections>
             <point key="canvasLocation" x="138.40579710144928" y="136.60714285714286"/>
         </tableViewCell>
     </objects>

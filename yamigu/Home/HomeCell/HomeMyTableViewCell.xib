@@ -72,7 +72,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="DAP-7S-FoU">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="DAP-7S-FoU">
                         <rect key="frame" x="0.0" y="161.5" width="375" height="5"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-ci-PNk">

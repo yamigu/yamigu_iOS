@@ -163,6 +163,9 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         
     }
     
+    @IBAction func dismissBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     func postRequest(_ urlString: String){
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)

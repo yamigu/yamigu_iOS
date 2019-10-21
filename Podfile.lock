@@ -1,4 +1,5 @@
 PODS:
+  - AvailableHapticFeedback (1.0.2)
   - CHIPageControl (0.1.8):
     - CHIPageControl/Aji (= 0.1.8)
     - CHIPageControl/Aleppo (= 0.1.8)
@@ -95,23 +96,32 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - leveldb-library (1.22)
+  - MiniLayout (1.4.2)
+  - MultiSlider (1.9.8):
+    - AvailableHapticFeedback
+    - SweeterSwift
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SweeterSwift (1.0.5)
   - Toast (4.0.0)
 
 DEPENDENCIES:
+  - AvailableHapticFeedback
   - CHIPageControl (~> 0.1.3)
   - Cosmos (~> 20.0)
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Database
+  - MiniLayout
+  - MultiSlider
   - Toast
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AvailableHapticFeedback
     - CHIPageControl
     - Cosmos
     - Firebase
@@ -129,10 +139,14 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
+    - MiniLayout
+    - MultiSlider
     - nanopb
+    - SweeterSwift
     - Toast
 
 SPEC CHECKSUMS:
+  AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
   CHIPageControl: 76b35c8309d8dd155e869c109cc6ffc0aaa465ff
   Cosmos: b47fddf2102bb48580cd3025d9ce0a5c658a65da
   Firebase: 2d750c54cda57d5a6ae31212cfe5cc813c6be7e4
@@ -150,9 +164,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: f895fde57977df4e0233edda0dbeac490e3703b6
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MiniLayout: f819ad87432712e6b2596081a62e633a4961bfc6
+  MultiSlider: f1b9151e8d54654fd8c6527c9b9327902b50941b
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SweeterSwift: 2708d1eea926546f8f6e8fea38ac8f5598ff00c7
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
-PODFILE CHECKSUM: c40be07089e8bab6ece475fad8a71d5d091e9897
+PODFILE CHECKSUM: 8ee75e36622dd59609f447a7fa530bf0c94af350
 
 COCOAPODS: 1.7.5

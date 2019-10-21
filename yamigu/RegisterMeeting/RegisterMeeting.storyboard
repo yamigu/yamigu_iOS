@@ -21,6 +21,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IaU-a2-Fsm">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.20392156859999999" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <connections>
                         <segue destination="HHI-d6-9E7" kind="relationship" relationship="rootViewController" id="Edc-ct-SgL"/>
@@ -202,7 +203,14 @@
                         <viewLayoutGuide key="safeArea" id="SqJ-wl-55i"/>
                     </view>
                     <navigationItem key="navigationItem" title="미팅 신청" id="86R-e2-LWf">
-                        <barButtonItem key="leftBarButtonItem" id="XSt-bf-7lb"/>
+                        <leftBarButtonItems>
+                            <barButtonItem id="XSt-bf-7lb"/>
+                            <barButtonItem image="bar_icon_back" id="fBz-lX-MX6">
+                                <connections>
+                                    <action selector="dismissBtnPressed:" destination="HHI-d6-9E7" id="iGA-5a-hud"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="button_date" destination="Pjg-tU-WRC" id="TNV-3h-jhu"/>
@@ -221,6 +229,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bar_icon_back" width="22" height="22"/>
         <image name="orange_bar" width="26" height="4"/>
     </resources>
 </document>

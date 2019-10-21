@@ -35,6 +35,9 @@
 		55224DDD2359DA54003FBCA3 /* NanumGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9623481723002DF8A8 /* NanumGothic.ttf */; };
 		55224DDE2359DA56003FBCA3 /* NanumGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9B23481723002DF8A8 /* NanumGothicBold.ttf */; };
 		55224DDF2359DA58003FBCA3 /* NanumGothicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04618B9423481723002DF8A8 /* NanumGothicExtraBold.ttf */; };
+		55224DE3235CABD5003FBCA3 /* Tickets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55224DE2235CABD5003FBCA3 /* Tickets.storyboard */; };
+		55224DE5235CAF5C003FBCA3 /* TicketsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224DE4235CAF5C003FBCA3 /* TicketsVC.swift */; };
+		55224DE7235CF6E9003FBCA3 /* BuyTicketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224DE6235CF6E9003FBCA3 /* BuyTicketVC.swift */; };
 		5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8823407A4000461B2A /* AppDelegate.swift */; };
 		5528EA8B23407A4000461B2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EA8A23407A4000461B2A /* ViewController.swift */; };
 		5528EA8E23407A4000461B2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EA8C23407A4000461B2A /* Main.storyboard */; };
@@ -68,6 +71,9 @@
 		55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55DD1BC823476DEB00CC820D /* HomeMyTableViewCell.xib */; };
 		55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DD1BCD23476E0B00CC820D /* HomeCollectionViewCell.swift */; };
 		55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55DD1BCE23476E0B00CC820D /* HomeCollectionViewCell.xib */; };
+		55FF60AB235D8B7D006A3345 /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF60A9235D8B7D006A3345 /* MatchCell.swift */; };
+		55FF60AC235D8B7D006A3345 /* MatchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55FF60AA235D8B7D006A3345 /* MatchCell.xib */; };
+		55FF60AE235D8E59006A3345 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF60AD235D8E59006A3345 /* MatchVC.swift */; };
 		6FB79E4141E4D5A1E31FF2EC /* Pods_yamiguUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -125,6 +131,9 @@
 		55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoCommon.framework; path = "kakao-ios-sdk-1/KakaoCommon.framework"; sourceTree = "<group>"; };
 		55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoOpenSDK.framework; path = "kakao-ios-sdk-1/KakaoOpenSDK.framework"; sourceTree = "<group>"; };
 		55224DD823597439003FBCA3 /* WhatIsYamiguVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsYamiguVC.swift; sourceTree = "<group>"; };
+		55224DE2235CABD5003FBCA3 /* Tickets.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tickets.storyboard; sourceTree = "<group>"; };
+		55224DE4235CAF5C003FBCA3 /* TicketsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsVC.swift; sourceTree = "<group>"; };
+		55224DE6235CF6E9003FBCA3 /* BuyTicketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTicketVC.swift; sourceTree = "<group>"; };
 		5525915645B74EDD8AAF86BD /* Pods-yamiguTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.release.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.release.xcconfig"; sourceTree = "<group>"; };
 		5528EA8523407A4000461B2A /* yamigu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamigu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5528EA8823407A4000461B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +174,9 @@
 		55DD1BC823476DEB00CC820D /* HomeMyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeMyTableViewCell.xib; sourceTree = "<group>"; };
 		55DD1BCD23476E0B00CC820D /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		55DD1BCE23476E0B00CC820D /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		55FF60A9235D8B7D006A3345 /* MatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
+		55FF60AA235D8B7D006A3345 /* MatchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchCell.xib; sourceTree = "<group>"; };
+		55FF60AD235D8E59006A3345 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		8E60FCBB3F4C51FBD213527C /* Pods-yamiguTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.release.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,6 +275,16 @@
 			path = AgreementCell;
 			sourceTree = "<group>";
 		};
+		55224DE1235CABB7003FBCA3 /* Tikets */ = {
+			isa = PBXGroup;
+			children = (
+				55224DE2235CABD5003FBCA3 /* Tickets.storyboard */,
+				55224DE4235CAF5C003FBCA3 /* TicketsVC.swift */,
+				55224DE6235CF6E9003FBCA3 /* BuyTicketVC.swift */,
+			);
+			path = Tikets;
+			sourceTree = "<group>";
+		};
 		5528EA7C23407A4000461B2A = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +314,7 @@
 				5528EAC22340961C00461B2A /* Login */,
 				5528EAB923407E9600461B2A /* MainOnBoarding */,
 				55DD1BBB23475F7700CC820D /* Home */,
+				55224DE1235CABB7003FBCA3 /* Tikets */,
 				04618B9E23484953002DF8A8 /* Wating */,
 				04618B9C23482003002DF8A8 /* MyPage */,
 				55B09BE22349E982006051C2 /* More */,
@@ -390,9 +413,11 @@
 		55DD1BBB23475F7700CC820D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				55FF60A8235D8AD5006A3345 /* MatchCell */,
 				55DD1BBE23476D8700CC820D /* HomeCell */,
 				55DD1BBC23475F8200CC820D /* Home.storyboard */,
 				55DD1BB923475F6D00CC820D /* HomeVC.swift */,
+				55FF60AD235D8E59006A3345 /* MatchVC.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -408,6 +433,15 @@
 				55DD1BCE23476E0B00CC820D /* HomeCollectionViewCell.xib */,
 			);
 			path = HomeCell;
+			sourceTree = "<group>";
+		};
+		55FF60A8235D8AD5006A3345 /* MatchCell */ = {
+			isa = PBXGroup;
+			children = (
+				55FF60A9235D8B7D006A3345 /* MatchCell.swift */,
+				55FF60AA235D8B7D006A3345 /* MatchCell.xib */,
+			);
+			path = MatchCell;
 			sourceTree = "<group>";
 		};
 		8216F2CC0B7EC11D7514A476 /* Pods */ = {
@@ -556,6 +590,7 @@
 				5528EAC82340964200461B2A /* Login.storyboard in Resources */,
 				5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */,
 				5528EA9323407A4200461B2A /* Assets.xcassets in Resources */,
+				55224DE3235CABD5003FBCA3 /* Tickets.storyboard in Resources */,
 				5528EA8E23407A4000461B2A /* Main.storyboard in Resources */,
 				55B09BEB2349E9D4006051C2 /* CooperatePlaceTableViewCell.xib in Resources */,
 				55224DDE2359DA56003FBCA3 /* NanumGothicBold.ttf in Resources */,
@@ -563,6 +598,7 @@
 				55224DDD2359DA54003FBCA3 /* NanumGothic.ttf in Resources */,
 				55B09BEF2349E9E2006051C2 /* MoreTableViewCell.xib in Resources */,
 				55224DDC2359DA4F003FBCA3 /* NanumBrush.ttf in Resources */,
+				55FF60AC235D8B7D006A3345 /* MatchCell.xib in Resources */,
 				55B09BF32349EA2C006051C2 /* WhatisTableViewCell.xib in Resources */,
 				55DD1BCA23476DEB00CC820D /* HomeMyTableViewCell.xib in Resources */,
 				55B09BF72349EA3D006051C2 /* QuestionTableViewCell.xib in Resources */,
@@ -683,8 +719,10 @@
 			files = (
 				55224D8B234F0599003FBCA3 /* RegisterVC_1.swift in Sources */,
 				04618BAA23485F78002DF8A8 /* FilterView.swift in Sources */,
+				55224DE5235CAF5C003FBCA3 /* TicketsVC.swift in Sources */,
 				55B09BF62349EA3D006051C2 /* QuestionTableViewCell.swift in Sources */,
 				5528EAC1234092AB00461B2A /* Extension.swift in Sources */,
+				55FF60AE235D8E59006A3345 /* MatchVC.swift in Sources */,
 				04618BA623484D36002DF8A8 /* WatingTableViewCell.swift in Sources */,
 				55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */,
 				55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */,
@@ -695,6 +733,7 @@
 				55224DD923597439003FBCA3 /* WhatIsYamiguVC.swift in Sources */,
 				04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */,
 				5528EA9123407A4000461B2A /* yamigu.xcdatamodeld in Sources */,
+				55FF60AB235D8B7D006A3345 /* MatchCell.swift in Sources */,
 				55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */,
 				5528EABF23408C7600461B2A /* MainOnBoardingVC.swift in Sources */,
 				04618BA223484980002DF8A8 /* WatingVC.swift in Sources */,
@@ -705,6 +744,7 @@
 				55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */,
 				55B09BF22349EA2C006051C2 /* WhatisTableViewCell.swift in Sources */,
 				55224D96234F42B1003FBCA3 /* MainTC.swift in Sources */,
+				55224DE7235CF6E9003FBCA3 /* BuyTicketVC.swift in Sources */,
 				55224D94234F10FB003FBCA3 /* RegisterVC_3.swift in Sources */,
 				55B09BEE2349E9E2006051C2 /* MoreTableViewCell.swift in Sources */,
 				55B09BEA2349E9D4006051C2 /* CooperatePlaceTableViewCell.swift in Sources */,

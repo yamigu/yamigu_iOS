@@ -10,13 +10,92 @@ import UIKit
 
 class WatingVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var filterView: FilterView!
     
+    @IBOutlet var dateButtons: [UIButton]!
+    @IBOutlet weak var backgroundVIew: UIView!
+    @IBOutlet weak var height: NSLayoutConstraint!
+    
+    var isFilterShow = false
+    var dateArray = [Date]()
+    var selectedDate = [Date]()
+    
+    var selectedType = [Int]()
+    var selectedPlace = [Int]()
+    
+    var matchingList = [Dictionary<String, Any>]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupTableView()
-
-        // Do any additional setup after loading the view.
+        backgroundVIew.isHidden = true
+        height.constant = 0
+        
+        self.filterView.delegate = self
+        
+        var date = Date()
+        var dateComponents = DateComponents()
+        
+        
+        for i in 0..<7 {
+            dateComponents.setValue(i, for: .day);
+            let dt = Calendar.current.date(byAdding: dateComponents, to: date)!
+            dateArray.append(dt)
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "M/d"
+        
+        for btn in dateButtons {
+            let dt = dateArray[btn.tag]
+            btn.setTitle(formatter.string(from: dt), for: .normal)
+            btn.setTitleColor(UIColor(rgb: 0x000000), for: .normal)
+            btn.setTitleColor(UIColor(rgb: 0xFF7B22), for: .selected)
+            btn.tintColor = .clear
+            btn.backgroundColor = .clear
+        }
+        
+    }
+    @IBAction func showFilter(_ sender: Any) {
+        if isFilterShow {
+            isFilterShow = false
+            
+            backgroundVIew.isHidden = true
+            height.constant = 0
+        } else {
+            isFilterShow = true
+            
+            backgroundVIew.isHidden = false
+            height.constant = 424
+            
+            UIView.animate(withDuration: 0.5) {
+                self.view.layoutIfNeeded()
+            }
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.makeBody()
+    }
+    
+    @IBAction func dateBtnPressed(_ sender: Any) {
+        let btn = sender as! UIButton
+        if btn.isSelected {
+            btn.isSelected = false
+            
+            if let index = self.selectedDate.firstIndex(of: self.dateArray[btn.tag]) {
+                self.selectedDate.remove(at: index)
+            }
+            
+        } else {
+            btn.isSelected = true
+            
+            self.selectedDate.append(self.dateArray[btn.tag])
+        }
+        
+        self.makeBody()
+        print(self.selectedDate)
     }
 }
 
@@ -27,7 +106,40 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "watingTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "watingTableViewCell", for: indexPath) as! WatingTableViewCell
+        
+        cell.tv_description.centerVertically()
+        let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
+        
+        let meeting_type = "\(meetingObj["meeting_type"]!)"
+        if meeting_type == "1" {
+            cell.label_type.text = "2:2 소개팅"
+        } else if meeting_type == "2" {
+            cell.label_type.text = "3:3 미팅"
+        } else if meeting_type == "3" {
+            cell.label_type.text = "4:4 미팅"
+        }
+        let dateString = meetingObj["date"] as! String
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "MM월 dd일"
+        
+        cell.label_date.text = dateFormatter.string(from: date!)
+        
+        let nickname = meetingObj["openby_nickname"] as! String
+        let age = "\(meetingObj["openby_age"]!)"
+        
+        cell.label_nickname.text = nickname + age
+        cell.label_place.text = meetingObj["place_type_name"] as! String
+        
+        let belong = meetingObj["openby_belong"] as! String
+        let department = meetingObj["openby_department"] as! String
+        
+        cell.label_belong.text = belong + " " + department
+        
+        cell.tv_description.text = meetingObj["appeal"] as! String
         
         return cell
     }
@@ -42,7 +154,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         
         
-        return 6
+        return matchingList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,4 +175,168 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         
         self.tableView.register(UINib(nibName: "WatingTableViewCell", bundle: nil), forCellReuseIdentifier: "watingTableViewCell")
     }
+}
+
+extension WatingVC: FilterViewDelegate {
+    func filterClearAll() {
+        self.selectedType.removeAll()
+        self.selectedPlace.removeAll()
+    }
+    
+    func filterComp() {
+        if isFilterShow {
+            isFilterShow = false
+            
+            backgroundVIew.isHidden = true
+            height.constant = 0
+        }
+        
+        
+    }
+    
+    func typeBtnDeSelected(index: Int) {
+        
+        
+        if let index = self.selectedType.firstIndex(of: index) {
+            self.selectedType.remove(at: index)
+        }
+        
+        self.makeBody()
+    }
+    
+    func placeBtnDeSelected(index: Int) {
+        
+        
+        if let index = self.selectedPlace.firstIndex(of: index) {
+            self.selectedPlace.remove(at: index)
+        }
+        self.makeBody()
+    }
+    
+    func typeBtnPressed(index: Int) {
+        self.selectedType.append(index)
+        self.makeBody()
+    }
+    
+    func plceBtnPressed(index: Int) {
+        self.selectedPlace.append(index)
+        self.makeBody()
+    }
+    
+    func slideValueChanged(value: [CGFloat]) {
+        print(index)
+    }
+    
+    func makeBody() {
+        var body = ""
+        
+        
+        if selectedDate.count == 0 {
+            for dt in self.dateArray {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                
+                body += "date=\(formatter.string(from: dt))&"
+            }
+        }
+        
+        
+        for dt in self.selectedDate {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            
+            body += "date=\(formatter.string(from: dt))&"
+        }
+        
+        if selectedType.count == 0 {
+            body += "type=1&type=2&type=3&"
+        }
+        
+        for tp in self.selectedType {
+            body += "type=\(tp)&"
+        }
+        
+        if selectedPlace.count == 0 {
+            body += "place=1&place=2&place=3&place=4&place=5&place=6&"
+        }
+        
+        for pc in self.selectedPlace {
+            body += "place=\(pc)&"
+        }
+        
+        body.removeLast()
+        let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        self.getMeetingCount(urlString:"http://147.47.208.44:9999/api/meetings/waiting/?\(escapedString!)")
+        
+        print("http://147.47.208.44:9999/api/meetings/count/?\(escapedString!)")
+        
+    }
+    
+    func getMeetingCount(urlString : String) {
+        matchingList.removeAll()
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            //print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                print(data)
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    //print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    print(newValue)
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.matchingList = newValue["results"] as! [Dictionary<String, Any>]
+                        self.filterView.compBtn.setTitle("\(self.matchingList.count)팀 보기", for: .normal)
+                        
+                        self.tableView.reloadData()
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            
+        })
+        task.resume()
+        /*if let _data = data {
+         if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
+         let str = String(strData)
+         print(str)
+         
+         DispatchQueue.main.async {
+         
+         }
+         }
+         }else{
+         print("data nil")
+         }
+         }).resume()*/
+        
+    }
+    
+    
 }

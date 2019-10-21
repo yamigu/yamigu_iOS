@@ -12,6 +12,9 @@ target 'yamigu' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Toast'
+  pod 'MiniLayout'
+  pod 'MultiSlider'
+  pod 'AvailableHapticFeedback'
 
   target 'yamiguTests' do
     inherit! :search_paths

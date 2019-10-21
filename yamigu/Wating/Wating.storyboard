@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Binggrae-Bold.ttf">
-            <string>Binggrae-Bold</string>
+        <array key="Binggrae.ttf">
+            <string>Binggrae</string>
         </array>
     </customFonts>
     <scenes>
@@ -59,70 +59,92 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yK4-3q-K1Z">
-                                <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-kN-tgV">
                                         <rect key="frame" x="0.0" y="0.0" width="59" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="5/01">
                                             <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dateBtnPressed:" destination="nHS-9n-F8v" eventType="touchUpInside" id="Eu1-n5-lsv"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-IL-4O1">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-IL-4O1">
                                         <rect key="frame" x="59" y="0.0" width="59.333333333333343" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                         <state key="normal" title="5/02">
                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dateBtnPressed:" destination="nHS-9n-F8v" eventType="touchUpInside" id="kWb-xr-NZ7"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-5U-5ou">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VSA-5U-5ou">
                                         <rect key="frame" x="118.33333333333331" y="0.0" width="59" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                         <state key="normal" title="5/03">
                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dateBtnPressed:" destination="nHS-9n-F8v" eventType="touchUpInside" id="gAZ-Ta-1C7"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gZ-1x-TVC">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gZ-1x-TVC">
                                         <rect key="frame" x="177.33333333333334" y="0.0" width="59.333333333333343" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                         <state key="normal" title="5/04">
                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dateBtnPressed:" destination="nHS-9n-F8v" eventType="touchUpInside" id="IFJ-6t-MNm"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyh-JJ-Fu5">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lyh-JJ-Fu5">
                                         <rect key="frame" x="236.66666666666663" y="0.0" width="59" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                         <state key="normal" title="5/05">
                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dateBtnPressed:" destination="nHS-9n-F8v" eventType="touchUpInside" id="Z1s-Dk-xhq"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPv-h2-Fel">
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPv-h2-Fel">
                                         <rect key="frame" x="295.66666666666669" y="0.0" width="59.333333333333314" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                         <state key="normal" title="5/06">
                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dateBtnPressed:" destination="nHS-9n-F8v" eventType="touchUpInside" id="sSe-Lc-qYX"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiG-zI-Kvz">
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JiG-zI-Kvz">
                                         <rect key="frame" x="355" y="0.0" width="59" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="14"/>
                                         <state key="normal" title="5/07">
                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="dateBtnPressed:" destination="nHS-9n-F8v" eventType="touchUpInside" id="Ok3-WW-wvg"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -167,26 +189,65 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-Gj-bBc">
-                                <rect key="frame" x="12.666666666666657" y="135" width="389" height="601"/>
+                                <rect key="frame" x="12.666666666666657" y="91" width="389" height="596"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZX-8E-yCV">
+                                <rect key="frame" x="0.0" y="20" width="414" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9v8-82-PzR" customClass="FilterView" customModule="yamigu" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="243" width="414" height="424"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="424" id="YyW-yJ-HMj"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="9v8-82-PzR" firstAttribute="centerX" secondItem="8ZX-8E-yCV" secondAttribute="centerX" id="LP0-9E-k43"/>
+                                    <constraint firstAttribute="bottom" secondItem="9v8-82-PzR" secondAttribute="bottom" id="iKJ-FF-3N9"/>
+                                    <constraint firstItem="9v8-82-PzR" firstAttribute="width" secondItem="8ZX-8E-yCV" secondAttribute="width" id="zTl-b1-n1W"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="leading" secondItem="yK4-3q-K1Z" secondAttribute="leading" id="45F-d6-zy4"/>
                             <constraint firstItem="Rnj-Gj-bBc" firstAttribute="leading" secondItem="1Vb-eF-MhK" secondAttribute="leading" constant="12.5" id="ANU-Gi-ZGG"/>
+                            <constraint firstItem="8ZX-8E-yCV" firstAttribute="width" secondItem="LqD-ag-Zot" secondAttribute="width" id="DQZ-8C-pnX"/>
                             <constraint firstItem="Rnj-Gj-bBc" firstAttribute="top" secondItem="yK4-3q-K1Z" secondAttribute="bottom" constant="21" id="Dru-wT-fvq"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="bottom" secondItem="Rnj-Gj-bBc" secondAttribute="bottom" id="VpG-a5-ntl"/>
+                            <constraint firstItem="8ZX-8E-yCV" firstAttribute="centerY" secondItem="1Vb-eF-MhK" secondAttribute="centerY" id="gYF-4k-mxT"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="trailing" secondItem="Rnj-Gj-bBc" secondAttribute="trailing" constant="12.5" id="jsl-bz-NIC"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="trailing" secondItem="yK4-3q-K1Z" secondAttribute="trailing" id="prP-ms-giC"/>
+                            <constraint firstItem="8ZX-8E-yCV" firstAttribute="height" secondItem="1Vb-eF-MhK" secondAttribute="height" id="tsU-O1-Ge3"/>
                             <constraint firstItem="yK4-3q-K1Z" firstAttribute="top" secondItem="1Vb-eF-MhK" secondAttribute="top" id="z0y-d8-arv"/>
+                            <constraint firstItem="8ZX-8E-yCV" firstAttribute="centerX" secondItem="1Vb-eF-MhK" secondAttribute="centerX" id="zmg-1h-AjE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Vb-eF-MhK"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="대기팀" image="tabbar_ready" id="Xjz-Go-vaD"/>
-                    <navigationItem key="navigationItem" title="대기팀 리스트" id="FmV-ob-nNG"/>
+                    <navigationItem key="navigationItem" title="대기팀 리스트" id="FmV-ob-nNG">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icon_filter" id="S9s-gS-xwT">
+                            <color key="tintColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="showFilter:" destination="nHS-9n-F8v" id="Cbq-uL-Ian"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="backgroundVIew" destination="8ZX-8E-yCV" id="4KJ-EV-YEE"/>
+                        <outlet property="filterView" destination="9v8-82-PzR" id="nv3-Ob-hCG"/>
+                        <outlet property="height" destination="YyW-yJ-HMj" id="EPh-OB-4Kl"/>
                         <outlet property="tableView" destination="Rnj-Gj-bBc" id="vNB-Tl-LKN"/>
+                        <outletCollection property="dateButtons" destination="gaX-kN-tgV" collectionClass="NSMutableArray" id="NuV-Q1-AUh"/>
+                        <outletCollection property="dateButtons" destination="7DK-IL-4O1" collectionClass="NSMutableArray" id="OpM-jm-OV5"/>
+                        <outletCollection property="dateButtons" destination="VSA-5U-5ou" collectionClass="NSMutableArray" id="6hV-Wa-1gK"/>
+                        <outletCollection property="dateButtons" destination="3gZ-1x-TVC" collectionClass="NSMutableArray" id="1ih-5t-d5R"/>
+                        <outletCollection property="dateButtons" destination="Lyh-JJ-Fu5" collectionClass="NSMutableArray" id="omc-S0-qZ3"/>
+                        <outletCollection property="dateButtons" destination="jPv-h2-Fel" collectionClass="NSMutableArray" id="r4S-mV-V6H"/>
+                        <outletCollection property="dateButtons" destination="JiG-zI-Kvz" collectionClass="NSMutableArray" id="HrD-bH-sE4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wsf-bQ-aOS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -195,9 +256,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="icon_filter" width="27" height="19"/>
         <image name="tabbar_ready" width="21.333333969116211" height="21.333333969116211"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MIB-y1-wt3"/>
+        <segue reference="DnQ-5g-6BZ"/>
     </inferredMetricsTieBreakers>
 </document>

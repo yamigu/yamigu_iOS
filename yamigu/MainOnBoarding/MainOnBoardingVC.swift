@@ -25,6 +25,10 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.setUpUI()
         self.setUpPage()
     }

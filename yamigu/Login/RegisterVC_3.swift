@@ -50,7 +50,8 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         userDict["belong"] = self.text_belong.text
         userDict["department"] = self.text_departmetn.text
         
-        self.postRequest("http://147.47.208.44:9999/api/auth/signup", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
+        //self.postRequest("http://147.47.208.44:9999/api/auth/signup", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
+        self.postRequest("http://147.47.208.44:9999/api/auth/signup/", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
         
         
     }
@@ -66,8 +67,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         
         //[serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
         //[serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
         //request.httpBody = body
