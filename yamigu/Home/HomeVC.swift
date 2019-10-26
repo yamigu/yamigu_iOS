@@ -21,6 +21,8 @@ class HomeVC: UIViewController {
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
     
+    var selectedMyMeeting = Dictionary<String, Any>()
+    
     let meetingType = ["2:2 소개팅", "3:3 미팅", "4:4 미팅"]
     let places = ["신촌/홍대", "건대/왕십리", "강남", "수원역", "인천 송도", "부산 서면"]
     
@@ -43,7 +45,7 @@ class HomeVC: UIViewController {
     
     func getTodayMeeting(urlString : String) {
         guard let url = URL(string: urlString) else {return}
-        
+        self.todayMeetings.removeAll()
         var request = URLRequest(url: url)
         
         request.httpMethod = "get"
@@ -90,6 +92,7 @@ class HomeVC: UIViewController {
     }
     
     func getMyMeeting(urlString : String) {
+        self.myMeetings.removeAll()
         guard let url = URL(string: urlString) else {return}
         
         var request = URLRequest(url: url)
@@ -143,6 +146,14 @@ class HomeVC: UIViewController {
         return Calendar.current.dateComponents([.day], from: start, to: end).day!
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue_matching" {
+            let destination = segue.destination as! UINavigationController
+            let des = destination.topViewController as! MatchVC
+            des.matchingDict = self.selectedMyMeeting
+        }
+    }
+    
 }
 
 extension HomeVC:UITableViewDataSource, UITableViewDelegate {
@@ -179,7 +190,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         
         if tableView == self.myMeetingTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
-            
+            cell.delegate = self
             let meetingDict = myMeetings[indexPath.section]
             cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
             cell.label_place.text = meetingDict["place_type_name"] as! String
@@ -221,6 +232,12 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == self.myMeetingTableView {
+            self.selectedMyMeeting = myMeetings[indexPath.section]
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -326,4 +343,20 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20.0
     }
+}
+
+extension HomeVC : HomeTalbeViewDelegate {
+    func viewApplyList() {
+        self.performSegue(withIdentifier: "segue_matching", sender: self)
+    }
+    
+    func viewWatingList() {
+        
+    }
+    
+    func edit() {
+        
+    }
+    
+    
 }

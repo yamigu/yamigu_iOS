@@ -96,14 +96,14 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
                     
                     DispatchQueue.main.async {
                         // 동작 실행
-                        //self.navigationController?.popToRootViewController(animated: false)
+                        self.navigationController?.popToRootViewController(animated: false)
                         //self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-                        self.performSegue(withIdentifier: "segue_main", sender: self)
+                        //self.performSegue(withIdentifier: "segue_main", sender: self)
                     }
                 } catch {
                     print(error)
-                    self.performSegue(withIdentifier: "segue_main", sender: self)
-                    //self.navigationController?.popToRootViewController(animated: false)
+                    //self.performSegue(withIdentifier: "segue_main", sender: self)
+                    self.navigationController?.popToRootViewController(animated: false)
                     // 회원가입 이력이 없는경우
                     //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }

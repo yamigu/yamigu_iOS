@@ -36,11 +36,11 @@ class BuyTicketVC: UIViewController {
         if isButtonPressed2 {
             isButtonPressed2 = false
             
-            button_ticket_2.setImage(UIImage(named: "image_ticket_2"), for: .normal)
+            button_ticket_2.setImage(UIImage(named: "image_ticket_3"), for: .normal)
         } else {
             isButtonPressed2 = true
             
-            button_ticket_2.setImage(UIImage(named: "image_ticket_2_on"), for: .normal)
+            button_ticket_2.setImage(UIImage(named: "image_ticket_3_on"), for: .normal)
             
         }
     }

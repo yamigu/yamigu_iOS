@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MatchVC: UIViewController {
+class MatchVC: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var button_receive: UIButton!
     @IBOutlet weak var button_request: UIButton!
     
@@ -16,9 +16,13 @@ class MatchVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var button_left: UIButton!
     @IBOutlet weak var button_right: UIButton!
+    
+    var matchingDict : Dictionary<String, Any>!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        
+        
         // Do any additional setup after loading the view.
     }
     

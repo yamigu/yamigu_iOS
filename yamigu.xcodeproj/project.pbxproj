@@ -53,6 +53,8 @@
 		5528EAC82340964200461B2A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EAC72340964200461B2A /* Login.storyboard */; };
 		5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */; };
 		5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */; };
+		5582E2312364089C00A9E0FE /* Chatting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5582E2302364089C00A9E0FE /* Chatting.storyboard */; };
+		5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E23223640A1B00A9E0FE /* ChattingVC.swift */; };
 		55B09BE42349E996006051C2 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BE32349E996006051C2 /* More.storyboard */; };
 		55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE52349E9A4006051C2 /* MoreVC.swift */; };
 		55B09BEA2349E9D4006051C2 /* CooperatePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */; };
@@ -156,6 +158,8 @@
 		5528EAC72340964200461B2A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterMeeting.storyboard; sourceTree = "<group>"; };
 		5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMeetingVC.swift; sourceTree = "<group>"; };
+		5582E2302364089C00A9E0FE /* Chatting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chatting.storyboard; sourceTree = "<group>"; };
+		5582E23223640A1B00A9E0FE /* ChattingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingVC.swift; sourceTree = "<group>"; };
 		55B09BE32349E996006051C2 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		55B09BE52349E9A4006051C2 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceTableViewCell.swift; sourceTree = "<group>"; };
@@ -384,6 +388,15 @@
 			path = RegisterMeeting;
 			sourceTree = "<group>";
 		};
+		5582E22F2364088B00A9E0FE /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				5582E2302364089C00A9E0FE /* Chatting.storyboard */,
+				5582E23223640A1B00A9E0FE /* ChattingVC.swift */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
 		55B09BE22349E982006051C2 /* More */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,6 +426,7 @@
 		55DD1BBB23475F7700CC820D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5582E22F2364088B00A9E0FE /* Chatting */,
 				55FF60A8235D8AD5006A3345 /* MatchCell */,
 				55DD1BBE23476D8700CC820D /* HomeCell */,
 				55DD1BBC23475F8200CC820D /* Home.storyboard */,
@@ -594,6 +608,7 @@
 				5528EA8E23407A4000461B2A /* Main.storyboard in Resources */,
 				55B09BEB2349E9D4006051C2 /* CooperatePlaceTableViewCell.xib in Resources */,
 				55224DDE2359DA56003FBCA3 /* NanumGothicBold.ttf in Resources */,
+				5582E2312364089C00A9E0FE /* Chatting.storyboard in Resources */,
 				55DD1BD023476E0B00CC820D /* HomeCollectionViewCell.xib in Resources */,
 				55224DDD2359DA54003FBCA3 /* NanumGothic.ttf in Resources */,
 				55B09BEF2349E9E2006051C2 /* MoreTableViewCell.xib in Resources */,
@@ -739,6 +754,7 @@
 				04618BA223484980002DF8A8 /* WatingVC.swift in Sources */,
 				5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */,
 				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
+				5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */,
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
 				55224DCF2356ECBF003FBCA3 /* LoginCheckVC.swift in Sources */,
 				55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */,

@@ -103,7 +103,7 @@
                             <constraint firstAttribute="height" constant="80" id="b6B-IW-anB"/>
                         </constraints>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="10"/>
+                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

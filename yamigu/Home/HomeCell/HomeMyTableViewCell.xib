@@ -52,6 +52,9 @@
                         <state key="normal" title=" 신청내역 수정하기" image="icon_setting">
                             <color key="titleColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
+                        <connections>
+                            <action selector="editBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="zGz-8M-FlQ"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="건대/왕십리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Rz-JY-fCG">
                         <rect key="frame" x="30" y="63" width="165" height="40.5"/>
@@ -59,12 +62,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-RK-ha6">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-RK-ha6">
                         <rect key="frame" x="30" y="124.5" width="80" height="31"/>
-                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="16"/>
-                        <state key="normal" title="신청팀 보기">
-                            <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal">
+                            <attributedString key="attributedTitle">
+                                <fragment content="신청팀 보기">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="16" name="NanumGothic"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        <integer key="NSUnderline" value="1"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                         </state>
+                        <connections>
+                            <action selector="applyTeamBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kfy-cc-cRo"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2팀 신청!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVp-Q4-GLX">
                         <rect key="frame" x="30" y="111.5" width="68.5" height="21.5"/>
@@ -75,12 +89,22 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="DAP-7S-FoU">
                         <rect key="frame" x="0.0" y="161.5" width="375" height="5"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-ci-PNk">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dwT-ci-PNk">
                         <rect key="frame" x="253" y="124.5" width="80" height="31"/>
-                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="16"/>
-                        <state key="normal" title="대기팀 보기">
-                            <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <state key="normal">
+                            <attributedString key="attributedTitle">
+                                <fragment content="대기팀 보기">
+                                    <attributes>
+                                        <color key="NSColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <font key="NSFont" size="16" name="NanumGothic"/>
+                                        <integer key="NSUnderline" value="1"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
                         </state>
+                        <connections>
+                            <action selector="watingTeamBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uhi-5v-pXj"/>
+                        </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Lu-jK-3qe">
                         <rect key="frame" x="249" y="33" width="83.5" height="80"/>
@@ -235,6 +259,14 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="color" keyPath="bordercolor">
+                    <color key="value" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="borderwidth">
+                    <real key="value" value="1"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="button_applyTeam" destination="XGT-RK-ha6" id="trZ-P7-cBl"/>
                 <outlet property="button_edit" destination="80R-Th-7fO" id="DqA-eb-hdm"/>

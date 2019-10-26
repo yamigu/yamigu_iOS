@@ -21,8 +21,9 @@ class WatingTableViewCell: UITableViewCell {
     @IBOutlet weak var image_profile: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.selectionStyle = .none
         
+        self.tv_description.centerVertically()
         
     }
     
@@ -31,6 +32,10 @@ class WatingTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func prepareForReuse() {
+        self.tv_description.centerVertically()
     }
     
 }
