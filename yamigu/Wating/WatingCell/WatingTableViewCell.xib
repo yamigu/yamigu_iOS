@@ -80,6 +80,11 @@
                             <constraint firstItem="wsx-Q1-Gmb" firstAttribute="trailing" secondItem="rbn-wF-inM" secondAttribute="trailing" id="oDA-LL-XKC"/>
                             <constraint firstItem="rbn-wF-inM" firstAttribute="bottom" secondItem="8Qc-An-yRP" secondAttribute="bottom" id="oYX-nz-qYH"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="cUl-nz-p2u">
                         <rect key="frame" x="0.0" y="162" width="293" height="5"/>
@@ -164,6 +169,9 @@
                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                         <real key="value" value="10"/>
                     </userDefinedRuntimeAttribute>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                        <real key="value" value="10"/>
+                    </userDefinedRuntimeAttribute>
                 </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -176,6 +184,9 @@
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="color" keyPath="bordercolor">
                     <color key="value" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                    <real key="value" value="10"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>

@@ -9,15 +9,15 @@
 import UIKit
 
 protocol HomeTalbeViewDelegate: class {
-    func viewApplyList()
-    func viewWatingList()
-    func edit()
+    func viewApplyList(index: Int)
+    func viewWatingList(index: Int)
+    func edit(index: Int)
 }
 
 class HomeMyTableViewCell: UITableViewCell {
 
     weak var delegate : HomeTalbeViewDelegate?
-    
+    var index : Int!
     @IBOutlet weak var label_chattingCount: UILabel!
     @IBOutlet weak var label_chattingTime: UILabel!
     @IBOutlet weak var label_lastChat: UILabel!
@@ -50,14 +50,14 @@ class HomeMyTableViewCell: UITableViewCell {
     }
     
     @IBAction func applyTeamBtnPressed(_ sender: Any) {
-        delegate?.viewApplyList()
+        delegate?.viewApplyList(index: index)
     }
     @IBAction func watingTeamBtnPressed(_ sender: Any) {
-        delegate?.viewWatingList()
+        delegate?.viewWatingList(index: index)
     }
     
     @IBAction func editBtnPressed(_ sender: Any) {
-        delegate?.edit()
+        delegate?.edit(index: index)
     }
     
 }

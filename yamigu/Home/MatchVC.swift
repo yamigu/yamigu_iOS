@@ -22,8 +22,36 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         super.viewDidLoad()
         setupCollectionView()
         
-        
+        self.button_receive.setTitleColor(UIColor(rgb: 0xFF7B22), for: .selected)
+        self.button_request.setTitleColor(UIColor(rgb: 0xFF7B22), for: .selected)
         // Do any additional setup after loading the view.
+        
+       //self.navigationController?.navigationBar.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.button_receive.isSelected = true
+        
+        self.button_left.setTitle("미팅하기", for: .normal)
+        self.button_right.setTitle("거절하기", for: .normal)
+        
+        let date = self.matchingDict["date"] as! String
+        var type = ""
+        let tmpType = "\(self.matchingDict["meeting_type"]!)"
+        if tmpType == "1" {
+            type = "2:2 소개팅"
+        } else if tmpType == "2" {
+            type = "3:3 미팅"
+        } else if tmpType == "3" {
+            type = "4:4 미팅"
+        }
+        let place = self.matchingDict["place_type_name"] as! String
+        //self.navigationController?.title = date + " || " + place + " || " + type
+       self.title = date + " || " + place + " || " + type
     }
     
     func setupCollectionView() {
@@ -33,6 +61,114 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.collectionView.register(UINib(nibName: "MatchCell", bundle: nil), forCellWithReuseIdentifier: "matchCell")
     }
     
+    @IBAction func backBtnPreesed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBAction func receiveBtnPressed(_ sender: Any) {
+        self.button_receive.isSelected = true
+        self.button_request.isSelected = false
+        
+        self.button_left.setTitle("미팅하기", for: .normal)
+        self.button_right.setTitle("거절하기", for: .normal)
+        
+    }
+    @IBAction func requestBtnPressed(_ sender: Any) {
+        self.button_receive.isSelected = false
+        self.button_request.isSelected = true
+        
+        self.button_left.setTitle("대기중", for: .normal)
+        self.button_right.setTitle("취소하기", for: .normal)
+        
+    
+        
+    }
+    @IBAction func leftBtnPressed(_ sender: Any) {
+    }
+    @IBAction func rightBtnPressed(_ sender: Any) {
+    }
+    
+    func postRequest(_ urlString: String, bodyString: String){
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        request.httpBody = body
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, String> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            }.resume()
+    }
+    
+    func getUserInfo(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        // 동작 실행
+                        //print(newValue)
+                        userDictionary = newValue
+                        self.performSegue(withIdentifier: "segue_main", sender: self)
+                    }
+                } catch {
+                    print(error)
+                    // 회원가입 이력이 없는경우
+                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                }
+            }
+            
+        })
+        task.resume()
+    }
 }
 
 extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

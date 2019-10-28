@@ -18,6 +18,8 @@ class HomeVC: UIViewController {
     @IBOutlet weak var todayMeetingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var todayMeetingTableView: UITableView!
     
+    @IBOutlet weak var button_addMeeting: UIButton!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
     
@@ -41,6 +43,10 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+    }
+    @IBAction func addMeetingBtnPressed(_ sender: Any) {
+        let tabView = self.tabBarController as! MainTC
+        tabView.pressed(sender: tabView.menuButton)
     }
     
     func getTodayMeeting(urlString : String) {
@@ -127,8 +133,14 @@ class HomeVC: UIViewController {
                     DispatchQueue.main.async {
                         for value in newValue {
                             self.myMeetings.append(value)
-                            
-                            
+                        }
+                        
+                        if self.myMeetings.count == 0 {
+                            self.button_addMeeting.isHidden = false
+                            self.topConstraint.constant = 107
+                        } else {
+                            self.button_addMeeting.isHidden = true
+                            self.topConstraint.constant = 15.5
                         }
                         
                         self.myMeetingTableView.reloadData()
@@ -149,7 +161,8 @@ class HomeVC: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_matching" {
             let destination = segue.destination as! UINavigationController
-            let des = destination.topViewController as! MatchVC
+            let des = destination.visibleViewController as! MatchVC
+            
             des.matchingDict = self.selectedMyMeeting
         }
     }
@@ -191,6 +204,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         if tableView == self.myMeetingTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
             cell.delegate = self
+            cell.index = indexPath.section
             let meetingDict = myMeetings[indexPath.section]
             cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
             cell.label_place.text = meetingDict["place_type_name"] as! String
@@ -256,7 +270,13 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         DispatchQueue.main.async {
             self.scrollView.layoutIfNeeded()
             self.myMeetingTableView.layoutIfNeeded()
-            self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height)
+            if self.myMeetings.count == 0 {
+                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height + 107.0)
+            } else {
+                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height)
+            }
+            
+            
         }
         
         if tableView == self.myMeetingTableView {
@@ -346,17 +366,20 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 }
 
 extension HomeVC : HomeTalbeViewDelegate {
-    func viewApplyList() {
+    func viewApplyList(index: Int) {
+        self.selectedMyMeeting = self.myMeetings[index]
+        
         self.performSegue(withIdentifier: "segue_matching", sender: self)
     }
     
-    func viewWatingList() {
+    func viewWatingList(index: Int) {
         
     }
     
-    func edit() {
+    func edit(index: Int) {
         
     }
+    
     
     
 }

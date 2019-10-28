@@ -20,7 +20,7 @@
                 <viewControllerPlaceholder storyboardName="Tickets" id="j7S-io-b9w" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyP-VW-173" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="138" y="-665"/>
+            <point key="canvasLocation" x="611" y="-642"/>
         </scene>
         <!--홈-->
         <scene sceneID="Nn1-pE-b5Q">
@@ -74,6 +74,18 @@
                                             <constraint firstAttribute="height" constant="166" id="l67-Id-1w5"/>
                                         </constraints>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjQ-Vh-4XW">
+                                        <rect key="frame" x="39.666666666666657" y="185" width="335" height="76"/>
+                                        <state key="normal" image="image_add_meeting"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addMeetingBtnPressed:" destination="Nem-OC-K9e" eventType="touchUpInside" id="ZAJ-pe-dfk"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="야미구 추천 미팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-JP-Qc9">
                                         <rect key="frame" x="30" y="370.66666666666669" width="128.66666666666666" height="21"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
@@ -124,6 +136,7 @@
                                     <constraint firstAttribute="trailing" secondItem="po1-Py-6OO" secondAttribute="trailing" constant="20" id="ApS-f2-keC"/>
                                     <constraint firstItem="82w-nu-THA" firstAttribute="top" secondItem="SL5-Rl-UJ6" secondAttribute="top" id="BCA-Rn-kuV"/>
                                     <constraint firstItem="IjA-R8-b6S" firstAttribute="trailing" secondItem="po1-Py-6OO" secondAttribute="trailing" id="Eny-M3-JRi"/>
+                                    <constraint firstItem="BjQ-Vh-4XW" firstAttribute="top" secondItem="82w-nu-THA" secondAttribute="bottom" constant="16" id="Gke-p9-xtV"/>
                                     <constraint firstItem="IjA-R8-b6S" firstAttribute="top" secondItem="kMf-QM-dTs" secondAttribute="bottom" constant="11" id="ImM-W4-Yrc"/>
                                     <constraint firstItem="kMf-QM-dTs" firstAttribute="top" secondItem="po1-Py-6OO" secondAttribute="bottom" constant="15" id="K6K-tZ-JQD"/>
                                     <constraint firstAttribute="bottom" secondItem="82w-nu-THA" secondAttribute="bottom" constant="1174" id="KnZ-27-lT0"/>
@@ -133,6 +146,7 @@
                                     <constraint firstItem="82w-nu-THA" firstAttribute="width" secondItem="SL5-Rl-UJ6" secondAttribute="width" id="jjb-de-xQX"/>
                                     <constraint firstItem="wgR-JP-Qc9" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="30" id="oA7-bo-8pb"/>
                                     <constraint firstItem="po1-Py-6OO" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="20" id="oNr-NJ-JXo"/>
+                                    <constraint firstItem="BjQ-Vh-4XW" firstAttribute="centerX" secondItem="82w-nu-THA" secondAttribute="centerX" id="qpL-SZ-Plj"/>
                                     <constraint firstItem="82w-nu-THA" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" id="trJ-m1-cGx"/>
                                     <constraint firstItem="Oyr-Ct-7Wx" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" id="uA3-Cl-Lcc"/>
                                     <constraint firstItem="Oyr-Ct-7Wx" firstAttribute="top" secondItem="82w-nu-THA" secondAttribute="bottom" constant="20" id="ych-I3-3Am"/>
@@ -156,22 +170,25 @@
                     <tabBarItem key="tabBarItem" title="홈" image="tabbar_home" id="6Ry-wQ-tma">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-5"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="qfN-Bm-vym"/>
                     <size key="freeformSize" width="414" height="1400"/>
                     <connections>
+                        <outlet property="button_addMeeting" destination="BjQ-Vh-4XW" id="PDb-0W-vrn"/>
                         <outlet property="myMeetingTableView" destination="Oyr-Ct-7Wx" id="WAY-VU-PTw"/>
                         <outlet property="myMeetingTableViewHeight" destination="l67-Id-1w5" id="4kD-uz-yj7"/>
                         <outlet property="recommendMeetingCollectionView" destination="po1-Py-6OO" id="Bvs-YX-ubu"/>
                         <outlet property="scrollView" destination="SL5-Rl-UJ6" id="c3k-Jo-F0U"/>
                         <outlet property="todayMeetingTableView" destination="IjA-R8-b6S" id="NzV-IV-nhX"/>
                         <outlet property="todayMeetingTableViewHeight" destination="Lan-aW-Lgf" id="0jc-ge-1nC"/>
-                        <segue destination="DCe-Xv-k4G" kind="show" identifier="segue_matching" id="4DM-vC-QIF"/>
+                        <outlet property="topConstraint" destination="A3r-Ia-gLm" id="FwT-cY-bSh"/>
+                        <segue destination="DCe-Xv-k4G" kind="show" identifier="segue_matching" id="WxE-ZH-uBt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFl-SI-mj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="78" y="122"/>
         </scene>
-        <!--MatchVC-->
+        <!--title-->
         <scene sceneID="Teb-hK-E2Z">
             <objects>
                 <viewController id="QMr-Fk-9hD" customClass="MatchVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
@@ -184,17 +201,27 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N0o-xr-Pp4">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="50"/>
+                                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
+                                        <color key="tintColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="받은 미팅">
                                             <color key="titleColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="receiveBtnPressed:" destination="QMr-Fk-9hD" eventType="touchUpInside" id="mW2-Ea-cyB"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0W0-LV-ZaD">
                                         <rect key="frame" x="207" y="0.0" width="207" height="50"/>
+                                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
+                                        <color key="tintColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="보낸 미팅">
                                             <color key="titleColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="requestBtnPressed:" destination="QMr-Fk-9hD" eventType="touchUpInside" id="bXg-hM-G2e"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -246,6 +273,9 @@
                                 <state key="normal" title="Button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="leftBtnPressed:" destination="QMr-Fk-9hD" eventType="touchUpInside" id="YtY-NN-YAK"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eb5-Jh-Zte">
                                 <rect key="frame" x="207" y="681" width="207" height="55"/>
@@ -264,9 +294,12 @@
                                         <real key="value" value="0.5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="rightBtnPressed:" destination="QMr-Fk-9hD" eventType="touchUpInside" id="qYQ-Mo-t6Q"/>
+                                </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XGX-Gr-g4W">
-                                <rect key="frame" x="30" y="258.33333333333331" width="354" height="222"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XGX-Gr-g4W">
+                                <rect key="frame" x="0.0" y="258.33333333333331" width="414" height="222"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="222" id="p3I-W1-c30"/>
@@ -297,7 +330,7 @@
                             <constraint firstItem="XGX-Gr-g4W" firstAttribute="centerX" secondItem="Suc-Tf-Bdr" secondAttribute="centerX" id="IkI-W2-b22"/>
                             <constraint firstItem="eb5-Jh-Zte" firstAttribute="width" secondItem="n05-3q-dIM" secondAttribute="width" id="JEG-Ln-zir"/>
                             <constraint firstItem="30o-0V-5lx" firstAttribute="centerY" secondItem="1Lc-Hx-XiB" secondAttribute="centerY" id="M71-pt-ADx"/>
-                            <constraint firstItem="XGX-Gr-g4W" firstAttribute="width" secondItem="zeA-9h-wOy" secondAttribute="width" constant="-60" id="R05-fv-7bH"/>
+                            <constraint firstItem="XGX-Gr-g4W" firstAttribute="width" secondItem="zeA-9h-wOy" secondAttribute="width" id="R05-fv-7bH"/>
                             <constraint firstItem="Suc-Tf-Bdr" firstAttribute="bottom" secondItem="n05-3q-dIM" secondAttribute="bottom" id="S15-9J-LqT"/>
                             <constraint firstItem="XGX-Gr-g4W" firstAttribute="top" secondItem="1Lc-Hx-XiB" secondAttribute="bottom" constant="53" id="VEY-LQ-CZD"/>
                             <constraint firstItem="n05-3q-dIM" firstAttribute="width" secondItem="zeA-9h-wOy" secondAttribute="width" multiplier="1/2" id="Vn3-fV-zkU"/>
@@ -313,8 +346,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Suc-Tf-Bdr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rNL-RU-LxS">
-                        <barButtonItem key="leftBarButtonItem" image="bar_icon_back" id="Eai-Cd-AFB"/>
+                    <navigationItem key="navigationItem" title="title" id="rNL-RU-LxS">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="bar_icon_back" id="NFj-7b-Gex">
+                            <connections>
+                                <action selector="backBtnPreesed:" destination="QMr-Fk-9hD" id="K06-3n-ANy"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="button_left" destination="n05-3q-dIM" id="JUJ-gO-1F0"/>
@@ -327,7 +364,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0DD-D0-uBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1901" y="-85"/>
+            <point key="canvasLocation" x="2377" y="342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zzf-TB-UPB">
@@ -341,13 +378,16 @@
                             <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                         </textAttributes>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gNP-JI-F8o">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
-                        <segue destination="QMr-Fk-9hD" kind="relationship" relationship="rootViewController" id="nIQ-RK-hfG"/>
+                        <segue destination="QMr-Fk-9hD" kind="relationship" relationship="rootViewController" id="xwq-Z6-sv3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WaM-A2-xJI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141" y="-86"/>
+            <point key="canvasLocation" x="1651" y="343"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="wbg-sZ-IqY">
@@ -372,6 +412,7 @@
         <image name="icon_bell" width="20" height="24"/>
         <image name="icon_home_logo" width="121.66666412353516" height="29.333333969116211"/>
         <image name="icon_tickets" width="25" height="24"/>
+        <image name="image_add_meeting" width="335" height="76"/>
         <image name="image_home_main" width="375.33334350585938" height="169"/>
         <image name="tabbar_home" width="21.333333969116211" height="21.333333969116211"/>
     </resources>

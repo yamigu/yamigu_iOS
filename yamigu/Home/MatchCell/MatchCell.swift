@@ -10,6 +10,7 @@ import UIKit
 
 class MatchCell: UICollectionViewCell {
 
+    @IBOutlet weak var bottomContainerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

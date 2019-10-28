@@ -183,6 +183,14 @@
                 <constraint firstItem="Dpq-8n-kUk" firstAttribute="top" secondItem="rYz-Rj-urQ" secondAttribute="bottom" constant="18" id="q3c-mw-TEg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                    <real key="value" value="10"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="bottomContainerView" destination="Bts-ck-r1t" id="zae-3y-4Tm"/>
+            </connections>
             <point key="canvasLocation" x="-107" y="106"/>
         </collectionViewCell>
     </objects>
