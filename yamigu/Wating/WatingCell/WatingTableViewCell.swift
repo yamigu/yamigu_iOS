@@ -9,8 +9,15 @@
 import UIKit
 import Cosmos
 
-class WatingTableViewCell: UITableViewCell {
+protocol WatingTableViewDelegate : class {
+    func meetingBtnPressed()
+}
 
+class WatingTableViewCell: UITableViewCell {
+    
+    weak var delegate : WatingTableViewDelegate!
+
+    @IBOutlet weak var button_meeting: UIButton!
     @IBOutlet weak var label_type: UILabel!
     @IBOutlet weak var label_nickname: UILabel!
     @IBOutlet weak var label_belong: UILabel!
@@ -19,15 +26,22 @@ class WatingTableViewCell: UITableViewCell {
     @IBOutlet weak var tv_description: UITextView!
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var image_profile: UIImageView!
+    @IBOutlet weak var constraintHeight: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
         
         self.tv_description.centerVertically()
+        self.button_meeting.isHidden = true
+        self.constraintHeight.constant = 0.0
+        self.layoutIfNeeded()
         
     }
     
-
+    @IBAction func meetingBtnPressed(_ sender: Any) {
+        self.delegate.meetingBtnPressed()
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

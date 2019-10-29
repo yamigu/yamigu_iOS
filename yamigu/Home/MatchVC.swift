@@ -17,7 +17,14 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var button_left: UIButton!
     @IBOutlet weak var button_right: UIButton!
     
+    var newPage = 0
+    
     var matchingDict : Dictionary<String, Any>!
+    
+    var receiveMatchingList = [Dictionary<String, Any>]()
+    var requestMatchingList = [Dictionary<String, Any>]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -50,8 +57,12 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             type = "4:4 미팅"
         }
         let place = self.matchingDict["place_type_name"] as! String
-        //self.navigationController?.title = date + " || " + place + " || " + type
-       self.title = date + " || " + place + " || " + type
+        self.title = date + " || " + place + " || " + type
+        
+        let id = "\(self.matchingDict["id"]!)"
+        
+        self.getReceiveMatching(urlString: "http://147.47.208.44:9999/api/matching/received_request/?meeting_id=\(id)")
+        self.getRequestMatching(urlString: "http://147.47.208.44:9999/api/matching/sent_request/?meeting_id=\(id)")
     }
     
     func setupCollectionView() {
@@ -83,8 +94,19 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         
     }
     @IBAction func leftBtnPressed(_ sender: Any) {
+        if button_left.titleLabel?.text! == "미팅하기" {
+            print(button_left.titleLabel?.text)
+        } else if button_left.titleLabel?.text! == "대기중" {
+            print(button_left.titleLabel?.text)
+        }
+        
     }
     @IBAction func rightBtnPressed(_ sender: Any) {
+        if button_right.titleLabel?.text! == "거절하기" {
+            print(button_right.titleLabel?.text)
+        } else if button_right.titleLabel?.text! == "취소하기" {
+            print(button_right.titleLabel?.text)
+        }
     }
     
     func postRequest(_ urlString: String, bodyString: String){
@@ -119,6 +141,79 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 }
             }
             }.resume()
+    }
+    
+    func getRequestMatching(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authroization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let _data = data {
+                if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
+                    let str = String(strData)
+                    print(str)
+                    
+                    DispatchQueue.main.async {
+                        print(str)
+                    }
+                }
+            }else{
+                print("data nil")
+            }
+        })
+        task.resume()
+    }
+    
+    func getReceiveMatching(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authroization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let _data = data {
+                if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
+                    let str = String(strData)
+                   
+                    DispatchQueue.main.async {
+                        print(str)
+                    }
+                }
+            }else{
+                print("data nil")
+            }
+        })
+        task.resume()
     }
     
     func getUserInfo(urlString : String) {
@@ -194,12 +289,24 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 11.0
+        return (self.collectionView.frame.size.width - 315.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 11.0
+        return (self.collectionView.frame.size.width - 315.0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: (self.collectionView.frame.size.width - 315.0) / 2, bottom: 0, right: (self.collectionView.frame.size.width - 315.0) / 2)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let x = self.collectionView.contentOffset.x
+        let w = self.collectionView.bounds.size.width
+        newPage = Int(ceil(x/w))
+        
+        print(newPage)
     }
 }

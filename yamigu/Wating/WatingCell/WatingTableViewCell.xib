@@ -67,13 +67,30 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ml-Id-JcT">
+                                <rect key="frame" x="0.0" y="0.0" width="293" height="54.5"/>
+                                <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54.5" id="4Ea-Ct-PmX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <state key="normal" title="미팅 신청하기">
+                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="meetingBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mCE-Cy-bcb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.21960784310000001" green="0.21176470589999999" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="gBQ-ol-Cx8" secondAttribute="bottom" constant="10.5" id="3om-qU-y3T"/>
+                            <constraint firstItem="8ml-Id-JcT" firstAttribute="top" secondItem="IWg-Mt-nu2" secondAttribute="top" id="4ZH-Ui-ZUV"/>
                             <constraint firstAttribute="trailing" secondItem="rbn-wF-inM" secondAttribute="trailing" constant="19" id="4qg-Ty-VQN"/>
                             <constraint firstItem="gBQ-ol-Cx8" firstAttribute="top" secondItem="8Qc-An-yRP" secondAttribute="bottom" constant="3" id="9Wa-Ke-VD0"/>
+                            <constraint firstItem="8ml-Id-JcT" firstAttribute="width" secondItem="IWg-Mt-nu2" secondAttribute="width" id="HVt-EX-KSK"/>
                             <constraint firstItem="8Qc-An-yRP" firstAttribute="leading" secondItem="IWg-Mt-nu2" secondAttribute="leading" constant="19" id="YZ1-el-ZTn"/>
+                            <constraint firstItem="8ml-Id-JcT" firstAttribute="centerX" secondItem="IWg-Mt-nu2" secondAttribute="centerX" id="Z25-ug-WJo"/>
                             <constraint firstAttribute="height" constant="54.5" id="dB3-2w-k00"/>
                             <constraint firstItem="gBQ-ol-Cx8" firstAttribute="leading" secondItem="8Qc-An-yRP" secondAttribute="leading" id="dPN-oE-XOj"/>
                             <constraint firstItem="wsx-Q1-Gmb" firstAttribute="bottom" secondItem="gBQ-ol-Cx8" secondAttribute="bottom" id="l7T-ux-NOe"/>
@@ -101,7 +118,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" text="연하가 좋구요! 저희는 중학교 친구들이라 서로 캐미도 좋고 텐션높게 재밌게 놀 수 있습니다! 물론 매너는 기본 옵션이고요. 좋은 추억 만들고 싶어 신청합니다." translatesAutoresizingMaskIntoConstraints="NO" id="3KM-00-YJK">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="연하가 좋구요! 저희는 중학교 친구들이라 서로 캐미도 좋고 텐션높게 재밌게 놀 수 있습니다! 물론 매너는 기본 옵션이고요. 좋은 추억 만들고 싶어 신청합니다." selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KM-00-YJK">
                         <rect key="frame" x="108" y="44" width="170.5" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -190,6 +207,8 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="button_meeting" destination="8ml-Id-JcT" id="cu3-76-5fu"/>
+                <outlet property="constraintHeight" destination="4Ea-Ct-PmX" id="Y1Y-of-aLe"/>
                 <outlet property="image_profile" destination="EGp-pQ-2A6" id="15h-8M-kFb"/>
                 <outlet property="label_belong" destination="gBQ-ol-Cx8" id="Qe4-1c-Scc"/>
                 <outlet property="label_date" destination="rbn-wF-inM" id="9Ra-Lr-rks"/>

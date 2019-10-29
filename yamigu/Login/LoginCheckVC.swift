@@ -9,6 +9,7 @@
 import UIKit
 import KakaoOpenSDK
 import KakaoCommon
+import FirebaseAuth
 
 var authKey = ""
 var userDictionary = Dictionary<String, Any>()
@@ -129,7 +130,20 @@ class LoginCheckVC: UIViewController {
                         // 동작 실행
                         //print(newValue)
                         userDictionary = newValue
-                        self.performSegue(withIdentifier: "segue_main", sender: self)
+                        print("firebase Auth = \(userDictionary["firebase_token"])")
+                        
+                        
+                        Auth.auth().signIn(withCustomToken: "\(userDictionary["firebase_token"]!)", completion: { (result, error) in
+                            
+                            
+                            
+                            if error == nil {
+                                print("firebase Auth = \(Auth.auth().currentUser?.uid)")
+                                self.performSegue(withIdentifier: "segue_main", sender: self)
+                                
+                                
+                            }
+                        })
                     }
                 } catch {
                     print(error)

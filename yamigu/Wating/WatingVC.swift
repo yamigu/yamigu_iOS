@@ -9,6 +9,8 @@
 import UIKit
 
 class WatingVC: UIViewController {
+    
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterView: FilterView!
     
@@ -24,6 +26,8 @@ class WatingVC: UIViewController {
     var selectedPlace = [Int]()
     
     var matchingList = [Dictionary<String, Any>]()
+    
+    var selectedMatching = Dictionary<String, Any>()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,9 +111,21 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "watingTableViewCell", for: indexPath) as! WatingTableViewCell
-        
+        cell.layer.cornerRadius = 10.0
+        cell.cornerradius = 10.0
+        cell.clipsToBounds = true
         cell.tv_description.centerVertically()
         let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
+       
+        if let imageUrl = URL(string: "\(meetingObj["openby_profile"]!)") {
+            print("openby_profile = \(meetingObj["openby_profile"]!)")
+            cell.image_profile.downloaded(from: imageUrl)
+        }
+        
+        cell.constraintHeight.constant = 0.0
+        cell.button_meeting.isHidden = true
+        
+        cell.delegate = self
         
         let meeting_type = "\(meetingObj["meeting_type"]!)"
         if meeting_type == "1" {
@@ -167,6 +183,31 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         view.backgroundColor = .clear
         
         return view
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! WatingTableViewCell
+        
+        cell.button_meeting.isHidden = false
+        
+        cell.constraintHeight.constant = 54.5
+        UIView.animate(withDuration: 0.5) {
+            cell.layoutIfNeeded()
+        }
+        
+        self.selectedMatching = self.matchingList[indexPath.section] as! Dictionary<String, Any>
+    }
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! WatingTableViewCell
+        
+        cell.button_meeting.isHidden = true
+        
+        cell.constraintHeight.constant = 0
+        
+        UIView.animate(withDuration: 0.5) {
+            cell.layoutIfNeeded()
+        }
+        
     }
     
     func setupTableView() {
@@ -338,5 +379,62 @@ extension WatingVC: FilterViewDelegate {
         
     }
     
+    
+}
+
+extension WatingVC: WatingTableViewDelegate {
+    func meetingBtnPressed() {
+        //- meeting_type: 미팅 타입
+        //- date: 날짜
+        //- place: 장소
+        //- appeal: 어필 문구
+        //- receiver: 신청 대상 미팅
+        let meeting_type = "\(self.selectedMatching["meeting_type"]!)"
+        let date = "\(self.selectedMatching["date"]!)"
+        let place = "\(self.selectedMatching["place"]!)"
+        let appeal = "\(self.selectedMatching["appeal"]!)"
+        let receiver = "\(self.selectedMatching["id"]!)"
+        
+        
+        self.postRequest("http://147.47.208.44:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(date)&place=\(place)&appeal=\(appeal)&receiver=\(receiver)")
+    }
+    
+    func postRequest(_ urlString: String, bodyString: String){
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        request.httpBody = body
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, String> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        
+                        //self.dismiss(animated: false, completion: nil)
+                    }
+                } catch {
+                    print(error)
+                    
+                    
+                }
+            }
+            }.resume()
+    }
     
 }

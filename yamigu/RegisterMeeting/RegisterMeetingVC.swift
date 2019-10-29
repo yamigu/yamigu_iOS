@@ -159,25 +159,27 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         //- date: 날짜
         //- place_type: 장소
         //- appeal: 어필 문구
-        self.postRequest("http://147.47.208.44:9999/api/meetings/create/")
+        self.postRequest("http://147.47.208.44:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
         
     }
     
     @IBAction func dismissBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    func postRequest(_ urlString: String){
+    func postRequest(_ urlString: String, bodyString: String){
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
         //request.httpBody = body
-        
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
         var requestDict = Dictionary<String, String>()
         requestDict["meeting_type"] = "\((self.selectedType + 1))"
-        requestDict["date"] = button_date.titleLabel?.text!
+        requestDict["date"] = (button_date.titleLabel?.text!)!
         requestDict["place"] = "\(self.selectedPlace + 1)"
         requestDict["appeal"] = self.textView.text!
         //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
@@ -210,14 +212,15 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                     DispatchQueue.main.async {
                         // 동작 실행
                         //authKey = newValue["key"]!
-                        self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true, completion: nil
+                        
+                        )
                     }
                 } catch {
                     print(error)
-                    // 회원가입 이력이 없는경우
                 }
             }
-            }.resume()
+        }.resume()
     }
 }
 

@@ -13,10 +13,10 @@ import KakaoOpenSDK
 class RegisterVC_1: UIViewController {
     
     var isLogined = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         isLogined = true
     }
     
@@ -76,5 +76,5 @@ class RegisterVC_1: UIViewController {
             }
             }.resume()
     }
-
+    
 }

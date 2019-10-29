@@ -25,8 +25,11 @@ class LoginVC: UIViewController {
         print("\(KOSession.shared()?.token?.accessToken)")
         
         if KOSession.shared()?.token?.accessToken != nil {
-            self.performSegue(withIdentifier: "segue_agreement", sender: self)
+            //self.performSegue(withIdentifier: "segue_agreement", sender: self)
+            //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+            self.dismiss(animated: false, completion: nil)
         }
+        
     }
     
     @IBAction func questionPressed(_ sender: Any) {
@@ -80,7 +83,7 @@ class LoginVC: UIViewController {
                 } catch {
                     print(error)
                     // 회원가입 이력이 없는경우
-                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
             }
             }.resume()

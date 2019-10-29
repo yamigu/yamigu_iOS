@@ -55,6 +55,7 @@
 		5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */; };
 		5582E2312364089C00A9E0FE /* Chatting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5582E2302364089C00A9E0FE /* Chatting.storyboard */; };
 		5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E23223640A1B00A9E0FE /* ChattingVC.swift */; };
+		5582E2352368376B00A9E0FE /* ChattingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E2342368376B00A9E0FE /* ChattingCell.swift */; };
 		55B09BE42349E996006051C2 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BE32349E996006051C2 /* More.storyboard */; };
 		55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE52349E9A4006051C2 /* MoreVC.swift */; };
 		55B09BEA2349E9D4006051C2 /* CooperatePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */; };
@@ -160,6 +161,7 @@
 		5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMeetingVC.swift; sourceTree = "<group>"; };
 		5582E2302364089C00A9E0FE /* Chatting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chatting.storyboard; sourceTree = "<group>"; };
 		5582E23223640A1B00A9E0FE /* ChattingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingVC.swift; sourceTree = "<group>"; };
+		5582E2342368376B00A9E0FE /* ChattingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingCell.swift; sourceTree = "<group>"; };
 		55B09BE32349E996006051C2 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		55B09BE52349E9A4006051C2 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceTableViewCell.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 			children = (
 				5582E2302364089C00A9E0FE /* Chatting.storyboard */,
 				5582E23223640A1B00A9E0FE /* ChattingVC.swift */,
+				5582E2342368376B00A9E0FE /* ChattingCell.swift */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				04618BA223484980002DF8A8 /* WatingVC.swift in Sources */,
 				5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */,
 				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
+				5582E2352368376B00A9E0FE /* ChattingCell.swift in Sources */,
 				5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */,
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
 				55224DCF2356ECBF003FBCA3 /* LoginCheckVC.swift in Sources */,
