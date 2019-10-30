@@ -56,6 +56,8 @@
 		5582E2312364089C00A9E0FE /* Chatting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5582E2302364089C00A9E0FE /* Chatting.storyboard */; };
 		5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E23223640A1B00A9E0FE /* ChattingVC.swift */; };
 		5582E2352368376B00A9E0FE /* ChattingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E2342368376B00A9E0FE /* ChattingCell.swift */; };
+		5582E2372369444F00A9E0FE /* ChattingLeftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E2362369444F00A9E0FE /* ChattingLeftCell.swift */; };
+		5582E23923696F1C00A9E0FE /* ChattingImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E23823696F1C00A9E0FE /* ChattingImageCell.swift */; };
 		55B09BE42349E996006051C2 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BE32349E996006051C2 /* More.storyboard */; };
 		55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE52349E9A4006051C2 /* MoreVC.swift */; };
 		55B09BEA2349E9D4006051C2 /* CooperatePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */; };
@@ -162,6 +164,8 @@
 		5582E2302364089C00A9E0FE /* Chatting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chatting.storyboard; sourceTree = "<group>"; };
 		5582E23223640A1B00A9E0FE /* ChattingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingVC.swift; sourceTree = "<group>"; };
 		5582E2342368376B00A9E0FE /* ChattingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingCell.swift; sourceTree = "<group>"; };
+		5582E2362369444F00A9E0FE /* ChattingLeftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingLeftCell.swift; sourceTree = "<group>"; };
+		5582E23823696F1C00A9E0FE /* ChattingImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingImageCell.swift; sourceTree = "<group>"; };
 		55B09BE32349E996006051C2 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		55B09BE52349E9A4006051C2 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceTableViewCell.swift; sourceTree = "<group>"; };
@@ -396,6 +400,8 @@
 				5582E2302364089C00A9E0FE /* Chatting.storyboard */,
 				5582E23223640A1B00A9E0FE /* ChattingVC.swift */,
 				5582E2342368376B00A9E0FE /* ChattingCell.swift */,
+				5582E2362369444F00A9E0FE /* ChattingLeftCell.swift */,
+				5582E23823696F1C00A9E0FE /* ChattingImageCell.swift */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
@@ -749,8 +755,10 @@
 				5528EA8B23407A4000461B2A /* ViewController.swift in Sources */,
 				5528EAC52340963100461B2A /* LoginVC.swift in Sources */,
 				55224DD923597439003FBCA3 /* WhatIsYamiguVC.swift in Sources */,
+				5582E23923696F1C00A9E0FE /* ChattingImageCell.swift in Sources */,
 				04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */,
 				5528EA9123407A4000461B2A /* yamigu.xcdatamodeld in Sources */,
+				5582E2372369444F00A9E0FE /* ChattingLeftCell.swift in Sources */,
 				55FF60AB235D8B7D006A3345 /* MatchCell.swift in Sources */,
 				55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */,
 				5528EABF23408C7600461B2A /* MainOnBoardingVC.swift in Sources */,
@@ -958,6 +966,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = party.yamigu.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -983,6 +992,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = party.yamigu.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
