@@ -78,6 +78,8 @@
 		55FF60AC235D8B7D006A3345 /* MatchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55FF60AA235D8B7D006A3345 /* MatchCell.xib */; };
 		55FF60AE235D8E59006A3345 /* MatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FF60AD235D8E59006A3345 /* MatchVC.swift */; };
 		6FB79E4141E4D5A1E31FF2EC /* Pods_yamiguUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */; };
+		9F09984C23694A20006B2750 /* HomeReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09984A23694A20006B2750 /* HomeReviewCell.swift */; };
+		9F09984D23694A20006B2750 /* HomeReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F09984B23694A20006B2750 /* HomeReviewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,8 @@
 		55FF60AA235D8B7D006A3345 /* MatchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MatchCell.xib; sourceTree = "<group>"; };
 		55FF60AD235D8E59006A3345 /* MatchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchVC.swift; sourceTree = "<group>"; };
 		8E60FCBB3F4C51FBD213527C /* Pods-yamiguTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9F09984A23694A20006B2750 /* HomeReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReviewCell.swift; sourceTree = "<group>"; };
+		9F09984B23694A20006B2750 /* HomeReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeReviewCell.xib; sourceTree = "<group>"; };
 		D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.release.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -448,6 +452,8 @@
 				55DD1BC823476DEB00CC820D /* HomeMyTableViewCell.xib */,
 				55DD1BCD23476E0B00CC820D /* HomeCollectionViewCell.swift */,
 				55DD1BCE23476E0B00CC820D /* HomeCollectionViewCell.xib */,
+				9F09984A23694A20006B2750 /* HomeReviewCell.swift */,
+				9F09984B23694A20006B2750 /* HomeReviewCell.xib */,
 			);
 			path = HomeCell;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 				55224DD12356EEAE003FBCA3 /* GoogleService-Info.plist in Resources */,
 				04618BA02348496D002DF8A8 /* Wating.storyboard in Resources */,
 				55224DDF2359DA58003FBCA3 /* NanumGothicExtraBold.ttf in Resources */,
+				9F09984D23694A20006B2750 /* HomeReviewCell.xib in Resources */,
 				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,6 +768,7 @@
 				5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */,
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
 				55224DCF2356ECBF003FBCA3 /* LoginCheckVC.swift in Sources */,
+				9F09984C23694A20006B2750 /* HomeReviewCell.swift in Sources */,
 				55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */,
 				55B09BF22349EA2C006051C2 /* WhatisTableViewCell.swift in Sources */,
 				55224D96234F42B1003FBCA3 /* MainTC.swift in Sources */,

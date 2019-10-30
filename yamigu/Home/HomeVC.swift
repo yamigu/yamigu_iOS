@@ -316,6 +316,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         self.todayMeetingTableView.dataSource = self
         
         self.myMeetingTableView.register(UINib(nibName: "HomeMyTableViewCell", bundle: nil), forCellReuseIdentifier: "homeMyTableViewCell")
+        self.myMeetingTableView.register(UINib(nibName: "HomeReviewCell", bundle: nil), forCellReuseIdentifier: "homeReviewCell")
         self.todayMeetingTableView.register(UINib(nibName: "HomeExpectedTableViewCell", bundle: nil), forCellReuseIdentifier: "homeExpectedTableViewCell")
     }
 }
