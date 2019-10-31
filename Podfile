@@ -7,7 +7,7 @@ target 'yamigu' do
 
   # Pods for yamigu
   pod 'CHIPageControl', '~> 0.1.3'
-  pod 'Cosmos', '~> 20.0'
+  pod 'Cosmos'
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'

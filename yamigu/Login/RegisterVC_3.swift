@@ -103,7 +103,10 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
                 } catch {
                     print(error)
                     //self.performSegue(withIdentifier: "segue_main", sender: self)
-                    self.navigationController?.popToRootViewController(animated: false)
+                    DispatchQueue.main.async {
+                        self.navigationController?.popToRootViewController(animated: false)
+                    }
+                    
                     // 회원가입 이력이 없는경우
                     //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
