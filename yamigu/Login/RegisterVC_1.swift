@@ -115,7 +115,7 @@ class RegisterVC_1: UIViewController {
                             self.isLogined = false
                         }
                         else if newValue["nickname"] == nil {
-                            print("서버 좆같네")
+                            
                         } else {
                             self.dismiss(animated: false, completion: nil)
                         }
