@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>529017550501-ro5qu2if70t00o20fa3su6salkvns57r.apps.googleusercontent.com</string>
+	<string>529017550501-enkffjcfqn4l8hhtbatvp1n0uigmgt2a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.529017550501-ro5qu2if70t00o20fa3su6salkvns57r</string>
+	<string>com.googleusercontent.apps.529017550501-enkffjcfqn4l8hhtbatvp1n0uigmgt2a</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDmJNjirC0LSotighcJH9sv6LJ4Dtsytcw</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>party.yamigu.www</string>
+	<string>party.yamigu.www.com</string>
 	<key>PROJECT_ID</key>
 	<string>yamigu-5fcaa</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:529017550501:ios:d5887175abb3147a77bf4c</string>
+	<string>1:529017550501:ios:ccf096e4866f103077bf4c</string>
 	<key>DATABASE_URL</key>
 	<string>https://yamigu-5fcaa.firebaseio.com</string>
 </dict>

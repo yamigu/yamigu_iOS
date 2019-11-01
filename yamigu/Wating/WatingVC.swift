@@ -388,15 +388,23 @@ extension WatingVC: WatingTableViewDelegate {
         //- date: 날짜
         //- place: 장소
         //- appeal: 어필 문구
-        //- receiver: 신청 대상 미팅
+        //- receiver: 신청 대상 미팅 -> meeting_id
         let meeting_type = "\(self.selectedMatching["meeting_type"]!)"
-        let date = "\(self.selectedMatching["date"]!)"
-        let place = "\(self.selectedMatching["place"]!)"
+        //let date = "\(self.selectedMatching["date"]!)"
+        let place = "\(self.selectedMatching["place_type"]!)"
         let appeal = "\(self.selectedMatching["appeal"]!)"
-        let receiver = "\(self.selectedMatching["id"]!)"
+        let meeting_id = "\(self.selectedMatching["id"]!)"
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        self.postRequest("http://147.47.208.44:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(date)&place=\(place)&appeal=\(appeal)&receiver=\(receiver)")
+        var date = Date()
+        date = dateFormatter.date(from: "\(self.selectedMatching["date"]!)")!
+        
+        dateFormatter.dateFormat = "MM월 d일"
+        let dateString = dateFormatter.string(from: date)
+        
+        self.postRequest("http://147.47.208.44:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
     }
     
     func postRequest(_ urlString: String, bodyString: String){
@@ -404,13 +412,14 @@ extension WatingVC: WatingTableViewDelegate {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: true)
         request.httpBody = body
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
                 
             }
             if let data = data {

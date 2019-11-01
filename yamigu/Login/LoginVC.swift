@@ -22,6 +22,11 @@ class LoginVC: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+       
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         print("\(KOSession.shared()?.token?.accessToken)")
         
         if KOSession.shared()?.token?.accessToken != nil {
@@ -29,7 +34,6 @@ class LoginVC: UIViewController {
             //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
             self.dismiss(animated: false, completion: nil)
         }
-        
     }
     
     @IBAction func questionPressed(_ sender: Any) {
