@@ -10,6 +10,10 @@ import UIKit
 import KakaoOpenSDK
 import KakaoCommon
 import FirebaseAuth
+import FirebaseMessaging
+import UserNotifications
+import Firebase
+
 
 var authKey = ""
 var userDictionary = Dictionary<String, Any>()
@@ -45,8 +49,11 @@ class LoginCheckVC: UIViewController {
         if KOSession.shared()?.token?.accessToken != nil {
             let access_token = (KOSession.shared()?.token?.accessToken)!
             print("access token2 = \(access_token)")
-            self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
             
+            
+            
+            self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+            //self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=iOS")
             //performSegue(withIdentifier: "segue_onboarding", sender: self)
         } else {
             
@@ -54,6 +61,53 @@ class LoginCheckVC: UIViewController {
         }
     }
     
+    func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
+       
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
+        //JSONSerialization.isValidJSONObject(requestDict)
+        //request.httpBody = data
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+            let jsonString = String(data: data, encoding: .utf8) {
+            request.httpBody = jsonString.data(using: .utf8)
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, String> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
+    }
     
     func postRequest(_ urlString: String, bodyString: String){
         guard let url = URL(string: urlString) else {return}
@@ -82,7 +136,25 @@ class LoginCheckVC: UIViewController {
                     
                     DispatchQueue.main.async {
                         // 동작 실행
+                        var token = ""
+                        
+                        InstanceID.instanceID().instanceID { (result, error) in
+                            if let error = error {
+                                print("Error fetching remote instance ID: \(error)")
+                            } else if let result = result {
+                                print("Remote instance ID token: \(result.token)")
+                                print("Remote InstanceID token: \(result.token)")
+                                token = result.token
+                            }
+                        }
+                        
                         authKey = newValue["key"]!
+                        
+                        var data = [String: Any]()
+                        data["registration_id"] = token
+                        data["type"] = "android"
+                        
+                        self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=android", json: data)
                         self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
                     }
                 } catch {

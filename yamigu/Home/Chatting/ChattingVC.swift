@@ -23,6 +23,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     var matchDict = Dictionary<String, Any>()
     var matchingId = ""
     var messages = Array<Dictionary<String, Any>>()
+    var managerData = Dictionary<String, Any>()
     
     let cellId = "cellId"
     let cellLeftId = "cellLeftId"
@@ -47,13 +48,15 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         for dict in received_request {
             if (dict["is_selected"] as! Bool) {
-                matchingId = "\(dict["id"])"
+                matchingId = "\(dict["id"]!)"
+                managerData = dict
             }
         }
         
         for dict in sent_request {
             if (dict["is_selected"] as! Bool) {
-                matchingId = "\(dict["id"])"
+                matchingId = "\(dict["id"]!)"
+                managerData = dict
             }
         }
     }
@@ -222,6 +225,39 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
         
         
+        
+        
+        var json = [String:Any]()
+        
+        json["receiverId"] = matchDict["openby_uid"]!
+        json["message"] = self.tf_message.text!
+        json["activity"] = "ChattingActivity"
+        
+        var intent_args = [String:Any]()
+        intent_args["partner_age"] = matchDict["openby_age"]!
+        intent_args["partner_belong"] = matchDict["openby_belong"]!
+        intent_args["partner_department"] = matchDict["openby_department"]!
+        intent_args["partner_nickname"] = matchDict["openby_nickname"]!
+        
+        intent_args["date"] = meetingDict["date"]!
+        intent_args["place"] = meetingDict["place_type_name"]!
+        intent_args["meeting_id"] = meetingDict["id"]!
+        intent_args["matching_id"] = matchingId
+        intent_args["manage_name"] = managerData["manager_name"]!
+        intent_args["partner_uid"] = matchDict["openby_uid"]!
+        intent_args["manager_uid"] = managerData["manager_uid"]!
+        intent_args["accepted_at"] = managerData["accepted_at"]!
+        
+        var data = [String:Any]()
+        
+        data["title"] = meetingDict["openby_nickname"]!
+        data["content"] = self.tf_message.text!
+        data["clickAction"] = ".ChattingActivity"
+        data["intentArgs"] = intent_args
+        
+        json["data"] = data
+        self.postRequest("http://147.47.208.44:9999/api/fcm/send_push/", bodyString: "", json: json)
+        
         self.tf_message.text = ""
     }
     @IBAction func callBtnPressed(_ sender: Any) {
@@ -255,5 +291,56 @@ extension ChattingVC {
         //return NSString(string: text).boundingRect(with: size, options: options, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.init(name: "NanumGothic", size: 14.0)]), context: nil)
         
         return NSString(string: text).boundingRect(with: size, options: options, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 14.0)]), context: nil)
+    }
+    
+    func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
+        
+        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //request.httpBody = jsonData
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
+        //JSONSerialization.isValidJSONObject(requestDict)
+        //request.httpBody = data
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+            let jsonString = String(data: data, encoding: .utf8) {
+            request.httpBody = jsonString.data(using: .utf8)
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, String> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            }.resume()
     }
 }
