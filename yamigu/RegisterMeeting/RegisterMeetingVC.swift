@@ -10,6 +10,13 @@ import UIKit
 
 class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var button_editMeeting: UIButton!
+    @IBOutlet weak var button_deleteCard: UIButton!
+    
+    var meetingDict : Dictionary<String, Any>!
+    
+    var isEdit = false
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var button_place: UIButton!
@@ -64,9 +71,56 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     override func viewDidAppear(_ animated: Bool) {
         //self.dismiss(animated: false, completion: nil)
+        button_editMeeting.isHidden = true
+        button_deleteCard.isHidden = true
+        
+        if isEdit {
+            button_editMeeting.isHidden = false
+            button_deleteCard.isHidden = false
+            
+            isPeople = false
+            isDate = false
+            isPlace = false
+            self.textView.isHidden = false
+            
+            var type = ""
+            let tmpType = "\(self.meetingDict["meeting_type"]!)"
+            if tmpType == "1" {
+                type = "2:2 소개팅"
+            } else if tmpType == "2" {
+                type = "3:3 미팅"
+            } else if tmpType == "3" {
+                type = "4:4 미팅"
+            }
+            let place = self.meetingDict["place_type_name"] as! String
+            
+            let dateString = self.meetingDict["date"] as! String
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from:dateString)
+            
+            dateFormatter.dateFormat = "M월"
+            let monthString = dateFormatter.string(from: date!)
+            
+            dateFormatter.dateFormat = "d일"
+            let dayString = dateFormatter.string(from: date!)
+            
+            button_people.setTitle(type, for: .normal)
+            button_place.setTitle(place, for: .normal)
+            button_date.setTitle(monthString+dayString, for: .normal)
+            
+            textView.text = self.meetingDict["appeal"] as! String
+        }
+    }
+    
+    @IBAction func editMeetingBtnPressed(_ sender: Any) {
         
     }
     
+    @IBAction func deleteCardBtnPressed(_ sender: Any) {
+        
+    }
     
     @IBAction func peopleBtnPressed(_ sender: Any) {
         isPeople = true
@@ -166,6 +220,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     @IBAction func dismissBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     func postRequest(_ urlString: String, bodyString: String){
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)

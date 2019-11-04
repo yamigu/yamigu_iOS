@@ -168,12 +168,36 @@
                                 <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90w-TI-1w0">
+                                <rect key="frame" x="0.0" y="666" width="276" height="70"/>
+                                <color key="backgroundColor" red="0.16862745098039217" green="0.15686274509803921" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <state key="normal" title="미팅 수정하기!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="editMeetingBtnPressed:" destination="HHI-d6-9E7" eventType="touchUpInside" id="dIr-lx-lXv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lpD-ug-nTm">
+                                <rect key="frame" x="276" y="666" width="138" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <state key="normal" title="카드 삭제">
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteCardBtnPressed:" destination="HHI-d6-9E7" eventType="touchUpInside" id="Dcz-zt-mbt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="lpD-ug-nTm" firstAttribute="width" secondItem="oxj-l0-3nn" secondAttribute="width" multiplier="1:3" id="05Y-Gs-YKp"/>
                             <constraint firstItem="SqJ-wl-55i" firstAttribute="trailing" secondItem="6ub-6L-1sv" secondAttribute="trailing" constant="16.5" id="0ev-3d-o8B"/>
                             <constraint firstItem="Uji-8d-ld9" firstAttribute="leading" secondItem="OVr-yI-yfm" secondAttribute="trailing" constant="2" id="4hr-AA-pRl"/>
                             <constraint firstItem="OVr-yI-yfm" firstAttribute="top" secondItem="86h-k1-eJp" secondAttribute="bottom" constant="5.4000000000000004" id="5eF-ib-nhn"/>
+                            <constraint firstItem="90w-TI-1w0" firstAttribute="width" secondItem="oxj-l0-3nn" secondAttribute="width" multiplier="2:3" id="8UM-nh-2w2"/>
                             <constraint firstItem="3WF-t2-QTe" firstAttribute="leading" secondItem="6ub-6L-1sv" secondAttribute="leading" id="8XS-AQ-Gbu"/>
                             <constraint firstItem="6ub-6L-1sv" firstAttribute="leading" secondItem="SqJ-wl-55i" secondAttribute="leading" constant="16.5" id="9hU-Zs-5qe"/>
                             <constraint firstItem="sOC-HN-01v" firstAttribute="leading" secondItem="Pjg-tU-WRC" secondAttribute="leading" id="Bq4-tu-wbV"/>
@@ -185,8 +209,11 @@
                             <constraint firstItem="86h-k1-eJp" firstAttribute="leading" secondItem="SqJ-wl-55i" secondAttribute="leading" constant="18" id="KaE-Eo-HTw"/>
                             <constraint firstItem="sOC-HN-01v" firstAttribute="top" secondItem="Pjg-tU-WRC" secondAttribute="bottom" id="R0x-ix-h64"/>
                             <constraint firstItem="oxj-l0-3nn" firstAttribute="top" secondItem="xZh-PT-dFy" secondAttribute="bottom" constant="26" id="Rzc-O8-DoD"/>
+                            <constraint firstItem="90w-TI-1w0" firstAttribute="height" secondItem="oxj-l0-3nn" secondAttribute="height" id="Up3-vP-0vb"/>
                             <constraint firstItem="86h-k1-eJp" firstAttribute="top" secondItem="sOC-HN-01v" secondAttribute="bottom" constant="11" id="VHG-LI-mzz"/>
+                            <constraint firstItem="SqJ-wl-55i" firstAttribute="trailing" secondItem="lpD-ug-nTm" secondAttribute="trailing" id="YFn-W6-34e"/>
                             <constraint firstItem="3WF-t2-QTe" firstAttribute="trailing" secondItem="6ub-6L-1sv" secondAttribute="trailing" id="Zq2-Nn-43E"/>
+                            <constraint firstItem="lpD-ug-nTm" firstAttribute="bottom" secondItem="SqJ-wl-55i" secondAttribute="bottom" id="Zte-Hb-dv8"/>
                             <constraint firstItem="Pjg-tU-WRC" firstAttribute="height" secondItem="mgO-Fy-ilA" secondAttribute="height" id="a1x-Yj-2Ng"/>
                             <constraint firstItem="SqJ-wl-55i" firstAttribute="bottom" secondItem="oxj-l0-3nn" secondAttribute="bottom" id="an7-Ch-8Re"/>
                             <constraint firstItem="SqJ-wl-55i" firstAttribute="trailing" secondItem="mgO-Fy-ilA" secondAttribute="trailing" id="aya-MA-Uup"/>
@@ -196,8 +223,11 @@
                             <constraint firstItem="sOC-HN-01v" firstAttribute="trailing" secondItem="Pjg-tU-WRC" secondAttribute="trailing" id="gAn-sr-2YP"/>
                             <constraint firstItem="OVr-yI-yfm" firstAttribute="leading" secondItem="86h-k1-eJp" secondAttribute="leading" constant="11" id="hNs-hW-wJD"/>
                             <constraint firstItem="3WF-t2-QTe" firstAttribute="top" secondItem="6ub-6L-1sv" secondAttribute="top" id="jEm-mi-4za"/>
+                            <constraint firstItem="lpD-ug-nTm" firstAttribute="height" secondItem="oxj-l0-3nn" secondAttribute="height" id="khn-0P-Afi"/>
+                            <constraint firstItem="SqJ-wl-55i" firstAttribute="bottom" secondItem="90w-TI-1w0" secondAttribute="bottom" id="oam-Gr-S0C"/>
                             <constraint firstItem="Pjg-tU-WRC" firstAttribute="leading" secondItem="mgO-Fy-ilA" secondAttribute="leading" id="pVo-Z6-4Oa"/>
                             <constraint firstItem="oxj-l0-3nn" firstAttribute="centerX" secondItem="SqJ-wl-55i" secondAttribute="centerX" id="uo8-V3-lg5"/>
+                            <constraint firstItem="90w-TI-1w0" firstAttribute="leading" secondItem="SqJ-wl-55i" secondAttribute="leading" id="wfK-Iu-dhN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SqJ-wl-55i"/>
                     </view>
@@ -213,6 +243,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="button_date" destination="Pjg-tU-WRC" id="TNV-3h-jhu"/>
+                        <outlet property="button_deleteCard" destination="lpD-ug-nTm" id="IvU-fx-Bgw"/>
+                        <outlet property="button_editMeeting" destination="90w-TI-1w0" id="pQN-Db-7ww"/>
                         <outlet property="button_people" destination="mgO-Fy-ilA" id="i4S-je-sah"/>
                         <outlet property="button_place" destination="sOC-HN-01v" id="fNc-H1-meZ"/>
                         <outlet property="button_request" destination="oxj-l0-3nn" id="vTl-gC-UZe"/>
