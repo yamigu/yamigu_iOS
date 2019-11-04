@@ -105,12 +105,9 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     @IBAction func leftBtnPressed(_ sender: Any) {
         if button_left.titleLabel?.text! == "미팅하기" {
             print(button_left.titleLabel?.text)
-            if self.newPage == 0 {
-            } else if self.newPage == 1 {
-                
-            } else {
-                
-            }
+            let id = "\(self.receiveMatchingList[newPage]["id"]!)"
+            
+            self.postRequest("http://147.47.208.44:9999/api/matching/accept_request/?meeting_id=\(id)", bodyString: id)
         } else if button_left.titleLabel?.text! == "대기중" {
             print(button_left.titleLabel?.text)
         }
@@ -119,8 +116,13 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     @IBAction func rightBtnPressed(_ sender: Any) {
         if button_right.titleLabel?.text! == "거절하기" {
             print(button_right.titleLabel?.text)
+            let id = "\(self.receiveMatchingList[newPage]["id"]!)"
+            self.postRequest("http://147.47.208.44:9999/api/matching/decline_request/?meeting_id=\(id)", bodyString: id)
         } else if button_right.titleLabel?.text! == "취소하기" {
             print(button_right.titleLabel?.text)
+            let id = "\(self.requestMatchingList[newPage]["id"]!)"
+            
+            self.postRequest("http://147.47.208.44:9999/api/matching/cancel_request/?meeting_id=\(id)", bodyString: id)
         }
     }
     
