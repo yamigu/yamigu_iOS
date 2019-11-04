@@ -8,6 +8,8 @@
 
 import UIKit
 
+var selectedDate = ""
+
 class HomeVC: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -179,6 +181,14 @@ class HomeVC: UIViewController {
             let destination = segue.destination as! UINavigationController
             let des = destination.visibleViewController as! ChattingVC
             
+            des.meetingDict = self.selectedMyMeeting
+        }
+        
+        if segue.identifier == "segue_editMeeting" {
+            let destination = segue.destination as! UINavigationController
+            let des = destination.visibleViewController as! RegisterMeetingVC
+            
+            des.isEdit = true
             des.meetingDict = self.selectedMyMeeting
         }
     }
@@ -410,11 +420,28 @@ extension HomeVC : HomeTalbeViewDelegate {
     }
     
     func viewWatingList(index: Int) {
+        self.selectedMyMeeting = self.myMeetings[index]
+        let dateString = selectedMyMeeting["date"] as! String
+        
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from:dateString)
+
+        dateFormatter.dateFormat = "M월"
+        let monthString = dateFormatter.string(from: date!)
+
+        dateFormatter.dateFormat = "d일"
+        let dayString = dateFormatter.string(from: date!)
+        
+        self.tabBarController?.selectedIndex = 1
         
     }
     
     func edit(index: Int) {
+        self.selectedMyMeeting = self.myMeetings[index]
         
+        self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
     }
     
     

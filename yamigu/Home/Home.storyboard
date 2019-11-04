@@ -21,6 +21,16 @@
             </objects>
             <point key="canvasLocation" x="611" y="-642"/>
         </scene>
+        <!--RegisterMeeting-->
+        <scene sceneID="9jL-eL-icw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RegisterMeeting" id="rJG-rE-olR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="I5A-R6-8pH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3Y-XQ-t3o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1004" y="-299"/>
+        </scene>
         <!--홈-->
         <scene sceneID="Nn1-pE-b5Q">
             <objects>
@@ -182,6 +192,7 @@
                         <outlet property="topConstraint" destination="A3r-Ia-gLm" id="FwT-cY-bSh"/>
                         <segue destination="DCe-Xv-k4G" kind="show" identifier="segue_matching" id="WxE-ZH-uBt"/>
                         <segue destination="KDb-PD-eKP" kind="show" identifier="segue_chatting" id="lWY-68-Qtx"/>
+                        <segue destination="rJG-rE-olR" kind="show" identifier="segue_editMeeting" id="PL0-hW-syv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VFl-SI-mj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
