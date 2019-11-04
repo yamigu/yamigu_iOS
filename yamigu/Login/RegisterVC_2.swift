@@ -80,7 +80,7 @@ class RegisterVC_2: UIViewController {
             self.userDict["gender"] = 1
             self.userDict["phone"] = "010-2512-8143"
             self.userDict["is_student"] = isCollage
-            self.userDict["age"] = "20"
+            self.userDict["age"] = 20
             
             performSegue(withIdentifier: "segue_register3", sender: self)
             

@@ -135,6 +135,7 @@ class LoginCheckVC: UIViewController {
                         
                         Auth.auth().signIn(withCustomToken: "\(userDictionary["firebase_token"]!)", completion: { (result, error) in
                             
+                            print(error)
                             
                             
                             if error == nil {

@@ -10,9 +10,14 @@ import UIKit
 
 class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet weak var button_send: UIButton!
     
-
+    @IBOutlet weak var button_call: UIButton!
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    var matchingDict = Dictionary<String, Any>()
+    
     let cellId = "cellId"
     let cellLeftId = "cellLeftId"
     
@@ -24,6 +29,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        //matchingDict[""]
         
     }
     
@@ -53,6 +59,12 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         return CGSize(width: view.frame.width, height: height)
     }
+    @IBAction func quitBtnPressed(_ sender: Any) {
+    }
+    @IBAction func sendBtnPressed(_ sender: Any) {
+    }
+    @IBAction func callBtnPressed(_ sender: Any) {
+    }
 }
 
 // migration & model
@@ -73,4 +85,8 @@ extension ChattingVC {
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
         return NSString(string: text).boundingRect(with: size, options: options, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.init(name: "NanumGothic", size: 14.0)]), context: nil)
     }
+}
+
+extension ChattingVC {
+    
 }
