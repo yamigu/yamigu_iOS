@@ -202,34 +202,34 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == self.myMeetingTableView {
-            //let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
-            let cell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
-            //cell.delegate = self
-            //cell.index = indexPath.section
+            let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
+            cell.delegate = self
+            cell.index = indexPath.section
             let meetingDict = myMeetings[indexPath.section]
-//            cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
-//            cell.label_place.text = meetingDict["place_type_name"] as! String
-//
-//            let dateString = meetingDict["date"] as! String
-//            let dateFormatter = DateFormatter()
-//
-//            dateFormatter.dateFormat = "yyyy-MM-dd"
-//            let date = dateFormatter.date(from:dateString)
-//
-//            dateFormatter.dateFormat = "M월"
-//            let monthString = dateFormatter.string(from: date!)
-//
-//            dateFormatter.dateFormat = "d일"
-//            let dayString = dateFormatter.string(from: date!)
-//
-//            cell.label_month.text = monthString
-//            cell.label_day.text = dayString
-//
-//            if daysBetween(start: Date(), end: date!) == 0 {
-//                cell.label_dday.text = "today"
-//            } else {
-//                cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
-//            }
+            cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+            cell.label_place.text = meetingDict["place_type_name"] as! String
+
+            let dateString = meetingDict["date"] as! String
+            let dateFormatter = DateFormatter()
+
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from:dateString)
+
+            dateFormatter.dateFormat = "M월"
+            let monthString = dateFormatter.string(from: date!)
+
+            dateFormatter.dateFormat = "d일"
+            let dayString = dateFormatter.string(from: date!)
+
+            cell.label_month.text = monthString
+            cell.label_day.text = dayString
+
+            if daysBetween(start: Date(), end: date!) == 0 {
+                cell.label_dday.text = "today"
+            } else {
+                cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
+            }
             
             
             return cell
