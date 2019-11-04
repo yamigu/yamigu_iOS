@@ -24,6 +24,9 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     var receiveMatchingList = [Dictionary<String, Any>]()
     var requestMatchingList = [Dictionary<String, Any>]()
     
+    let meetingType = ["2:2 미팅", "3:3 미팅", "4:4 미팅"]
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +86,10 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.button_left.setTitle("미팅하기", for: .normal)
         self.button_right.setTitle("거절하기", for: .normal)
         
+        self.newPage = 0
+        self.label_count.text = String(self.receiveMatchingList.count)
+        self.collectionView.reloadData()
+        
     }
     @IBAction func requestBtnPressed(_ sender: Any) {
         self.button_receive.isSelected = false
@@ -91,10 +98,19 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.button_left.setTitle("대기중", for: .normal)
         self.button_right.setTitle("취소하기", for: .normal)
         
+        self.newPage = 0
+        self.label_count.text = String(self.requestMatchingList.count)
+        self.collectionView.reloadData()
     }
     @IBAction func leftBtnPressed(_ sender: Any) {
         if button_left.titleLabel?.text! == "미팅하기" {
             print(button_left.titleLabel?.text)
+            if self.newPage == 0 {
+            } else if self.newPage == 1 {
+                
+            } else {
+                
+            }
         } else if button_left.titleLabel?.text! == "대기중" {
             print(button_left.titleLabel?.text)
         }
@@ -163,17 +179,31 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 return
             }
             
-            if let _data = data {
-                if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
-                    let str = String(strData)
-                    print(str)
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
+                        print("invalid format")
+                        return
+                        
+                    }
                     
                     DispatchQueue.main.async {
-                        print(str)
+                        // 동작 실행
+                        //print(newValue)
+                        for value in newValue {
+                            self.requestMatchingList.append(value)
+                        }
+                        
+                        self.label_count.text = String(self.requestMatchingList.count)
+                        self.collectionView.reloadData()
+                        
                     }
+                } catch {
+                    print(error)
                 }
-            }else{
-                print("data nil")
             }
         })
         task.resume()
@@ -200,16 +230,31 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 return
             }
             
-            if let _data = data {
-                if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
-                    let str = String(strData)
-                   
-                    DispatchQueue.main.async {
-                        print(str)
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
+                        print("invalid format")
+                        return
+                        
                     }
+                    
+                    DispatchQueue.main.async {
+                        // 동작 실행
+                        //print(newValue)
+                        for value in newValue {
+                            self.receiveMatchingList.append(value)
+                            
+                        }
+                        
+                        self.label_count.text = String(self.receiveMatchingList.count)
+                        self.collectionView.reloadData()
+                    }
+                } catch {
+                    print(error)
                 }
-            }else{
-                print("data nil")
             }
         })
         task.resume()
@@ -267,12 +312,80 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
 
 extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        var returnValue = 0
+        
+        if self.button_receive.isSelected {
+            returnValue = self.receiveMatchingList.count
+        } else if self.button_request.isSelected {
+            returnValue = self.requestMatchingList.count
+        }
+        
+        return returnValue
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "matchCell", for: indexPath) as! MatchCell
         
+        if self.button_receive.isSelected {
+            let dict = receiveMatchingList[indexPath.row]
+            let detailsDict = dict["sender"] as! Dictionary<String, Any>
+            
+            let nickName = detailsDict["openby_nickname"] as! String
+            let age = detailsDict["openby_age"] as! String
+            let belong = detailsDict["openby_belong"] as! String
+            let department = detailsDict["openby_department"] as! String
+            
+            let dateString = detailsDict["date"] as! String
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from:dateString)
+            
+            dateFormatter.dateFormat = "M월"
+            let monthString = dateFormatter.string(from: date!)
+            
+            dateFormatter.dateFormat = "d일"
+            let dayString = dateFormatter.string(from: date!)
+
+
+            cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
+            cell.textview_details.text = detailsDict["appeal"] as! String
+            cell.label_nicknameAndAge.text = "\(nickName)(\(age))"
+            cell.label_belongAndDepartment.text = "\(belong),\(department)"
+            cell.label_meetingDate.text = monthString+dayString
+            cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
+            
+        }
+        else if self.button_request.isSelected {
+            
+            let dict = requestMatchingList[indexPath.row]
+            let detailsDict = dict["receiver"] as! Dictionary<String, Any>
+            
+            let nickName = detailsDict["openby_nickname"] as! String
+            let age = detailsDict["openby_age"] as! String
+            let belong = detailsDict["openby_belong"] as! String
+            let department = detailsDict["openby_department"] as! String
+            
+            let dateString = detailsDict["date"] as! String
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from:dateString)
+            
+            dateFormatter.dateFormat = "M월"
+            let monthString = dateFormatter.string(from: date!)
+            
+            dateFormatter.dateFormat = "d일"
+            let dayString = dateFormatter.string(from: date!)
+
+
+            cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
+            cell.textview_details.text = detailsDict["appeal"] as! String
+            cell.label_nicknameAndAge.text = "\(nickName)(\(age))"
+            cell.label_belongAndDepartment.text = "\(belong),\(department)"
+            cell.label_meetingDate.text = monthString+dayString
+            cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
+        }
         
         
         return cell
