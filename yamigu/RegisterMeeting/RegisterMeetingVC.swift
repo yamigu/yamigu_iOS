@@ -115,11 +115,69 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     @IBAction func editMeetingBtnPressed(_ sender: Any) {
-        
+        let id = "\(self.meetingDict["id"]!)"
+        let dict : [String: Any] = ["meeting_id" : id]
+
+        self.postRequest2("http://147.47.208.44:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
     }
     
     @IBAction func deleteCardBtnPressed(_ sender: Any) {
+        let id = "\(self.meetingDict["id"]!)"
+        let dict : [String: Any] = ["meeting_id" : id]
+        print(dict)
+
+        self.postRequest2("http://147.47.208.44:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+    }
+    
+    func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
         
+        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //request.httpBody = jsonData
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
+        //JSONSerialization.isValidJSONObject(requestDict)
+        //request.httpBody = data
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
+            let jsonString = String(data: data, encoding: .utf8) {
+            request.httpBody = jsonString.data(using: .utf8)
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, String> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            }.resume()
     }
     
     @IBAction func peopleBtnPressed(_ sender: Any) {

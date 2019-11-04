@@ -124,7 +124,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             let id = "\(self.requestMatchingList[newPage]["id"]!)"
             let dict : [String: Any] = ["request_id" : id]
             
-            self.postRequest("http://147.47.208.44:9999/api/matching/cancel_request/)", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+            self.postRequest("http://147.47.208.44:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
         }
     }
     
