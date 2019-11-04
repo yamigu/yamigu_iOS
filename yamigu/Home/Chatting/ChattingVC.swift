@@ -17,6 +17,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tf_message: UITextField!
+    @IBOutlet weak var constraint_bottom: NSLayoutConstraint!
     
     var meetingDict = Dictionary<String, Any>()
     var matchDict = Dictionary<String, Any>()
@@ -43,7 +44,34 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         ref = Database.database().reference()
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            constraint_bottom.constant = keyboardHeight
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        constraint_bottom.constant = 0.0
+        self.view.layoutIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {

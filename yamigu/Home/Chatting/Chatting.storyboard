@@ -104,6 +104,7 @@
                         <outlet property="button_call" destination="tsn-kg-U3n" id="0FZ-tw-Kc4"/>
                         <outlet property="button_send" destination="NiN-5O-zVw" id="8v7-Y3-Tol"/>
                         <outlet property="collectionView" destination="i6I-mQ-vrb" id="83q-bi-rsW"/>
+                        <outlet property="constraint_bottom" destination="wip-N2-zUS" id="gcq-7o-hML"/>
                         <outlet property="tf_message" destination="pTT-4z-iyZ" id="e8L-GD-n20"/>
                     </connections>
                 </viewController>
