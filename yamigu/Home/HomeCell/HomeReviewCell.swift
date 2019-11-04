@@ -23,6 +23,10 @@ class HomeReviewCell: UITableViewCell {
     @IBOutlet weak var textview_review: UITextView!
     @IBOutlet weak var button_skip: UIButton!
     
+    var ratedLook = 0.0
+    var ratedFun = 0.0
+    var ratedManner = 0.0
+    
     @IBOutlet weak var writeReviewEndView: UIView!
     
     override func awakeFromNib() {
@@ -30,6 +34,33 @@ class HomeReviewCell: UITableViewCell {
         // Initialization code
         
         setupUI()
+        
+        ratingLook.didTouchCosmos = { rating in
+            self.ratedLook = rating
+            print("ratedLook: \(self.ratedLook)")
+        }
+        
+        ratingFun.didTouchCosmos = { rating in
+            self.ratedFun = rating
+            print("ratedFun: \(self.ratedFun)")
+        }
+        
+        ratingManner.didTouchCosmos = { rating in
+            self.ratedManner = rating
+            print("ratedManner: \(self.ratedManner)")
+        }
+        
+        ratingLook.didFinishTouchingCosmos = { rating in
+            self.checkRatingDone()
+        }
+        
+        ratingFun.didFinishTouchingCosmos = { rating in
+            self.checkRatingDone()
+        }
+        
+        ratingManner.didFinishTouchingCosmos = { rating in
+            self.checkRatingDone()
+        }
     }
     
 
@@ -37,6 +68,13 @@ class HomeReviewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func checkRatingDone() {
+        if ratedLook != 0.0 && ratedFun != 0.0 && ratedManner != 0.0 {
+            textReviewContainerView.isHidden = false
+            self.bringSubviewToFront(textReviewContainerView)
+        }
     }
     
     @IBAction func writeReviewBtnPressed(_ sender: Any) {
@@ -61,9 +99,8 @@ extension HomeReviewCell: UITextViewDelegate {
         textReviewContainerView.isHidden = true
         writeReviewEndView.isHidden = true
         
-        button_skip.underline()
-        
         textview_review.delegate = self
+        textview_review.textContainerInset = UIEdgeInsets(top: 10, left: 13, bottom: 10, right: 13)
     }
     
     func textViewSetupView() {

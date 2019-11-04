@@ -75,6 +75,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     @IBAction func backBtnPreesed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func receiveBtnPressed(_ sender: Any) {
         self.button_receive.isSelected = true
         self.button_request.isSelected = false
@@ -89,8 +90,6 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         
         self.button_left.setTitle("대기중", for: .normal)
         self.button_right.setTitle("취소하기", for: .normal)
-        
-    
         
     }
     @IBAction func leftBtnPressed(_ sender: Any) {
