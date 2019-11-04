@@ -45,6 +45,8 @@ class HomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+        
+        
     }
     @IBAction func addMeetingBtnPressed(_ sender: Any) {
         let tabView = self.tabBarController as! MainTC
@@ -149,6 +151,8 @@ class HomeVC: UIViewController {
                         }
                         
                         self.myMeetingTableView.reloadData()
+                        let tabbarController = self.tabBarController as! MainTC
+                        tabbarController.menuButton.setTitle("\(self.myMeetings.count)/3", for: .normal)
                     }
                 } catch {
                     print(error)

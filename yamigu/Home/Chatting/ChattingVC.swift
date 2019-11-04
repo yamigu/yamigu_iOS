@@ -30,6 +30,33 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     var ref: DatabaseReference!
     var refHandle : DatabaseHandle!
    
+    func checkId() {
+        print(meetingDict)
+        
+        var received = Dictionary<String, Any>()
+        var sent = Dictionary<String, Any>()
+        
+        received = meetingDict["received_request"] as! Dictionary<String, Any>
+        sent = meetingDict["sent_request"] as! Dictionary<String, Any>
+        
+        var received_request = Array<Dictionary<String, Any>>()
+        var sent_request = Array<Dictionary<String, Any>>()
+        
+        received_request = received["data"] as! Array<Dictionary<String, Any>>
+        sent_request = sent["data"] as! Array<Dictionary<String, Any>>
+        
+        for dict in received_request {
+            if (dict["is_selected"] as! Bool) {
+                matchingId = "\(dict["id"])"
+            }
+        }
+        
+        for dict in sent_request {
+            if (dict["is_selected"] as! Bool) {
+                matchingId = "\(dict["id"])"
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +70,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         matchingId = "\(matchDict["id"]!)"
         
         ref = Database.database().reference()
+        
+        checkId()
         
         NotificationCenter.default.addObserver(
             self,
