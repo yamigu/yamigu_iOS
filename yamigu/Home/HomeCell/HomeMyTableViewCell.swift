@@ -12,12 +12,14 @@ protocol HomeTalbeViewDelegate: class {
     func viewApplyList(index: Int)
     func viewWatingList(index: Int)
     func edit(index: Int)
+    func chat(index: Int)
 }
 
 class HomeMyTableViewCell: UITableViewCell {
 
     weak var delegate : HomeTalbeViewDelegate?
     var index : Int!
+    @IBOutlet weak var constraint_bottomHeight: NSLayoutConstraint!
     @IBOutlet weak var label_chattingCount: UILabel!
     @IBOutlet weak var label_chattingTime: UILabel!
     @IBOutlet weak var label_lastChat: UILabel!
@@ -30,6 +32,7 @@ class HomeMyTableViewCell: UITableViewCell {
     @IBOutlet weak var button_applyTeam: UIButton!
     @IBOutlet weak var button_watingTeam: UIButton!
     @IBOutlet weak var button_edit: UIButton!
+    @IBOutlet weak var view_bottom: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -47,6 +50,9 @@ class HomeMyTableViewCell: UITableViewCell {
         // Configure the view for the selected state
         
         
+    }
+    @IBAction func chatBtnPressed(_ sender: Any) {
+        delegate?.chat(index: index)
     }
     
     @IBAction func applyTeamBtnPressed(_ sender: Any) {

@@ -23,6 +23,8 @@ class HomeVC: UIViewController {
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
     
+    var matchingMeetingCount = 0
+    
     var selectedMyMeeting = Dictionary<String, Any>()
     
     let meetingType = ["2:2 소개팅", "3:3 미팅", "4:4 미팅"]
@@ -133,6 +135,9 @@ class HomeVC: UIViewController {
                     DispatchQueue.main.async {
                         for value in newValue {
                             self.myMeetings.append(value)
+                            if (value["is_matched"] as! Bool) {
+                                self.matchingMeetingCount += 1
+                            }
                         }
                         
                         if self.myMeetings.count == 0 {
@@ -164,6 +169,13 @@ class HomeVC: UIViewController {
             let des = destination.visibleViewController as! MatchVC
             
             des.matchingDict = self.selectedMyMeeting
+        }
+        
+        if segue.identifier == "segue_chatting"{
+            let destination = segue.destination as! UINavigationController
+            let des = destination.visibleViewController as! ChattingVC
+            
+            des.meetingDict = self.selectedMyMeeting
         }
     }
     
@@ -210,6 +222,12 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
             cell.label_place.text = meetingDict["place_type_name"] as! String
 
+            if !(meetingDict["is_matched"] as! Bool) {
+                cell.view_bottom.isHidden = true
+                cell.constraint_bottomHeight.constant = 0.0
+                cell.layoutIfNeeded()
+            }
+            
             let dateString = meetingDict["date"] as! String
             let dateFormatter = DateFormatter()
 
@@ -260,7 +278,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         let mymeetingCount = self.myMeetings.count
         let todaymeetingCount = self.todayMeetings.count
         
-        var height = 211.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1)
+        var height = 167.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(44 * matchingMeetingCount)
         
         self.myMeetingTableViewHeight.constant = CGFloat(height)
         var height2 = 86.0 * Double(todaymeetingCount) + 11.0 * Double(todaymeetingCount - 1)
@@ -302,6 +320,10 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if tableView == self.myMeetingTableView {
             
+            let meetingDict = self.myMeetings[indexPath.section]
+            if !(meetingDict["is_matched"] as! Bool) {
+                return 167.0
+            }
             return 211.0
             
         } else if tableView == self.todayMeetingTableView {
@@ -371,6 +393,12 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 }
 
 extension HomeVC : HomeTalbeViewDelegate {
+    func chat(index: Int) {
+        self.selectedMyMeeting = self.myMeetings[index]
+        
+        self.performSegue(withIdentifier: "segue_chatting", sender: self)
+    }
+    
     func viewApplyList(index: Int) {
         self.selectedMyMeeting = self.myMeetings[index]
         

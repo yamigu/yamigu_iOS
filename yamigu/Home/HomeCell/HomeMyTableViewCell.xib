@@ -208,17 +208,27 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0i-8T-aZD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <connections>
+                                    <action selector="chatBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ei7-Jl-SNa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.96078431372549022" blue="0.93725490196078431" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="a5P-zG-Ayb" secondAttribute="trailing" constant="11" id="A2F-R0-BcD"/>
+                            <constraint firstItem="F0i-8T-aZD" firstAttribute="height" secondItem="Jtd-ZS-Hl9" secondAttribute="height" id="Bd1-7C-bfF"/>
+                            <constraint firstItem="F0i-8T-aZD" firstAttribute="width" secondItem="Jtd-ZS-Hl9" secondAttribute="width" id="JBE-1Q-cvX"/>
                             <constraint firstItem="xK3-x8-cDp" firstAttribute="centerY" secondItem="w3s-EF-6la" secondAttribute="centerY" id="K5H-K9-7ks"/>
+                            <constraint firstItem="F0i-8T-aZD" firstAttribute="centerX" secondItem="Jtd-ZS-Hl9" secondAttribute="centerX" id="KK7-ce-iuh"/>
                             <constraint firstItem="w3s-EF-6la" firstAttribute="centerY" secondItem="Jtd-ZS-Hl9" secondAttribute="centerY" id="UWX-im-Owd"/>
                             <constraint firstAttribute="trailing" secondItem="5le-Jb-Sag" secondAttribute="trailing" constant="20" id="UmJ-AU-e7f"/>
                             <constraint firstItem="w3s-EF-6la" firstAttribute="leading" secondItem="Jtd-ZS-Hl9" secondAttribute="leading" constant="9" id="btz-hg-8jy"/>
                             <constraint firstItem="xK3-x8-cDp" firstAttribute="leading" secondItem="w3s-EF-6la" secondAttribute="trailing" constant="7" id="cYU-Zs-vEv"/>
                             <constraint firstAttribute="height" constant="44" id="d4u-zP-Nbp"/>
                             <constraint firstItem="5le-Jb-Sag" firstAttribute="top" secondItem="a5P-zG-Ayb" secondAttribute="bottom" id="qAN-zL-C0q"/>
+                            <constraint firstItem="F0i-8T-aZD" firstAttribute="centerY" secondItem="Jtd-ZS-Hl9" secondAttribute="centerY" id="smI-mP-YRo"/>
                         </constraints>
                     </view>
                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매칭 완료!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-ds-GOL">
@@ -234,19 +244,19 @@
                     <constraint firstItem="dwT-ci-PNk" firstAttribute="centerY" secondItem="XGT-RK-ha6" secondAttribute="centerY" id="3JT-Jo-kt1"/>
                     <constraint firstItem="r7v-ds-GOL" firstAttribute="leading" secondItem="3Rz-JY-fCG" secondAttribute="leading" id="5yq-aP-gzT"/>
                     <constraint firstItem="6Iz-9r-dZy" firstAttribute="centerX" secondItem="0nZ-zu-5Mf" secondAttribute="centerX" id="EAR-nw-kRo"/>
-                    <constraint firstAttribute="bottom" secondItem="DAP-7S-FoU" secondAttribute="bottom" constant="44" id="FBB-so-buC"/>
                     <constraint firstItem="3Rz-JY-fCG" firstAttribute="leading" secondItem="gdu-86-6w8" secondAttribute="leading" id="InB-cY-yaN"/>
                     <constraint firstItem="6Iz-9r-dZy" firstAttribute="centerY" secondItem="Rf8-Df-bWc" secondAttribute="bottom" id="Jsz-ev-IUw"/>
                     <constraint firstAttribute="trailing" secondItem="dwT-ci-PNk" secondAttribute="trailing" constant="42" id="Kp4-gO-TGH"/>
                     <constraint firstItem="3Rz-JY-fCG" firstAttribute="top" secondItem="r7v-ds-GOL" secondAttribute="bottom" constant="-4" id="LtN-Bt-0Ao"/>
-                    <constraint firstAttribute="bottom" secondItem="XGT-RK-ha6" secondAttribute="bottom" constant="55" id="OOJ-mR-IJ3"/>
                     <constraint firstItem="Jtd-ZS-Hl9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TGu-tC-HAC"/>
                     <constraint firstItem="80R-Th-7fO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="UbQ-c8-cMS"/>
                     <constraint firstItem="eVp-Q4-GLX" firstAttribute="leading" secondItem="XGT-RK-ha6" secondAttribute="leading" id="Xzy-Ri-ynX"/>
                     <constraint firstItem="0nZ-zu-5Mf" firstAttribute="centerY" secondItem="3Rz-JY-fCG" secondAttribute="centerY" id="ZeD-oB-rkX"/>
+                    <constraint firstItem="Jtd-ZS-Hl9" firstAttribute="top" secondItem="XGT-RK-ha6" secondAttribute="bottom" constant="11" id="bnk-g5-Mkl"/>
                     <constraint firstItem="XGT-RK-ha6" firstAttribute="top" secondItem="eVp-Q4-GLX" secondAttribute="bottom" constant="-8.5" id="e7T-bD-GUD"/>
                     <constraint firstAttribute="trailing" secondItem="0nZ-zu-5Mf" secondAttribute="trailing" constant="50" id="eaE-d7-yv6"/>
                     <constraint firstItem="gdu-86-6w8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="30" id="fV9-zN-hw3"/>
+                    <constraint firstItem="Jtd-ZS-Hl9" firstAttribute="top" secondItem="DAP-7S-FoU" secondAttribute="bottom" id="g7n-8D-XYq"/>
                     <constraint firstItem="XGT-RK-ha6" firstAttribute="leading" secondItem="gdu-86-6w8" secondAttribute="leading" id="k3h-fU-Ura"/>
                     <constraint firstItem="0Lu-jK-3qe" firstAttribute="centerX" secondItem="0nZ-zu-5Mf" secondAttribute="centerX" id="kzf-3p-iva"/>
                     <constraint firstItem="0Lu-jK-3qe" firstAttribute="top" secondItem="0nZ-zu-5Mf" secondAttribute="top" constant="-30" id="m8t-cN-HGx"/>
@@ -271,6 +281,7 @@
                 <outlet property="button_applyTeam" destination="XGT-RK-ha6" id="trZ-P7-cBl"/>
                 <outlet property="button_edit" destination="80R-Th-7fO" id="DqA-eb-hdm"/>
                 <outlet property="button_watingTeam" destination="dwT-ci-PNk" id="ZI1-tX-z42"/>
+                <outlet property="constraint_bottomHeight" destination="d4u-zP-Nbp" id="NZY-Dz-JXe"/>
                 <outlet property="label_chattingCount" destination="5le-Jb-Sag" id="oOu-dB-Qak"/>
                 <outlet property="label_chattingTime" destination="a5P-zG-Ayb" id="RVB-gw-10Y"/>
                 <outlet property="label_day" destination="0nZ-zu-5Mf" id="pKk-hB-RdL"/>
@@ -280,6 +291,7 @@
                 <outlet property="label_place" destination="3Rz-JY-fCG" id="yR6-ZP-Jwx"/>
                 <outlet property="label_teamCount" destination="eVp-Q4-GLX" id="3tc-Dd-Npx"/>
                 <outlet property="label_type" destination="gdu-86-6w8" id="qnU-3m-Adz"/>
+                <outlet property="view_bottom" destination="Jtd-ZS-Hl9" id="lfq-Zo-Hzf"/>
             </connections>
             <point key="canvasLocation" x="140" y="137"/>
         </tableViewCell>
