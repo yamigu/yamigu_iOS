@@ -106,8 +106,8 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         if button_left.titleLabel?.text! == "미팅하기" {
             print(button_left.titleLabel?.text)
             let id = "\(self.receiveMatchingList[newPage]["id"]!)"
-            
-            self.postRequest("http://147.47.208.44:9999/api/matching/accept_request/?meeting_id=\(id)", bodyString: id)
+            let dict : [String: Any] = ["request_id" : id]
+            self.postRequest("http://147.47.208.44:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
         } else if button_left.titleLabel?.text! == "대기중" {
             print(button_left.titleLabel?.text)
         }
@@ -117,22 +117,41 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         if button_right.titleLabel?.text! == "거절하기" {
             print(button_right.titleLabel?.text)
             let id = "\(self.receiveMatchingList[newPage]["id"]!)"
-            self.postRequest("http://147.47.208.44:9999/api/matching/decline_request/?meeting_id=\(id)", bodyString: id)
+            let dict : [String: Any] = ["request_id" : id]
+            self.postRequest("http://147.47.208.44:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
         } else if button_right.titleLabel?.text! == "취소하기" {
             print(button_right.titleLabel?.text)
             let id = "\(self.requestMatchingList[newPage]["id"]!)"
+            let dict : [String: Any] = ["request_id" : id]
             
-            self.postRequest("http://147.47.208.44:9999/api/matching/cancel_request/?meeting_id=\(id)", bodyString: id)
+            self.postRequest("http://147.47.208.44:9999/api/matching/cancel_request/)", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
         }
     }
     
-    func postRequest(_ urlString: String, bodyString: String){
+    func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
+        
+        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //request.httpBody = jsonData
+        
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        request.httpBody = body
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
+        //JSONSerialization.isValidJSONObject(requestDict)
+        //request.httpBody = data
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+            let jsonString = String(data: data, encoding: .utf8) {
+            request.httpBody = jsonString.data(using: .utf8)
+        }
+        
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{

@@ -168,6 +168,7 @@
 		5582E2362369444F00A9E0FE /* ChattingLeftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingLeftCell.swift; sourceTree = "<group>"; };
 		5582E23823696F1C00A9E0FE /* ChattingImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingImageCell.swift; sourceTree = "<group>"; };
 		5582E23C236C229200A9E0FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		5582E23E2370241300A9E0FE /* yamigu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = yamigu.entitlements; sourceTree = "<group>"; };
 		55B09BE32349E996006051C2 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		55B09BE52349E9A4006051C2 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceTableViewCell.swift; sourceTree = "<group>"; };
@@ -324,6 +325,7 @@
 		5528EA8723407A4000461B2A /* yamigu */ = {
 			isa = PBXGroup;
 			children = (
+				5582E23E2370241300A9E0FE /* yamigu.entitlements */,
 				04618B9123481713002DF8A8 /* fonts */,
 				5528EAC22340961C00461B2A /* Login */,
 				5528EAB923407E9600461B2A /* MainOnBoarding */,
@@ -570,6 +572,14 @@
 				TargetAttributes = {
 					5528EA8423407A4000461B2A = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					5528EA9B23407A4200461B2A = {
 						CreatedOnToolsVersion = 10.2.1;
@@ -959,6 +969,7 @@
 			baseConfigurationReference = 38F428581F082323AF225DA3 /* Pods-yamigu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
@@ -985,6 +996,7 @@
 			baseConfigurationReference = D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;

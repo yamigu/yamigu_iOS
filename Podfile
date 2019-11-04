@@ -11,6 +11,7 @@ target 'yamigu' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'Firebase/Messaging'
   pod 'Toast'
   pod 'MiniLayout'
   pod 'MultiSlider'

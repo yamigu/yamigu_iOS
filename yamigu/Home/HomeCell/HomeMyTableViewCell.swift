@@ -43,6 +43,11 @@ class HomeMyTableViewCell: UITableViewCell {
         
         
     }
+    
+    override func prepareForReuse() {
+        self.constraint_bottomHeight.constant = 44.0
+        self.layoutIfNeeded()
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
