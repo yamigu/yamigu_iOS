@@ -230,8 +230,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         var json = [String:Any]()
         
         json["receiverId"] = matchDict["openby_uid"]!
-        json["message"] = self.tf_message.text!
-        json["activity"] = "ChattingActivity"
+        //json["message"] = self.tf_message.text!
+        //json["activity"] = "ChattingActivity"
         
         var intent_args = [String:Any]()
         intent_args["partner_age"] = matchDict["openby_age"]!
@@ -256,6 +256,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         data["intentArgs"] = intent_args
         
         json["data"] = data
+        
+        
         self.postRequest("http://147.47.208.44:9999/api/fcm/send_push/", bodyString: "", json: json)
         
         self.tf_message.text = ""
@@ -304,13 +306,6 @@ extension ChattingVC {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        //request.httpBody = body
-        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        //request.httpBody = body
-        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
-        //JSONSerialization.isValidJSONObject(requestDict)
-        //request.httpBody = data
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
             let jsonString = String(data: data, encoding: .utf8) {
@@ -321,7 +316,7 @@ extension ChattingVC {
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
                 
             }
             if let data = data {

@@ -148,7 +148,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         //JSONSerialization.isValidJSONObject(requestDict)
         //request.httpBody = data
         
-        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
             let jsonString = String(data: data, encoding: .utf8) {
             request.httpBody = jsonString.data(using: .utf8)
         }
