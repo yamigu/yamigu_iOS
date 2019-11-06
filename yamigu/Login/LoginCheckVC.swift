@@ -56,8 +56,10 @@ class LoginCheckVC: UIViewController {
             //self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=iOS")
             //performSegue(withIdentifier: "segue_onboarding", sender: self)
         } else {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+            }
             
-            performSegue(withIdentifier: "segue_onboarding", sender: self)
         }
     }
     
@@ -160,7 +162,10 @@ class LoginCheckVC: UIViewController {
                 } catch {
                     print(error)
                     // 회원가입 이력이 없는경우
-                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    }
+                    
                 }
             }
         }.resume()
@@ -212,7 +217,10 @@ class LoginCheckVC: UIViewController {
                             
                             if error == nil {
                                 print("firebase Auth = \(Auth.auth().currentUser?.uid)")
-                                self.performSegue(withIdentifier: "segue_main", sender: self)
+                                DispatchQueue.main.async {
+                                    self.performSegue(withIdentifier: "segue_main", sender: self)
+                                }
+                                
                                 
                                 
                             }
@@ -221,7 +229,10 @@ class LoginCheckVC: UIViewController {
                 } catch {
                     print(error)
                     // 회원가입 이력이 없는경우
-                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    }
+                    
                 }
             }
             

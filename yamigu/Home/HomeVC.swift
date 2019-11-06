@@ -32,6 +32,11 @@ class HomeVC: UIViewController {
     let meetingType = ["2:2 소개팅", "3:3 미팅", "4:4 미팅"]
     let places = ["신촌/홍대", "건대/왕십리", "강남", "수원역", "인천 송도", "부산 서면"]
     
+    var reviewDict = Dictionary<String, Any>()
+    var ratedLook = ""
+    var ratedFun = ""
+    var ratedManner = ""
+    var reviewText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -169,6 +174,57 @@ class HomeVC: UIViewController {
         return Calendar.current.dateComponents([.day], from: start, to: end).day!
     }
     
+    func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
+        
+        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //request.httpBody = jsonData
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        //request.httpBody = body
+        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
+        //JSONSerialization.isValidJSONObject(requestDict)
+        //request.httpBody = data
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
+            let jsonString = String(data: data, encoding: .utf8) {
+            request.httpBody = jsonString.data(using: .utf8)
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, String> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            }.resume()
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_matching" {
             let destination = segue.destination as! UINavigationController
@@ -228,8 +284,9 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == self.myMeetingTableView {
+            // matching cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
-            //let cell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
+            
             cell.delegate = self
             cell.index = indexPath.section
             let meetingDict = myMeetings[indexPath.section]
@@ -263,8 +320,18 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
             }
             
+            // review cell
+            let reviewCell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
+            reviewCell.delegate = self
+            
+            self.reviewDict = myMeetings[indexPath.section]
+            self.ratedLook = "\(reviewCell.ratedLook)"
+            self.ratedFun = "\(reviewCell.ratedFun)"
+            self.ratedManner = "\(reviewCell.ratedManner)"
+            self.reviewText = reviewCell.textview_review.text
             
             return cell
+            
         } else if tableView == self.todayMeetingTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeExpectedTableViewCell") as! HomeExpectedTableViewCell
             let meetingDict = todayMeetings[indexPath.section]
@@ -434,6 +501,7 @@ extension HomeVC : HomeTalbeViewDelegate {
         dateFormatter.dateFormat = "d일"
         let dayString = dateFormatter.string(from: date!)
         
+        selectedDate = monthString+" "+dayString
         self.tabBarController?.selectedIndex = 1
         
     }
@@ -447,3 +515,22 @@ extension HomeVC : HomeTalbeViewDelegate {
     
     
 }
+
+extension HomeVC: HomeReviewDelegate {
+    func sendReview() {
+        let id = "\(self.reviewDict["id"]!)"
+        let dict : [String: Any] = ["meeting_id" : id]
+
+        self.postRequest2("http://147.47.208.44:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(self.reviewText)", json: dict)
+    }
+    
+    func sendRatings() {
+        let id = "\(self.reviewDict["id"]!)"
+        let dict : [String: Any] = ["meeting_id" : id]
+
+        self.postRequest2("http://147.47.208.44:9999/api/meetings/rate/", bodyString: "\"meeting_id\"=\"\(id)\"&visual=\(self.ratedLook)&fun=\(self.ratedFun)&manner=\(self.ratedManner)", json: dict)
+    }
+}
+
+
+
