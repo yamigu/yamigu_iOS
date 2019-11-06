@@ -119,17 +119,6 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         cell.clipsToBounds = true
         cell.tv_description.centerVertically()
         
-        let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
-        
-        if let imageUrl = URL(string: "\(meetingObj["openby_profile"]!)") {
-            print("openby_profile = \(meetingObj["openby_profile"]!)")
-            cell.image_profile.downloaded(from: imageUrl)
-        }
-        
-        cell.constraintHeight.constant = 0.0
-        cell.button_meeting.isHidden = true
-        
-        cell.delegate = self
         if self.matchingList.count != 0 {
             let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
             

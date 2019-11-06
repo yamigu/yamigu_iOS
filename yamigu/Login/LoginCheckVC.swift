@@ -160,6 +160,10 @@ class LoginCheckVC: UIViewController {
                     DispatchQueue.main.async {
                         // 동작 실행
                         var token = ""
+                        authKey = newValue["key"]!
+                        
+                        
+                        self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
                         
                         InstanceID.instanceID().instanceID { (result, error) in
                             if let error = error {
@@ -171,16 +175,13 @@ class LoginCheckVC: UIViewController {
                                 
                                 var data = [String: Any]()
                                 data["registration_id"] = token
-                                data["type"] = "android"
+                                data["type"] = "ios"
                                 
-                                self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=android", json: data)
+                                self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
                             }
                         }
                         
-                        authKey = newValue["key"]!
                         
-                        
-                        self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
                     }
                 } catch {
                     print(error)
