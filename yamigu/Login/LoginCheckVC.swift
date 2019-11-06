@@ -100,7 +100,7 @@ class LoginCheckVC: UIViewController {
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
                 
             }
             if let data = data {
@@ -168,16 +168,18 @@ class LoginCheckVC: UIViewController {
                                 print("Remote instance ID token: \(result.token)")
                                 print("Remote InstanceID token: \(result.token)")
                                 token = result.token
+                                
+                                var data = [String: Any]()
+                                data["registration_id"] = token
+                                data["type"] = "android"
+                                
+                                self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=android", json: data)
                             }
                         }
                         
                         authKey = newValue["key"]!
                         
-                        var data = [String: Any]()
-                        data["registration_id"] = token
-                        data["type"] = "android"
                         
-                        self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=android", json: data)
                         self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
                     }
                 } catch {
