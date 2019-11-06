@@ -9,7 +9,14 @@
 import UIKit
 import Cosmos
 
+protocol HomeReviewDelegate: class {
+    func sendReview()
+    func sendRatings()
+}
+
 class HomeReviewCell: UITableViewCell {
+    
+    weak var delegate : HomeReviewDelegate?
     
     @IBOutlet weak var label_meetingDate: UILabel!
     @IBOutlet weak var button_writeReview: UIButton!
@@ -74,6 +81,8 @@ class HomeReviewCell: UITableViewCell {
         if ratedLook != 0.0 && ratedFun != 0.0 && ratedManner != 0.0 {
             textReviewContainerView.isHidden = false
             self.bringSubviewToFront(textReviewContainerView)
+            
+            delegate?.sendRatings()
         }
     }
     
@@ -85,6 +94,8 @@ class HomeReviewCell: UITableViewCell {
     
     @IBAction func sendToYamiguBtnPressed(_ sender: Any) {
         writeReviewEndView.isHidden = false
+        
+        delegate?.sendReview()
     }
     
     @IBAction func skipBtnPressed(_ sender: Any) {

@@ -28,8 +28,11 @@ class WatingVC: UIViewController {
     var matchingList = [Dictionary<String, Any>]()
     
     var selectedMatching = Dictionary<String, Any>()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(matchingList)
         
         setupTableView()
         backgroundVIew.isHidden = true
@@ -39,7 +42,6 @@ class WatingVC: UIViewController {
         
         var date = Date()
         var dateComponents = DateComponents()
-        
         
         for i in 0..<7 {
             dateComponents.setValue(i, for: .day);
@@ -81,6 +83,7 @@ class WatingVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.makeBody()
+        
     }
     
     @IBAction func dateBtnPressed(_ sender: Any) {
@@ -116,6 +119,17 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         cell.clipsToBounds = true
         cell.tv_description.centerVertically()
         
+        let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
+        
+        if let imageUrl = URL(string: "\(meetingObj["openby_profile"]!)") {
+            print("openby_profile = \(meetingObj["openby_profile"]!)")
+            cell.image_profile.downloaded(from: imageUrl)
+        }
+        
+        cell.constraintHeight.constant = 0.0
+        cell.button_meeting.isHidden = true
+        
+        cell.delegate = self
         if self.matchingList.count != 0 {
             let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
             
@@ -173,7 +187,6 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         
         return matchingList.count
     }
@@ -240,7 +253,6 @@ extension WatingVC: FilterViewDelegate {
     
     func typeBtnDeSelected(index: Int) {
         
-        
         if let index = self.selectedType.firstIndex(of: index) {
             self.selectedType.remove(at: index)
         }
@@ -249,7 +261,6 @@ extension WatingVC: FilterViewDelegate {
     }
     
     func placeBtnDeSelected(index: Int) {
-        
         
         if let index = self.selectedPlace.firstIndex(of: index) {
             self.selectedPlace.remove(at: index)
@@ -446,7 +457,7 @@ extension WatingVC: WatingTableViewDelegate {
                     
                 }
             }
-            }.resume()
+        }.resume()
     }
     
 }

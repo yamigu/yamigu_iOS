@@ -108,6 +108,10 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             let id = "\(self.receiveMatchingList[newPage]["id"]!)"
             let dict : [String: Any] = ["request_id" : id]
             self.postRequest("http://147.47.208.44:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+            
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
         } else if button_left.titleLabel?.text! == "대기중" {
             print(button_left.titleLabel?.text)
         }
@@ -119,12 +123,18 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             let id = "\(self.receiveMatchingList[newPage]["id"]!)"
             let dict : [String: Any] = ["request_id" : id]
             self.postRequest("http://147.47.208.44:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+            
         } else if button_right.titleLabel?.text! == "취소하기" {
             print(button_right.titleLabel?.text)
             let id = "\(self.requestMatchingList[newPage]["id"]!)"
             let dict : [String: Any] = ["request_id" : id]
             
             self.postRequest("http://147.47.208.44:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+            
+        }
+        
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -367,7 +377,10 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             
             dateFormatter.dateFormat = "d일"
             let dayString = dateFormatter.string(from: date!)
-
+            
+            if let imageUrl = URL(string: "\(detailsDict["openby_profile"]!)") {
+                cell.image_profile.downloaded(from: imageUrl)
+            }
 
             cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
             cell.textview_details.text = detailsDict["appeal"] as! String
@@ -399,6 +412,9 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             dateFormatter.dateFormat = "d일"
             let dayString = dateFormatter.string(from: date!)
 
+            if let imageUrl = URL(string: "\(detailsDict["openby_profile"]!)") {
+                cell.image_profile.downloaded(from: imageUrl)
+            }
 
             cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
             cell.textview_details.text = detailsDict["appeal"] as! String

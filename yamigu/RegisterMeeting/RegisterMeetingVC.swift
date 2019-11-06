@@ -123,6 +123,10 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         let dict : [String: Any] = ["meeting_id" : id]
 
         self.postRequest2("http://147.47.208.44:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
+        
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func deleteCardBtnPressed(_ sender: Any) {
@@ -131,6 +135,10 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         print(dict)
 
         self.postRequest2("http://147.47.208.44:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+        
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
