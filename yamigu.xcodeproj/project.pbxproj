@@ -59,6 +59,7 @@
 		5582E23923696F1C00A9E0FE /* ChattingImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E23823696F1C00A9E0FE /* ChattingImageCell.swift */; };
 		5582E23D236C229200A9E0FE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5582E23C236C229200A9E0FE /* GoogleService-Info.plist */; };
 		5582E2402372B63200A9E0FE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5582E23F2372B63200A9E0FE /* StoreKit.framework */; };
+		5582E2422372BE4900A9E0FE /* PushKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5582E2412372BE4900A9E0FE /* PushKit.framework */; };
 		55B09BE42349E996006051C2 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55B09BE32349E996006051C2 /* More.storyboard */; };
 		55B09BE62349E9A4006051C2 /* MoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE52349E9A4006051C2 /* MoreVC.swift */; };
 		55B09BEA2349E9D4006051C2 /* CooperatePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */; };
@@ -171,6 +172,7 @@
 		5582E23C236C229200A9E0FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5582E23E2370241300A9E0FE /* yamigu.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = yamigu.entitlements; sourceTree = "<group>"; };
 		5582E23F2372B63200A9E0FE /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		5582E2412372BE4900A9E0FE /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
 		55B09BE32349E996006051C2 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 		55B09BE52349E9A4006051C2 /* MoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreVC.swift; sourceTree = "<group>"; };
 		55B09BE82349E9D4006051C2 /* CooperatePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CooperatePlaceTableViewCell.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5582E2422372BE4900A9E0FE /* PushKit.framework in Frameworks */,
 				01DA3566ED289EDDEC22B120 /* Pods_yamigu.framework in Frameworks */,
 				55224DD42356EFEB003FBCA3 /* KakaoCommon.framework in Frameworks */,
 				55224DD52356EFEB003FBCA3 /* KakaoOpenSDK.framework in Frameworks */,
@@ -494,6 +497,7 @@
 		E5B000252B1BBE7A11FA8795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5582E2412372BE4900A9E0FE /* PushKit.framework */,
 				5582E23F2372B63200A9E0FE /* StoreKit.framework */,
 				55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */,
 				55224DD32356EFEB003FBCA3 /* KakaoOpenSDK.framework */,
