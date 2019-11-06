@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -38,9 +39,12 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
                         <rect key="frame" x="0.0" y="60" width="293" height="71.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="71.5" id="8ao-Qz-b4k"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
@@ -86,7 +90,7 @@
                             <constraint firstItem="tj9-ha-cyl" firstAttribute="top" secondItem="1kR-h6-lej" secondAttribute="bottom" constant="3" id="m57-Hm-yGi"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8l-w7-liv" customClass="CosmosView" customModule="Cosmos">
+                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8l-w7-liv" customClass="CosmosView" customModule="Cosmos">
                         <rect key="frame" x="114" y="139" width="65" height="13"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>

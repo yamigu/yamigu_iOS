@@ -193,4 +193,12 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
             }
         }.resume()
     }
+    
+    
+    @IBAction func shareBtnPressed(_ sender: Any) {
+        
+    }
+    @IBAction func talkBtnPressed(_ sender: Any) {
+        
+    }
 }

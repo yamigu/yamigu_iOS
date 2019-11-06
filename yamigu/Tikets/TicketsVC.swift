@@ -28,7 +28,10 @@ class TicketsVC: UIViewController, UIScrollViewDelegate {
         self.scrollView.delegate = self
         for index in 0..<3 {
             let subView = UIView()
+            
             subView.frame = UIScreen.main.bounds
+                //self.scrollView.bounds
+                //UIScreen.main.bounds
             
             // subView의 x좌표를 기기의 너비 * index만큼 주어 각 페이지의 시작 x좌표를 설정
             subView.frame.origin.x = UIScreen.main.bounds.width * CGFloat(index)
@@ -74,9 +77,14 @@ class TicketsVC: UIViewController, UIScrollViewDelegate {
         // scrollView에서 페이징이 가능하도록 설정
         scrollView.isPagingEnabled = true
         // scrollView의 contentSize를 5 페이지 만큼으로 설정
+        let guide = view.safeAreaLayoutGuide
+        let height = guide.layoutFrame.size.height
+        
         scrollView.contentSize = CGSize(
             width: UIScreen.main.bounds.width * 3,
-            height: self.scrollView.bounds.height
+            height: height
+            //height
+            //self.scrollView.bounds.height
         )
         scrollView.alwaysBounceVertical = false // 수직 스크롤 바운스 안되게 설정
     }
@@ -98,5 +106,8 @@ class TicketsVC: UIViewController, UIScrollViewDelegate {
         
     }
 
-
+    @IBAction func dismissBtnPressed(_ sender: Any) {
+        self.dismiss(animated: false, completion: nil)
+    }
+    
 }

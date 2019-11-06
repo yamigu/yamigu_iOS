@@ -234,17 +234,19 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         //json["activity"] = "ChattingActivity"
         
         var intent_args = [String:Any]()
-        intent_args["partner_age"] = matchDict["openby_age"]!
-        intent_args["partner_belong"] = matchDict["openby_belong"]!
-        intent_args["partner_department"] = matchDict["openby_department"]!
-        intent_args["partner_nickname"] = matchDict["openby_nickname"]!
+        intent_args["partner_age"] = meetingDict["openby_age"]!
+        intent_args["partner_belong"] = meetingDict["openby_belong"]!
+        intent_args["partner_department"] = meetingDict["openby_department"]!
+        intent_args["partner_nickname"] = meetingDict["openby_nickname"]!
+        intent_args["partner_uid"] = meetingDict["id"]!
         
         intent_args["date"] = meetingDict["date"]!
         intent_args["place"] = meetingDict["place_type_name"]!
+        intent_args["type"] = meetingDict["meeting_type"]!
         intent_args["meeting_id"] = meetingDict["id"]!
         intent_args["matching_id"] = matchingId
         intent_args["manage_name"] = managerData["manager_name"]!
-        intent_args["partner_uid"] = matchDict["openby_uid"]!
+        //intent_args["partner_uid"] = matchDict["openby_uid"]!
         intent_args["manager_uid"] = managerData["manager_uid"]!
         intent_args["accepted_at"] = managerData["accepted_at"]!
         
@@ -309,7 +311,8 @@ extension ChattingVC {
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
             let jsonString = String(data: data, encoding: .utf8) {
-            request.httpBody = jsonString.data(using: .utf8)
+            print("jsonString = \(jsonString.data(using: .utf8))")
+            request.httpBody = jsonString.data(using: .utf8)!
         }
         
         let session = URLSession.shared
@@ -331,6 +334,7 @@ extension ChattingVC {
                     }
                     
                     DispatchQueue.main.async {
+                        
                     }
                 } catch {
                     print(error)

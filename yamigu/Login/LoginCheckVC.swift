@@ -47,12 +47,29 @@ class LoginCheckVC: UIViewController {
         
         print("access token = \(KOSession.shared()?.token?.accessToken)")
         if KOSession.shared()?.token?.accessToken != nil {
-            let access_token = (KOSession.shared()?.token?.accessToken)!
+            var access_token = (KOSession.shared()?.token?.accessToken)!
             print("access token2 = \(access_token)")
+            //access_token = (KOSession.shared()?.refreshToken)!
+            //access_token = KOSession.
             
             
+            KOSession.shared()?.refreshAccessToken(completionHandler: { (error) in
+                
+                print("kakao error = \(error)")
+                
+                if error == nil {
+                    access_token = (KOSession.shared()?.token?.accessToken)!
+                    print("refresh token = \(access_token)")
+                    
+                    let json = ["access_token":access_token]
+                    
+                    DispatchQueue.main.async {
+                        self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)", json: json)
+                    }
+                }
+            })
             
-            self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+            
             //self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=iOS")
             //performSegue(withIdentifier: "segue_onboarding", sender: self)
         } else {
@@ -69,16 +86,11 @@ class LoginCheckVC: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        //request.httpBody = body
-        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        //request.httpBody = body
-        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: requestDict)
-        //JSONSerialization.isValidJSONObject(requestDict)
-        //request.httpBody = data
+  
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
             let jsonString = String(data: data, encoding: .utf8) {
+            print("jsonString = \(jsonString)")
             request.httpBody = jsonString.data(using: .utf8)
         }
         
@@ -109,18 +121,27 @@ class LoginCheckVC: UIViewController {
         }
     }
     
-    func postRequest(_ urlString: String, bodyString: String){
+    func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        request.httpBody = body
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+            let jsonString = String(data: data, encoding: .utf8) {
+            request.httpBody = jsonString.data(using: .utf8)
+        }
+        
+        
+        
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
                 
             }
             if let data = data {
@@ -160,7 +181,9 @@ class LoginCheckVC: UIViewController {
                 } catch {
                     print(error)
                     // 회원가입 이력이 없는경우
-                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    }
                 }
             }
         }.resume()

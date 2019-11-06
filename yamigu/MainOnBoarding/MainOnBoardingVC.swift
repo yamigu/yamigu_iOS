@@ -34,6 +34,8 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
         self.setUpUI()
         self.setUpPage()
         
+        print("authKey = \(authKey)")
+        
         if KOSession.shared()?.token?.accessToken != nil && authKey != "" {
             self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
             
@@ -102,9 +104,13 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
         // scrollView에서 페이징이 가능하도록 설정
         scrollView.isPagingEnabled = true
         // scrollView의 contentSize를 5 페이지 만큼으로 설정
+        
+        let guide = view.safeAreaLayoutGuide
+        let height = guide.layoutFrame.size.height
+        
         scrollView.contentSize = CGSize(
             width: UIScreen.main.bounds.width * 4,
-            height: UIScreen.main.bounds.height
+            height: height
         )
         scrollView.alwaysBounceVertical = false // 수직 스크롤 바운스 안되게 설정
     }

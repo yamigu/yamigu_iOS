@@ -69,10 +69,14 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        //self.dismiss(animated: false, completion: nil)
+    override func viewWillAppear(_ animated: Bool) {
         button_editMeeting.isHidden = true
         button_deleteCard.isHidden = true
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //self.dismiss(animated: false, completion: nil)
         
         if isEdit {
             button_editMeeting.isHidden = false
@@ -417,7 +421,7 @@ extension RegisterMeetingVC {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
+        cell.isSelected = false
         let label = cell.viewWithTag(1) as! UILabel
         label.textColor = UIColor.black
         if isPeople {

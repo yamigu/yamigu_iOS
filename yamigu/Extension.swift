@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -199,5 +200,15 @@ extension UIButton {
 extension Date {
     func currentTimeMillis() -> Int64 {
         return Int64(self.timeIntervalSince1970 * 1000)
+    }
+}
+
+class VerticallyCenteredTextView: UITextView {
+    override var contentSize: CGSize {
+        didSet {
+            var topCorrection = (bounds.size.height - contentSize.height * zoomScale) / 2.0
+            topCorrection = max(0, topCorrection)
+            contentInset = UIEdgeInsets(top: topCorrection, left: 0, bottom: 0, right: 0)
+        }
     }
 }

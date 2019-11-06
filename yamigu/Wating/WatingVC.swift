@@ -115,47 +115,52 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         cell.cornerradius = 10.0
         cell.clipsToBounds = true
         cell.tv_description.centerVertically()
-        let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
-       
-        if let imageUrl = URL(string: "\(meetingObj["openby_profile"]!)") {
-            print("openby_profile = \(meetingObj["openby_profile"]!)")
-            cell.image_profile.downloaded(from: imageUrl)
+        
+        if self.matchingList.count != 0 {
+            let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
+            
+            if let imageUrl = URL(string: "\(meetingObj["openby_profile"]!)") {
+                print("openby_profile = \(meetingObj["openby_profile"]!)")
+                cell.image_profile.downloaded(from: imageUrl)
+            }
+            
+            cell.constraintHeight.constant = 0.0
+            cell.button_meeting.isHidden = true
+            
+            cell.delegate = self
+            
+            let meeting_type = "\(meetingObj["meeting_type"]!)"
+            if meeting_type == "1" {
+                cell.label_type.text = "2:2 소개팅"
+            } else if meeting_type == "2" {
+                cell.label_type.text = "3:3 미팅"
+            } else if meeting_type == "3" {
+                cell.label_type.text = "4:4 미팅"
+            }
+            let dateString = meetingObj["date"] as! String
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from: dateString)
+            
+            dateFormatter.dateFormat = "MM월 dd일"
+            
+            cell.label_date.text = dateFormatter.string(from: date!)
+            
+            let nickname = meetingObj["openby_nickname"] as! String
+            let age = "\(meetingObj["openby_age"]!)"
+            
+            cell.label_nickname.text = nickname + age
+            cell.label_place.text = meetingObj["place_type_name"] as! String
+            
+            let belong = meetingObj["openby_belong"] as! String
+            let department = meetingObj["openby_department"] as! String
+            
+            cell.label_belong.text = belong + " " + department
+            
+            cell.tv_description.text = meetingObj["appeal"] as! String
         }
         
-        cell.constraintHeight.constant = 0.0
-        cell.button_meeting.isHidden = true
         
-        cell.delegate = self
-        
-        let meeting_type = "\(meetingObj["meeting_type"]!)"
-        if meeting_type == "1" {
-            cell.label_type.text = "2:2 소개팅"
-        } else if meeting_type == "2" {
-            cell.label_type.text = "3:3 미팅"
-        } else if meeting_type == "3" {
-            cell.label_type.text = "4:4 미팅"
-        }
-        let dateString = meetingObj["date"] as! String
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from: dateString)
-        
-        dateFormatter.dateFormat = "MM월 dd일"
-        
-        cell.label_date.text = dateFormatter.string(from: date!)
-        
-        let nickname = meetingObj["openby_nickname"] as! String
-        let age = "\(meetingObj["openby_age"]!)"
-        
-        cell.label_nickname.text = nickname + age
-        cell.label_place.text = meetingObj["place_type_name"] as! String
-        
-        let belong = meetingObj["openby_belong"] as! String
-        let department = meetingObj["openby_department"] as! String
-        
-        cell.label_belong.text = belong + " " + department
-        
-        cell.tv_description.text = meetingObj["appeal"] as! String
         
         return cell
     }
@@ -231,8 +236,6 @@ extension WatingVC: FilterViewDelegate {
             backgroundVIew.isHidden = true
             height.constant = 0
         }
-        
-        
     }
     
     func typeBtnDeSelected(index: Int) {

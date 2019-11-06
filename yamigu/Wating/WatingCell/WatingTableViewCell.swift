@@ -23,7 +23,7 @@ class WatingTableViewCell: UITableViewCell {
     @IBOutlet weak var label_belong: UILabel!
     @IBOutlet weak var label_date: UILabel!
     @IBOutlet weak var label_place: UILabel!
-    @IBOutlet weak var tv_description: UITextView!
+    @IBOutlet weak var tv_description: VerticallyCenteredTextView!
     @IBOutlet weak var rating: CosmosView!
     @IBOutlet weak var image_profile: UIImageView!
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
