@@ -215,6 +215,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         
         self.selectedMatching = self.matchingList[indexPath.section] as! Dictionary<String, Any>
     }
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! WatingTableViewCell
         
