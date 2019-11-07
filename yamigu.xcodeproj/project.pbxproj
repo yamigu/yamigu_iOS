@@ -84,6 +84,7 @@
 		6FB79E4141E4D5A1E31FF2EC /* Pods_yamiguUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */; };
 		9F09984C23694A20006B2750 /* HomeReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F09984A23694A20006B2750 /* HomeReviewCell.swift */; };
 		9F09984D23694A20006B2750 /* HomeReviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9F09984B23694A20006B2750 /* HomeReviewCell.xib */; };
+		9F3AD99D2373D4890005FE71 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3AD99C2373D4890005FE71 /* SettingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -197,6 +198,7 @@
 		8E60FCBB3F4C51FBD213527C /* Pods-yamiguTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguTests.debug.xcconfig"; path = "Target Support Files/Pods-yamiguTests/Pods-yamiguTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F09984A23694A20006B2750 /* HomeReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeReviewCell.swift; sourceTree = "<group>"; };
 		9F09984B23694A20006B2750 /* HomeReviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeReviewCell.xib; sourceTree = "<group>"; };
+		9F3AD99C2373D4890005FE71 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.release.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -425,6 +427,7 @@
 				55B09BE32349E996006051C2 /* More.storyboard */,
 				55B09BE52349E9A4006051C2 /* MoreVC.swift */,
 				55224DD823597439003FBCA3 /* WhatIsYamiguVC.swift */,
+				9F3AD99C2373D4890005FE71 /* SettingVC.swift */,
 			);
 			path = More;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				04618BAA23485F78002DF8A8 /* FilterView.swift in Sources */,
 				55224DE5235CAF5C003FBCA3 /* TicketsVC.swift in Sources */,
 				55B09BF62349EA3D006051C2 /* QuestionTableViewCell.swift in Sources */,
+				9F3AD99D2373D4890005FE71 /* SettingVC.swift in Sources */,
 				5528EAC1234092AB00461B2A /* Extension.swift in Sources */,
 				55FF60AE235D8E59006A3345 /* MatchVC.swift in Sources */,
 				04618BA623484D36002DF8A8 /* WatingTableViewCell.swift in Sources */,
