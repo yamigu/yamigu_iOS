@@ -30,6 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         //Messaging.messaging().apnsToken = deviceToken
+        
+        // Convert token to string (디바이스 토큰 값을 가져옵니다.)
+                let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+                
+                // Print it to console(토큰 값을 콘솔창에 보여줍니다. 이 토큰값으로 푸시를 전송할 대상을 정합니다.)
+                print("APNs device token: \(deviceTokenString)")
+                
+                Messaging.messaging().apnsToken = deviceToken
+
+
     }
 
     
