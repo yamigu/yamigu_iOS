@@ -30,6 +30,7 @@ class MainTC: UITabBarController {
         
         let homeController = self.viewControllers![0] as! HomeVC
         if homeController != nil {
+            homeController.myMeetings.removeAll()
             homeController.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
         }
     }

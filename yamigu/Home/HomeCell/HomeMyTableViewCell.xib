@@ -236,6 +236,18 @@
                         <color key="textColor" red="1" green="0.51764705882352935" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연세대, 전자전기공학부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRM-ap-4C9">
+                        <rect key="frame" x="30" y="134.5" width="180" height="21"/>
+                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZh-KR-Uu5">
+                        <rect key="frame" x="30" y="107" width="44" height="21"/>
+                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="80R-Th-7fO" secondAttribute="trailing" constant="38" id="186-JI-KUu"/>
@@ -246,11 +258,14 @@
                     <constraint firstItem="3Rz-JY-fCG" firstAttribute="leading" secondItem="gdu-86-6w8" secondAttribute="leading" id="InB-cY-yaN"/>
                     <constraint firstItem="6Iz-9r-dZy" firstAttribute="centerY" secondItem="Rf8-Df-bWc" secondAttribute="bottom" id="Jsz-ev-IUw"/>
                     <constraint firstAttribute="trailing" secondItem="dwT-ci-PNk" secondAttribute="trailing" constant="42" id="Kp4-gO-TGH"/>
+                    <constraint firstItem="CRM-ap-4C9" firstAttribute="top" secondItem="YZh-KR-Uu5" secondAttribute="bottom" constant="6.5" id="LD0-j1-MSb"/>
                     <constraint firstItem="3Rz-JY-fCG" firstAttribute="top" secondItem="r7v-ds-GOL" secondAttribute="bottom" constant="-4" id="LtN-Bt-0Ao"/>
                     <constraint firstItem="Jtd-ZS-Hl9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="TGu-tC-HAC"/>
                     <constraint firstItem="80R-Th-7fO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="UbQ-c8-cMS"/>
+                    <constraint firstItem="DAP-7S-FoU" firstAttribute="top" secondItem="CRM-ap-4C9" secondAttribute="bottom" constant="6.5" id="XaX-6E-wZJ"/>
                     <constraint firstItem="eVp-Q4-GLX" firstAttribute="leading" secondItem="XGT-RK-ha6" secondAttribute="leading" id="Xzy-Ri-ynX"/>
                     <constraint firstItem="0nZ-zu-5Mf" firstAttribute="centerY" secondItem="3Rz-JY-fCG" secondAttribute="centerY" id="ZeD-oB-rkX"/>
+                    <constraint firstItem="YZh-KR-Uu5" firstAttribute="leading" secondItem="CRM-ap-4C9" secondAttribute="leading" id="Zqx-NH-GpN"/>
                     <constraint firstItem="Jtd-ZS-Hl9" firstAttribute="top" secondItem="XGT-RK-ha6" secondAttribute="bottom" constant="11" id="bnk-g5-Mkl"/>
                     <constraint firstItem="XGT-RK-ha6" firstAttribute="top" secondItem="eVp-Q4-GLX" secondAttribute="bottom" constant="-8.5" id="e7T-bD-GUD"/>
                     <constraint firstAttribute="trailing" secondItem="0nZ-zu-5Mf" secondAttribute="trailing" constant="50" id="eaE-d7-yv6"/>
@@ -265,6 +280,7 @@
                     <constraint firstAttribute="bottom" secondItem="Jtd-ZS-Hl9" secondAttribute="bottom" id="t51-ce-Ytb"/>
                     <constraint firstAttribute="trailing" secondItem="Jtd-ZS-Hl9" secondAttribute="trailing" id="vQl-F0-tmi"/>
                     <constraint firstItem="gdu-86-6w8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="zBf-dg-oUe"/>
+                    <constraint firstItem="CRM-ap-4C9" firstAttribute="leading" secondItem="3Rz-JY-fCG" secondAttribute="leading" id="zs9-5K-c31"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -287,6 +303,8 @@
                 <outlet property="label_dday" destination="6Iz-9r-dZy" id="7uS-PH-t8O"/>
                 <outlet property="label_isMatched" destination="r7v-ds-GOL" id="Sge-Kq-HJ8"/>
                 <outlet property="label_lastChat" destination="xK3-x8-cDp" id="7oJ-fU-4FX"/>
+                <outlet property="label_matchingDepart" destination="CRM-ap-4C9" id="D5K-rd-fKB"/>
+                <outlet property="label_matchingName" destination="YZh-KR-Uu5" id="Cjw-40-cAA"/>
                 <outlet property="label_month" destination="bLi-Gb-EQc" id="FoJ-7S-ypS"/>
                 <outlet property="label_place" destination="3Rz-JY-fCG" id="yR6-ZP-Jwx"/>
                 <outlet property="label_teamCount" destination="eVp-Q4-GLX" id="3tc-Dd-Npx"/>

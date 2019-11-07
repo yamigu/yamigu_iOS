@@ -55,6 +55,7 @@ class HomeVC: UIViewController {
         
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
@@ -117,7 +118,9 @@ class HomeVC: UIViewController {
     }
     
     func getMyMeeting(urlString : String) {
+        
         self.myMeetings.removeAll()
+        
         guard let url = URL(string: urlString) else {return}
         
         var request = URLRequest(url: url)
@@ -151,7 +154,7 @@ class HomeVC: UIViewController {
                     
                     DispatchQueue.main.async {
                         self.matchingMeetingCount = 0
-                        
+                        self.myMeetings.removeAll()
                         for value in newValue {
                             self.myMeetings.append(value)
                             if (value["is_matched"] as! Bool) {
@@ -317,6 +320,27 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.button_edit.isHidden = false
                 
                 cell.label_isMatched.isHidden = true
+                
+                cell.label_matchingDepart.isHidden = true
+                cell.label_matchingName.isHidden = true
+                
+                
+                var received = Dictionary<String, Any>()
+                received = meetingDict["received_request"] as! Dictionary<String, Any>
+                
+                var received_request = Array<Dictionary<String, Any>>()
+                
+                received_request = received["data"] as! Array<Dictionary<String, Any>>
+                
+                if received_request.count == 0 {
+                    //cell.label_teamCount.isHidden = true
+                    cell.label_teamCount.isHidden = false
+                    cell.label_teamCount.text = "\(received_request.count)팀 신청!"
+                } else {
+                    cell.label_teamCount.isHidden = false
+                    cell.label_teamCount.text = "\(received_request.count)팀 신청!"
+                }
+                
             } else {
                 cell.view_bottom.isHidden = false
                 cell.constraint_bottomHeight.constant = 44.0
@@ -327,6 +351,11 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.button_edit.isHidden = true
                 
                 cell.label_isMatched.isHidden = false
+                cell.label_teamCount.isHidden = true
+                
+                cell.label_matchingDepart.isHidden = false
+                cell.label_matchingName.isHidden = false
+                
                 
                 var matchingId = ""
                 
@@ -354,6 +383,26 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                     }
                 }
                 
+                self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
+                    print("count = \(count)")
+                    if count == 0 {
+                        cell.label_chattingCount.isHidden = true
+                    } else {
+                        cell.label_chattingCount.isHidden = false
+                        cell.label_chattingCount.text = "\(count)"
+                    }
+                }
+                
+                let matchDict = meetingDict["matched_meeting"] as! Dictionary<String, Any>
+                
+                let matchAge = matchDict["openby_age"] as! String
+                let matchName = matchDict["openby_nickname"] as! String
+                let matchBelong = matchDict["openby_belong"] as! String
+                let matchDepart = matchDict["openby_department"] as! String
+                
+                cell.label_matchingName.text = matchName + matchAge
+                cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
+                
                 ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { (snapshot) in
                     // Get user value
                     for snap in snapshot.children.allObjects as! [DataSnapshot] {
@@ -370,7 +419,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                         dateFomatter.locale = Locale(identifier: "ko_kr")
                         dateFomatter.timeZone = TimeZone(abbreviation: "KST")
                         cell.label_chattingTime.text = dateFomatter.string(from: date)
-                      
+                        
                         
                         if let message = value["message"] as? String {
                             DispatchQueue.main.async {
@@ -562,94 +611,114 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20.0
     }
+    
+    func getMessages(uid:String, matchId:String, completionHandler:@escaping (Int) -> ()){
+        
+        let ref = Database.database().reference().child("user").child(uid).child("receivedMessages").child(matchId)
+        var count = 0
+        ref.observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                
+                let isUnread = dictionary["isUnread"] as! Bool
+                if !isUnread {
+                    count += 1
+                }
+            }
+            completionHandler(count)
+        })
+        
+        
+    }
 }
-
-extension HomeVC : HomeTalbeViewDelegate {
-    func chat(index: Int) {
-        self.selectedMyMeeting = self.myMeetings[index]
-        
-        self.performSegue(withIdentifier: "segue_chatting", sender: self)
-    }
     
-    func viewApplyList(index: Int) {
-        self.selectedMyMeeting = self.myMeetings[index]
-        
-        self.performSegue(withIdentifier: "segue_matching", sender: self)
-    }
-    
-    func viewWatingList(index: Int) {
-        self.selectedMyMeeting = self.myMeetings[index]
-        let dateString = selectedMyMeeting["date"] as! String
-        
-        let dateFormatter = DateFormatter()
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from:dateString)
-        
-        dateFormatter.dateFormat = "M월"
-        let monthString = dateFormatter.string(from: date!)
-        
-        dateFormatter.dateFormat = "d일"
-        let dayString = dateFormatter.string(from: date!)
-        
-        selectedDate = monthString+" "+dayString
-        
-        
-        
-        
-        
-        DispatchQueue.main.async {
-            let watingNavController = self.tabBarController?.viewControllers![1] as! UINavigationController
-            let watingController = watingNavController.topViewController as! WatingVC
+    extension HomeVC : HomeTalbeViewDelegate {
+        func chat(index: Int) {
+            self.selectedMyMeeting = self.myMeetings[index]
             
-            watingController.selectedType.removeAll()
-            watingController.selectedDate.removeAll()
-            watingController.selectedPlace.removeAll()
+            self.performSegue(withIdentifier: "segue_chatting", sender: self)
+        }
+        
+        func viewApplyList(index: Int) {
+            self.selectedMyMeeting = self.myMeetings[index]
             
-            let type = self.selectedMyMeeting["meeting_type"] as! Int
-            let place_type = self.selectedMyMeeting["place_type"] as! Int
+            self.performSegue(withIdentifier: "segue_matching", sender: self)
+        }
+        
+        func viewWatingList(index: Int) {
+            self.selectedMyMeeting = self.myMeetings[index]
+            let dateString = selectedMyMeeting["date"] as! String
             
-            let dateString2 = self.selectedMyMeeting["date"] as! String
+            let dateFormatter = DateFormatter()
+            
             dateFormatter.dateFormat = "yyyy-MM-dd"
-            let date2 = dateFormatter.date(from: dateString2)
+            let date = dateFormatter.date(from:dateString)
             
-            watingController.selectedType.append(type)
-            watingController.selectedDate.append(date2!)
-            watingController.selectedPlace.append(place_type)
+            dateFormatter.dateFormat = "M월"
+            let monthString = dateFormatter.string(from: date!)
             
-            watingController.makeBody()
-            watingController.updateUI()
+            dateFormatter.dateFormat = "d일"
+            let dayString = dateFormatter.string(from: date!)
             
-            self.tabBarController?.selectedIndex = 1
+            selectedDate = monthString+" "+dayString
+            
+            
+            
+            
+            
+            DispatchQueue.main.async {
+                let watingNavController = self.tabBarController?.viewControllers![1] as! UINavigationController
+                let watingController = watingNavController.topViewController as! WatingVC
+                
+                watingController.selectedType.removeAll()
+                watingController.selectedDate.removeAll()
+                watingController.selectedPlace.removeAll()
+                
+                let type = self.selectedMyMeeting["meeting_type"] as! Int
+                let place_type = self.selectedMyMeeting["place_type"] as! Int
+                
+                let dateString2 = self.selectedMyMeeting["date"] as! String
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let date2 = dateFormatter.date(from: dateString2)
+                
+                watingController.selectedType.append(type)
+                watingController.selectedDate.append(date2!)
+                watingController.selectedPlace.append(place_type)
+                
+                watingController.makeBody()
+                watingController.updateUI()
+                
+                self.tabBarController?.selectedIndex = 1
+            }
+            
+            
+        }
+        
+        func edit(index: Int) {
+            self.selectedMyMeeting = self.myMeetings[index]
+            
+            self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
         }
         
         
-    }
-    
-    func edit(index: Int) {
-        self.selectedMyMeeting = self.myMeetings[index]
         
-        self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
     }
     
-    
-    
-}
-
-extension HomeVC: HomeReviewDelegate {
-    func sendReview() {
-        let id = "\(self.reviewDict["id"]!)"
-        let dict : [String: Any] = ["meeting_id" : id]
+    extension HomeVC: HomeReviewDelegate {
+        func sendReview() {
+            let id = "\(self.reviewDict["id"]!)"
+            let dict : [String: Any] = ["meeting_id" : id]
+            
+            self.postRequest2("http://147.47.208.44:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(self.reviewText)", json: dict)
+        }
         
-        self.postRequest2("http://147.47.208.44:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(self.reviewText)", json: dict)
-    }
-    
-    func sendRatings() {
-        let id = "\(self.reviewDict["id"]!)"
-        let dict : [String: Any] = ["meeting_id" : id]
-        
-        self.postRequest2("http://147.47.208.44:9999/api/meetings/rate/", bodyString: "\"meeting_id\"=\"\(id)\"&visual=\(self.ratedLook)&fun=\(self.ratedFun)&manner=\(self.ratedManner)", json: dict)
-    }
+        func sendRatings() {
+            let id = "\(self.reviewDict["id"]!)"
+            let dict : [String: Any] = ["meeting_id" : id]
+            
+            self.postRequest2("http://147.47.208.44:9999/api/meetings/rate/", bodyString: "\"meeting_id\"=\"\(id)\"&visual=\(self.ratedLook)&fun=\(self.ratedFun)&manner=\(self.ratedManner)", json: dict)
+        }
 }
 
 

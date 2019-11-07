@@ -20,6 +20,8 @@ class HomeMyTableViewCell: UITableViewCell {
     weak var delegate : HomeTalbeViewDelegate?
     var index : Int!
     @IBOutlet weak var constraint_bottomHeight: NSLayoutConstraint!
+    @IBOutlet weak var label_matchingDepart: UILabel!
+    @IBOutlet weak var label_matchingName: UILabel!
     @IBOutlet weak var label_chattingCount: UILabel!
     @IBOutlet weak var label_chattingTime: UILabel!
     @IBOutlet weak var label_lastChat: UILabel!

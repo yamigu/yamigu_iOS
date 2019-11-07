@@ -96,8 +96,13 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
+            let item = self.collectionView(self.collectionView, numberOfItemsInSection: 0) - 1
+            let lastItemIndex = NSIndexPath(item: item, section: 0)
+            
             constraint_bottom.constant = keyboardHeight
             self.view.layoutIfNeeded()
+            
+            self.collectionView.scrollToItem(at: lastItemIndex as IndexPath, at: .bottom, animated: false)
         }
     }
     
@@ -219,10 +224,11 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         var dict = Dictionary<String, Any>()
         dict["id"] = key
         dict["isUnread"] = false
-        self.ref.child("user").child(userDictionary["uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
+        self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
         
         dict["isUnread"] = true
-        self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
+        
+        self.ref.child("user").child(userDictionary["uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
         
         
         
