@@ -28,6 +28,7 @@ class HomeMyTableViewCell: UITableViewCell {
     @IBOutlet weak var label_month: UILabel!
     @IBOutlet weak var label_type: UILabel!
     @IBOutlet weak var label_place: UILabel!
+    @IBOutlet weak var label_isMatched: UILabel!
     @IBOutlet weak var label_teamCount: UILabel!
     @IBOutlet weak var button_applyTeam: UIButton!
     @IBOutlet weak var button_watingTeam: UIButton!

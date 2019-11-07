@@ -27,6 +27,11 @@ class MainTC: UITabBarController {
             
             //performSegue(withIdentifier: "segue_onboarding", sender: self)
         }
+        
+        let homeController = self.viewControllers![0] as! HomeVC
+        if homeController != nil {
+            homeController.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+        }
     }
     
     

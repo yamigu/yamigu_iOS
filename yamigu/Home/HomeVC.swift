@@ -311,10 +311,22 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.view_bottom.isHidden = true
                 cell.constraint_bottomHeight.constant = 0.0
                 cell.layoutIfNeeded()
+                
+                cell.button_applyTeam.isHidden = false
+                cell.button_watingTeam.isHidden = false
+                cell.button_edit.isHidden = false
+                
+                cell.label_isMatched.isHidden = true
             } else {
                 cell.view_bottom.isHidden = false
                 cell.constraint_bottomHeight.constant = 44.0
                 cell.layoutIfNeeded()
+                
+                cell.button_applyTeam.isHidden = true
+                cell.button_watingTeam.isHidden = true
+                cell.button_edit.isHidden = true
+                
+                cell.label_isMatched.isHidden = false
                 
                 var matchingId = ""
                 
@@ -346,19 +358,19 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                     // Get user value
                     for snap in snapshot.children.allObjects as! [DataSnapshot] {
                         let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
-                        let time = value["time"] as? String
+                        let time = value["time"]!
                         print("time \(time)")
-                        if let time = value["time"] as? String {
-                            let dateString = time
-                            let dateDoube = Double(dateString)! / 1000.0
-                            print("datedouble = \(dateDoube)")
-                            let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
-                            
-                            let dateFomatter = DateFormatter(format: "a H:mm")
-                            dateFomatter.locale = Locale(identifier: "ko_kr")
-                            dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-                            cell.label_chattingTime.text = dateFomatter.string(from: date)
-                        }
+                        
+                        let dateString = "\(time)"
+                        let dateDoube = Double(dateString)! / 1000.0
+                        print("datedouble = \(dateDoube)")
+                        let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
+                        
+                        let dateFomatter = DateFormatter(format: "a H:mm")
+                        dateFomatter.locale = Locale(identifier: "ko_kr")
+                        dateFomatter.timeZone = TimeZone(abbreviation: "KST")
+                        cell.label_chattingTime.text = dateFomatter.string(from: date)
+                      
                         
                         if let message = value["message"] as? String {
                             DispatchQueue.main.async {
