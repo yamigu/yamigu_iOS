@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         if #available(iOS 13.0, *) {
             //window?.overrideUserInterfaceStyle = .light
         }
-        
+        UITextViewWorkaround.unique.executeWorkaround()
         FirebaseApp.configure()
         
         

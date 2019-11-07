@@ -142,6 +142,8 @@ class HomeVC: UIViewController {
                     }
                     
                     DispatchQueue.main.async {
+                        self.matchingMeetingCount = 0
+                        
                         for value in newValue {
                             self.myMeetings.append(value)
                             if (value["is_matched"] as! Bool) {
