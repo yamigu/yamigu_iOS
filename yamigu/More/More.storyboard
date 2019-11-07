@@ -422,6 +422,9 @@
                                 <state key="normal" title="야미구 탈퇴">
                                     <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="withdrawalBtnPressed:" destination="YLE-QE-2vy" eventType="touchUpInside" id="3Sv-7U-MZd"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0to-Dk-ICh">
                                 <rect key="frame" x="174.66666666666666" y="706" width="65" height="1"/>
