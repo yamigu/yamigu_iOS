@@ -84,6 +84,16 @@ class WatingVC: UIViewController {
             backgroundVIew.isHidden = false
             height.constant = 424
             
+            for type in selectedType {
+                self.filterView.button_types[type - 1].isSelected = true
+                self.filterView.button_types[type - 1].backgroundColor = UIColor(rgb: 0xFF7B22)
+            }
+            
+            for place in selectedPlace {
+                self.filterView.button_places[place - 1].isSelected = true
+                self.filterView.button_places[place - 1].backgroundColor = UIColor(rgb: 0xFF7B22)
+            }
+            
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
             }
