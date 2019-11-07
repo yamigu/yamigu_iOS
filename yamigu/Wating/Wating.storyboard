@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zna-BZ-n7l">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zna-BZ-n7l">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +18,7 @@
             <objects>
                 <navigationController id="zna-BZ-n7l" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="CWO-IU-qBM">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
@@ -59,8 +58,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yK4-3q-K1Z">
-                                <rect key="frame" x="0.0" y="20" width="414" height="50"/>
-
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaX-kN-tgV">
                                         <rect key="frame" x="0.0" y="0.0" width="59" height="50"/>
@@ -190,15 +188,14 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-Gj-bBc">
-                                <rect key="frame" x="12.666666666666657" y="91" width="389" height="596"/>
+                                <rect key="frame" x="12.666666666666657" y="115" width="389" height="621"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZX-8E-yCV">
-                                <rect key="frame" x="0.0" y="20" width="414" height="667"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9v8-82-PzR" customClass="FilterView" customModule="yamigu" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="243" width="414" height="424"/>
-
+                                        <rect key="frame" x="0.0" y="268" width="414" height="424"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="424" id="YyW-yJ-HMj"/>
@@ -240,6 +237,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backgroundVIew" destination="8ZX-8E-yCV" id="4KJ-EV-YEE"/>
+                        <outlet property="button_filter" destination="S9s-gS-xwT" id="nWi-YB-MBM"/>
                         <outlet property="filterView" destination="9v8-82-PzR" id="nv3-Ob-hCG"/>
                         <outlet property="height" destination="YyW-yJ-HMj" id="EPh-OB-4Kl"/>
                         <outlet property="tableView" destination="Rnj-Gj-bBc" id="vNB-Tl-LKN"/>
@@ -262,6 +260,6 @@
         <image name="tabbar_ready" width="21.333333969116211" height="21.333333969116211"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DnQ-5g-6BZ"/>
+        <segue reference="MIB-y1-wt3"/>
     </inferredMetricsTieBreakers>
 </document>

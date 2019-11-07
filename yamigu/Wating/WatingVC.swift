@@ -18,6 +18,7 @@ class WatingVC: UIViewController {
     @IBOutlet weak var backgroundVIew: UIView!
     @IBOutlet weak var height: NSLayoutConstraint!
     
+    @IBOutlet weak var button_filter: UIBarButtonItem!
     var isFilterShow = false
     var dateArray = [Date]()
     var selectedDate = [Date]()
@@ -46,7 +47,14 @@ class WatingVC: UIViewController {
         for i in 0..<7 {
             dateComponents.setValue(i, for: .day);
             let dt = Calendar.current.date(byAdding: dateComponents, to: date)!
-            dateArray.append(dt)
+            
+            let dtformatter = DateFormatter()
+            dtformatter.dateFormat = "yyyy-MM-dd"
+            let dtString = dtformatter.string(from: dt)
+            
+            let resultDt = dtformatter.date(from: dtString)
+            
+            dateArray.append(resultDt!)
         }
         
         let formatter = DateFormatter()
@@ -60,6 +68,8 @@ class WatingVC: UIViewController {
             btn.tintColor = .clear
             btn.backgroundColor = .clear
         }
+        self.updateUI()
+        
         
     }
     @IBAction func showFilter(_ sender: Any) {
@@ -88,12 +98,15 @@ class WatingVC: UIViewController {
     
     @IBAction func dateBtnPressed(_ sender: Any) {
         let btn = sender as! UIButton
+        print("is selected = \(btn.isSelected)")
+        
         if btn.isSelected {
-            btn.isSelected = false
-            
             if let index = self.selectedDate.firstIndex(of: self.dateArray[btn.tag]) {
                 self.selectedDate.remove(at: index)
             }
+            btn.isSelected = false
+            
+            
             
         } else {
             btn.isSelected = true
@@ -103,6 +116,36 @@ class WatingVC: UIViewController {
         
         self.makeBody()
         print(self.selectedDate)
+    }
+    
+    
+    func updateUI() {
+        if self.selectedPlace.count != 0 || self.selectedDate.count != 0 || self.selectedType.count != 0 {
+            self.button_filter.tintColor = UIColor(rgb: 0xFF7B22)
+        } else {
+            self.button_filter.tintColor = UIColor(rgb: 0x505050)
+        }
+    
+        if( self.dateArray.count != 0 ) {
+            for i in 0..<7 {
+                let date = self.dateArray[i]
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "M/d"
+                
+                for dt in selectedDate {
+                    if formatter.string(from: dt) == formatter.string(from: date) {
+                        DispatchQueue.main.async {
+                            self.dateButtons[i].isSelected = true
+                        }
+                    }
+                }
+
+            }
+        }
+        
+        
+        
     }
 }
 
@@ -312,6 +355,8 @@ extension WatingVC: FilterViewDelegate {
         body.removeLast()
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         self.getMeetingCount(urlString:"http://147.47.208.44:9999/api/meetings/waiting/?\(escapedString!)")
+        
+        self.updateUI()
         
         print("http://147.47.208.44:9999/api/meetings/count/?\(escapedString!)")
         

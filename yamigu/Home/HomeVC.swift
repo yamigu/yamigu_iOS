@@ -504,7 +504,36 @@ extension HomeVC : HomeTalbeViewDelegate {
         let dayString = dateFormatter.string(from: date!)
         
         selectedDate = monthString+" "+dayString
-        self.tabBarController?.selectedIndex = 1
+        
+        
+        
+        
+        
+        DispatchQueue.main.async {
+            let watingNavController = self.tabBarController?.viewControllers![1] as! UINavigationController
+            let watingController = watingNavController.topViewController as! WatingVC
+            
+            watingController.selectedType.removeAll()
+            watingController.selectedDate.removeAll()
+            watingController.selectedPlace.removeAll()
+            
+            let type = self.selectedMyMeeting["meeting_type"] as! Int
+            let place_type = self.selectedMyMeeting["place_type"] as! Int
+            
+            let dateString2 = self.selectedMyMeeting["date"] as! String
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date2 = dateFormatter.date(from: dateString2)
+            
+            watingController.selectedType.append(type)
+            watingController.selectedDate.append(date2!)
+            watingController.selectedPlace.append(place_type)
+            
+            watingController.makeBody()
+            watingController.updateUI()
+            
+            self.tabBarController?.selectedIndex = 1
+        }
+        
         
     }
     
