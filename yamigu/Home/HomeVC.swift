@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 var selectedDate = ""
 
 class HomeVC: UIViewController {
-
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var myMeetingTableView: UITableView!
     @IBOutlet weak var myMeetingTableViewHeight: NSLayoutConstraint!
@@ -38,20 +39,27 @@ class HomeVC: UIViewController {
     var ratedManner = ""
     var reviewText = ""
     
+    var ref: DatabaseReference!
+    var refHandle : DatabaseHandle!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.setupTableView()
         self.setupCollectionView()
         
         self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
         
+        ref = Database.database().reference()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+        
+        ref = Database.database().reference()
         
         
     }
@@ -224,7 +232,7 @@ class HomeVC: UIViewController {
                     print(error)
                 }
             }
-            }.resume()
+        }.resume()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -289,33 +297,102 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             // matching cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
             
+            
+            
             cell.delegate = self
             cell.index = indexPath.section
             let meetingDict = myMeetings[indexPath.section]
             cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
             cell.label_place.text = meetingDict["place_type_name"] as! String
-
+            
+            
+            
             if !(meetingDict["is_matched"] as! Bool) {
                 cell.view_bottom.isHidden = true
                 cell.constraint_bottomHeight.constant = 0.0
                 cell.layoutIfNeeded()
+            } else {
+                cell.view_bottom.isHidden = false
+                cell.constraint_bottomHeight.constant = 44.0
+                cell.layoutIfNeeded()
+                
+                var matchingId = ""
+                
+                var received = Dictionary<String, Any>()
+                var sent = Dictionary<String, Any>()
+                
+                received = meetingDict["received_request"] as! Dictionary<String, Any>
+                sent = meetingDict["sent_request"] as! Dictionary<String, Any>
+                
+                var received_request = Array<Dictionary<String, Any>>()
+                var sent_request = Array<Dictionary<String, Any>>()
+                
+                received_request = received["data"] as! Array<Dictionary<String, Any>>
+                sent_request = sent["data"] as! Array<Dictionary<String, Any>>
+                
+                for dict in received_request {
+                    if (dict["is_selected"] as! Bool) {
+                        matchingId = "\(dict["id"]!)"
+                    }
+                }
+                
+                for dict in sent_request {
+                    if (dict["is_selected"] as! Bool) {
+                        matchingId = "\(dict["id"]!)"
+                    }
+                }
+                
+                ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { (snapshot) in
+                    // Get user value
+                    for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                        let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
+                        let time = value["time"] as? String
+                        print("time \(time)")
+                        if let time = value["time"] as? String {
+                            let dateString = time
+                            let dateDoube = Double(dateString)! / 1000.0
+                            print("datedouble = \(dateDoube)")
+                            let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
+                            
+                            let dateFomatter = DateFormatter(format: "a H:mm")
+                            dateFomatter.locale = Locale(identifier: "ko_kr")
+                            dateFomatter.timeZone = TimeZone(abbreviation: "KST")
+                            cell.label_chattingTime.text = dateFomatter.string(from: date)
+                        }
+                        
+                        if let message = value["message"] as? String {
+                            DispatchQueue.main.async {
+                                //
+                                cell.label_lastChat.text = message
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        
+                    }
+                })
+                { (error) in
+                    print(error.localizedDescription)
+                }
             }
             
             let dateString = meetingDict["date"] as! String
             let dateFormatter = DateFormatter()
-
+            
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let date = dateFormatter.date(from:dateString)
-
+            
             dateFormatter.dateFormat = "M월"
             let monthString = dateFormatter.string(from: date!)
-
+            
             dateFormatter.dateFormat = "d일"
             let dayString = dateFormatter.string(from: date!)
-
+            
             cell.label_month.text = monthString
             cell.label_day.text = dayString
-
+            
             if daysBetween(start: Date(), end: date!) == 0 {
                 cell.label_dday.text = "today"
             } else {
@@ -493,13 +570,13 @@ extension HomeVC : HomeTalbeViewDelegate {
         let dateString = selectedMyMeeting["date"] as! String
         
         let dateFormatter = DateFormatter()
-
+        
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from:dateString)
-
+        
         dateFormatter.dateFormat = "M월"
         let monthString = dateFormatter.string(from: date!)
-
+        
         dateFormatter.dateFormat = "d일"
         let dayString = dateFormatter.string(from: date!)
         
@@ -551,14 +628,14 @@ extension HomeVC: HomeReviewDelegate {
     func sendReview() {
         let id = "\(self.reviewDict["id"]!)"
         let dict : [String: Any] = ["meeting_id" : id]
-
+        
         self.postRequest2("http://147.47.208.44:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(self.reviewText)", json: dict)
     }
     
     func sendRatings() {
         let id = "\(self.reviewDict["id"]!)"
         let dict : [String: Any] = ["meeting_id" : id]
-
+        
         self.postRequest2("http://147.47.208.44:9999/api/meetings/rate/", bodyString: "\"meeting_id\"=\"\(id)\"&visual=\(self.ratedLook)&fun=\(self.ratedFun)&manner=\(self.ratedManner)", json: dict)
     }
 }
