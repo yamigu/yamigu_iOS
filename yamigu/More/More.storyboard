@@ -177,7 +177,7 @@
         <!--설정-->
         <scene sceneID="Fu5-ja-gcg">
             <objects>
-                <viewController title="설정" modalPresentationStyle="fullScreen" id="YLE-QE-2vy" sceneMemberID="viewController">
+                <viewController title="설정" modalPresentationStyle="fullScreen" id="YLE-QE-2vy" customClass="SettingVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JKb-rh-Fj7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -290,7 +290,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-Df-JDh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-Df-JDh">
                                 <rect key="frame" x="39" y="205" width="39.666666666666657" height="25"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="21"/>
                                 <nil key="textColor"/>
@@ -466,6 +466,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HEq-2a-Uwk"/>
                     </view>
+                    <connections>
+                        <outlet property="button_withdrawal" destination="jfh-gy-wFy" id="dGk-bZ-58H"/>
+                        <outlet property="switch_chattingNoti" destination="Iqj-2T-Bkz" id="FIP-5G-LqA"/>
+                        <outlet property="switch_pushNoti" destination="QcH-mu-4jv" id="c80-KM-y0H"/>
+                        <outlet property="view_logout" destination="AFY-n1-Phk" id="gux-nL-QV2"/>
+                        <outlet property="view_notices" destination="KHj-du-I9J" id="olx-zN-yuJ"/>
+                        <outlet property="view_privacyStatements" destination="UVF-AZ-3fw" id="gjo-e9-u31"/>
+                        <outlet property="view_serviceAccessTerms" destination="TnQ-EY-9Ah" id="u1R-9Q-IOc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciL-yM-0MO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
