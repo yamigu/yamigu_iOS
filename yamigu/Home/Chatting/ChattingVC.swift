@@ -30,6 +30,9 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     var ref: DatabaseReference!
     var refHandle : DatabaseHandle!
+    
+    var chatRef: DatabaseReference!
+    var chatRefHandle : DatabaseHandle!
    
     func checkId() {
         print(meetingDict)
@@ -59,6 +62,35 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                 managerData = dict
             }
         }
+        
+        let dateString = meetingDict["date"] as! String
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: dateString)
+        
+        dateFormatter.dateFormat = "d일"
+        let resultDateString = dateFormatter.string(from: date!)
+        
+        let placeString = meetingDict["place_type_name"] as! String
+        
+        let type = "\(meetingDict["meeting_type"]!)"
+        var typeString = ""
+        if type == "1" {
+            typeString = "2:2"
+        } else if type == "2" {
+            typeString = "3:3"
+        } else {
+            typeString = "4:4"
+        }
+        
+        self.navigationController?.title = resultDateString + " || " + placeString + " || " + typeString
+        self.title = resultDateString + " || " + placeString + " || " + typeString
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        chatRef.removeObserver(withHandle: chatRefHandle)
+        ref.removeObserver(withHandle: refHandle)
     }
     
     override func viewDidLoad() {
@@ -73,6 +105,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         matchingId = "\(matchDict["id"]!)"
         
         ref = Database.database().reference()
+        chatRef = Database.database().reference()
         
         checkId()
         
@@ -89,6 +122,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+        
+        self.checkMessages()
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -133,6 +168,26 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             
         })
+        
+    }
+    
+    func checkMessages(){
+        
+        let chatRef = Database.database().reference().child("user").child(userDictionary["uid"] as! String).child("receivedMessages").child(self.matchingId)
+        
+        chatRefHandle = chatRef.observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                
+                let isUnread = dictionary["isUnread"] as! Bool
+                if !isUnread {
+                    let dict = ["isUnread":true]
+                    chatRef.child(snapshot.key).updateChildValues(dict)
+                }
+            }
+        })
+        
         
     }
     

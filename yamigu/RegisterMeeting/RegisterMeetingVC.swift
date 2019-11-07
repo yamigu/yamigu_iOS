@@ -16,6 +16,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     var meetingDict : Dictionary<String, Any>!
     
     var isEdit = false
+    var isRequest = false
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -72,49 +73,92 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         button_editMeeting.isHidden = true
         button_deleteCard.isHidden = true
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         //self.dismiss(animated: false, completion: nil)
         
         if isEdit {
-            button_editMeeting.isHidden = false
-            button_deleteCard.isHidden = false
-            
-            isPeople = false
-            isDate = false
-            isPlace = false
-            self.textView.isHidden = false
-            
-            var type = ""
-            let tmpType = "\(self.meetingDict["meeting_type"]!)"
-            if tmpType == "1" {
-                type = "2:2 소개팅"
-            } else if tmpType == "2" {
-                type = "3:3 미팅"
-            } else if tmpType == "3" {
-                type = "4:4 미팅"
+            if isRequest {
+                button_editMeeting.isHidden = true
+                button_deleteCard.isHidden = true
+                
+                button_request.isHidden = false
+                
+                isPeople = true
+                isDate = true
+                isPlace = true
+                
+                self.textView.isHidden = false
+                
+                var type = ""
+                let tmpType = "\(self.meetingDict["meeting_type"]!)"
+                if tmpType == "1" {
+                    type = "2:2 소개팅"
+                } else if tmpType == "2" {
+                    type = "3:3 미팅"
+                } else if tmpType == "3" {
+                    type = "4:4 미팅"
+                }
+                let place = self.meetingDict["place_type_name"] as! String
+                
+                let dateString = self.meetingDict["date"] as! String
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let date = dateFormatter.date(from:dateString)
+                
+                dateFormatter.dateFormat = "M월"
+                let monthString = dateFormatter.string(from: date!)
+                
+                dateFormatter.dateFormat = "d일"
+                let dayString = dateFormatter.string(from: date!)
+                
+                button_people.setTitle(type, for: .normal)
+                button_place.setTitle(place, for: .normal)
+                button_date.setTitle(monthString+dayString, for: .normal)
+                
+            } else {
+                button_editMeeting.isHidden = false
+                button_deleteCard.isHidden = false
+                
+                isPeople = false
+                isDate = false
+                isPlace = false
+                self.textView.isHidden = false
+                
+                var type = ""
+                let tmpType = "\(self.meetingDict["meeting_type"]!)"
+                if tmpType == "1" {
+                    type = "2:2 소개팅"
+                } else if tmpType == "2" {
+                    type = "3:3 미팅"
+                } else if tmpType == "3" {
+                    type = "4:4 미팅"
+                }
+                let place = self.meetingDict["place_type_name"] as! String
+                
+                let dateString = self.meetingDict["date"] as! String
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let date = dateFormatter.date(from:dateString)
+                
+                dateFormatter.dateFormat = "M월"
+                let monthString = dateFormatter.string(from: date!)
+                
+                dateFormatter.dateFormat = "d일"
+                let dayString = dateFormatter.string(from: date!)
+                
+                button_people.setTitle(type, for: .normal)
+                button_place.setTitle(place, for: .normal)
+                button_date.setTitle(monthString+dayString, for: .normal)
+                
+                textView.text = self.meetingDict["appeal"] as! String
             }
-            let place = self.meetingDict["place_type_name"] as! String
             
-            let dateString = self.meetingDict["date"] as! String
-            let dateFormatter = DateFormatter()
             
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let date = dateFormatter.date(from:dateString)
             
-            dateFormatter.dateFormat = "M월"
-            let monthString = dateFormatter.string(from: date!)
-            
-            dateFormatter.dateFormat = "d일"
-            let dayString = dateFormatter.string(from: date!)
-            
-            button_people.setTitle(type, for: .normal)
-            button_place.setTitle(place, for: .normal)
-            button_date.setTitle(monthString+dayString, for: .normal)
-            
-            textView.text = self.meetingDict["appeal"] as! String
         }
     }
     
@@ -279,11 +323,24 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.view.endEditing(true)
     }
     @IBAction func requestBtnPressed(_ sender: Any) {
-        //- meeting_type: 미팅 타입
-        //- date: 날짜
-        //- place_type: 장소
-        //- appeal: 어필 문구
-        self.postRequest("http://147.47.208.44:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+        
+        if !isRequest {
+            //- meeting_type: 미팅 타입
+            //- date: 날짜
+            //- place_type: 장소
+            //- appeal: 어필 문구
+            
+            self.postRequest("http://147.47.208.44:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+        } else {
+            //- meeting_type: 미팅 타입
+            //- date: 날짜
+            //- place: 장소
+            //- appeal: 어필 문구
+            //- receiver: 신청 대상 미팅
+            
+            self.postRequest("http://147.47.208.44:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
+        }
+        
         
     }
     
@@ -311,8 +368,13 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         //JSONSerialization.isValidJSONObject(requestDict)
         //request.httpBody = data
         
+        if isRequest {
+            requestDict["meeting_id"] = "\(self.meetingDict["id"]!)"
+        }
+        
         if let data = try? JSONSerialization.data(withJSONObject: requestDict, options: .prettyPrinted),
             let jsonString = String(data: data, encoding: .utf8) {
+            jsonString.replacingOccurrences(of: "'", with: "\"")
             request.httpBody = jsonString.data(using: .utf8)
         }
         

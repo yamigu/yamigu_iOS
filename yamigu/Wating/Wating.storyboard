@@ -249,11 +249,22 @@
                         <outletCollection property="dateButtons" destination="Lyh-JJ-Fu5" collectionClass="NSMutableArray" id="omc-S0-qZ3"/>
                         <outletCollection property="dateButtons" destination="jPv-h2-Fel" collectionClass="NSMutableArray" id="r4S-mV-V6H"/>
                         <outletCollection property="dateButtons" destination="JiG-zI-Kvz" collectionClass="NSMutableArray" id="HrD-bH-sE4"/>
+                        <segue destination="p2j-6j-cr2" kind="show" identifier="segue_editMeeting" id="9vl-c1-fs7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wsf-bQ-aOS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="75.815217391304358"/>
+        </scene>
+        <!--RegisterMeeting-->
+        <scene sceneID="g2C-r8-nCG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RegisterMeeting" id="p2j-6j-cr2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="PcQ-10-t9i"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dw5-9v-JGz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1211" y="76"/>
         </scene>
     </scenes>
     <resources>

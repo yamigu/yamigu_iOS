@@ -157,6 +157,17 @@ class WatingVC: UIViewController {
         
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue_editMeeting" {
+            let destination = segue.destination as! UINavigationController
+            let des = destination.visibleViewController as! RegisterMeetingVC
+            
+            des.isEdit = true
+            des.isRequest = true
+            des.meetingDict = self.selectedMatching
+        }
+    }
 }
 
 extension WatingVC: UITableViewDelegate, UITableViewDataSource {
@@ -486,14 +497,17 @@ extension WatingVC: WatingTableViewDelegate {
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
                     }
                     
                     DispatchQueue.main.async {
-                        
+                        let message = newValue["message"] as! String
+                        if message == "You should create new meeting for matching" {
+                            self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
+                        }
                         //self.dismiss(animated: false, completion: nil)
                     }
                 } catch {
