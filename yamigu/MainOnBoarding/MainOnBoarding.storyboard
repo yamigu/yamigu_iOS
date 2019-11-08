@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f8t-7R-lQ5">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Binggrae-Bold.ttf">
+            <string>Binggrae-Bold</string>
+        </array>
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Main On BoardingVC-->
+        <scene sceneID="6KQ-MG-iNh">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="f8t-7R-lQ5" customClass="MainOnBoardingVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yon-Vg-9BF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9O-LN-eX9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </scrollView>
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onBoarding_first" translatesAutoresizingMaskIntoConstraints="NO" id="J5W-9T-LWg">
+                                <rect key="frame" x="137.66666666666666" y="119" width="138.99999999999997" height="138"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TMY-xh-FCE" customClass="CHIPageControlChimayo" customModule="CHIPageControl">
+                                <rect key="frame" x="173.66666666666666" y="609" width="67" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="9"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="inactiveTransparency">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageTintColor">
+                                        <color key="value" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="이름, 나이, 소속 인증을 통해확실하고 안전한 만남이 이뤄져요" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LI-Rv-sr4">
+                                <rect key="frame" x="24.666666666666657" y="500" width="365" height="19"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="안전한 만남!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxi-di-DP7">
+                                <rect key="frame" x="139.33333333333331" y="435.66666666666674" width="135.33333333333331" height="32.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="24"/>
+                                <color key="textColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7l-Dz-9Ay">
+                                <rect key="frame" x="366" y="682" width="16" height="22"/>
+                                <state key="normal" image="right_arrow"/>
+                                <connections>
+                                    <segue destination="giW-lD-0Ft" kind="show" id="MdC-zW-mI3"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPf-mD-hn1">
+                                <rect key="frame" x="355" y="702" width="38.333333333333314" height="13.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a9O-LN-eX9" firstAttribute="top" secondItem="Yon-Vg-9BF" secondAttribute="top" id="3tc-il-WiU"/>
+                            <constraint firstItem="7LI-Rv-sr4" firstAttribute="centerX" secondItem="TMY-xh-FCE" secondAttribute="centerX" id="4Uw-dC-XtU"/>
+                            <constraint firstAttribute="bottom" secondItem="k7l-Dz-9Ay" secondAttribute="bottom" constant="32" id="6Hd-rR-JY5"/>
+                            <constraint firstItem="J5W-9T-LWg" firstAttribute="centerX" secondItem="Yon-Vg-9BF" secondAttribute="centerX" id="6kp-NX-9WA"/>
+                            <constraint firstItem="k7l-Dz-9Ay" firstAttribute="bottom" secondItem="RPf-mD-hn1" secondAttribute="top" constant="2" id="7B7-1u-fZl"/>
+                            <constraint firstAttribute="bottom" secondItem="a9O-LN-eX9" secondAttribute="bottom" id="9VM-GI-jvz"/>
+                            <constraint firstAttribute="bottom" secondItem="TMY-xh-FCE" secondAttribute="bottom" constant="117" id="CHC-8M-Pby"/>
+                            <constraint firstAttribute="trailing" secondItem="k7l-Dz-9Ay" secondAttribute="trailing" constant="32" id="CQA-gB-Bdz"/>
+                            <constraint firstItem="a9O-LN-eX9" firstAttribute="width" secondItem="Yon-Vg-9BF" secondAttribute="width" id="G5g-z2-nlJ"/>
+                            <constraint firstItem="J5W-9T-LWg" firstAttribute="top" secondItem="Yon-Vg-9BF" secondAttribute="top" constant="119" id="MNs-NW-2cR"/>
+                            <constraint firstItem="TMY-xh-FCE" firstAttribute="centerX" secondItem="Yon-Vg-9BF" secondAttribute="centerX" id="S6Y-Nf-tQc"/>
+                            <constraint firstItem="RPf-mD-hn1" firstAttribute="centerX" secondItem="k7l-Dz-9Ay" secondAttribute="centerX" id="Zje-4N-obJ"/>
+                            <constraint firstAttribute="trailing" secondItem="a9O-LN-eX9" secondAttribute="trailing" id="hKm-q8-94C"/>
+                            <constraint firstItem="a9O-LN-eX9" firstAttribute="leading" secondItem="Yon-Vg-9BF" secondAttribute="leading" id="reM-Ht-PJE"/>
+                            <constraint firstItem="a9O-LN-eX9" firstAttribute="height" secondItem="Yon-Vg-9BF" secondAttribute="height" id="rw7-1p-c6V"/>
+                            <constraint firstItem="lxi-di-DP7" firstAttribute="centerX" secondItem="7LI-Rv-sr4" secondAttribute="centerX" id="rwK-m4-X2X"/>
+                            <constraint firstItem="7LI-Rv-sr4" firstAttribute="top" secondItem="lxi-di-DP7" secondAttribute="bottom" constant="32" id="zsg-fv-GXN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GtX-XO-Ip0"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="736"/>
+                    <connections>
+                        <outlet property="btn_start" destination="k7l-Dz-9Ay" id="K7d-kn-N21"/>
+                        <outlet property="lbl_description" destination="7LI-Rv-sr4" id="WTF-Ex-Lwh"/>
+                        <outlet property="lbl_start" destination="RPf-mD-hn1" id="jas-wA-Xpm"/>
+                        <outlet property="lbl_title" destination="lxi-di-DP7" id="evp-La-sG2"/>
+                        <outlet property="mainImage" destination="J5W-9T-LWg" id="fwq-gl-dgc"/>
+                        <outlet property="pageControl" destination="TMY-xh-FCE" id="OvC-Qe-Q2n"/>
+                        <outlet property="scrollView" destination="a9O-LN-eX9" id="fPq-1g-TAb"/>
+                        <segue destination="giW-lD-0Ft" kind="show" identifier="segue_login" id="FPB-HI-abW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8n1-Hg-lVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-249" y="-422"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="OlZ-CG-8pW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="giW-lD-0Ft" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QkT-At-iNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="451" y="-407"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5qy-ht-6j1">
+            <objects>
+                <viewController id="gzl-aQ-rrh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jRE-QD-skr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SKw-f0-Hjb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hI4-Da-tU4">
+                                        <rect key="frame" x="87" y="119" width="240" height="128"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="hI4-Da-tU4" firstAttribute="centerX" secondItem="SKw-f0-Hjb" secondAttribute="centerX" id="9Oe-Pj-RKY"/>
+                                    <constraint firstItem="hI4-Da-tU4" firstAttribute="top" secondItem="SKw-f0-Hjb" secondAttribute="top" constant="119" id="UH6-Bz-tST"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SKw-f0-Hjb" firstAttribute="width" secondItem="jRE-QD-skr" secondAttribute="width" id="0R2-O5-4qI"/>
+                            <constraint firstItem="SKw-f0-Hjb" firstAttribute="leading" secondItem="jRE-QD-skr" secondAttribute="leading" id="8RP-up-6ye"/>
+                            <constraint firstAttribute="bottom" secondItem="SKw-f0-Hjb" secondAttribute="bottom" id="Le1-li-BYg"/>
+                            <constraint firstItem="SKw-f0-Hjb" firstAttribute="height" secondItem="jRE-QD-skr" secondAttribute="height" id="NhC-qP-N7g"/>
+                            <constraint firstItem="SKw-f0-Hjb" firstAttribute="top" secondItem="jRE-QD-skr" secondAttribute="top" id="O9m-3b-ixT"/>
+                            <constraint firstAttribute="trailing" secondItem="SKw-f0-Hjb" secondAttribute="trailing" id="W6y-DK-45M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oox-ix-ysp"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KhB-Dw-kQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="-422"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="onBoarding_first" width="139" height="138"/>
+        <image name="right_arrow" width="16" height="16"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="FPB-HI-abW"/>
+    </inferredMetricsTieBreakers>
+</document>

@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+        <array key="NanumGothicExtraBold.ttf">
+            <string>NanumGothicExtraBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="HomeReviewCell" customModule="yamigu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="8월 5일 미팅 어떠셨나요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDV-yp-qra">
+                        <rect key="frame" x="76" y="44" width="223" height="21"/>
+                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IW-Gh-BKM">
+                        <rect key="frame" x="116.5" y="87.5" width="142" height="36"/>
+                        <color key="backgroundColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="4PX-nl-2Ou"/>
+                            <constraint firstAttribute="width" constant="142" id="o7l-Rb-akJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                        <state key="normal" title="초간단 후기 남기기">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="writeReviewBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="B7n-66-zXP"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상대방은 절대 몰라요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Zj-GR-lCH">
+                        <rect key="frame" x="140.5" y="131.5" width="94.5" height="12"/>
+                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="10"/>
+                        <color key="textColor" red="0.48627450980392156" green="0.48627450980392156" blue="0.48627450980392156" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCx-t0-beR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="기억을 남겨주세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DxB-EI-Efl">
+                                <rect key="frame" x="109.5" y="13" width="156.5" height="24"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fWb-OZ-QPh" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="116.5" y="52" width="142" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KnQ-UE-uue"/>
+                                    <constraint firstAttribute="width" constant="142" id="kJi-jv-BmD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="1" green="0.73725490196078436" blue="0.30588235294117649" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYo-n0-Tg1" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="116.5" y="92" width="142" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="E8I-ib-yzq"/>
+                                    <constraint firstAttribute="width" constant="142" id="JK6-vT-OBh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QeP-ec-Egn" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="116.5" y="132" width="142" height="40"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="CGO-zH-Egh"/>
+                                    <constraint firstAttribute="width" constant="142" id="fhs-C7-QS7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                        <color key="value" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="updateOnTouch" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="starMargin">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="외모" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASR-Bq-SWH">
+                                <rect key="frame" x="86" y="57" width="26.5" height="17"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="재미" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btt-PI-6Ml">
+                                <rect key="frame" x="86" y="97" width="26.5" height="17"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="매너" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PV2-pB-ie5">
+                                <rect key="frame" x="86" y="137" width="26.5" height="17"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fWb-OZ-QPh" firstAttribute="top" secondItem="DxB-EI-Efl" secondAttribute="bottom" constant="15" id="0IY-hV-1BN"/>
+                            <constraint firstItem="DxB-EI-Efl" firstAttribute="top" secondItem="OCx-t0-beR" secondAttribute="top" constant="13" id="0L0-Tp-JHP"/>
+                            <constraint firstItem="PV2-pB-ie5" firstAttribute="top" secondItem="QeP-ec-Egn" secondAttribute="top" constant="5" id="2KR-o7-fMq"/>
+                            <constraint firstItem="QeP-ec-Egn" firstAttribute="leading" secondItem="PV2-pB-ie5" secondAttribute="trailing" constant="4" id="8WD-hL-sBE"/>
+                            <constraint firstItem="GYo-n0-Tg1" firstAttribute="centerX" secondItem="fWb-OZ-QPh" secondAttribute="centerX" id="C0X-Ny-4iw"/>
+                            <constraint firstItem="btt-PI-6Ml" firstAttribute="top" secondItem="GYo-n0-Tg1" secondAttribute="top" constant="5" id="CdF-eU-dQg"/>
+                            <constraint firstItem="GYo-n0-Tg1" firstAttribute="leading" secondItem="btt-PI-6Ml" secondAttribute="trailing" constant="4" id="OGF-t0-aff"/>
+                            <constraint firstItem="GYo-n0-Tg1" firstAttribute="top" secondItem="fWb-OZ-QPh" secondAttribute="bottom" id="Od2-yo-Q7M"/>
+                            <constraint firstItem="QeP-ec-Egn" firstAttribute="centerX" secondItem="GYo-n0-Tg1" secondAttribute="centerX" id="TBQ-oe-be2"/>
+                            <constraint firstItem="ASR-Bq-SWH" firstAttribute="top" secondItem="fWb-OZ-QPh" secondAttribute="top" constant="5" id="dgb-Th-Xgi"/>
+                            <constraint firstItem="DxB-EI-Efl" firstAttribute="centerX" secondItem="OCx-t0-beR" secondAttribute="centerX" id="i2P-F0-tSe"/>
+                            <constraint firstItem="fWb-OZ-QPh" firstAttribute="leading" secondItem="ASR-Bq-SWH" secondAttribute="trailing" constant="4" id="lPL-Ud-Lev"/>
+                            <constraint firstItem="QeP-ec-Egn" firstAttribute="top" secondItem="GYo-n0-Tg1" secondAttribute="bottom" id="vZt-bI-b7J"/>
+                            <constraint firstItem="fWb-OZ-QPh" firstAttribute="centerX" secondItem="OCx-t0-beR" secondAttribute="centerX" id="wU3-S2-hDM"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nzr-xz-ANA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" text="불편했던 점이나, 재밌었던 기억을 남겨주세요" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Kp7-x9-Wqc">
+                                <rect key="frame" x="71" y="21" width="234" height="132"/>
+                                <color key="backgroundColor" red="0.98823529409999999" green="0.98823529409999999" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.77647058823529413" green="0.77647058823529413" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="10"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bordercolor">
+                                        <color key="value" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderwidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mwu-DL-6Jv">
+                                <rect key="frame" x="129.5" y="138" width="116" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.73725490199999999" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="116" id="LTP-N4-6SQ"/>
+                                    <constraint firstAttribute="height" constant="30" id="pUA-A6-uDC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
+                                <state key="normal" title="야미구에게 보내기">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="17"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendToYamiguBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="S50-e1-uSH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1fH-X5-LRr">
+                                <rect key="frame" x="313" y="145" width="49" height="26"/>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Skip 하기">
+                                            <attributes>
+                                                <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <font key="NSFont" size="12" name="NanumGothic"/>
+                                                <integer key="NSUnderline" value="1"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="skipBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hhr-DQ-EZD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mwu-DL-6Jv" firstAttribute="bottom" secondItem="Kp7-x9-Wqc" secondAttribute="bottom" constant="15" id="3NS-RY-YhH"/>
+                            <constraint firstItem="Kp7-x9-Wqc" firstAttribute="top" secondItem="nzr-xz-ANA" secondAttribute="top" constant="21" id="Aiy-Tt-rUn"/>
+                            <constraint firstItem="mwu-DL-6Jv" firstAttribute="centerX" secondItem="nzr-xz-ANA" secondAttribute="centerX" id="FqC-VN-ybm"/>
+                            <constraint firstItem="1fH-X5-LRr" firstAttribute="bottom" secondItem="mwu-DL-6Jv" secondAttribute="bottom" id="V1B-T3-p6Q"/>
+                            <constraint firstAttribute="trailing" secondItem="Kp7-x9-Wqc" secondAttribute="trailing" constant="70" id="ZZ7-zJ-Q9G"/>
+                            <constraint firstAttribute="trailing" secondItem="1fH-X5-LRr" secondAttribute="trailing" constant="13" id="fos-EZ-90T"/>
+                            <constraint firstItem="Kp7-x9-Wqc" firstAttribute="leading" secondItem="nzr-xz-ANA" secondAttribute="leading" constant="71" id="jn9-H2-jjN"/>
+                            <constraint firstAttribute="bottom" secondItem="Kp7-x9-Wqc" secondAttribute="bottom" constant="21" id="yud-Uz-PSl"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KFS-iJ-SEJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다음에는 더 즐거운 야미구하세요! 감사합니다!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QUQ-VI-Zie">
+                                <rect key="frame" x="50.5" y="64" width="274.5" height="44"/>
+                                <fontDescription key="fontDescription" name="NanumGothicExtraBold" family="NanumGothic" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- 야미구 매니저 sub -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nd-u2-SOV">
+                                <rect key="frame" x="112.5" y="132" width="150" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1nd-u2-SOV" firstAttribute="centerX" secondItem="KFS-iJ-SEJ" secondAttribute="centerX" id="DQI-Gy-4QV"/>
+                            <constraint firstItem="QUQ-VI-Zie" firstAttribute="centerX" secondItem="KFS-iJ-SEJ" secondAttribute="centerX" id="G6i-uI-uOf"/>
+                            <constraint firstItem="QUQ-VI-Zie" firstAttribute="top" secondItem="KFS-iJ-SEJ" secondAttribute="top" constant="64" id="cMf-0k-hvm"/>
+                            <constraint firstItem="1nd-u2-SOV" firstAttribute="top" secondItem="QUQ-VI-Zie" secondAttribute="bottom" constant="24" id="lbi-2F-FX3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="4Zj-GR-lCH" firstAttribute="top" secondItem="8IW-Gh-BKM" secondAttribute="bottom" constant="8" id="0Y5-71-Rnk"/>
+                    <constraint firstItem="KFS-iJ-SEJ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="1La-R0-clC"/>
+                    <constraint firstItem="4Zj-GR-lCH" firstAttribute="centerX" secondItem="8IW-Gh-BKM" secondAttribute="centerX" id="2OT-Gz-ey9"/>
+                    <constraint firstItem="nzr-xz-ANA" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="7gf-Dx-IyL"/>
+                    <constraint firstItem="eDV-yp-qra" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="44" id="ErI-pj-D58"/>
+                    <constraint firstItem="eDV-yp-qra" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="FkR-Wa-hDm"/>
+                    <constraint firstItem="KFS-iJ-SEJ" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="KDX-6P-CBZ"/>
+                    <constraint firstItem="OCx-t0-beR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="KXk-yz-DiU"/>
+                    <constraint firstItem="nzr-xz-ANA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Mqp-82-VZM"/>
+                    <constraint firstItem="OCx-t0-beR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qdt-Gt-zc1"/>
+                    <constraint firstItem="nzr-xz-ANA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="SmJ-xR-EcY"/>
+                    <constraint firstItem="nzr-xz-ANA" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="X0j-Rd-taw"/>
+                    <constraint firstItem="OCx-t0-beR" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="fQQ-LL-tFO"/>
+                    <constraint firstItem="KFS-iJ-SEJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gq9-ye-LyB"/>
+                    <constraint firstItem="OCx-t0-beR" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="hra-fl-4Em"/>
+                    <constraint firstItem="8IW-Gh-BKM" firstAttribute="top" secondItem="eDV-yp-qra" secondAttribute="bottom" constant="20" id="llv-gZ-OG0"/>
+                    <constraint firstItem="KFS-iJ-SEJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mrr-h0-b41"/>
+                    <constraint firstItem="8IW-Gh-BKM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="tE7-Zq-AII"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="button_skip" destination="1fH-X5-LRr" id="jEG-lm-Dbf"/>
+                <outlet property="button_writeReview" destination="8IW-Gh-BKM" id="hUp-WL-Qe6"/>
+                <outlet property="label_meetingDate" destination="eDV-yp-qra" id="QK6-xL-CvY"/>
+                <outlet property="ratingFun" destination="GYo-n0-Tg1" id="tJ8-PP-gYC"/>
+                <outlet property="ratingLook" destination="fWb-OZ-QPh" id="CVf-Dx-xxT"/>
+                <outlet property="ratingManner" destination="QeP-ec-Egn" id="cnL-lk-kUU"/>
+                <outlet property="ratingsContainerView" destination="OCx-t0-beR" id="zGg-BB-f2l"/>
+                <outlet property="textReviewContainerView" destination="nzr-xz-ANA" id="9aN-Bq-UAx"/>
+                <outlet property="textview_review" destination="Kp7-x9-Wqc" id="vNU-LX-zia"/>
+                <outlet property="writeReviewEndView" destination="KFS-iJ-SEJ" id="j1A-Aa-4F4"/>
+            </connections>
+            <point key="canvasLocation" x="139.85507246376812" y="141.29464285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

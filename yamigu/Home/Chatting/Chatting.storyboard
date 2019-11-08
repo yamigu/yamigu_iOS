@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bdx-5j-wya">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--28일 || 신촌/홍대 || 2:2-->
+        <scene sceneID="SXh-kO-ufs">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="ASO-jR-V83" customClass="ChattingVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dJc-tK-vuW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6dt-Wf-LQU">
+                                <rect key="frame" x="0.0" y="688.33333333333337" width="414" height="47.666666666666629"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiN-5O-zVw">
+                                        <rect key="frame" x="368" y="11.666666666666629" width="24" height="24"/>
+                                        <state key="normal" image="icon_send"/>
+                                        <connections>
+                                            <action selector="sendBtnPressed:" destination="ASO-jR-V83" eventType="touchUpInside" id="nqF-R4-puR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsn-kg-U3n">
+                                        <rect key="frame" x="16" y="8.6666666666666288" width="30" height="30"/>
+                                        <state key="normal" image="icon_chatting_alarm"/>
+                                        <connections>
+                                            <action selector="callBtnPressed:" destination="ASO-jR-V83" eventType="touchUpInside" id="013-be-uO7"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="메세지를 입력하세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pTT-4z-iyZ">
+                                        <rect key="frame" x="62" y="0.0" width="290" height="47.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="tsn-kg-U3n" firstAttribute="centerY" secondItem="6dt-Wf-LQU" secondAttribute="centerY" id="2Pc-Hz-vvf"/>
+                                    <constraint firstAttribute="trailing" secondItem="pTT-4z-iyZ" secondAttribute="trailing" constant="62" id="57D-Gl-P6y"/>
+                                    <constraint firstItem="pTT-4z-iyZ" firstAttribute="centerY" secondItem="6dt-Wf-LQU" secondAttribute="centerY" id="FEc-EO-ryE"/>
+                                    <constraint firstItem="tsn-kg-U3n" firstAttribute="leading" secondItem="6dt-Wf-LQU" secondAttribute="leading" constant="16" id="Odw-7j-L3N"/>
+                                    <constraint firstItem="NiN-5O-zVw" firstAttribute="centerY" secondItem="6dt-Wf-LQU" secondAttribute="centerY" id="Rbm-uD-3xf"/>
+                                    <constraint firstItem="pTT-4z-iyZ" firstAttribute="leading" secondItem="6dt-Wf-LQU" secondAttribute="leading" constant="62" id="UG8-6z-meI"/>
+                                    <constraint firstAttribute="height" constant="47.700000000000003" id="aMP-Os-gq1"/>
+                                    <constraint firstAttribute="trailing" secondItem="NiN-5O-zVw" secondAttribute="trailing" constant="22" id="pqy-N7-MzU"/>
+                                    <constraint firstItem="pTT-4z-iyZ" firstAttribute="height" secondItem="6dt-Wf-LQU" secondAttribute="height" id="riE-aJ-OBe"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i6I-mQ-vrb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="644.33333333333337"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HyD-2H-L8O">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gN0-3K-Fjr">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="6dt-Wf-LQU" firstAttribute="top" secondItem="i6I-mQ-vrb" secondAttribute="bottom" id="Chq-74-mJx"/>
+                            <constraint firstItem="6dt-Wf-LQU" firstAttribute="centerX" secondItem="Q2g-L8-w0D" secondAttribute="centerX" id="Ggj-lS-Wu8"/>
+                            <constraint firstItem="6dt-Wf-LQU" firstAttribute="width" secondItem="dJc-tK-vuW" secondAttribute="width" id="O3J-RF-OaJ"/>
+                            <constraint firstItem="i6I-mQ-vrb" firstAttribute="width" secondItem="dJc-tK-vuW" secondAttribute="width" id="jRT-AX-LgG"/>
+                            <constraint firstItem="i6I-mQ-vrb" firstAttribute="top" secondItem="Q2g-L8-w0D" secondAttribute="top" id="khk-yK-WbM"/>
+                            <constraint firstItem="Q2g-L8-w0D" firstAttribute="bottom" secondItem="6dt-Wf-LQU" secondAttribute="bottom" id="wip-N2-zUS"/>
+                            <constraint firstItem="i6I-mQ-vrb" firstAttribute="centerX" secondItem="Q2g-L8-w0D" secondAttribute="centerX" id="xY8-qh-hU5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Q2g-L8-w0D"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="28일 || 신촌/홍대 || 2:2" id="PZB-Au-xdj">
+                        <barButtonItem key="leftBarButtonItem" image="bar_icon_back" id="ghH-5e-ev1">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="dismissBtnPressed:" destination="ASO-jR-V83" id="Nwq-gr-x4d"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="bar_item_exit" id="yem-PG-mec">
+                            <color key="tintColor" red="0.066666666669999999" green="0.058823529409999999" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="quitBtnPressed:" destination="ASO-jR-V83" id="Im3-fT-HqW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="button_call" destination="tsn-kg-U3n" id="0FZ-tw-Kc4"/>
+                        <outlet property="button_send" destination="NiN-5O-zVw" id="8v7-Y3-Tol"/>
+                        <outlet property="collectionView" destination="i6I-mQ-vrb" id="83q-bi-rsW"/>
+                        <outlet property="constraint_bottom" destination="wip-N2-zUS" id="gcq-7o-hML"/>
+                        <outlet property="tf_message" destination="pTT-4z-iyZ" id="e8L-GD-n20"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J6e-CB-MSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="-581"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qLy-OZ-Svn">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="Bdx-5j-wya" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NY2-jB-RoY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="16"/>
+                            <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ASO-jR-V83" kind="relationship" relationship="rootViewController" id="i6n-Rm-3wI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sei-QH-7x1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-274" y="-581"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bar_icon_back" width="22" height="22"/>
+        <image name="bar_item_exit" width="23" height="23"/>
+        <image name="icon_chatting_alarm" width="30" height="30"/>
+        <image name="icon_send" width="24" height="24"/>
+    </resources>
+</document>

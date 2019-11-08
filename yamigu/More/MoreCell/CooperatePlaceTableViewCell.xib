@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CooperatePlaceTableViewCell" customModule="yamigu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="339" height="233"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="339" height="232.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jN0-tM-ftJ">
+                        <rect key="frame" x="0.0" y="170.5" width="339" height="62"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오렌지룸 신촌점" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6mK-du-8ez">
+                                <rect key="frame" x="12" y="18" width="123.5" height="21"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_phone_small" translatesAutoresizingMaskIntoConstraints="NO" id="kbe-2x-zqk">
+                                <rect key="frame" x="12" y="42" width="7" height="7"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02-365-0789" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oag-Xz-WDj">
+                                <rect key="frame" x="21" y="40" width="56" height="11"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="9"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_spot_small" translatesAutoresizingMaskIntoConstraints="NO" id="kIy-k2-HWe">
+                                <rect key="frame" x="81" y="42" width="7" height="7"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신촌역 5분거리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXJ-8X-xe6">
+                                <rect key="frame" x="90" y="40" width="59" height="11"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="9"/>
+                                <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제휴 10,000원 쿠폰" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgt-xD-Wp0">
+                                <rect key="frame" x="215" y="22" width="112" height="15"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*소주 또는 맥주 2병 제공" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wkP-li-fJn">
+                                <rect key="frame" x="219" y="40" width="108" height="12"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="10"/>
+                                <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99607843137254903" green="0.97254901960784312" blue="0.88235294117647056" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="6mK-du-8ez" firstAttribute="top" secondItem="jN0-tM-ftJ" secondAttribute="top" constant="18" id="12J-SV-Xkg"/>
+                            <constraint firstItem="kbe-2x-zqk" firstAttribute="leading" secondItem="6mK-du-8ez" secondAttribute="leading" id="4Ud-ai-n1n"/>
+                            <constraint firstItem="DXJ-8X-xe6" firstAttribute="centerY" secondItem="oag-Xz-WDj" secondAttribute="centerY" id="5Cu-EX-NXA"/>
+                            <constraint firstAttribute="trailing" secondItem="wgt-xD-Wp0" secondAttribute="trailing" constant="12" id="7L5-of-edB"/>
+                            <constraint firstItem="wgt-xD-Wp0" firstAttribute="bottom" secondItem="6mK-du-8ez" secondAttribute="bottom" constant="-2" id="Boe-YU-VKZ"/>
+                            <constraint firstItem="kbe-2x-zqk" firstAttribute="top" secondItem="6mK-du-8ez" secondAttribute="bottom" constant="3" id="Ffq-CD-Flt"/>
+                            <constraint firstItem="oag-Xz-WDj" firstAttribute="bottom" secondItem="kbe-2x-zqk" secondAttribute="bottom" constant="2" id="Nth-4x-OVS"/>
+                            <constraint firstItem="DXJ-8X-xe6" firstAttribute="leading" secondItem="kIy-k2-HWe" secondAttribute="trailing" constant="2" id="ONZ-Bx-ERA"/>
+                            <constraint firstItem="kIy-k2-HWe" firstAttribute="bottom" secondItem="kbe-2x-zqk" secondAttribute="bottom" id="Ou1-SN-eTm"/>
+                            <constraint firstItem="wkP-li-fJn" firstAttribute="trailing" secondItem="wgt-xD-Wp0" secondAttribute="trailing" id="RAi-YC-XDA"/>
+                            <constraint firstItem="oag-Xz-WDj" firstAttribute="leading" secondItem="kbe-2x-zqk" secondAttribute="trailing" constant="2" id="eK0-VP-OME"/>
+                            <constraint firstItem="wkP-li-fJn" firstAttribute="top" secondItem="wgt-xD-Wp0" secondAttribute="bottom" constant="3" id="iF0-Br-0y0"/>
+                            <constraint firstItem="kIy-k2-HWe" firstAttribute="leading" secondItem="oag-Xz-WDj" secondAttribute="trailing" constant="4" id="it2-xU-clc"/>
+                            <constraint firstItem="6mK-du-8ez" firstAttribute="leading" secondItem="jN0-tM-ftJ" secondAttribute="leading" constant="12" id="kfU-D4-0DH"/>
+                            <constraint firstAttribute="height" constant="62" id="mYB-FW-1OW"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_place" translatesAutoresizingMaskIntoConstraints="NO" id="pIl-Hy-Awd">
+                        <rect key="frame" x="0.0" y="0.0" width="339" height="170.5"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yello_bar" translatesAutoresizingMaskIntoConstraints="NO" id="DAT-oM-D1D">
+                        <rect key="frame" x="0.0" y="170.5" width="339" height="5"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pIl-Hy-Awd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="FSF-RU-qH5"/>
+                    <constraint firstItem="DAT-oM-D1D" firstAttribute="top" secondItem="pIl-Hy-Awd" secondAttribute="bottom" id="Kfa-6Y-OQD"/>
+                    <constraint firstItem="pIl-Hy-Awd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="R9i-0o-Ym3"/>
+                    <constraint firstAttribute="trailing" secondItem="pIl-Hy-Awd" secondAttribute="trailing" id="ThL-3X-1Sa"/>
+                    <constraint firstItem="jN0-tM-ftJ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="YiS-zu-lWI"/>
+                    <constraint firstAttribute="bottom" secondItem="jN0-tM-ftJ" secondAttribute="bottom" id="gE4-be-Jxd"/>
+                    <constraint firstItem="jN0-tM-ftJ" firstAttribute="top" secondItem="pIl-Hy-Awd" secondAttribute="bottom" id="ibc-4x-3lQ"/>
+                    <constraint firstItem="DAT-oM-D1D" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="lE2-fB-Bto"/>
+                    <constraint firstItem="jN0-tM-ftJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="sUy-EA-GQT"/>
+                </constraints>
+            </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="DAT-oM-D1D" firstAttribute="centerX" secondItem="njF-e1-oar" secondAttribute="centerX" id="VQb-P8-MgD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_phone_small" width="7" height="7"/>
+        <image name="icon_spot_small" width="7" height="7"/>
+        <image name="sample_place" width="339" height="171"/>
+        <image name="yello_bar" width="339" height="5"/>
+    </resources>
+</document>

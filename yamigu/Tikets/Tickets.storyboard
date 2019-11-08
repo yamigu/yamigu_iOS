@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="z1H-Fl-m3D">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Arc-pS-cs4">
+            <objects>
+                <navigationController id="z1H-Fl-m3D" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TDu-mu-WiC">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NFe-Jx-9ZS" kind="relationship" relationship="rootViewController" id="5BZ-uW-pZD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p6g-FE-I4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-917" y="115"/>
+        </scene>
+        <!--야미구 티켓으로-->
+        <scene sceneID="m9G-0S-6qO">
+            <objects>
+                <viewController id="NFe-Jx-9ZS" customClass="TicketsVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VEj-Wn-8El">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9H-Qx-Nee">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPK-bl-vgh" customClass="CHIPageControlChimayo" customModule="CHIPageControl">
+                                <rect key="frame" x="186" y="609" width="42" height="10"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="inactiveTransparency">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="currentPageTintColor">
+                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwZ-yc-vDE">
+                                <rect key="frame" x="37" y="674" width="340" height="42"/>
+                                <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="CeY-Vm-6Rq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <state key="normal" title="야미구 티켓 구매하기">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="c6s-AA-COR" kind="show" id="1dX-fL-Pcj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xkd-mR-bTk" firstAttribute="bottom" secondItem="Z9H-Qx-Nee" secondAttribute="bottom" id="0Dt-yg-3Po"/>
+                            <constraint firstItem="Xkd-mR-bTk" firstAttribute="trailing" secondItem="Z9H-Qx-Nee" secondAttribute="trailing" id="5A2-WC-BHo"/>
+                            <constraint firstItem="Xkd-mR-bTk" firstAttribute="bottom" secondItem="JwZ-yc-vDE" secondAttribute="bottom" constant="20" id="7Gd-hf-WrQ"/>
+                            <constraint firstItem="Xkd-mR-bTk" firstAttribute="trailing" secondItem="JwZ-yc-vDE" secondAttribute="trailing" constant="37" id="Euc-Kn-Eip"/>
+                            <constraint firstItem="JwZ-yc-vDE" firstAttribute="leading" secondItem="Xkd-mR-bTk" secondAttribute="leading" constant="37" id="Fxa-rN-uyK"/>
+                            <constraint firstItem="DPK-bl-vgh" firstAttribute="centerX" secondItem="Xkd-mR-bTk" secondAttribute="centerX" id="MLI-lD-QvO"/>
+                            <constraint firstItem="Z9H-Qx-Nee" firstAttribute="width" secondItem="VEj-Wn-8El" secondAttribute="width" id="R4f-nH-mGB"/>
+                            <constraint firstItem="Z9H-Qx-Nee" firstAttribute="height" secondItem="Xkd-mR-bTk" secondAttribute="height" id="S0j-OF-x4U"/>
+                            <constraint firstItem="Z9H-Qx-Nee" firstAttribute="top" secondItem="Xkd-mR-bTk" secondAttribute="top" id="SCd-mC-Sw5"/>
+                            <constraint firstItem="Xkd-mR-bTk" firstAttribute="bottom" secondItem="DPK-bl-vgh" secondAttribute="bottom" constant="117" id="Vdj-It-V8n"/>
+                            <constraint firstItem="Z9H-Qx-Nee" firstAttribute="leading" secondItem="Xkd-mR-bTk" secondAttribute="leading" id="hDK-sf-xr2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Xkd-mR-bTk"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="야미구 티켓으로" id="gnU-bD-2GX">
+                        <barButtonItem key="leftBarButtonItem" image="bar_icon_back" id="Mjr-o2-7pE">
+                            <connections>
+                                <action selector="dismissBtnPressed:" destination="NFe-Jx-9ZS" id="fW4-Ow-mXt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pageControl" destination="DPK-bl-vgh" id="r2B-sf-5kq"/>
+                        <outlet property="scrollView" destination="Z9H-Qx-Nee" id="wBt-Mk-rHj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KYg-a7-t79" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-129" y="115"/>
+        </scene>
+        <!--Ticket-->
+        <scene sceneID="Lxs-be-mPB">
+            <objects>
+                <viewController title="Ticket" id="c6s-AA-COR" customClass="BuyTicketVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Cb4-Ag-HJp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="티켓" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDv-0n-xNI">
+                                <rect key="frame" x="35" y="68" width="37.666666666666657" height="24"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggh-0V-V1C">
+                                <rect key="frame" x="35.666666666666657" y="86.666666666666671" width="343" height="206.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="Tcd-fn-MSA"/>
+                                    <constraint firstAttribute="height" constant="206.5" id="wLO-Hn-MQK"/>
+                                </constraints>
+                                <state key="normal" image="image_ticket_1"/>
+                                <connections>
+                                    <action selector="buttonPressed_1:" destination="c6s-AA-COR" eventType="touchUpInside" id="7uc-NP-8t7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5B-AM-ujc">
+                                <rect key="frame" x="35.666666666666657" y="298.66666666666669" width="343" height="206.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="343" id="bXx-gU-TnM"/>
+                                    <constraint firstAttribute="height" constant="206.5" id="iCg-y8-DFM"/>
+                                </constraints>
+                                <state key="normal" image="image_ticket_3"/>
+                                <connections>
+                                    <action selector="buttonPressed_2:" destination="c6s-AA-COR" eventType="touchUpInside" id="HHL-2m-T3R"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_ticket_des" translatesAutoresizingMaskIntoConstraints="NO" id="HaP-Rv-wY0">
+                                <rect key="frame" x="34" y="601" width="247" height="87"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HaP-Rv-wY0" firstAttribute="leading" secondItem="DYY-f0-Mr7" secondAttribute="leading" constant="34" id="GYT-F5-l9p"/>
+                            <constraint firstItem="w5B-AM-ujc" firstAttribute="centerX" secondItem="Ggh-0V-V1C" secondAttribute="centerX" id="Oit-et-LaU"/>
+                            <constraint firstItem="kDv-0n-xNI" firstAttribute="leading" secondItem="DYY-f0-Mr7" secondAttribute="leading" constant="35" id="Ruy-7R-pv2"/>
+                            <constraint firstItem="Ggh-0V-V1C" firstAttribute="centerX" secondItem="DYY-f0-Mr7" secondAttribute="centerX" id="UJW-Wq-U2j"/>
+                            <constraint firstItem="DYY-f0-Mr7" firstAttribute="bottom" secondItem="HaP-Rv-wY0" secondAttribute="bottom" constant="48" id="WHW-ic-86c"/>
+                            <constraint firstItem="Ggh-0V-V1C" firstAttribute="top" secondItem="DYY-f0-Mr7" secondAttribute="top" constant="22.5" id="aQh-ld-yQ6"/>
+                            <constraint firstItem="w5B-AM-ujc" firstAttribute="top" secondItem="Ggh-0V-V1C" secondAttribute="bottom" constant="5.5" id="hOt-4e-s6C"/>
+                            <constraint firstItem="kDv-0n-xNI" firstAttribute="top" secondItem="DYY-f0-Mr7" secondAttribute="top" constant="4" id="oNF-ls-Xgx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="DYY-f0-Mr7"/>
+                    </view>
+                    <connections>
+                        <outlet property="button_ticket_1" destination="Ggh-0V-V1C" id="HWd-eW-Q3w"/>
+                        <outlet property="button_ticket_2" destination="w5B-AM-ujc" id="MN8-hB-VNk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mbS-4i-ykr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="695" y="119"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bar_icon_back" width="22" height="22"/>
+        <image name="image_ticket_1" width="343" height="206.66667175292969"/>
+        <image name="image_ticket_3" width="343" height="205.66667175292969"/>
+        <image name="image_ticket_des" width="247" height="87"/>
+    </resources>
+</document>
