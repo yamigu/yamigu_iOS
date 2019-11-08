@@ -173,8 +173,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     func checkMessages(){
         
-        let chatRef = Database.database().reference().child("user").child(userDictionary["uid"] as! String).child("receivedMessages").child(self.matchingId)
-        
+        chatRef = Database.database().reference().child("user").child(userDictionary["uid"] as! String).child("receivedMessages").child(self.matchingId)
         chatRefHandle = chatRef.observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
@@ -183,7 +182,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                 let isUnread = dictionary["isUnread"] as! Bool
                 if !isUnread {
                     let dict = ["isUnread":true]
-                    chatRef.child(snapshot.key).updateChildValues(dict)
+                    self.chatRef.child(snapshot.key).updateChildValues(dict)
                 }
             }
         })
@@ -333,7 +332,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
+        //self.view.endEditing(true)
     }
 }
 

@@ -11,6 +11,9 @@
         <array key="Binggrae.ttf">
             <string>Binggrae</string>
         </array>
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Navigation Controller-->
@@ -192,6 +195,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미팅 대기팀이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smn-3F-HXV">
+                                <rect key="frame" x="104.33333333333333" y="151" width="205.33333333333337" height="23.333333333333343"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZX-8E-yCV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
@@ -217,6 +226,8 @@
                             <constraint firstItem="Rnj-Gj-bBc" firstAttribute="leading" secondItem="1Vb-eF-MhK" secondAttribute="leading" constant="12.5" id="ANU-Gi-ZGG"/>
                             <constraint firstItem="8ZX-8E-yCV" firstAttribute="width" secondItem="LqD-ag-Zot" secondAttribute="width" id="DQZ-8C-pnX"/>
                             <constraint firstItem="Rnj-Gj-bBc" firstAttribute="top" secondItem="yK4-3q-K1Z" secondAttribute="bottom" constant="21" id="Dru-wT-fvq"/>
+                            <constraint firstItem="Smn-3F-HXV" firstAttribute="top" secondItem="yK4-3q-K1Z" secondAttribute="bottom" constant="57" id="HAd-QK-W3K"/>
+                            <constraint firstItem="Smn-3F-HXV" firstAttribute="centerX" secondItem="yK4-3q-K1Z" secondAttribute="centerX" id="L6T-fk-Y3h"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="bottom" secondItem="Rnj-Gj-bBc" secondAttribute="bottom" id="VpG-a5-ntl"/>
                             <constraint firstItem="8ZX-8E-yCV" firstAttribute="centerY" secondItem="1Vb-eF-MhK" secondAttribute="centerY" id="gYF-4k-mxT"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="trailing" secondItem="Rnj-Gj-bBc" secondAttribute="trailing" constant="12.5" id="jsl-bz-NIC"/>
@@ -241,6 +252,7 @@
                         <outlet property="button_filter" destination="S9s-gS-xwT" id="nWi-YB-MBM"/>
                         <outlet property="filterView" destination="9v8-82-PzR" id="nv3-Ob-hCG"/>
                         <outlet property="height" destination="YyW-yJ-HMj" id="EPh-OB-4Kl"/>
+                        <outlet property="label_empty" destination="Smn-3F-HXV" id="hVK-yC-xf1"/>
                         <outlet property="tableView" destination="Rnj-Gj-bBc" id="vNB-Tl-LKN"/>
                         <outletCollection property="dateButtons" destination="gaX-kN-tgV" collectionClass="NSMutableArray" id="NuV-Q1-AUh"/>
                         <outletCollection property="dateButtons" destination="7DK-IL-4O1" collectionClass="NSMutableArray" id="OpM-jm-OV5"/>

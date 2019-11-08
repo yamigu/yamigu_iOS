@@ -402,7 +402,38 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 
                 cell.label_matchingName.text = matchName + matchAge
                 cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
-                
+                ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
+                    for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                            let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
+                            let time = value["time"]!
+                            print("time \(time)")
+                            
+                            let dateString = "\(time)"
+                            let dateDoube = Double(dateString)! / 1000.0
+                            print("datedouble = \(dateDoube)")
+                            let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
+                            
+                            let dateFomatter = DateFormatter(format: "a H:mm")
+                            dateFomatter.locale = Locale(identifier: "ko_kr")
+                            dateFomatter.timeZone = TimeZone(abbreviation: "KST")
+                            cell.label_chattingTime.text = dateFomatter.string(from: date)
+                            
+                            
+                            if let message = value["message"] as? String {
+                                DispatchQueue.main.async {
+                                    //
+                                    cell.label_lastChat.text = message
+                                }
+                                
+                                
+                            }
+                            
+                            
+                            
+                        }
+                    }
+                }
+                /*
                 ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { (snapshot) in
                     // Get user value
                     for snap in snapshot.children.allObjects as! [DataSnapshot] {
@@ -437,7 +468,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 { (error) in
                     print(error.localizedDescription)
                 }
-            }
+            }*/
             
             let dateString = meetingDict["date"] as! String
             let dateFormatter = DateFormatter()
@@ -663,10 +694,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
             selectedDate = monthString+" "+dayString
             
-            
-            
-            
-            
             DispatchQueue.main.async {
                 let watingNavController = self.tabBarController?.viewControllers![1] as! UINavigationController
                 let watingController = watingNavController.topViewController as! WatingVC
@@ -700,8 +727,6 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
             self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
         }
-        
-        
         
     }
     

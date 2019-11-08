@@ -10,7 +10,7 @@ import UIKit
 
 class WatingVC: UIViewController {
     
-    
+    var refreshControl: UIRefreshControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterView: FilterView!
     
@@ -18,6 +18,7 @@ class WatingVC: UIViewController {
     @IBOutlet weak var backgroundVIew: UIView!
     @IBOutlet weak var height: NSLayoutConstraint!
     
+    @IBOutlet weak var label_empty: UILabel!
     @IBOutlet weak var button_filter: UIBarButtonItem!
     var isFilterShow = false
     var dateArray = [Date]()
@@ -39,6 +40,10 @@ class WatingVC: UIViewController {
         backgroundVIew.isHidden = true
         height.constant = 0
         
+        label_empty.isHidden = true
+        
+        //self.tableView.refreshControl
+        
         self.filterView.delegate = self
         
         var date = Date()
@@ -55,6 +60,7 @@ class WatingVC: UIViewController {
             let resultDt = dtformatter.date(from: dtString)
             
             dateArray.append(resultDt!)
+            
         }
         
         let formatter = DateFormatter()
@@ -70,8 +76,18 @@ class WatingVC: UIViewController {
         }
         self.updateUI()
         
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+        
         
     }
+    
+    @objc func refresh(_ sender: Any) {
+        self.makeBody()
+    }
+    
     @IBAction func showFilter(_ sender: Any) {
         if isFilterShow {
             isFilterShow = false
@@ -104,6 +120,10 @@ class WatingVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.makeBody()
         
+        if isFilterShow {
+            self.showFilter(self)
+        }
+        
     }
     
     @IBAction func dateBtnPressed(_ sender: Any) {
@@ -130,7 +150,7 @@ class WatingVC: UIViewController {
     
     
     func updateUI() {
-        if self.selectedPlace.count != 0 || self.selectedDate.count != 0 || self.selectedType.count != 0 {
+        if self.selectedPlace.count != 0 || self.selectedType.count != 0 {
             self.button_filter.tintColor = UIColor(rgb: 0xFF7B22)
         } else {
             self.button_filter.tintColor = UIColor(rgb: 0x505050)
@@ -154,8 +174,15 @@ class WatingVC: UIViewController {
             }
         }
         
+        for type in selectedType {
+            self.filterView.button_types[type - 1].isSelected = true
+            self.filterView.button_types[type - 1].backgroundColor = UIColor(rgb: 0xFF7B22)
+        }
         
-        
+        for place in selectedPlace {
+            self.filterView.button_places[place - 1].isSelected = true
+            self.filterView.button_places[place - 1].backgroundColor = UIColor(rgb: 0xFF7B22)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -216,7 +243,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             let nickname = meetingObj["openby_nickname"] as! String
             let age = "\(meetingObj["openby_age"]!)"
             
-            cell.label_nickname.text = nickname + age
+            cell.label_nickname.text = nickname + " " + "(\(age))"
             cell.label_place.text = meetingObj["place_type_name"] as! String
             
             let belong = meetingObj["openby_belong"] as! String
@@ -241,6 +268,12 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
+        if matchingList.count == 0 {
+            self.label_empty.isHidden = false
+        } else {
+            self.label_empty.isHidden = true
+        }
+        
         return matchingList.count
     }
     
@@ -262,8 +295,13 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         cell.button_meeting.isHidden = false
         
         cell.constraintHeight.constant = 54.5
-        UIView.animate(withDuration: 0.5) {
+        
+        
+        UIView.animate(withDuration: 0.5, animations: {
             cell.layoutIfNeeded()
+            
+        }) { (complete) in
+            cell.button_meeting.setTitle("미팅 신청하기", for: .normal)
         }
         
         self.selectedMatching = self.matchingList[indexPath.section] as! Dictionary<String, Any>
@@ -272,13 +310,17 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! WatingTableViewCell
         
-        cell.button_meeting.isHidden = true
-        
-        cell.constraintHeight.constant = 0
-        
-        UIView.animate(withDuration: 0.5) {
+        cell.button_meeting.setTitle("", for: .normal)
+        UIView.animate(withDuration: 0.5, animations: {
+            cell.constraintHeight.constant = 0
             cell.layoutIfNeeded()
+        }) { (complete) in
+            if complete {
+                cell.button_meeting.isHidden = true
+            }
         }
+        
+        
         
     }
     
@@ -294,6 +336,18 @@ extension WatingVC: FilterViewDelegate {
     func filterClearAll() {
         self.selectedType.removeAll()
         self.selectedPlace.removeAll()
+        
+        for i in 0..<3 {
+            self.filterView.button_types[i].isSelected = false
+            self.filterView.button_types[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
+        }
+        
+        for i in 0..<6 {
+            self.filterView.button_places[i].isSelected = true
+            self.filterView.button_places[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
+        }
+        
+        self.makeBody()
     }
     
     func filterComp() {
@@ -425,6 +479,7 @@ extension WatingVC: FilterViewDelegate {
                         self.filterView.compBtn.setTitle("\(self.matchingList.count)팀 보기", for: .normal)
                         
                         self.tableView.reloadData()
+                        self.refreshControl.endRefreshing()
                     }
                 } catch {
                     print(error)

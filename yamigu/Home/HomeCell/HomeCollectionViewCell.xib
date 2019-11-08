@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -39,7 +38,7 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요한명이 술을잘못마셔요 배려해주실분계신가요" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-Fq-qzO">
                         <rect key="frame" x="0.0" y="60" width="293" height="71.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -52,28 +51,28 @@
                         <rect key="frame" x="0.0" y="161.5" width="293" height="5"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="me6-yg-oN5">
-                        <rect key="frame" x="0.0" y="167.5" width="293" height="54.5"/>
+                        <rect key="frame" x="0.0" y="165.5" width="293" height="56.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임(30)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kR-h6-lej">
-                                <rect key="frame" x="19" y="10" width="67" height="17"/>
+                                <rect key="frame" x="19" y="12" width="67" height="17"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연세대학교 전기전자공학부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tj9-ha-cyl">
-                                <rect key="frame" x="19" y="30" width="139" height="14"/>
+                                <rect key="frame" x="19" y="32" width="139" height="14"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5월18일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heP-ya-5By">
-                                <rect key="frame" x="229.5" y="13" width="44.5" height="14"/>
+                                <rect key="frame" x="229.5" y="15" width="44.5" height="14"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신촌/홍대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUO-TH-X68">
-                                <rect key="frame" x="224" y="30" width="50" height="14"/>
+                                <rect key="frame" x="224" y="32" width="50" height="14"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -90,7 +89,7 @@
                             <constraint firstItem="tj9-ha-cyl" firstAttribute="top" secondItem="1kR-h6-lej" secondAttribute="bottom" constant="3" id="m57-Hm-yGi"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8l-w7-liv" customClass="CosmosView" customModule="Cosmos">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n8l-w7-liv" customClass="CosmosView" customModule="Cosmos">
                         <rect key="frame" x="114" y="139" width="65" height="13"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
@@ -130,7 +129,7 @@
                 <constraint firstItem="Ced-je-bF2" firstAttribute="top" secondItem="9fo-Fq-qzO" secondAttribute="bottom" constant="30" id="Pje-Gs-oNw"/>
                 <constraint firstItem="Ced-je-bF2" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="Tuh-aA-3Fc"/>
                 <constraint firstAttribute="bottom" secondItem="me6-yg-oN5" secondAttribute="bottom" id="VJ4-EJ-tVY"/>
-                <constraint firstItem="Ced-je-bF2" firstAttribute="bottom" secondItem="me6-yg-oN5" secondAttribute="top" constant="-1" id="WgR-D7-ZhF"/>
+                <constraint firstItem="Ced-je-bF2" firstAttribute="bottom" secondItem="me6-yg-oN5" secondAttribute="top" constant="1" id="WgR-D7-ZhF"/>
                 <constraint firstItem="1kR-h6-lej" firstAttribute="top" secondItem="Ced-je-bF2" secondAttribute="bottom" constant="11" id="bks-0Q-H6c"/>
                 <constraint firstItem="n8l-w7-liv" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="h5s-YX-etA"/>
                 <constraint firstAttribute="trailing" secondItem="me6-yg-oN5" secondAttribute="trailing" id="hmD-1h-sd8"/>

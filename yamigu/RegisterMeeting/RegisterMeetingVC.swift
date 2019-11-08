@@ -491,6 +491,7 @@ extension RegisterMeetingVC {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.contentView.backgroundColor = UIColor.clear
         cell.isSelected = false
         let label = cell.viewWithTag(1) as! UILabel
         label.textColor = UIColor.black
@@ -516,14 +517,19 @@ extension RegisterMeetingVC {
             
             if indexPath.row == 0 {
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일"
+                
+                formatter.dateFormat = "M월 d일 EE"
+                formatter.locale = Locale(identifier: "ko_kr")
+                formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
             } else if indexPath.row == 1 {
                 dateComponents.setValue(1, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일"
+                formatter.dateFormat = "M월 d일 EE"
+                formatter.locale = Locale(identifier: "ko_kr")
+                formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -531,7 +537,9 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(2, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일"
+                formatter.dateFormat = "M월 d일 EE"
+                formatter.locale = Locale(identifier: "ko_kr")
+                formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -539,7 +547,9 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(3, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일"
+                formatter.dateFormat = "M월 d일 EE"
+                formatter.locale = Locale(identifier: "ko_kr")
+                formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -547,7 +557,9 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(4, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일"
+                formatter.dateFormat = "M월 d일 EE"
+                formatter.locale = Locale(identifier: "ko_kr")
+                formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -555,7 +567,9 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(5, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일"
+                formatter.dateFormat = "M월 d일 EE"
+                formatter.locale = Locale(identifier: "ko_kr")
+                formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
                 
@@ -563,7 +577,9 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(6, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일"
+                formatter.dateFormat = "M월 d일 EE"
+                formatter.locale = Locale(identifier: "ko_kr")
+                formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
                 
