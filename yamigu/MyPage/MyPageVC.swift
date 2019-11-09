@@ -99,16 +99,19 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        checkNickname(urlString: "http://147.47.208.44:9999/api/user/validation/nickname/\(self.tf_name.text!)", isComp: false)
+        let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
+        print("nickName = \(nickName!)")
+        var urlString = "http://147.47.208.44:9999/api/user/validation/nickname/\(nickName!)"
+        urlString = String(utf8String: urlString.cString(using: .utf8)!)!
+        checkNickname(urlString: urlString, isComp: false)
         
         return true
     }
     
     func checkNickname(urlString : String, isComp : Bool) {
-        guard let url = URL(string: urlString) else {return}
+        let url = URL(string: urlString)
         
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url!)
         
         request.httpMethod = "get"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")

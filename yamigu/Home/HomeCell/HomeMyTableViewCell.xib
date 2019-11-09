@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -297,6 +297,7 @@
                 <outlet property="button_edit" destination="80R-Th-7fO" id="DqA-eb-hdm"/>
                 <outlet property="button_watingTeam" destination="dwT-ci-PNk" id="ZI1-tX-z42"/>
                 <outlet property="constraint_bottomHeight" destination="d4u-zP-Nbp" id="NZY-Dz-JXe"/>
+                <outlet property="image_bottom" destination="DAP-7S-FoU" id="LjJ-P1-dSp"/>
                 <outlet property="label_chattingCount" destination="5le-Jb-Sag" id="oOu-dB-Qak"/>
                 <outlet property="label_chattingTime" destination="a5P-zG-Ayb" id="RVB-gw-10Y"/>
                 <outlet property="label_day" destination="0nZ-zu-5Mf" id="pKk-hB-RdL"/>
@@ -309,6 +310,7 @@
                 <outlet property="label_place" destination="3Rz-JY-fCG" id="yR6-ZP-Jwx"/>
                 <outlet property="label_teamCount" destination="eVp-Q4-GLX" id="3tc-Dd-Npx"/>
                 <outlet property="label_type" destination="gdu-86-6w8" id="qnU-3m-Adz"/>
+                <outlet property="view_backgroundMonth" destination="HFQ-EY-nf3" id="3T8-t3-iGW"/>
                 <outlet property="view_bottom" destination="Jtd-ZS-Hl9" id="lfq-Zo-Hzf"/>
             </connections>
             <point key="canvasLocation" x="140" y="137"/>

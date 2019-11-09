@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WatingVC: UIViewController {
+class WatingVC: UIViewController, UIGestureRecognizerDelegate {
     
     var refreshControl: UIRefreshControl!
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +20,7 @@ class WatingVC: UIViewController {
     
     @IBOutlet weak var label_empty: UILabel!
     @IBOutlet weak var button_filter: UIBarButtonItem!
+    @IBOutlet weak var constraint_tableViewLeading: NSLayoutConstraint!
     var isFilterShow = false
     var dateArray = [Date]()
     var selectedDate = [Date]()
@@ -27,6 +28,10 @@ class WatingVC: UIViewController {
     var selectedType = [Int]()
     var selectedPlace = [Int]()
     
+    var selectedTmpType = [Int]()
+    var selectedTmpPlace = [Int]()
+    
+    @IBOutlet weak var backgroundTouchView: UIView!
     var matchingList = [Dictionary<String, Any>]()
     
     var selectedMatching = Dictionary<String, Any>()
@@ -45,7 +50,6 @@ class WatingVC: UIViewController {
         //self.tableView.refreshControl
         
         self.filterView.delegate = self
-        
         var date = Date()
         var dateComponents = DateComponents()
         
@@ -81,7 +85,22 @@ class WatingVC: UIViewController {
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableView.addSubview(refreshControl)
         
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(backgroundViewDismiss))
+        gesture.delegate = self
+        backgroundTouchView.addGestureRecognizer(gesture)
+        backgroundTouchView.isUserInteractionEnabled = true
+    }
+    
+    @objc func backgroundViewDismiss() {
+        isFilterShow = false
         
+        backgroundVIew.isHidden = true
+        height.constant = 0
+        
+        //self.selectedType = self.selectedTmpType
+        //self.selectedPlace = self.selectedTmpPlace
+        
+        //makeBody()
     }
     
     @objc func refresh(_ sender: Any) {
@@ -100,6 +119,8 @@ class WatingVC: UIViewController {
             backgroundVIew.isHidden = false
             height.constant = 424
             
+            
+            
             for type in selectedType {
                 self.filterView.button_types[type - 1].isSelected = true
                 self.filterView.button_types[type - 1].backgroundColor = UIColor(rgb: 0xFF7B22)
@@ -110,6 +131,8 @@ class WatingVC: UIViewController {
                 self.filterView.button_places[place - 1].backgroundColor = UIColor(rgb: 0xFF7B22)
             }
             
+            
+            self.updateUI()
             UIView.animate(withDuration: 0.5) {
                 self.view.layoutIfNeeded()
             }
@@ -150,6 +173,16 @@ class WatingVC: UIViewController {
     
     
     func updateUI() {
+        for i in 0..<3 {
+            self.filterView.button_types[i].isSelected = false
+            self.filterView.button_types[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
+        }
+        
+        for i in 0..<6 {
+            self.filterView.button_places[i].isSelected = true
+            self.filterView.button_places[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
+        }
+        
         if self.selectedPlace.count != 0 || self.selectedType.count != 0 {
             self.button_filter.tintColor = UIColor(rgb: 0xFF7B22)
         } else {
@@ -195,6 +228,14 @@ class WatingVC: UIViewController {
             des.meetingDict = self.selectedMatching
         }
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return true
+        
+    }
+    
+    
+    
 }
 
 extension WatingVC: UITableViewDelegate, UITableViewDataSource {
@@ -226,11 +267,41 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             let meeting_type = "\(meetingObj["meeting_type"]!)"
             if meeting_type == "1" {
                 cell.label_type.text = "2:2 소개팅"
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
+                cell.image_bottomBar.image = UIImage(named: "orange_bar")
+                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF7B22)
+                cell.rating.settings.filledColor = UIColor(rgb: 0xFF7B22)
+                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF7B22)
+                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF7B22)
             } else if meeting_type == "2" {
                 cell.label_type.text = "3:3 미팅"
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
+                cell.image_bottomBar.image = UIImage(named: "orange_bar_2")
+                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF6024)
+                cell.rating.settings.filledColor = UIColor(rgb: 0xFF6024)
+                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF6024)
+                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF6024)
             } else if meeting_type == "3" {
                 cell.label_type.text = "4:4 미팅"
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
+                cell.image_bottomBar.image = UIImage(named: "orange_bar_3")
+                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF4600)
+                cell.rating.settings.filledColor = UIColor(rgb: 0xFF4600)
+                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF4600)
+                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF4600)
             }
+            
+            if meetingObj["is_matched"] as! Bool {
+                cell.label_type.text = "매칭완료"
+                cell.label_type.backgroundColor = UIColor(rgb: 0x707070)
+                cell.image_bottomBar.image = UIImage(named: "gray_bar")
+                cell.button_meeting.backgroundColor = UIColor(rgb: 0x707070)
+                cell.rating.tintColor = UIColor(rgb: 0x707070)
+                cell.rating.settings.filledColor = UIColor(rgb: 0x707070)
+                cell.rating.settings.filledBorderColor = UIColor(rgb: 0x707070)
+                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0x707070)
+            }
+            
             let dateString = meetingObj["date"] as! String
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -352,42 +423,93 @@ extension WatingVC: FilterViewDelegate {
     
     func filterComp() {
         if isFilterShow {
+            self.selectedPlace = self.selectedTmpPlace
+            self.selectedType = self.selectedTmpType
+            
             isFilterShow = false
             
             backgroundVIew.isHidden = true
             height.constant = 0
+            
+            self.makeBody()
         }
     }
     
     func typeBtnDeSelected(index: Int) {
         
-        if let index = self.selectedType.firstIndex(of: index) {
-            self.selectedType.remove(at: index)
+        if let index = self.selectedTmpType.firstIndex(of: index) {
+            self.selectedTmpType.remove(at: index)
         }
         
-        self.makeBody()
+        //self.makeBody()
+        self.checkCount()
     }
     
     func placeBtnDeSelected(index: Int) {
         
-        if let index = self.selectedPlace.firstIndex(of: index) {
-            self.selectedPlace.remove(at: index)
+        if let index = self.selectedTmpPlace.firstIndex(of: index) {
+            self.selectedTmpPlace.remove(at: index)
         }
-        self.makeBody()
+        //self.makeBody()
+        self.checkCount()
     }
     
     func typeBtnPressed(index: Int) {
-        self.selectedType.append(index)
-        self.makeBody()
+        self.selectedTmpType.append(index)
+        //self.makeBody()
+        self.checkCount()
     }
     
     func plceBtnPressed(index: Int) {
-        self.selectedPlace.append(index)
-        self.makeBody()
+        self.selectedTmpPlace.append(index)
+        //self.makeBody()
+        self.checkCount()
     }
     
     func slideValueChanged(value: [CGFloat]) {
         print(index)
+    }
+    
+    func checkCount() {
+        var body = ""
+        if selectedDate.count == 0 {
+            for dt in self.dateArray {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                
+                body += "date=\(formatter.string(from: dt))&"
+            }
+        }
+        
+        
+        for dt in self.selectedDate {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            
+            body += "date=\(formatter.string(from: dt))&"
+        }
+        
+        if selectedTmpType.count == 0 {
+            body += "type=1&type=2&type=3&"
+        }
+        
+        for tp in self.selectedTmpType {
+            body += "type=\(tp)&"
+        }
+        
+        if selectedTmpPlace.count == 0 {
+            body += "place=1&place=2&place=3&place=4&place=5&place=6&"
+        }
+        
+        for pc in self.selectedTmpPlace {
+            body += "place=\(pc)&"
+        }
+        
+        body.removeLast()
+        let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        self.getTmpMeetingCount(urlString:"http://147.47.208.44:9999/api/meetings/waiting/?\(escapedString!)")
+        
+        //self.updateUI()
     }
     
     func makeBody() {
@@ -433,7 +555,81 @@ extension WatingVC: FilterViewDelegate {
         
         self.updateUI()
         
+        let const = 12.5 + self.tableView.frame.width
+        self.constraint_tableViewLeading.constant = const
+        self.view.layoutIfNeeded()
+        
+        self.constraint_tableViewLeading.constant = 12.5
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        
         print("http://147.47.208.44:9999/api/meetings/count/?\(escapedString!)")
+        
+    }
+    
+    func getTmpMeetingCount(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+            
+            var request = URLRequest(url: url)
+            
+            request.httpMethod = "get"
+            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+            
+            let session = URLSession.shared
+            let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+                
+                //print(response)
+                
+                guard error == nil && data != nil else {
+                    if let err = error {
+                        print(err.localizedDescription)
+                    }
+                    return
+                }
+                
+                if let data = data {
+                    print(data)
+                    do{
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        //print(json)
+                        
+                        guard let newValue = json as? Dictionary<String, Any> else {
+                            print("invalid format")
+                            return
+                            
+                        }
+                        
+                        print(newValue)
+                        
+                        DispatchQueue.main.async {
+                            
+                            let result = newValue["results"] as! [Dictionary<String, Any>]
+                            self.filterView.compBtn.setTitle("\(result.count)팀 보기", for: .normal)
+                            
+                        }
+                    } catch {
+                        print(error)
+                    }
+                }
+                
+            })
+            task.resume()
+            /*if let _data = data {
+             if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
+             let str = String(strData)
+             print(str)
+             
+             DispatchQueue.main.async {
+             
+             }
+             }
+             }else{
+             print("data nil")
+             }
+             }).resume()*/
+            
         
     }
     

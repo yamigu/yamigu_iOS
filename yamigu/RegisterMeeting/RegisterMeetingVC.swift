@@ -53,6 +53,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         textView.layer.shadowOpacity = 0.4
         textView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
+        handleButtonImage()
         
     }
     
@@ -73,6 +74,20 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         button_editMeeting.isHidden = true
         button_deleteCard.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        if isEdit {
+            let mainTC = self.presentingViewController as! MainTC
+            let homeController = mainTC.viewControllers![0] as! HomeVC
+            
+            DispatchQueue.main.async {
+                homeController.myMeetings.removeAll()
+                homeController.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+            }
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -116,7 +131,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 button_people.setTitle(type, for: .normal)
                 button_place.setTitle(place, for: .normal)
-                button_date.setTitle(monthString+dayString, for: .normal)
+                button_date.setTitle(monthString + " "  + dayString, for: .normal)
                 
             } else {
                 button_editMeeting.isHidden = false
@@ -152,25 +167,33 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 button_people.setTitle(type, for: .normal)
                 button_place.setTitle(place, for: .normal)
-                button_date.setTitle(monthString+dayString, for: .normal)
+                button_date.setTitle(monthString + " " + dayString, for: .normal)
                 
                 textView.text = self.meetingDict["appeal"] as! String
             }
             
             
-            
+            handleButtonImage()
         }
     }
     
     @IBAction func editMeetingBtnPressed(_ sender: Any) {
         let id = "\(self.meetingDict["id"]!)"
-        let dict : [String: Any] = ["meeting_id" : id]
+        var dict : [String: Any] = ["meeting_id" : id]
+        
+        
+        dict["meeting_type"] = Int("\((self.selectedType + 1))")
+        dict["date"] = (button_date.titleLabel?.text!)!
+        dict["place"] = Int("\(self.selectedPlace + 1)")
+        dict["appeal"] = self.textView.text!
+        dict["meeting_id"] = "\(self.meetingDict["id"]!)"
+        
 
         self.postRequest2("http://147.47.208.44:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
         
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
-        }
+        }*/
     }
     
     @IBAction func deleteCardBtnPressed(_ sender: Any) {
@@ -180,9 +203,9 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
 
         self.postRequest2("http://147.47.208.44:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
         
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
-        }
+        }*/
     }
     
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
@@ -204,7 +227,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         //JSONSerialization.isValidJSONObject(requestDict)
         //request.httpBody = data
         
-        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
             let jsonString = String(data: data, encoding: .utf8) {
             request.httpBody = jsonString.data(using: .utf8)
         }
@@ -213,25 +236,30 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
+            
                 
             }
             if let data = data {
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                /*do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Int else {
                         print("invalid format")
                         return
                         
                     }
                     
                     DispatchQueue.main.async {
+                        self.dismiss(animated: true, completion: nil)
                     }
                 } catch {
                     print(error)
-                }
+                }*/
             }
             }.resume()
     }
@@ -250,6 +278,17 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.tableView.reloadData()
     }
     
+    func handleButtonImage() {
+        button_place.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_place.imageView!.frame.size.width, bottom: 0, right: button_place.imageView!.frame.size.width);
+        button_place.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_place.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_place.titleLabel!.frame.size.width - 5.0);
+        
+        button_date.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_date.imageView!.frame.size.width, bottom: 0, right: button_date.imageView!.frame.size.width);
+        button_date.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_date.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_date.titleLabel!.frame.size.width - 5.0);
+        
+        button_people.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_people.imageView!.frame.size.width, bottom: 0, right: button_people.imageView!.frame.size.width);
+        button_people.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_people.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_people.titleLabel!.frame.size.width - 5.0);
+    }
+    
     func dateBtnHandler() {
         isPeople = false
         isDate = true
@@ -264,7 +303,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             //self.button_place.sendActions(for: .allEvents)
             placeBtnHandler()
         }
-        
+        handleButtonImage()
         self.tableView.reloadData()
     }
     
@@ -281,7 +320,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         if button_date.titleLabel?.text != "날짜" {
             self.button_place.sendActions(for: .allEvents)
         }*/
- 
+        handleButtonImage()
         self.tableView.reloadData()
     }
     
@@ -301,7 +340,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             self.button_request.isHidden = false
             self.tableView.isHidden = true
         }
-        
+        handleButtonImage()
         self.tableView.reloadData()
     }
     
@@ -329,6 +368,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             //- date: 날짜
             //- place_type: 장소
             //- appeal: 어필 문구
+    
             
             self.postRequest("http://147.47.208.44:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
         } else {
@@ -359,7 +399,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         //request.httpBody = body
         //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
         //request.httpBody = body
-        var requestDict = Dictionary<String, String>()
+        var requestDict = Dictionary<String, Any>()
         requestDict["meeting_type"] = "\((self.selectedType + 1))"
         requestDict["date"] = (button_date.titleLabel?.text!)!
         requestDict["place"] = "\(self.selectedPlace + 1)"
@@ -372,10 +412,13 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             requestDict["meeting_id"] = "\(self.meetingDict["id"]!)"
         }
         
-        if let data = try? JSONSerialization.data(withJSONObject: requestDict, options: .prettyPrinted),
-            let jsonString = String(data: data, encoding: .utf8) {
-            jsonString.replacingOccurrences(of: "'", with: "\"")
-            request.httpBody = jsonString.data(using: .utf8)
+        if let data = try? JSONSerialization.data(withJSONObject: requestDict, options: .fragmentsAllowed),
+            var jsonString = String(data: data, encoding: .utf8) {
+            //jsonString = jsonString.replacingOccurrences(of: "'", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: " ", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: "\n", with: "")
+            let data = jsonString.data(using: .utf8, allowLossyConversion: false)
+            request.httpBody = data
         }
         
         let session = URLSession.shared
@@ -387,21 +430,23 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             }
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options:.allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, Any> else {
+                    guard let newValue = json as? Int else {
                         print("invalid format")
                         return
                         
                     }
                     
+                    
                     DispatchQueue.main.async {
                         // 동작 실행
                         //authKey = newValue["key"]!
-                        self.dismiss(animated: true, completion: nil
+                        if newValue >= 0 {
+                            self.dismiss(animated: true, completion: nil)
+                        }
                         
-                        )
                     }
                 } catch {
                     print(error)
@@ -456,7 +501,21 @@ extension RegisterMeetingVC {
         }
         
         if isDate {
-            self.button_date.setTitle(label.text, for: .normal)
+            let dateString = label.text!
+            
+            let formatter = DateFormatter()
+            
+            formatter.dateFormat = "M월 d일 EE"
+            formatter.locale = Locale(identifier: "ko_kr")
+            formatter.timeZone = TimeZone(abbreviation: "KST")
+            let resultDate = formatter.date(from: dateString)
+            
+            formatter.dateFormat = "M월 d일"
+            let result = formatter.string(from: resultDate!)
+            label.text = result
+            
+            
+            self.button_date.setTitle(result, for: .normal)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 //self.button_place.sendActions(for: .allEvents)
@@ -477,6 +536,7 @@ extension RegisterMeetingVC {
             
             
         }
+        handleButtonImage()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

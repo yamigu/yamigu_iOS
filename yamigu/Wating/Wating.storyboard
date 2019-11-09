@@ -198,12 +198,16 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="미팅 대기팀이 없습니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Smn-3F-HXV">
                                 <rect key="frame" x="104.33333333333333" y="151" width="205.33333333333337" height="23.333333333333343"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
-                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.69803921568627447" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZX-8E-yCV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6d-qB-ugf">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="268"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9v8-82-PzR" customClass="FilterView" customModule="yamigu" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="268" width="414" height="424"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -214,8 +218,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
+                                    <constraint firstItem="b6d-qB-ugf" firstAttribute="top" secondItem="8ZX-8E-yCV" secondAttribute="top" id="8He-GX-XtY"/>
                                     <constraint firstItem="9v8-82-PzR" firstAttribute="centerX" secondItem="8ZX-8E-yCV" secondAttribute="centerX" id="LP0-9E-k43"/>
+                                    <constraint firstAttribute="trailing" secondItem="b6d-qB-ugf" secondAttribute="trailing" id="PlS-hn-K39"/>
+                                    <constraint firstItem="b6d-qB-ugf" firstAttribute="leading" secondItem="8ZX-8E-yCV" secondAttribute="leading" id="hFa-Cw-kPV"/>
                                     <constraint firstAttribute="bottom" secondItem="9v8-82-PzR" secondAttribute="bottom" id="iKJ-FF-3N9"/>
+                                    <constraint firstItem="9v8-82-PzR" firstAttribute="top" secondItem="b6d-qB-ugf" secondAttribute="bottom" id="p6o-3w-WUf"/>
                                     <constraint firstItem="9v8-82-PzR" firstAttribute="width" secondItem="8ZX-8E-yCV" secondAttribute="width" id="zTl-b1-n1W"/>
                                 </constraints>
                             </view>
@@ -248,11 +256,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundTouchView" destination="b6d-qB-ugf" id="jyE-CM-HGR"/>
                         <outlet property="backgroundVIew" destination="8ZX-8E-yCV" id="4KJ-EV-YEE"/>
                         <outlet property="button_filter" destination="S9s-gS-xwT" id="nWi-YB-MBM"/>
+                        <outlet property="constraint_tableViewLeading" destination="ANU-Gi-ZGG" id="f9f-QP-fNS"/>
                         <outlet property="filterView" destination="9v8-82-PzR" id="nv3-Ob-hCG"/>
                         <outlet property="height" destination="YyW-yJ-HMj" id="EPh-OB-4Kl"/>
-                        <outlet property="label_empty" destination="Smn-3F-HXV" id="hVK-yC-xf1"/>
+                        <outlet property="label_empty" destination="Smn-3F-HXV" id="kGk-Jk-NHE"/>
                         <outlet property="tableView" destination="Rnj-Gj-bBc" id="vNB-Tl-LKN"/>
                         <outletCollection property="dateButtons" destination="gaX-kN-tgV" collectionClass="NSMutableArray" id="NuV-Q1-AUh"/>
                         <outletCollection property="dateButtons" destination="7DK-IL-4O1" collectionClass="NSMutableArray" id="OpM-jm-OV5"/>

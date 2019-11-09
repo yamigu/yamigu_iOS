@@ -17,6 +17,7 @@ class WatingTableViewCell: UITableViewCell {
     
     weak var delegate : WatingTableViewDelegate!
 
+    @IBOutlet weak var image_bottomBar: UIImageView!
     @IBOutlet weak var button_meeting: UIButton!
     @IBOutlet weak var label_type: UILabel!
     @IBOutlet weak var label_nickname: UILabel!

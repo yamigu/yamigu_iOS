@@ -36,6 +36,9 @@ class HomeMyTableViewCell: UITableViewCell {
     @IBOutlet weak var button_watingTeam: UIButton!
     @IBOutlet weak var button_edit: UIButton!
     @IBOutlet weak var view_bottom: UIView!
+    @IBOutlet weak var view_backgroundMonth: UIView!
+    @IBOutlet weak var image_bottom: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

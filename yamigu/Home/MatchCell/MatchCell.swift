@@ -16,6 +16,7 @@ class MatchCell: UICollectionViewCell {
     //@IBOutlet weak var textview_details: UITextView!
     @IBOutlet weak var textview_details: VerticallyCenteredTextView!
     
+    @IBOutlet weak var image_bottom: UIImageView!
     @IBOutlet weak var ratings: CosmosView!
     
     @IBOutlet weak var label_nicknameAndAge: UILabel!

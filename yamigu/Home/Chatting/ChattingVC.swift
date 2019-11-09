@@ -200,8 +200,15 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         let message = self.messages[indexPath.row]
         
         if (message["idSender"] as! String) == (userDictionary["uid"] as! String) {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellLeftId, for: indexPath) as! ChattingLeftCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChattingCell
+            print("userDictionary = \(userDictionary)")
             
+            let gender = userDictionary["gender"] as! Int
+            if gender == 1 {
+                cell.bubbleView.backgroundColor = UIColor(rgb: 0xE7E6FF)
+            } else {
+                cell.bubbleView.backgroundColor = UIColor(rgb: 0xFFE6F8)
+            }
             
             cell.textView.text = message["message"] as! String
             let dateString =  "\(message["time"]!)"
@@ -222,7 +229,14 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(message["message"] as! String).width + 32
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChattingCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellLeftId, for: indexPath) as! ChattingLeftCell
+            
+            let gender = userDictionary["gender"] as! Int
+            if gender == 1 {
+                cell.bubbleView.backgroundColor = UIColor(rgb: 0xFFE6F8)
+            } else {
+                cell.bubbleView.backgroundColor = UIColor(rgb: 0xE7E6FF)
+            }
             
             cell.textView.text = message["message"] as! String
             let dateString =  "\(message["time"]!)"

@@ -310,6 +310,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             
             
             
+            
             if !(meetingDict["is_matched"] as! Bool) {
                 cell.view_bottom.isHidden = true
                 cell.constraint_bottomHeight.constant = 0.0
@@ -433,42 +434,6 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                         }
                     }
                 }
-                /*
-                ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observeSingleEvent(of: .value, with: { (snapshot) in
-                    // Get user value
-                    for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                        let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
-                        let time = value["time"]!
-                        print("time \(time)")
-                        
-                        let dateString = "\(time)"
-                        let dateDoube = Double(dateString)! / 1000.0
-                        print("datedouble = \(dateDoube)")
-                        let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
-                        
-                        let dateFomatter = DateFormatter(format: "a H:mm")
-                        dateFomatter.locale = Locale(identifier: "ko_kr")
-                        dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-                        cell.label_chattingTime.text = dateFomatter.string(from: date)
-                        
-                        
-                        if let message = value["message"] as? String {
-                            DispatchQueue.main.async {
-                                //
-                                cell.label_lastChat.text = message
-                            }
-                            
-                            
-                        }
-                        
-                        
-                        
-                    }
-                })
-                { (error) in
-                    print(error.localizedDescription)
-                }
-            }*/
             
             let dateString = meetingDict["date"] as! String
             let dateFormatter = DateFormatter()
@@ -491,6 +456,32 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
             }
             
+            if cell.label_type.text == "2:2 소개팅" {
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
+                cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF7B22)
+                cell.button_edit.tintColor = UIColor(rgb: 0xFF7B22)
+                cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF7B22)
+                cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF7B22)
+                cell.label_isMatched.textColor = UIColor(rgb: 0xFF7B22)
+                cell.image_bottom.image = UIImage(named: "view_bottomBar")
+            } else if cell.label_type.text == "3:3 미팅" {
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
+                cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF6024)
+                cell.button_edit.tintColor = UIColor(rgb: 0xFF6024)
+                cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF6024)
+                cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF6024)
+                cell.image_bottom.image = UIImage(named: "orange_bar_2")
+                cell.label_isMatched.textColor = UIColor(rgb: 0xFF6024)
+            } else {
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
+                cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF4600)
+                cell.button_edit.tintColor = UIColor(rgb: 0xFF4600)
+                cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF4600)
+                cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF4600)
+                cell.image_bottom.image = UIImage(named: "orange_bar_3")
+                cell.label_isMatched.textColor = UIColor(rgb: 0xFF4600)
+            }
+            
             // review cell
             let reviewCell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
             reviewCell.delegate = self
@@ -506,13 +497,27 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         } else if tableView == self.todayMeetingTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeExpectedTableViewCell") as! HomeExpectedTableViewCell
             let meetingDict = todayMeetings[indexPath.section]
-            cell.contentView.layer.borderColor = UIColor(rgb: 0xE5E5E5).cgColor
-            cell.contentView.layer.borderWidth = 1.0
+            //cell.contentView.layer.borderColor = UIColor(rgb: 0xE5E5E5).cgColor
+            //cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.cornerRadius = 10.0
             
             cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
             cell.label_place.text = meetingDict["place_type_name"] as! String
             
+            if (indexPath.section % 2) == 0 {
+                cell.contentView.backgroundColor = UIColor(rgb: 0xFFF2E6)
+            } else {
+                cell.contentView.backgroundColor = UIColor(rgb: 0xFFE7DF)
+            }
+            
+            
+            if cell.label_type.text == "2:2 소개팅" {
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
+            } else if cell.label_type.text == "3:3 미팅" {
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
+            } else {
+                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
+            }
             return cell
         }
         

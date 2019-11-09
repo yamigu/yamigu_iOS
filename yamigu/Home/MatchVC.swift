@@ -12,6 +12,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     @IBOutlet weak var button_receive: UIButton!
     @IBOutlet weak var button_request: UIButton!
     
+    @IBOutlet weak var label_totalCount: UILabel!
     @IBOutlet weak var label_count: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var button_left: UIButton!
@@ -24,7 +25,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     var receiveMatchingList = [Dictionary<String, Any>]()
     var requestMatchingList = [Dictionary<String, Any>]()
     
-    let meetingType = ["2:2 미팅", "3:3 미팅", "4:4 미팅"]
+    let meetingType = ["2:2 소개팅", "3:3 미팅", "4:4 미팅"]
 
     
     
@@ -87,7 +88,11 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.button_right.setTitle("거절하기", for: .normal)
         
         self.newPage = 0
-        self.label_count.text = String(self.receiveMatchingList.count)
+        self.label_count.text = "1"
+        if self.receiveMatchingList.count == 0 {
+            self.label_count.text = "0"
+        }
+        self.label_totalCount.text = String(self.receiveMatchingList.count)
         self.collectionView.reloadData()
         
     }
@@ -99,7 +104,11 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.button_right.setTitle("취소하기", for: .normal)
         
         self.newPage = 0
-        self.label_count.text = String(self.requestMatchingList.count)
+        self.label_count.text = "1"
+        if self.requestMatchingList.count == 0 {
+            self.label_count.text = "0"
+        }
+        self.label_totalCount.text = String(self.requestMatchingList.count)
         self.collectionView.reloadData()
     }
     @IBAction func leftBtnPressed(_ sender: Any) {
@@ -228,7 +237,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                             self.requestMatchingList.append(value)
                         }
                         
-                        self.label_count.text = String(self.requestMatchingList.count)
+                        
                         self.collectionView.reloadData()
                         
                     }
@@ -280,7 +289,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                             
                         }
                         
-                        self.label_count.text = String(self.receiveMatchingList.count)
+                        self.label_totalCount.text = String(self.requestMatchingList.count)
                         self.collectionView.reloadData()
                     }
                 } catch {
@@ -389,6 +398,24 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             cell.label_meetingDate.text = monthString+dayString
             cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
             
+            var color = UIColor(rgb: 0x000000)
+            
+            if cell.label_meetingType.text == "2:2 소개팅" {
+                color = UIColor(rgb: 0xFF7B22)
+                cell.image_bottom.image = UIImage(named: "orange_bar")
+            } else if cell.label_meetingType.text == "3:3 미팅" {
+                color = UIColor(rgb: 0xFF6024)
+                cell.image_bottom.image = UIImage(named: "orange_bar_2")
+            } else {
+                color = UIColor(rgb: 0xFF4600)
+                cell.image_bottom.image = UIImage(named: "orange_bar_3")
+            }
+            cell.label_meetingType.backgroundColor = color
+            cell.ratings.settings.filledColor = color
+            cell.ratings.settings.emptyBorderColor = color
+            cell.ratings.settings.filledBorderColor = color
+            
+            
         }
         else if self.button_request.isSelected {
             
@@ -422,6 +449,23 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             cell.label_belongAndDepartment.text = "\(belong),\(department)"
             cell.label_meetingDate.text = monthString+dayString
             cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
+            
+            var color = UIColor(rgb: 0x000000)
+            
+            if cell.label_meetingType.text == "2:2 소개팅" {
+                color = UIColor(rgb: 0xFF7B22)
+                cell.image_bottom.image = UIImage(named: "orange_bar")
+            } else if cell.label_meetingType.text == "3:3 미팅" {
+                color = UIColor(rgb: 0xFF6024)
+                cell.image_bottom.image = UIImage(named: "orange_bar_2")
+            } else {
+                color = UIColor(rgb: 0xFF4600)
+                cell.image_bottom.image = UIImage(named: "orange_bar_3")
+            }
+            cell.label_meetingType.backgroundColor = color
+            cell.ratings.settings.filledColor = color
+            cell.ratings.settings.emptyBorderColor = color
+            cell.ratings.settings.filledBorderColor = color
         }
         
         
@@ -455,6 +499,8 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         let x = self.collectionView.contentOffset.x
         let w = self.collectionView.bounds.size.width
         newPage = Int(ceil(x/w))
+        
+        self.label_count.text = "\(newPage + 1)"
         
         print(newPage)
     }
