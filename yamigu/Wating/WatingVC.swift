@@ -31,6 +31,9 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
     var selectedTmpType = [Int]()
     var selectedTmpPlace = [Int]()
     
+    var selectedAge : [CGFloat] = [20.0, 31.0]
+    var selectedTmpAge : [CGFloat] = [20.0, 31.0]
+    
     @IBOutlet weak var backgroundTouchView: UIView!
     var matchingList = [Dictionary<String, Any>]()
     
@@ -97,6 +100,12 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
         backgroundVIew.isHidden = true
         height.constant = 0
         
+        self.filterView.slider.value = [20.0, 31.0]
+        self.selectedAge = [20.0, 31.0]
+        self.selectedTmpAge = [20.0, 31.0]
+        self.filterView.slider.valueLabels[0].text = "20살"
+        self.filterView.slider.valueLabels[1].text = "30+살"
+        
         //self.selectedType = self.selectedTmpType
         //self.selectedPlace = self.selectedTmpPlace
         
@@ -113,13 +122,14 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
             
             backgroundVIew.isHidden = true
             height.constant = 0
+            
+            self.filterView.compBtn.isHidden = true
+            self.filterView.button_clear.isHidden = true
         } else {
             isFilterShow = true
             
             backgroundVIew.isHidden = false
             height.constant = 424
-            
-            
             
             for type in selectedType {
                 self.filterView.button_types[type - 1].isSelected = true
@@ -133,9 +143,15 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
             
             
             self.updateUI()
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.5, animations: {
                 self.view.layoutIfNeeded()
+            }) { (comp) in
+                if comp {
+                    self.filterView.compBtn.isHidden = false
+                    self.filterView.button_clear.isHidden = false
+                }
             }
+            
         }
         
     }
@@ -188,7 +204,7 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
         } else {
             self.button_filter.tintColor = UIColor(rgb: 0x505050)
         }
-    
+        
         if( self.dateArray.count != 0 ) {
             for i in 0..<7 {
                 let date = self.dateArray[i]
@@ -203,7 +219,7 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
                         }
                     }
                 }
-
+                
             }
         }
         
@@ -408,6 +424,12 @@ extension WatingVC: FilterViewDelegate {
         self.selectedType.removeAll()
         self.selectedPlace.removeAll()
         
+        self.filterView.slider.value = [20.0, 31.0]
+        self.selectedAge = [20.0, 31.0]
+        self.selectedTmpAge = [20.0, 31.0]
+        self.filterView.slider.valueLabels[0].text = "20살"
+        self.filterView.slider.valueLabels[1].text = "30+살"
+        
         for i in 0..<3 {
             self.filterView.button_types[i].isSelected = false
             self.filterView.button_types[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
@@ -425,6 +447,7 @@ extension WatingVC: FilterViewDelegate {
         if isFilterShow {
             self.selectedPlace = self.selectedTmpPlace
             self.selectedType = self.selectedTmpType
+            self.selectedAge = self.selectedTmpAge
             
             isFilterShow = false
             
@@ -468,6 +491,11 @@ extension WatingVC: FilterViewDelegate {
     
     func slideValueChanged(value: [CGFloat]) {
         print(index)
+        
+        self.selectedTmpAge = value
+        print("selectedAge = \(selectedTmpAge)")
+        
+        self.checkCount()
     }
     
     func checkCount() {
@@ -505,7 +533,14 @@ extension WatingVC: FilterViewDelegate {
             body += "place=\(pc)&"
         }
         
-        body.removeLast()
+        //body.removeLast()
+        
+        let minimum_age = Int(self.selectedTmpAge[0] - 20.0)
+        let maximum_age = Int(self.selectedTmpAge[1] - 20.0)
+        
+        body += "minimum_age=\(minimum_age)&"
+        body += "maximum_age=\(maximum_age)"
+        
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         self.getTmpMeetingCount(urlString:"http://147.47.208.44:9999/api/meetings/waiting/?\(escapedString!)")
         
@@ -549,7 +584,14 @@ extension WatingVC: FilterViewDelegate {
             body += "place=\(pc)&"
         }
         
-        body.removeLast()
+        //body.removeLast()
+        
+        let minimum_age = Int(self.selectedAge[0] - 20.0)
+        let maximum_age = Int(self.selectedAge[1] - 20.0)
+        
+        body += "minimum_age=\(minimum_age)&"
+        body += "maximum_age=\(maximum_age)"
+        
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         self.getMeetingCount(urlString:"http://147.47.208.44:9999/api/meetings/waiting/?\(escapedString!)")
         
@@ -570,66 +612,66 @@ extension WatingVC: FilterViewDelegate {
     
     func getTmpMeetingCount(urlString : String) {
         guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
             
-            var request = URLRequest(url: url)
+            //print(response)
             
-            request.httpMethod = "get"
-            request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-            request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-            
-            let session = URLSession.shared
-            let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-                
-                //print(response)
-                
-                guard error == nil && data != nil else {
-                    if let err = error {
-                        print(err.localizedDescription)
-                    }
-                    return
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
                 }
-                
-                if let data = data {
-                    print(data)
-                    do{
-                        let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        //print(json)
-                        
-                        guard let newValue = json as? Dictionary<String, Any> else {
-                            print("invalid format")
-                            return
-                            
-                        }
-                        
-                        print(newValue)
-                        
-                        DispatchQueue.main.async {
-                            
-                            let result = newValue["results"] as! [Dictionary<String, Any>]
-                            self.filterView.compBtn.setTitle("\(result.count)팀 보기", for: .normal)
-                            
-                        }
-                    } catch {
-                        print(error)
-                    }
-                }
-                
-            })
-            task.resume()
-            /*if let _data = data {
-             if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
-             let str = String(strData)
-             print(str)
-             
-             DispatchQueue.main.async {
-             
-             }
-             }
-             }else{
-             print("data nil")
-             }
-             }).resume()*/
+                return
+            }
             
+            if let data = data {
+                print(data)
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    //print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    print(newValue)
+                    
+                    DispatchQueue.main.async {
+                        
+                        let result = newValue["results"] as! [Dictionary<String, Any>]
+                        self.filterView.compBtn.setTitle("\(result.count)팀 보기", for: .normal)
+                        
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            
+        })
+        task.resume()
+        /*if let _data = data {
+         if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
+         let str = String(strData)
+         print(str)
+         
+         DispatchQueue.main.async {
+         
+         }
+         }
+         }else{
+         print("data nil")
+         }
+         }).resume()*/
+        
         
     }
     

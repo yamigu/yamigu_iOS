@@ -29,6 +29,7 @@ class FilterView: UIView {
     
     @IBOutlet var button_places: [UIButton]!
     
+    @IBOutlet weak var button_clear: UIButton!
     //@IBOutlet weak var slider: MultiSlider!
 
     @IBOutlet var contentView: UIView!
@@ -57,7 +58,16 @@ class FilterView: UIView {
         slider.valueLabelPosition = .bottom
         slider.isValueLabelRelative = false
         
-        slider.value = [20, 30]
+        slider.outerTrackColor = .lightGray
+        
+        slider.value = [20, 31]
+        
+        for label in slider.valueLabels {
+            label.font = UIFont(name: "NanumGothic", size: 12.0)
+        }
+        
+        slider.valueLabels[0].text = "\(Int(slider.value[0]))살"
+        slider.valueLabels[1].text = "30+살"
         
         slider.addTarget(self, action: #selector(sliderChanged(slider:)), for: .valueChanged)
         slider.addTarget(self, action: #selector(sliderChanged(slider:)), for: . touchUpInside)
@@ -81,6 +91,13 @@ class FilterView: UIView {
     
     @objc func sliderChanged(slider: MultiSlider) {
         print("\(slider.value)") // e.g., [1.0, 4.5, 5.0]
+        
+        slider.valueLabels[0].text = "\(Int(slider.value[0]))살"
+        slider.valueLabels[1].text = "\(Int(slider.value[1]))살"
+        
+        if slider.value[1] == 31.0 {
+            slider.valueLabels[1].text = "30+살"
+        }
         
         delegate?.slideValueChanged(value: slider.value)
     }

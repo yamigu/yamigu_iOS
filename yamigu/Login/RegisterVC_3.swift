@@ -83,7 +83,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
           request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
     
           
-          if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
               let jsonString = String(data: data, encoding: .utf8) {
               print("jsonString = \(jsonString)")
             jsonString.replacingOccurrences(of: "'", with: "\"")
@@ -99,16 +99,20 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
               }
               if let data = data {
                   do{
-                      let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                       print(json)
                       
-                      guard let newValue = json as? Dictionary<String, String> else {
+                      guard let newValue = json as? Dictionary<String, Any> else {
                           print("invalid format")
                           return
                           
                       }
                       
                       DispatchQueue.main.async {
+                          // 동작 실행
+                          self.navigationController?.popToRootViewController(animated: false)
+                          //self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+                          //self.performSegue(withIdentifier: "segue_main", sender: self)
                       }
                   } catch {
                       print(error)
@@ -143,7 +147,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
                     let json = try JSONSerialization.jsonObject(with: data, options: [])
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         

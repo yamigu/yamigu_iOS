@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zna-BZ-n7l">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zna-BZ-n7l">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -222,7 +222,6 @@
                                     <constraint firstItem="9v8-82-PzR" firstAttribute="centerX" secondItem="8ZX-8E-yCV" secondAttribute="centerX" id="LP0-9E-k43"/>
                                     <constraint firstAttribute="trailing" secondItem="b6d-qB-ugf" secondAttribute="trailing" id="PlS-hn-K39"/>
                                     <constraint firstItem="b6d-qB-ugf" firstAttribute="leading" secondItem="8ZX-8E-yCV" secondAttribute="leading" id="hFa-Cw-kPV"/>
-                                    <constraint firstAttribute="bottom" secondItem="9v8-82-PzR" secondAttribute="bottom" id="iKJ-FF-3N9"/>
                                     <constraint firstItem="9v8-82-PzR" firstAttribute="top" secondItem="b6d-qB-ugf" secondAttribute="bottom" id="p6o-3w-WUf"/>
                                     <constraint firstItem="9v8-82-PzR" firstAttribute="width" secondItem="8ZX-8E-yCV" secondAttribute="width" id="zTl-b1-n1W"/>
                                 </constraints>
@@ -238,6 +237,7 @@
                             <constraint firstItem="Smn-3F-HXV" firstAttribute="centerX" secondItem="yK4-3q-K1Z" secondAttribute="centerX" id="L6T-fk-Y3h"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="bottom" secondItem="Rnj-Gj-bBc" secondAttribute="bottom" id="VpG-a5-ntl"/>
                             <constraint firstItem="8ZX-8E-yCV" firstAttribute="centerY" secondItem="1Vb-eF-MhK" secondAttribute="centerY" id="gYF-4k-mxT"/>
+                            <constraint firstItem="8ZX-8E-yCV" firstAttribute="bottom" secondItem="9v8-82-PzR" secondAttribute="bottom" id="ish-Rf-O0G"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="trailing" secondItem="Rnj-Gj-bBc" secondAttribute="trailing" constant="12.5" id="jsl-bz-NIC"/>
                             <constraint firstItem="1Vb-eF-MhK" firstAttribute="trailing" secondItem="yK4-3q-K1Z" secondAttribute="trailing" id="prP-ms-giC"/>
                             <constraint firstItem="8ZX-8E-yCV" firstAttribute="height" secondItem="1Vb-eF-MhK" secondAttribute="height" id="tsU-O1-Ge3"/>
@@ -294,6 +294,6 @@
         <image name="tabbar_ready" width="21.333333969116211" height="21.333333969116211"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MIB-y1-wt3"/>
+        <segue reference="DnQ-5g-6BZ"/>
     </inferredMetricsTieBreakers>
 </document>

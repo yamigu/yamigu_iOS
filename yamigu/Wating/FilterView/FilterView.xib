@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,6 +15,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterView" customModule="yamigu" customModuleProvider="target">
             <connections>
+                <outlet property="button_clear" destination="BOL-JK-lzL" id="ngl-JB-dmx"/>
                 <outlet property="compBtn" destination="2M5-ji-mLM" id="qpE-DC-wg9"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="3Ws-Ac-YgQ"/>
                 <outlet property="slider" destination="q22-lL-jK0" id="CIg-tB-dBn"/>
@@ -238,8 +239,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2M5-ji-mLM">
-                    <rect key="frame" x="0.0" y="376" width="229.5" height="48"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2M5-ji-mLM">
+                    <rect key="frame" x="0.0" y="376" width="224" height="48"/>
                     <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="6YN-BO-ka6"/>
@@ -252,8 +253,8 @@
                         <action selector="compBtnPressed:" destination="-1" eventType="touchUpInside" id="7f0-cm-aJ1"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-JK-lzL">
-                    <rect key="frame" x="229.5" y="376" width="145.5" height="48"/>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-JK-lzL">
+                    <rect key="frame" x="224" y="376" width="151" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="해제하기">
                         <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -283,7 +284,7 @@
                             <real key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="maximumValue">
-                            <real key="value" value="30"/>
+                            <real key="value" value="31"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="thumbCount">
                             <integer key="value" value="2"/>
@@ -296,6 +297,7 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="snapStepSize">
                             <real key="value" value="1"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="keepsDistanceBetweenThumbs" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
@@ -331,7 +333,7 @@
                 <constraint firstItem="yN6-SA-NjY" firstAttribute="centerY" secondItem="J9t-JR-zQD" secondAttribute="centerY" id="o27-u1-rpE"/>
                 <constraint firstItem="M7m-id-oF2" firstAttribute="leading" secondItem="5w7-Tt-afh" secondAttribute="leading" id="o8N-3w-C2h"/>
                 <constraint firstItem="3Wq-S0-o9U" firstAttribute="trailing" secondItem="yN6-SA-NjY" secondAttribute="trailing" id="pYh-Pk-UL7"/>
-                <constraint firstItem="2M5-ji-mLM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1/2" constant="42" id="puQ-hD-bZQ"/>
+                <constraint firstItem="2M5-ji-mLM" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="3/5" constant="-1" id="puQ-hD-bZQ"/>
                 <constraint firstItem="hWx-An-fFl" firstAttribute="top" secondItem="LUf-Vm-6xV" secondAttribute="bottom" constant="17" id="rG8-vn-Xva"/>
                 <constraint firstItem="3Wq-S0-o9U" firstAttribute="centerY" secondItem="PHb-6n-b7c" secondAttribute="centerY" id="rGl-yH-Xbh"/>
                 <constraint firstItem="vCg-ee-NHL" firstAttribute="leading" secondItem="29X-vN-xvi" secondAttribute="leading" id="sTI-ji-PGJ"/>
