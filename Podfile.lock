@@ -121,7 +121,7 @@ PODS:
   - nanopb/encode (0.3.9011)
   - Protobuf (3.10.0)
   - SweeterSwift (1.0.5)
-  - Toast (4.0.0)
+  - Toast-Swift (5.0.0)
 
 DEPENDENCIES:
   - AvailableHapticFeedback
@@ -133,7 +133,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - MiniLayout
   - MultiSlider
-  - Toast
+  - Toast-Swift
 
 SPEC REPOS:
   trunk:
@@ -162,7 +162,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - SweeterSwift
-    - Toast
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   AvailableHapticFeedback: 9b21b9f6d3e4566015988b5de35b40abefe6c09a
@@ -190,8 +190,8 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   SweeterSwift: 2708d1eea926546f8f6e8fea38ac8f5598ff00c7
-  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
+  Toast-Swift: 36f4720243c8582c2be243a60a51e193c761f541
 
-PODFILE CHECKSUM: 774e1833fee73bd138cce6b35965a0f0f99f66e6
+PODFILE CHECKSUM: b12e91419e61e3c6a9a5c97e7b3d65a98ca64a2b
 
 COCOAPODS: 1.8.3

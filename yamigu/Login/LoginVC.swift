@@ -32,7 +32,13 @@ class LoginVC: UIViewController {
         if KOSession.shared()?.token?.accessToken != nil {
             //self.performSegue(withIdentifier: "segue_agreement", sender: self)
             //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
-            self.dismiss(animated: false, completion: nil)
+            if let userNickname = userDictionary["nickname"] {
+                if "\(userNickname)" == "<null>" {
+                    
+                } else {
+                    self.dismiss(animated: false, completion: nil)
+                }
+            }
         }
     }
     
@@ -43,13 +49,23 @@ class LoginVC: UIViewController {
         //
         KOSession.shared()?.close()
         
+        
         KOSession.shared()?.open(completionHandler: { (error) in
-            if (KOSession.shared()?.isOpen())! {
+            
+            print("error = \(error)")
+            
+            if error == nil {
                 let access_token = (KOSession.shared()?.token?.accessToken)!
                 self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+            }
+            
+            
+            /*if (KOSession.shared()?.isOpen())! {
+                
             } else {
                 
-            }
+            }*/
+            
         })
     }
     

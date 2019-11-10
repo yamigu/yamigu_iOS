@@ -9,8 +9,9 @@
 import UIKit
 import KakaoCommon
 import KakaoOpenSDK
+import Toast_Swift
 
-class RegisterVC_2: UIViewController {
+class RegisterVC_2: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField_nickName: UITextField!
@@ -18,8 +19,12 @@ class RegisterVC_2: UIViewController {
     @IBOutlet weak var button_office: UIButton!
     @IBOutlet weak var button_certi: UIButton!
     
+    @IBOutlet weak var label_check: UILabel!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    var isCollage = true
+    var isCollage = false
+    var isOffice = false
+    
+    var isAvailableNickName = false
     
     var userDict = Dictionary<String, Any>()
     
@@ -27,6 +32,7 @@ class RegisterVC_2: UIViewController {
         super.viewDidLoad()
         
         setUpTableView()
+        textField_nickName.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
@@ -46,27 +52,35 @@ class RegisterVC_2: UIViewController {
     
     @IBAction func collageBtnPrssed(_ sender: Any) {
         isCollage = true
+        isOffice = false
         if isCollage {
             self.button_collage.layer.borderColor = UIColor(rgb: 0xFFC850).cgColor
-            self.button_collage.setTitleColor(UIColor(rgb: 0xFFC850), for: .normal)
+            self.button_collage.setTitleColor(UIColor.white, for: .normal)
+            self.button_collage.backgroundColor = UIColor(rgb: 0xFFC850)
             
             self.button_office.layer.borderColor = UIColor(rgb: 0xC6C6C6).cgColor
             self.button_office.setTitleColor(UIColor(rgb: 0xC6C6C6), for: .normal)
-            
+            self.button_office.backgroundColor = UIColor.white
             
         }
+        
+        self.check()
         
     }
     @IBAction func officeBtnPrssed(_ sender: Any) {
         isCollage = false
+        isOffice = true
         if !isCollage {
             self.button_collage.layer.borderColor = UIColor(rgb: 0xC6C6C6).cgColor
             self.button_collage.setTitleColor(UIColor(rgb: 0xC6C6C6), for: .normal)
+            self.button_collage.backgroundColor = UIColor.white
             
             self.button_office.layer.borderColor = UIColor(rgb: 0xFFC850).cgColor
-            self.button_office.setTitleColor(UIColor(rgb: 0xFFC850), for: .normal)
-            
+            self.button_office.setTitleColor(UIColor.white, for: .normal)
+            self.button_office.backgroundColor = UIColor(rgb: 0xFFC850)
         }
+        
+        self.check()
     }
     
     @IBAction func certiBtnPrssed(_ sender: Any) {
@@ -96,6 +110,13 @@ class RegisterVC_2: UIViewController {
         }
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        checkNickname(urlString: "http://147.47.208.44:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
+        
+        
+        return true
+    }
+    
     func check() -> Bool {
         let index1 = IndexPath(row: 1, section: 0)
         let index2 = IndexPath(row: 2, section: 0)
@@ -104,9 +125,18 @@ class RegisterVC_2: UIViewController {
         let cell2 = self.tableView.cellForRow(at: index2)
         
         if( cell1!.isSelected && cell2!.isSelected && self.textField_nickName.text != "" ) {
-            return true
+            if( isCollage || isOffice ) {
+                if isAvailableNickName {
+                    self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
+                    return true
+                }
+            } else {
+                self.view.makeToast("소속을 선택해주세요!")
+            }
+        } else {
+            self.view.makeToast("약관에 동의해주세요!")
         }
-        
+        self.button_certi.backgroundColor = UIColor(rgb: 0xC6C6C6)
         return false
     }
     
@@ -138,6 +168,17 @@ class RegisterVC_2: UIViewController {
                     
                     DispatchQueue.main.async {
                         print(str)
+                        if str.contains("true") {
+                            self.isAvailableNickName = true
+                            self.label_check.text = "사용 가능합니다."
+                            self.label_check.textColor = UIColor.blue
+                            self.check()
+                        } else {
+                            self.isAvailableNickName = false
+                            self.label_check.text = "사용 불가능합니다."
+                            self.label_check.textColor = UIColor.red
+                            self.check()
+                        }
                     }
                 }
             }else{

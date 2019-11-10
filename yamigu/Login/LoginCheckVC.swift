@@ -241,7 +241,17 @@ class LoginCheckVC: UIViewController {
                             if error == nil {
                                 print("firebase Auth = \(Auth.auth().currentUser?.uid)")
                                 DispatchQueue.main.async {
-                                    self.performSegue(withIdentifier: "segue_main", sender: self)
+                                    if let userNickname = userDictionary["nickname"] {
+                                        if "\(userNickname)" == "<null>" {
+                                            self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                                        } else {
+                                            self.performSegue(withIdentifier: "segue_main", sender: self)
+                                        }
+                                    } else {
+                                        self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                                    }
+                                    
+                                    
                                 }
                                 
                                 

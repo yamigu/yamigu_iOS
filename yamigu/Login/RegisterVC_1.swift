@@ -29,6 +29,15 @@ class RegisterVC_1: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        if let userNickname = userDictionary["nickname"] {
+            if "\(userNickname)" == "<null>" {
+                
+            } else {
+                //self.dismiss(animated: false, completion: nil)
+                self.navigationController?.dismiss(animated: false, completion: nil)
+            }
+        }
+        
         let access_token = (KOSession.shared()?.token?.accessToken)!
         
         if access_token != nil {
@@ -66,7 +75,7 @@ class RegisterVC_1: UIViewController {
                     
                     DispatchQueue.main.async {
                         
-                        self.dismiss(animated: false, completion: nil)
+                        self.navigationController!.dismiss(animated: false, completion: nil)
                     }
                 } catch {
                     print(error)
@@ -117,7 +126,7 @@ class RegisterVC_1: UIViewController {
                         else if newValue["nickname"] == nil {
                             
                         } else {
-                            self.dismiss(animated: false, completion: nil)
+                            self.navigationController!.dismiss(animated: false, completion: nil)
                         }
                     }
                 } catch {

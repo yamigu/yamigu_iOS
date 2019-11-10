@@ -19,6 +19,8 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var lbl_title: UILabel!
     @IBOutlet weak var lbl_description: UILabel!
     
+    var isSegue = false
+    
     @IBOutlet weak var btn_start: UIButton!
     @IBOutlet weak var lbl_start: UILabel!
     let images = ["onBoarding_first", "onBoarding_second", "onBoarding_third", "onBoarding_fourth"]
@@ -33,6 +35,8 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.setUpUI()
         self.setUpPage()
+        
+        isSegue = false
         
         print("authKey = \(authKey)")
         
@@ -144,7 +148,11 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
     }
     
     func goNext() {
-        performSegue(withIdentifier: "segue_login", sender: self)
+        if !isSegue {
+            isSegue = true
+            performSegue(withIdentifier: "segue_login", sender: self)
+        }
+        
         
     }
     

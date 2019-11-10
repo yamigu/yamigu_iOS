@@ -12,7 +12,7 @@ target 'yamigu' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'Firebase/Messaging'
-  pod 'Toast'
+  pod 'Toast-Swift'
   pod 'MiniLayout'
   pod 'MultiSlider'
   pod 'AvailableHapticFeedback'
