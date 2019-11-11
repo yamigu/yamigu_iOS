@@ -303,6 +303,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         var json = [String:Any]()
         
+        //json["receiverId"] = matchDict["openby_uid"]!
         json["receiverId"] = matchDict["openby_uid"]!
         //json["message"] = self.tf_message.text!
         //json["activity"] = "ChattingActivity"
