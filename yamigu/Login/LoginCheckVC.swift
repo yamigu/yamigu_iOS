@@ -90,7 +90,7 @@ class LoginCheckVC: UIViewController {
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
   
         
-        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
             let jsonString = String(data: data, encoding: .utf8) {
             print("jsonString = \(jsonString)")
             request.httpBody = jsonString.data(using: .utf8)
@@ -105,10 +105,10 @@ class LoginCheckVC: UIViewController {
             }
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
@@ -120,7 +120,7 @@ class LoginCheckVC: UIViewController {
                     print(error)
                 }
             }
-        }
+        }.resume()
     }
     
     func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){

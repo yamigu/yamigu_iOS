@@ -159,6 +159,16 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.makeBody()
         
+        self.selectedTmpType.removeAll()
+        self.selectedType.removeAll()
+        self.selectedTmpPlace.removeAll()
+        self.selectedPlace.removeAll()
+        self.selectedDate.removeAll()
+        self.selectedAge = [20.0, 31.0]
+        self.selectedTmpAge = [20.0, 31.0]
+        
+        self.button_filter.tintColor = UIColor(rgb: 0x505050)
+        
         if isFilterShow {
             self.showFilter(self)
         }
