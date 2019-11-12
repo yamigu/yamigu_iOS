@@ -84,7 +84,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func certiBtnPrssed(_ sender: Any) {
-        checkNickname(urlString: "http://147.47.208.44:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
+        checkNickname(urlString: "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
         
         if check() {
         
@@ -111,7 +111,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        checkNickname(urlString: "http://147.47.208.44:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
+        checkNickname(urlString: "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
         
         
         return true

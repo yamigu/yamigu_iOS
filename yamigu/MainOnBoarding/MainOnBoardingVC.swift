@@ -41,7 +41,7 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
         print("authKey = \(authKey)")
         
         if KOSession.shared()?.token?.accessToken != nil && authKey != "" {
-            self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
+            self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
             
         }
         

@@ -20,6 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
+        guard let scheme = url.scheme else { return true }
+        if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            return KOSession.handleOpen(url)
+        }
         
         if KOSession.isKakaoAgeAuthCallback(url) {
             return KOSession.handleOpen(url)
@@ -28,6 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         
         
     }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        guard let scheme = url.scheme else { return true }
+        if KOSession.isKakaoAccountLoginCallback(url.absoluteURL) {
+            return KOSession.handleOpen(url)
+        }
+        return true
+    }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         //Messaging.messaging().apnsToken = deviceToken
         

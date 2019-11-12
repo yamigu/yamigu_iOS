@@ -23,7 +23,7 @@ class MainTC: UITabBarController {
         if KOSession.shared()?.token?.accessToken != nil {
             let access_token = (KOSession.shared()?.token?.accessToken)!
             print("access token2 = \(access_token)")
-            self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+            self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
             
             //performSegue(withIdentifier: "segue_onboarding", sender: self)
         }
@@ -31,7 +31,7 @@ class MainTC: UITabBarController {
         let homeController = self.viewControllers![0] as! HomeVC
         if homeController != nil {
             homeController.myMeetings.removeAll()
-            homeController.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+            homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         }
     }
     

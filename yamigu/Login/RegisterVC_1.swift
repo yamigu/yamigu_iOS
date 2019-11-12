@@ -27,14 +27,27 @@ class RegisterVC_1: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         
         if let userNickname = userDictionary["nickname"] {
             if "\(userNickname)" == "<null>" {
                 
             } else {
+                DispatchQueue.main.async {
+                    let loginVC = self.presentingViewController as! LoginVC
+                    
+                    let access_token = (KOSession.shared()?.token?.accessToken)!
+                    loginVC.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                }
                 //self.dismiss(animated: false, completion: nil)
-                self.navigationController?.dismiss(animated: false, completion: nil)
+                self.dismiss(animated: false, completion: nil)
+                
+                
             }
         }
         
@@ -42,7 +55,7 @@ class RegisterVC_1: UIViewController {
         
         if access_token != nil {
             //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
-            self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
+            self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
         } else {
             self.isLogined = false
         }
@@ -74,8 +87,14 @@ class RegisterVC_1: UIViewController {
                     }
                     
                     DispatchQueue.main.async {
+                        let loginVC = self.presentingViewController as! LoginVC
                         
-                        self.navigationController!.dismiss(animated: false, completion: nil)
+                        let access_token = (KOSession.shared()?.token?.accessToken)!
+                        loginVC.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                        
+                        self.dismiss(animated: false, completion: nil)
+                        //self.navigationController!.dismiss(animated: false, completion: nil)
+                        
                     }
                 } catch {
                     print(error)
@@ -83,7 +102,7 @@ class RegisterVC_1: UIViewController {
                     
                 }
             }
-            }.resume()
+        }.resume()
     }
     
     func getUserInfo(urlString : String) {
@@ -124,9 +143,14 @@ class RegisterVC_1: UIViewController {
                             self.isLogined = false
                         }
                         else if newValue["nickname"] == nil {
-                            
+                            self.isLogined = false
                         } else {
-                            self.navigationController!.dismiss(animated: false, completion: nil)
+                            let loginVC = self.presentingViewController as! LoginVC
+                            
+                            let access_token = (KOSession.shared()?.token?.accessToken)!
+                            loginVC.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                            
+                            self.dismiss(animated: false, completion: nil)
                         }
                     }
                 } catch {

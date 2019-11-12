@@ -48,8 +48,8 @@ class HomeVC: UIViewController {
         self.setupTableView()
         self.setupCollectionView()
         
-        self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
-        self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+        self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
+        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         
         ref = Database.database().reference()
         
@@ -57,8 +57,8 @@ class HomeVC: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        self.getTodayMeeting(urlString: "http://147.47.208.44:9999/api/meetings/today/")
-        self.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+        self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
+        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         
         ref = Database.database().reference()
         
@@ -401,7 +401,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 let matchBelong = matchDict["openby_belong"] as! String
                 let matchDepart = matchDict["openby_department"] as! String
                 
-                cell.label_matchingName.text = matchName + matchAge
+                cell.label_matchingName.text = matchName + "(\(matchAge))"
                 cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
                 ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
                     for snap in snapshot.children.allObjects as! [DataSnapshot] {
@@ -740,14 +740,14 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             let id = "\(self.reviewDict["id"]!)"
             let dict : [String: Any] = ["meeting_id" : id]
             
-            self.postRequest2("http://147.47.208.44:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(self.reviewText)", json: dict)
+            self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(self.reviewText)", json: dict)
         }
         
         func sendRatings() {
             let id = "\(self.reviewDict["id"]!)"
             let dict : [String: Any] = ["meeting_id" : id]
             
-            self.postRequest2("http://147.47.208.44:9999/api/meetings/rate/", bodyString: "\"meeting_id\"=\"\(id)\"&visual=\(self.ratedLook)&fun=\(self.ratedFun)&manner=\(self.ratedManner)", json: dict)
+            self.postRequest2("http://106.10.39.154:9999/api/meetings/rate/", bodyString: "\"meeting_id\"=\"\(id)\"&visual=\(self.ratedLook)&fun=\(self.ratedFun)&manner=\(self.ratedManner)", json: dict)
         }
 }
 

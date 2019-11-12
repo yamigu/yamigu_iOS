@@ -97,8 +97,18 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
     @objc func backgroundViewDismiss() {
         isFilterShow = false
         
-        backgroundVIew.isHidden = true
+        
         height.constant = 0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        }) { (comp) in
+            if comp {
+                self.backgroundVIew.isHidden = true
+            }
+        }
+        
+        self.filterView.compBtn.isHidden = true
+        self.filterView.button_clear.isHidden = true
         
         self.filterView.slider.value = [20.0, 31.0]
         self.selectedAge = [20.0, 31.0]
@@ -113,6 +123,8 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     @objc func refresh(_ sender: Any) {
+        self.label_empty.isHidden = true
+        
         self.makeBody()
     }
     
@@ -120,8 +132,16 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
         if isFilterShow {
             isFilterShow = false
             
-            backgroundVIew.isHidden = true
+            
             height.constant = 0
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+            }) { (comp) in
+                if comp {
+                    self.backgroundVIew.isHidden = true
+                }
+            }
             
             self.filterView.compBtn.isHidden = true
             self.filterView.button_clear.isHidden = true
@@ -166,6 +186,12 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
         self.selectedDate.removeAll()
         self.selectedAge = [20.0, 31.0]
         self.selectedTmpAge = [20.0, 31.0]
+        
+        self.filterView.slider.value = [20.0, 31.0]
+        self.selectedAge = [20.0, 31.0]
+        self.selectedTmpAge = [20.0, 31.0]
+        self.filterView.slider.valueLabels[0].text = "20살"
+        self.filterView.slider.valueLabels[1].text = "30+살"
         
         self.button_filter.tintColor = UIColor(rgb: 0x505050)
         
@@ -366,7 +392,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         
         if matchingList.count == 0 {
-            self.label_empty.isHidden = false
+            //self.label_empty.isHidden = false
         } else {
             self.label_empty.isHidden = true
         }
@@ -388,20 +414,26 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! WatingTableViewCell
+        let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
         
-        cell.button_meeting.isHidden = false
-        
-        cell.constraintHeight.constant = 54.5
-        
-        
-        UIView.animate(withDuration: 0.5, animations: {
-            cell.layoutIfNeeded()
+        if meetingObj["is_matched"] as! Bool {
             
-        }) { (complete) in
-            cell.button_meeting.setTitle("미팅 신청하기", for: .normal)
+        } else {
+            cell.button_meeting.isHidden = false
+            
+            cell.constraintHeight.constant = 54.5
+            
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                cell.layoutIfNeeded()
+                
+            }) { (complete) in
+                cell.button_meeting.setTitle("미팅 신청하기", for: .normal)
+            }
+            
+            self.selectedMatching = self.matchingList[indexPath.section] as! Dictionary<String, Any>
         }
         
-        self.selectedMatching = self.matchingList[indexPath.section] as! Dictionary<String, Any>
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -552,7 +584,7 @@ extension WatingVC: FilterViewDelegate {
         body += "maximum_age=\(maximum_age)"
         
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        self.getTmpMeetingCount(urlString:"http://147.47.208.44:9999/api/meetings/waiting/?\(escapedString!)")
+        self.getTmpMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)")
         
         //self.updateUI()
     }
@@ -603,7 +635,7 @@ extension WatingVC: FilterViewDelegate {
         body += "maximum_age=\(maximum_age)"
         
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        self.getMeetingCount(urlString:"http://147.47.208.44:9999/api/meetings/waiting/?\(escapedString!)")
+        self.getMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)")
         
         self.updateUI()
         
@@ -616,7 +648,7 @@ extension WatingVC: FilterViewDelegate {
             self.view.layoutIfNeeded()
         }
         
-        print("http://147.47.208.44:9999/api/meetings/count/?\(escapedString!)")
+        print("http://106.10.39.154:9999/api/meetings/count/?\(escapedString!)")
         
     }
     
@@ -726,8 +758,14 @@ extension WatingVC: FilterViewDelegate {
                         self.matchingList = newValue["results"] as! [Dictionary<String, Any>]
                         self.filterView.compBtn.setTitle("\(self.matchingList.count)팀 보기", for: .normal)
                         
+                        
+                        
                         self.tableView.reloadData()
                         self.refreshControl.endRefreshing()
+                        
+                        if self.matchingList.count == 0 {
+                            self.label_empty.isHidden = false
+                        }
                     }
                 } catch {
                     print(error)
@@ -777,7 +815,7 @@ extension WatingVC: WatingTableViewDelegate {
         dateFormatter.dateFormat = "MM월 d일"
         let dateString = dateFormatter.string(from: date)
         
-        self.postRequest("http://147.47.208.44:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
+        self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
     }
     
     func postRequest(_ urlString: String, bodyString: String){

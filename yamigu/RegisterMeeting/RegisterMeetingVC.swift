@@ -27,7 +27,10 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var button_request: UIButton!
     @IBOutlet weak var label_caution: UILabel!
+    @IBOutlet weak var label_title: UILabel!
+    @IBOutlet weak var label_description: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var label_bottom_description: UILabel!
     var isPeople = true
     
     var isDate = false
@@ -52,6 +55,10 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         textView.clipsToBounds = false
         textView.layer.shadowOpacity = 0.4
         textView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
+        tableView.clipsToBounds = false
+        tableView.layer.shadowOpacity = 0.4
+        tableView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
         handleButtonImage()
         
@@ -84,7 +91,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             
             DispatchQueue.main.async {
                 homeController.myMeetings.removeAll()
-                homeController.getMyMeeting(urlString: "http://147.47.208.44:9999/api/meetings/my/")
+                homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
             }
             
         }
@@ -189,7 +196,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         dict["meeting_id"] = "\(self.meetingDict["id"]!)"
         
 
-        self.postRequest2("http://147.47.208.44:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
+        self.postRequest2("http://106.10.39.154:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
         
         /*DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
@@ -201,7 +208,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         let dict : [String: Any] = ["meeting_id" : id]
         print(dict)
 
-        self.postRequest2("http://147.47.208.44:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+        self.postRequest2("http://106.10.39.154:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
         
         /*DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
@@ -264,6 +271,21 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             }.resume()
     }
     
+    func handleButtonImage() {
+        button_place.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_place.imageView!.frame.size.width, bottom: 0, right: button_place.imageView!.frame.size.width);
+        button_place.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_place.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_place.titleLabel!.frame.size.width - 5.0);
+        
+        button_date.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_date.imageView!.frame.size.width, bottom: 0, right: button_date.imageView!.frame.size.width);
+        button_date.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_date.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_date.titleLabel!.frame.size.width - 5.0);
+        
+        button_people.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_people.imageView!.frame.size.width, bottom: 0, right: button_people.imageView!.frame.size.width);
+        button_people.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_people.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_people.titleLabel!.frame.size.width - 5.0);
+        
+        tableView.clipsToBounds = false
+        tableView.layer.shadowOpacity = 0.4
+        tableView.layer.shadowOffset = CGSize(width: 0, height: 0)
+    }
+    
     @IBAction func peopleBtnPressed(_ sender: Any) {
         isPeople = true
         isDate = false
@@ -274,20 +296,17 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         
+        self.label_bottom_description.isHidden = false
+        
+        self.label_title.text = "몇대몇 할래요?"
+        self.label_description.text = "친구들중 대표로 한명만 신청하면 돼요!"
+        self.label_bottom_description.text = "친구와 함께 하는 야미구"
+        
         
         self.tableView.reloadData()
     }
     
-    func handleButtonImage() {
-        button_place.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_place.imageView!.frame.size.width, bottom: 0, right: button_place.imageView!.frame.size.width);
-        button_place.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_place.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_place.titleLabel!.frame.size.width - 5.0);
-        
-        button_date.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_date.imageView!.frame.size.width, bottom: 0, right: button_date.imageView!.frame.size.width);
-        button_date.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_date.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_date.titleLabel!.frame.size.width - 5.0);
-        
-        button_people.titleEdgeInsets = UIEdgeInsets(top: 0, left: -button_people.imageView!.frame.size.width, bottom: 0, right: button_people.imageView!.frame.size.width);
-        button_people.imageEdgeInsets = UIEdgeInsets(top: 0, left: button_people.titleLabel!.frame.size.width + 5.0, bottom: 0, right: -button_people.titleLabel!.frame.size.width - 5.0);
-    }
+    
     
     func dateBtnHandler() {
         isPeople = false
@@ -298,6 +317,12 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
+        
+        self.label_bottom_description.isHidden = false
+        
+        self.label_title.text = "언제가 좋아요?"
+        self.label_description.text = "꼭 친구들과 가능한 날짜를 선택해주세요!"
+        self.label_bottom_description.text = "일주일 이내의 날짜만 선택 가능"
         
         if button_date.titleLabel?.text != "날짜" {
             //self.button_place.sendActions(for: .allEvents)
@@ -316,6 +341,12 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
+        
+        self.label_bottom_description.isHidden = false
+        
+        self.label_title.text = "언제가 좋아요?"
+        self.label_description.text = "꼭 친구들과 가능한 날짜를 선택해주세요!"
+        self.label_bottom_description.text = "일주일 이내의 날짜만 선택 가능"
         /*
         if button_date.titleLabel?.text != "날짜" {
             self.button_place.sendActions(for: .allEvents)
@@ -334,11 +365,23 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         
+        self.label_bottom_description.isHidden = false
+        
+        self.label_title.text = "어디가 좋아요?"
+        self.label_description.text = "장소는 미팅이 잡혀도 언제든지 변경 가능해요!"
+        self.label_bottom_description.text = "타 지역은 추후 업데이트 예정"
+        
         if button_place.titleLabel?.text != "장소" {
             self.textView.isHidden = false
             self.label_caution.isHidden = false
             self.button_request.isHidden = false
             self.tableView.isHidden = true
+            
+            self.label_bottom_description.isHidden = true
+            
+            self.label_title.text = "자신과 친구들을 표현해 주세요!"
+            self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
+            //self.label_bottom_description.text = "타 지역은 추후 업데이트 예정"
         }
         handleButtonImage()
         self.tableView.reloadData()
@@ -354,6 +397,11 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         
+        self.label_bottom_description.isHidden = false
+        
+        self.label_title.text = "어디가 좋아요?"
+        self.label_description.text = "장소는 미팅이 잡혀도 언제든지 변경 가능해요!"
+        self.label_bottom_description.text = "타 지역은 추후 업데이트 예정"
         
         self.tableView.reloadData()
     }
@@ -370,7 +418,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             //- appeal: 어필 문구
     
             
-            self.postRequest("http://147.47.208.44:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+            self.postRequest("http://106.10.39.154:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
         } else {
             //- meeting_type: 미팅 타입
             //- date: 날짜
@@ -378,7 +426,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             //- appeal: 어필 문구
             //- receiver: 신청 대상 미팅
             
-            self.postRequest("http://147.47.208.44:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
+            self.postRequest("http://106.10.39.154:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
         }
         
         
@@ -476,7 +524,7 @@ extension RegisterMeetingVC {
         }
         
         if isPlace {
-            return 6
+            return 3
         }
         
         return 0
@@ -531,6 +579,11 @@ extension RegisterMeetingVC {
                 self.label_caution.isHidden = false
                 self.button_request.isHidden = false
                 self.tableView.isHidden = true
+                
+                self.label_bottom_description.isHidden = true
+                
+                self.label_title.text = "자신과 친구들을 표현해 주세요!"
+                self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
                 
             }
             
@@ -657,12 +710,6 @@ extension RegisterMeetingVC {
                 label.text = "건대/왕십리"
             } else if indexPath.row == 2 {
                 label.text = "강남"
-            } else if indexPath.row == 3 {
-                label.text = "수원역"
-            } else if indexPath.row == 4 {
-                label.text = "인천 송도"
-            } else if indexPath.row == 5 {
-                label.text = "부산 서면"
             }
             
             if label.text == self.button_place.titleLabel?.text {
@@ -676,7 +723,7 @@ extension RegisterMeetingVC {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if isPeople {
-            height.constant = 198
+            height.constant = 186
             return 62
         }
         
@@ -686,7 +733,7 @@ extension RegisterMeetingVC {
         }
         
         if isPlace {
-            height.constant = 300
+            height.constant = 150
             return 50
         }
         

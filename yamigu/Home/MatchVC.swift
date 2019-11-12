@@ -44,6 +44,20 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let mainTC = self.presentingViewController as! MainTC
+        let homeController = mainTC.viewControllers![0] as! HomeVC
+        
+        DispatchQueue.main.async {
+            homeController.myMeetings.removeAll()
+            homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.button_receive.isSelected = true
         
@@ -65,8 +79,8 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         
         let id = "\(self.matchingDict["id"]!)"
         
-        self.getReceiveMatching(urlString: "http://147.47.208.44:9999/api/matching/received_request/?meeting_id=\(id)")
-        self.getRequestMatching(urlString: "http://147.47.208.44:9999/api/matching/sent_request/?meeting_id=\(id)")
+        self.getReceiveMatching(urlString: "http://106.10.39.154:9999/api/matching/received_request/?meeting_id=\(id)")
+        self.getRequestMatching(urlString: "http://106.10.39.154:9999/api/matching/sent_request/?meeting_id=\(id)")
     }
     
     func setupCollectionView() {
@@ -116,7 +130,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             print(button_left.titleLabel?.text)
             let id = "\(self.receiveMatchingList[newPage]["id"]!)"
             let dict : [String: Any] = ["request_id" : id]
-            self.postRequest("http://147.47.208.44:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+            self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
             
             DispatchQueue.main.async {
                 self.dismiss(animated: true, completion: nil)
@@ -131,14 +145,14 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             print(button_right.titleLabel?.text)
             let id = "\(self.receiveMatchingList[newPage]["id"]!)"
             let dict : [String: Any] = ["request_id" : id]
-            self.postRequest("http://147.47.208.44:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+            self.postRequest("http://106.10.39.154:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
             
         } else if button_right.titleLabel?.text! == "취소하기" {
             print(button_right.titleLabel?.text)
             let id = "\(self.requestMatchingList[newPage]["id"]!)"
             let dict : [String: Any] = ["request_id" : id]
             
-            self.postRequest("http://147.47.208.44:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+            self.postRequest("http://106.10.39.154:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
             
         }
         
@@ -289,7 +303,12 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                             
                         }
                         
-                        self.label_totalCount.text = String(self.requestMatchingList.count)
+                        self.label_totalCount.text = String(self.receiveMatchingList.count)
+                        self.newPage = 0
+                        self.label_count.text = "1"
+                        if self.receiveMatchingList.count == 0 {
+                            self.label_count.text = "0"
+                        }
                         self.collectionView.reloadData()
                     }
                 } catch {

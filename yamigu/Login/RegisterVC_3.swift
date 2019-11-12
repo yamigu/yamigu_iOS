@@ -41,7 +41,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             json["belong"] = self.userDict["belong"] as! String
             json["department"] = self.userDict["department"] as! String
             json["age"] = self.userDict["age"] as! Int
-            self.postRequest2("http://147.47.208.44:9999/api/auth/signup/", bodyString: bodyString, json: json)
+            self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
             
             // self.navigationController?.popToRootViewController(animated: false)
         }
@@ -89,7 +89,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         json["department"] = userDict["department"] as! String
         json["age"] = userDict["age"] as! Int
         
-        self.postRequest2("http://147.47.208.44:9999/api/auth/signup/", bodyString: bodyString, json: json)
+        self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
         
         
     }

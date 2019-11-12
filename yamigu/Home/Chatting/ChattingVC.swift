@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var button_send: UIButton!
     
@@ -86,6 +86,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         self.navigationController?.title = resultDateString + " || " + placeString + " || " + typeString
         self.title = resultDateString + " || " + placeString + " || " + typeString
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -123,7 +125,17 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             object: nil
         )
         
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(keyboardDismissal))
+        gesture.delegate = self
+        self.collectionView.addGestureRecognizer(gesture)
+        
         self.checkMessages()
+    }
+    
+    @objc func keyboardDismissal() {
+        self.view.endEditing(true)
+        constraint_bottom.constant = 0.0
+        self.view.layoutIfNeeded()
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -206,8 +218,10 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             let gender = userDictionary["gender"] as! Int
             if gender == 1 {
                 cell.bubbleView.backgroundColor = UIColor(rgb: 0xE7E6FF)
+                cell.nameLabel.textColor = UIColor(rgb: 0x298CFF)
             } else {
                 cell.bubbleView.backgroundColor = UIColor(rgb: 0xFFE6F8)
+                cell.nameLabel.textColor = UIColor(rgb: 0xFE528E)
             }
             
             cell.textView.text = message["message"] as! String
@@ -234,8 +248,10 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             let gender = userDictionary["gender"] as! Int
             if gender == 1 {
                 cell.bubbleView.backgroundColor = UIColor(rgb: 0xFFE6F8)
+                cell.nameLabel.textColor = UIColor(rgb: 0xFE528E)
             } else {
                 cell.bubbleView.backgroundColor = UIColor(rgb: 0xE7E6FF)
+                cell.nameLabel.textColor = UIColor(rgb: 0x298CFF)
             }
             
             cell.textView.text = message["message"] as! String
@@ -268,7 +284,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         let message = self.messages[indexPath.row]
         //get estimated height somehow????
         let text = message["message"] as! String
-        height = estimateFrameForText(text).height + 65
+        height = estimateFrameForText(text).height + 50
         var width = estimateFrameForText(text).width
         
         
@@ -277,6 +293,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     @IBAction func quitBtnPressed(_ sender: Any) {
     }
     @IBAction func sendBtnPressed(_ sender: Any) {
+        if self.tf_message.text! != "" {
         var newRef = self.ref.child("message").child(matchingId).childByAutoId()
         let key = newRef.key
         
@@ -335,9 +352,10 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         json["data"] = data
         
         
-        self.postRequest("http://147.47.208.44:9999/api/fcm/send_push/", bodyString: "", json: json)
+        self.postRequest("http://106.10.39.154:9999/api/fcm/send_push/", bodyString: "", json: json)
         
         self.tf_message.text = ""
+        }
     }
     @IBAction func callBtnPressed(_ sender: Any) {
         

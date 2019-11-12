@@ -64,7 +64,7 @@ class LoginCheckVC: UIViewController {
                     let json = ["access_token":access_token]
                     
                     DispatchQueue.main.async {
-                        self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)", json: json)
+                        self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)", json: json)
                     }
                 }
             })
@@ -163,7 +163,7 @@ class LoginCheckVC: UIViewController {
                         authKey = newValue["key"]!
                         
                         
-                        self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
+                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
                         
                         InstanceID.instanceID().instanceID { (result, error) in
                             if let error = error {
@@ -177,7 +177,7 @@ class LoginCheckVC: UIViewController {
                                 data["registration_id"] = token
                                 data["type"] = "ios"
                                 
-                                self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
+                                self.postRequest2("http://106.10.39.154:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
                             }
                         }
                         

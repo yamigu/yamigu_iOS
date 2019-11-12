@@ -32,7 +32,7 @@ class SettingVC: UIViewController {
 
         logoutAlert.addAction(UIAlertAction(title: "로그아웃", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
-            self.postRequest("http://147.47.208.44:9999/api/auth/logout/")
+            self.postRequest("http://106.10.39.154:9999/api/auth/logout/")
         }))
 
         logoutAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))

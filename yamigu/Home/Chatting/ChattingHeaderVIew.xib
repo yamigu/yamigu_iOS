@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Binggrae-Bold.ttf">
+            <string>Binggrae-Bold</string>
+        </array>
+        <array key="Binggrae.ttf">
+            <string>Binggrae</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChattingHeaderVIew" customModule="yamigu" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U6b-Vx-4bR">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="426"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="Buc-M4-2hC">
+                    <rect key="frame" x="18" y="13" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="HQQ-X5-x6U"/>
+                        <constraint firstAttribute="height" constant="42" id="n6R-p2-FWk"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="야미구 매니저 sub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZe-Q1-0gd">
+                    <rect key="frame" x="70" y="13" width="75.5" height="12.5"/>
+                    <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="9"/>
+                    <color key="textColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="llE-ll-LBU">
+                    <rect key="frame" x="70" y="28.5" width="231" height="180"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="만남이 주선되었습니다!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nxr-rP-JIV">
+                            <rect key="frame" x="10" y="10" width="211" height="27"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="20"/>
+                            <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김찬열(26)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7k0-2t-oqF">
+                            <rect key="frame" x="91" y="44" width="49.5" height="14"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
+                            <color key="textColor" red="0.16078431372549018" green="0.5490196078431373" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연세대학교 기계공학부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozi-hA-r9J">
+                            <rect key="frame" x="65" y="58" width="101.5" height="14"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="김찬열(26)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMU-sz-ige">
+                            <rect key="frame" x="91" y="86" width="49.5" height="14"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
+                            <color key="textColor" red="0.16078431369999999" green="0.54901960780000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="연세대학교 기계공학부" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wd-mC-vKA">
+                            <rect key="frame" x="65" y="100" width="101.5" height="14"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5월 28일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ezc-SM-3sW">
+                            <rect key="frame" x="94.5" y="128" width="42" height="14"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신촌/홍대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38x-gA-iBK">
+                            <rect key="frame" x="93" y="142" width="45.5" height="14"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:2 소개팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNI-sT-kYo">
+                            <rect key="frame" x="91.5" y="156" width="48.5" height="14"/>
+                            <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.94901960784313721" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Nxr-rP-JIV" firstAttribute="centerX" secondItem="llE-ll-LBU" secondAttribute="centerX" id="7MT-LV-8E6"/>
+                        <constraint firstItem="GNI-sT-kYo" firstAttribute="top" secondItem="38x-gA-iBK" secondAttribute="bottom" id="7Om-4Y-ofH"/>
+                        <constraint firstItem="7k0-2t-oqF" firstAttribute="centerX" secondItem="Nxr-rP-JIV" secondAttribute="centerX" id="7xt-om-M9N"/>
+                        <constraint firstItem="7k0-2t-oqF" firstAttribute="top" secondItem="Nxr-rP-JIV" secondAttribute="bottom" constant="7" id="B2m-a2-9eZ"/>
+                        <constraint firstAttribute="height" constant="180" id="HAW-U1-P28"/>
+                        <constraint firstItem="Ozi-hA-r9J" firstAttribute="top" secondItem="7k0-2t-oqF" secondAttribute="bottom" id="IXg-TA-pmG"/>
+                        <constraint firstItem="GNI-sT-kYo" firstAttribute="centerX" secondItem="38x-gA-iBK" secondAttribute="centerX" id="IcY-sN-goD"/>
+                        <constraint firstItem="eMU-sz-ige" firstAttribute="centerX" secondItem="Ozi-hA-r9J" secondAttribute="centerX" id="Nbw-DG-fII"/>
+                        <constraint firstAttribute="width" constant="231" id="c5d-S9-UGw"/>
+                        <constraint firstItem="Ozi-hA-r9J" firstAttribute="centerX" secondItem="7k0-2t-oqF" secondAttribute="centerX" id="dZi-10-9MJ"/>
+                        <constraint firstItem="Ezc-SM-3sW" firstAttribute="centerX" secondItem="8Wd-mC-vKA" secondAttribute="centerX" id="jQu-MI-Tla"/>
+                        <constraint firstItem="38x-gA-iBK" firstAttribute="centerX" secondItem="Ezc-SM-3sW" secondAttribute="centerX" id="mR6-dO-5ht"/>
+                        <constraint firstItem="8Wd-mC-vKA" firstAttribute="top" secondItem="eMU-sz-ige" secondAttribute="bottom" id="oEt-IF-kmW"/>
+                        <constraint firstItem="eMU-sz-ige" firstAttribute="top" secondItem="Ozi-hA-r9J" secondAttribute="bottom" constant="14" id="pkN-bh-IEx"/>
+                        <constraint firstItem="38x-gA-iBK" firstAttribute="top" secondItem="Ezc-SM-3sW" secondAttribute="bottom" id="tbb-av-hsQ"/>
+                        <constraint firstItem="Nxr-rP-JIV" firstAttribute="top" secondItem="llE-ll-LBU" secondAttribute="top" constant="10" id="vZG-fm-ina"/>
+                        <constraint firstItem="8Wd-mC-vKA" firstAttribute="centerX" secondItem="eMU-sz-ige" secondAttribute="centerX" id="wC0-UT-fUW"/>
+                        <constraint firstItem="Ezc-SM-3sW" firstAttribute="top" secondItem="8Wd-mC-vKA" secondAttribute="bottom" constant="14" id="yRF-0Y-MhF"/>
+                    </constraints>
+                </view>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="ALy-PD-M2h">
+                    <rect key="frame" x="18" y="225.5" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="KUu-0l-ycN"/>
+                        <constraint firstAttribute="height" constant="42" id="r7F-MQ-1uK"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="야미구 매니저 sub" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIo-9S-K4U">
+                    <rect key="frame" x="70" y="225.5" width="75.5" height="12.5"/>
+                    <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="9"/>
+                    <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFJ-nT-tCf">
+                    <rect key="frame" x="70" y="242" width="230" height="164"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chatting_description" translatesAutoresizingMaskIntoConstraints="NO" id="Oof-PK-0Wl">
+                            <rect key="frame" x="10" y="10" width="210" height="144"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.94901960780000005" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="230" id="0C2-lM-X7s"/>
+                        <constraint firstItem="Oof-PK-0Wl" firstAttribute="centerY" secondItem="ZFJ-nT-tCf" secondAttribute="centerY" id="UBg-O3-3dP"/>
+                        <constraint firstItem="Oof-PK-0Wl" firstAttribute="centerX" secondItem="ZFJ-nT-tCf" secondAttribute="centerX" id="bIB-cO-2GB"/>
+                        <constraint firstAttribute="height" constant="164" id="j7k-7k-AfH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="llE-ll-LBU" firstAttribute="top" secondItem="VZe-Q1-0gd" secondAttribute="bottom" constant="3" id="0a2-JA-DW0"/>
+                <constraint firstItem="ZFJ-nT-tCf" firstAttribute="top" secondItem="AIo-9S-K4U" secondAttribute="bottom" constant="4" id="2FX-Ff-MvG"/>
+                <constraint firstItem="Buc-M4-2hC" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="18" id="5fU-ga-k7s"/>
+                <constraint firstItem="VZe-Q1-0gd" firstAttribute="leading" secondItem="Buc-M4-2hC" secondAttribute="trailing" constant="10" id="APF-Uw-nXl"/>
+                <constraint firstItem="ALy-PD-M2h" firstAttribute="leading" secondItem="Buc-M4-2hC" secondAttribute="leading" id="BIJ-JX-hWG"/>
+                <constraint firstItem="llE-ll-LBU" firstAttribute="leading" secondItem="VZe-Q1-0gd" secondAttribute="leading" id="FPO-Qm-PJm"/>
+                <constraint firstItem="AIo-9S-K4U" firstAttribute="top" secondItem="ALy-PD-M2h" secondAttribute="top" id="KQm-2a-fsH"/>
+                <constraint firstAttribute="top" secondItem="Buc-M4-2hC" secondAttribute="top" constant="-13" id="Qbv-mV-Vz5"/>
+                <constraint firstItem="VZe-Q1-0gd" firstAttribute="top" secondItem="Buc-M4-2hC" secondAttribute="top" id="btr-6B-AjS"/>
+                <constraint firstItem="ZFJ-nT-tCf" firstAttribute="leading" secondItem="AIo-9S-K4U" secondAttribute="leading" id="itn-nF-oLU"/>
+                <constraint firstItem="AIo-9S-K4U" firstAttribute="top" secondItem="llE-ll-LBU" secondAttribute="bottom" constant="17" id="oTR-4D-YuM"/>
+                <constraint firstItem="AIo-9S-K4U" firstAttribute="leading" secondItem="ALy-PD-M2h" secondAttribute="trailing" constant="10" id="ufF-o1-1I1"/>
+            </constraints>
+            <point key="canvasLocation" x="182.8125" y="53.75"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <image name="chatting_description" width="210" height="144"/>
+        <image name="sample_profile" width="70" height="70"/>
+    </resources>
+</document>

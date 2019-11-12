@@ -54,7 +54,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         }
     }
     @IBAction func compBtnPressed(_ sender: Any) {
-        checkNickname(urlString: "http://147.47.208.44:9999/api/user/validation/nickname/\(self.tf_name.text!)", isComp: true)
+        checkNickname(urlString: "http://106.10.39.154:9999/api/user/validation/nickname/\(self.tf_name.text!)", isComp: true)
     }
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
@@ -101,7 +101,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
         print("nickName = \(nickName!)")
-        var urlString = "http://147.47.208.44:9999/api/user/validation/nickname/\(nickName!)"
+        var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName!)"
         urlString = String(utf8String: urlString.cString(using: .utf8)!)!
         checkNickname(urlString: urlString, isComp: false)
         
@@ -143,7 +143,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
                             self.label_able.textColor = UIColor(rgb: 0x3129FF)
                             self.label_able.text = "사용 가능 합니다."
                             if isComp {
-                                self.postRequest("http://147.47.208.44:9999/api/user/change/nickname/", bodyString:"nickname=\(self.tf_name.text!)")
+                                self.postRequest("http://106.10.39.154:9999/api/user/change/nickname/", bodyString:"nickname=\(self.tf_name.text!)")
                             }
                         } else {
                             self.label_able.isHidden = false

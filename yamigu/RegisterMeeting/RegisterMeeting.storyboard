@@ -84,7 +84,7 @@
                                     <action selector="placeBtnPressed:" destination="HHI-d6-9E7" eventType="touchUpInside" id="xwy-Qi-LNg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="언제가 좋아요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86h-k1-eJp">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="몇대몇 할래요?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="86h-k1-eJp">
                                 <rect key="frame" x="18" y="205" width="107" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
@@ -93,8 +93,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orange_bar" translatesAutoresizingMaskIntoConstraints="NO" id="OVr-yI-yfm">
                                 <rect key="frame" x="29" y="231.33333333333334" width="26" height="4"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="장소는 미팅이 잡혀도 언제든 변경가능해요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uji-8d-ld9">
-                                <rect key="frame" x="57.000000000000014" y="226" width="204.33333333333337" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구들중 대표로 한명만 신청하면 돼요!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uji-8d-ld9">
+                                <rect key="frame" x="56.999999999999986" y="226" width="183.66666666666663" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -105,6 +105,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Xuc-O0-ajP"/>
                                 </constraints>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="62" id="qvK-FY-gtk">
                                         <rect key="frame" x="0.0" y="28" width="381" height="62"/>
@@ -127,10 +128,10 @@
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="bordercolor">
-                                                    <color key="value" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderwidth">
-                                                    <real key="value" value="1"/>
+                                                    <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </tableViewCellContentView>
@@ -140,8 +141,23 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="4"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderwidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bordercolor">
+                                        <color key="value" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구와 함께 하는 야미구" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tjQ-m1-IKE">
+                                <rect key="frame" x="135.33333333333337" y="398" width="143.66666666666663" height="17"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3WF-t2-QTe">
                                 <rect key="frame" x="16.666666666666657" y="248" width="381" height="273"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -212,6 +228,8 @@
                             <constraint firstItem="90w-TI-1w0" firstAttribute="width" secondItem="oxj-l0-3nn" secondAttribute="width" multiplier="2:3" id="8UM-nh-2w2"/>
                             <constraint firstItem="3WF-t2-QTe" firstAttribute="leading" secondItem="6ub-6L-1sv" secondAttribute="leading" id="8XS-AQ-Gbu"/>
                             <constraint firstItem="6ub-6L-1sv" firstAttribute="leading" secondItem="SqJ-wl-55i" secondAttribute="leading" constant="16.5" id="9hU-Zs-5qe"/>
+                            <constraint firstItem="tjQ-m1-IKE" firstAttribute="top" secondItem="6ub-6L-1sv" secondAttribute="bottom" constant="22" id="API-Wu-iTJ"/>
+                            <constraint firstItem="tjQ-m1-IKE" firstAttribute="centerX" secondItem="6ub-6L-1sv" secondAttribute="centerX" id="Bpd-aL-OAo"/>
                             <constraint firstItem="sOC-HN-01v" firstAttribute="leading" secondItem="Pjg-tU-WRC" secondAttribute="leading" id="Bq4-tu-wbV"/>
                             <constraint firstItem="xZh-PT-dFy" firstAttribute="centerX" secondItem="oxj-l0-3nn" secondAttribute="centerX" id="Das-x2-0Nt"/>
                             <constraint firstItem="Pjg-tU-WRC" firstAttribute="top" secondItem="mgO-Fy-ilA" secondAttribute="bottom" id="H54-10-7QC"/>
@@ -261,7 +279,10 @@
                         <outlet property="button_place" destination="sOC-HN-01v" id="fNc-H1-meZ"/>
                         <outlet property="button_request" destination="oxj-l0-3nn" id="vTl-gC-UZe"/>
                         <outlet property="height" destination="Xuc-O0-ajP" id="dq7-nr-Wjc"/>
+                        <outlet property="label_bottom_description" destination="tjQ-m1-IKE" id="RRA-Cd-fRQ"/>
                         <outlet property="label_caution" destination="xZh-PT-dFy" id="Fgi-qR-25Z"/>
+                        <outlet property="label_description" destination="Uji-8d-ld9" id="JZt-RC-UPL"/>
+                        <outlet property="label_title" destination="86h-k1-eJp" id="iMU-Jp-eMb"/>
                         <outlet property="tableView" destination="6ub-6L-1sv" id="hfU-f2-PwR"/>
                         <outlet property="textView" destination="3WF-t2-QTe" id="62v-wY-8VB"/>
                     </connections>

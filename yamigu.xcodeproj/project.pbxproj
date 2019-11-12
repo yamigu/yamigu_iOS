@@ -17,6 +17,8 @@
 		04618BAC23485F84002DF8A8 /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04618BAB23485F84002DF8A8 /* FilterView.xib */; };
 		04618BAE23487152002DF8A8 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04618BAD23487152002DF8A8 /* MyPage.storyboard */; };
 		04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BAF23487162002DF8A8 /* MyPageVC.swift */; };
+		550CC97423795DC200CD687B /* ChattingHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550CC97223795DC200CD687B /* ChattingHeaderVIew.swift */; };
+		550CC97523795DC200CD687B /* ChattingHeaderVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550CC97323795DC200CD687B /* ChattingHeaderVIew.xib */; };
 		55224D8B234F0599003FBCA3 /* RegisterVC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */; };
 		55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */; };
 		55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8F234F0ED5003FBCA3 /* AgreementTableViewCell.swift */; };
@@ -129,6 +131,8 @@
 		38F428581F082323AF225DA3 /* Pods-yamigu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.debug.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.debug.xcconfig"; sourceTree = "<group>"; };
 		3EFA3DF0CEA8BB97FB09899A /* Pods_yamiguUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yamiguUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		492A156B580C7A2348935908 /* Pods-yamiguUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguUITests.release.xcconfig"; path = "Target Support Files/Pods-yamiguUITests/Pods-yamiguUITests.release.xcconfig"; sourceTree = "<group>"; };
+		550CC97223795DC200CD687B /* ChattingHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingHeaderVIew.swift; sourceTree = "<group>"; };
+		550CC97323795DC200CD687B /* ChattingHeaderVIew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChattingHeaderVIew.xib; sourceTree = "<group>"; };
 		55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC_1.swift; sourceTree = "<group>"; };
 		55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC_2.swift; sourceTree = "<group>"; };
 		55224D8F234F0ED5003FBCA3 /* AgreementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementTableViewCell.swift; sourceTree = "<group>"; };
@@ -412,6 +416,8 @@
 			isa = PBXGroup;
 			children = (
 				5582E2302364089C00A9E0FE /* Chatting.storyboard */,
+				550CC97223795DC200CD687B /* ChattingHeaderVIew.swift */,
+				550CC97323795DC200CD687B /* ChattingHeaderVIew.xib */,
 				5582E23223640A1B00A9E0FE /* ChattingVC.swift */,
 				5582E2342368376B00A9E0FE /* ChattingCell.swift */,
 				5582E2362369444F00A9E0FE /* ChattingLeftCell.swift */,
@@ -662,6 +668,7 @@
 				55224DDF2359DA58003FBCA3 /* NanumGothicExtraBold.ttf in Resources */,
 				9F09984D23694A20006B2750 /* HomeReviewCell.xib in Resources */,
 				55DD1BBD23475F8200CC820D /* Home.storyboard in Resources */,
+				550CC97523795DC200CD687B /* ChattingHeaderVIew.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,6 +812,7 @@
 				55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */,
 				55B09BF22349EA2C006051C2 /* WhatisTableViewCell.swift in Sources */,
 				55224D96234F42B1003FBCA3 /* MainTC.swift in Sources */,
+				550CC97423795DC200CD687B /* ChattingHeaderVIew.swift in Sources */,
 				55224DE7235CF6E9003FBCA3 /* BuyTicketVC.swift in Sources */,
 				55224D94234F10FB003FBCA3 /* RegisterVC_3.swift in Sources */,
 				55B09BEE2349E9E2006051C2 /* MoreTableViewCell.swift in Sources */,
@@ -987,7 +995,7 @@
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1015,7 +1023,7 @@
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

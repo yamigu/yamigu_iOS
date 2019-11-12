@@ -16,6 +16,7 @@ class ChattingLeftCell: UICollectionViewCell {
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.backgroundColor = UIColor.clear
         tv.textColor = .black
+        tv.isUserInteractionEnabled = false
         return tv
     }()
     
@@ -93,7 +94,7 @@ class ChattingLeftCell: UICollectionViewCell {
         bubbleView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant:  -10).isActive = true
         
         textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 10.0).isActive = true
-        textView.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant:  10.0).isActive = true
+        textView.topAnchor.constraint(equalTo: bubbleView.topAnchor, constant:  5.0).isActive = true
         
         textView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor, constant: -10.0).isActive = true
         

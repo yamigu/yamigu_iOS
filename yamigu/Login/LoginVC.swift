@@ -32,12 +32,15 @@ class LoginVC: UIViewController {
         if KOSession.shared()?.token?.accessToken != nil {
             //self.performSegue(withIdentifier: "segue_agreement", sender: self)
             //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+            
+            
             if let userNickname = userDictionary["nickname"] {
                 if "\(userNickname)" == "<null>" {
                     
                 } else {
                     self.dismiss(animated: false, completion: nil)
                 }
+                
             }
         }
     }
@@ -56,7 +59,7 @@ class LoginVC: UIViewController {
             
             if error == nil {
                 let access_token = (KOSession.shared()?.token?.accessToken)!
-                self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
             }
             
             
@@ -97,8 +100,10 @@ class LoginVC: UIViewController {
                     DispatchQueue.main.async {
                         // 동작 실행
                         authKey = newValue["key"]!
+                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
                         
-                        self.performSegue(withIdentifier: "segue_agreement", sender: self)
+                        
+                        
                     }
                 } catch {
                     print(error)
@@ -107,5 +112,66 @@ class LoginVC: UIViewController {
                 }
             }
             }.resume()
+    }
+    
+    func getUserInfo(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        userDictionary = newValue
+                        
+                        print("newValue = \(newValue)")
+                        print("nickname = \(userDictionary["nickname"] ?? "<null>")")
+                        if let nick = userDictionary["nickname"] {
+                
+                            if ("\(userDictionary["nickname"] ?? "<null>")") != "<null>" {
+                                self.dismiss(animated: false, completion: nil)
+                            } else {
+                                self.performSegue(withIdentifier: "segue_agreement", sender: self)
+                            }
+                        } else {
+                             self.performSegue(withIdentifier: "segue_agreement", sender: self)
+                        }
+                        
+                        
+                    }
+                } catch {
+                    print(error)
+                    // 회원가입 이력이 없는경우
+                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                }
+            }
+            
+        })
+        task.resume()
     }
 }
