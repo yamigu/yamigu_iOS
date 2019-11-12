@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uzg-ye-alR">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Binggrae-Bold.ttf">
+            <string>Binggrae-Bold</string>
+        </array>
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="pBY-JQ-f5D">
+            <objects>
+                <navigationController id="uzg-ye-alR" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J8j-As-70A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="qvR-v5-ccm" kind="relationship" relationship="rootViewController" id="Xq3-J2-1U9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ulD-8a-GUe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-775" y="80"/>
+        </scene>
+        <!--알림-->
+        <scene sceneID="Qkv-Pa-C1i">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="qvR-v5-ccm" customClass="NotisVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="btP-Jh-ooL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="68" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="per-bV-Ckx">
+                                <rect key="frame" x="0.0" y="44" width="414" height="692"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableViewCell" id="eeF-3C-S3V">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eeF-3C-S3V" id="zY3-dk-bPb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신청!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL4-hq-aTN">
+                                                    <rect key="frame" x="12" y="24.666666666666671" width="34" height="19"/>
+                                                    <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tva-2s-Zog">
+                                                    <rect key="frame" x="55" y="20.666666666666668" width="34" height="17.000000000000004"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7I-xh-aN2">
+                                                    <rect key="frame" x="55" y="37" width="25" height="12"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="10"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f3R-51-fCI">
+                                                    <rect key="frame" x="372" y="23" width="22" height="22"/>
+                                                    <state key="normal" image="icon_next"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="f3R-51-fCI" firstAttribute="centerY" secondItem="zY3-dk-bPb" secondAttribute="centerY" id="0Wp-pV-QR2"/>
+                                                <constraint firstItem="f7I-xh-aN2" firstAttribute="centerY" secondItem="fL4-hq-aTN" secondAttribute="centerY" constant="9" id="4NB-zN-U7U"/>
+                                                <constraint firstItem="fL4-hq-aTN" firstAttribute="centerY" secondItem="zY3-dk-bPb" secondAttribute="centerY" id="9qV-00-dfq"/>
+                                                <constraint firstItem="tva-2s-Zog" firstAttribute="centerY" secondItem="fL4-hq-aTN" secondAttribute="centerY" constant="-5" id="Fyb-qe-AgA"/>
+                                                <constraint firstItem="fL4-hq-aTN" firstAttribute="leading" secondItem="zY3-dk-bPb" secondAttribute="leading" constant="12" id="lUR-dE-5w6"/>
+                                                <constraint firstItem="tva-2s-Zog" firstAttribute="leading" secondItem="fL4-hq-aTN" secondAttribute="trailing" constant="9" id="n3b-YK-XMO"/>
+                                                <constraint firstItem="f7I-xh-aN2" firstAttribute="leading" secondItem="tva-2s-Zog" secondAttribute="leading" id="r01-8q-Lz3"/>
+                                                <constraint firstAttribute="trailing" secondItem="f3R-51-fCI" secondAttribute="trailing" constant="20" id="vjj-Cc-xhq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="per-bV-Ckx" firstAttribute="centerX" secondItem="5E9-g5-6XW" secondAttribute="centerX" id="7UU-PS-LvT"/>
+                            <constraint firstItem="per-bV-Ckx" firstAttribute="height" secondItem="5E9-g5-6XW" secondAttribute="height" id="99I-tt-vDX"/>
+                            <constraint firstItem="per-bV-Ckx" firstAttribute="centerY" secondItem="5E9-g5-6XW" secondAttribute="centerY" id="A4r-rw-JZ0"/>
+                            <constraint firstItem="per-bV-Ckx" firstAttribute="width" secondItem="5E9-g5-6XW" secondAttribute="width" id="ibr-Sx-7ZQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5E9-g5-6XW"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="알림" id="KtO-fA-QL3"/>
+                    <connections>
+                        <outlet property="tableView" destination="per-bV-Ckx" id="KWo-vj-0RF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wvW-IM-wIf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="113" y="80"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_next" width="22" height="22"/>
+    </resources>
+</document>

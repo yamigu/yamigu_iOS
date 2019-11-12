@@ -27,6 +27,22 @@ class SettingVC: UIViewController {
         setupUI()
     }
     
+    @IBAction func switch_pushNoti(_ sender: UISwitch) {
+        if !switch_pushNoti.isOn {
+            if switch_chattingNoti.isOn {
+                switch_chattingNoti.isOn = false
+            }
+        }
+    }
+    
+    @IBAction func switch_chattingNoti(_ sender: UISwitch) {
+        
+    }
+    
+    @objc func noticeTap(_ sender: UITapGestureRecognizer? = nil) {
+        self.performSegue(withIdentifier: "segue_notice", sender: self)
+    }
+    
     @objc func logoutTap(_ sender: UITapGestureRecognizer? = nil) {
         let logoutAlert = UIAlertController(title: "로그아웃", message: "로그아웃 하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
 
@@ -96,6 +112,13 @@ extension SettingVC {
     func setupUI() {
         let logoutTap = UITapGestureRecognizer(target: self, action: #selector(self.logoutTap(_:)))
         self.view_logout.addGestureRecognizer(logoutTap)
+        
+        let noticeTap = UITapGestureRecognizer(target: self, action: #selector(self.noticeTap(_:)))
+        self.view_notices.addGestureRecognizer(noticeTap)
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     
