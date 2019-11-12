@@ -25,6 +25,8 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var button_people: UIButton!
     @IBOutlet weak var height: NSLayoutConstraint!
     
+    @IBOutlet weak var constraint_labelBottom: NSLayoutConstraint!
+    @IBOutlet weak var label_textCount: UILabel!
     @IBOutlet weak var button_request: UIButton!
     @IBOutlet weak var label_caution: UILabel!
     @IBOutlet weak var label_title: UILabel!
@@ -60,8 +62,39 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.layer.shadowOpacity = 0.4
         tableView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
+        
         handleButtonImage()
         
+    }
+    
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            self.constraint_labelBottom.constant = -keyboardHeight + 100
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        self.constraint_labelBottom.constant =  -13
+        self.view.layoutIfNeeded()
+        self.view.layoutIfNeeded()
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -76,6 +109,12 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             textView.text = "키, 학력, 나이, 친구들 스타일 등 모든 것을 자랑하세요!"
             textView.textColor = UIColor.lightGray
         }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        label_textCount.text = "\(self.textView.text.count)/100"
+        
+        return true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -295,6 +334,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
+        self.label_textCount.isHidden = true
         
         self.label_bottom_description.isHidden = false
         
@@ -317,6 +357,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
+        self.label_textCount.isHidden = true
         
         self.label_bottom_description.isHidden = false
         
@@ -341,6 +382,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
+        self.label_textCount.isHidden = true
         
         self.label_bottom_description.isHidden = false
         
@@ -364,6 +406,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
+        self.label_textCount.isHidden = true
         
         self.label_bottom_description.isHidden = false
         
@@ -376,6 +419,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             self.label_caution.isHidden = false
             self.button_request.isHidden = false
             self.tableView.isHidden = true
+            self.label_textCount.isHidden = false
             
             self.label_bottom_description.isHidden = true
             
@@ -396,6 +440,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
+        self.label_textCount.isHidden = true
         
         self.label_bottom_description.isHidden = false
         
@@ -408,6 +453,8 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+        self.constraint_labelBottom.constant = -13
+        self.view.layoutIfNeeded()
     }
     @IBAction func requestBtnPressed(_ sender: Any) {
         
@@ -579,6 +626,7 @@ extension RegisterMeetingVC {
                 self.label_caution.isHidden = false
                 self.button_request.isHidden = false
                 self.tableView.isHidden = true
+                self.label_textCount.isHidden = false
                 
                 self.label_bottom_description.isHidden = true
                 

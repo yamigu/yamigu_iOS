@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +32,7 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="424"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="415"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="필터 설정하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fL1-nV-qa8">
@@ -174,10 +174,10 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LUf-Vm-6xV">
-                    <rect key="frame" x="24" y="235.5" width="99" height="30"/>
+                    <rect key="frame" x="24" y="235.5" width="99" height="0.0"/>
                     <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="ae5-T6-Ivg"/>
+                        <constraint firstAttribute="height" id="ae5-T6-Ivg"/>
                         <constraint firstAttribute="width" constant="99" id="ps8-6c-qJF"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -194,11 +194,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PHb-6n-b7c">
-                    <rect key="frame" x="138" y="235.5" width="99" height="30"/>
+                    <rect key="frame" x="138" y="235.5" width="99" height="0.0"/>
                     <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="99" id="NhO-Pf-BxK"/>
-                        <constraint firstAttribute="height" constant="30" id="peh-90-b4K"/>
+                        <constraint firstAttribute="height" id="peh-90-b4K"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="인천 송도">
@@ -214,11 +214,11 @@
                     </connections>
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Wq-S0-o9U">
-                    <rect key="frame" x="252" y="235.5" width="99" height="30"/>
+                    <rect key="frame" x="252" y="235.5" width="99" height="0.0"/>
                     <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="99" id="1EE-qQ-2Kg"/>
-                        <constraint firstAttribute="height" constant="30" id="oNB-4W-EgX"/>
+                        <constraint firstAttribute="height" id="oNB-4W-EgX"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="부산 서면">
@@ -234,13 +234,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나이" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWx-An-fFl">
-                    <rect key="frame" x="31" y="282.5" width="38" height="24"/>
+                    <rect key="frame" x="31" y="252.5" width="38" height="24"/>
                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2M5-ji-mLM">
-                    <rect key="frame" x="0.0" y="376" width="224" height="48"/>
+                    <rect key="frame" x="0.0" y="367" width="224" height="48"/>
                     <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="48" id="6YN-BO-ka6"/>
@@ -254,7 +254,7 @@
                     </connections>
                 </button>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-JK-lzL">
-                    <rect key="frame" x="224" y="376" width="151" height="48"/>
+                    <rect key="frame" x="224" y="367" width="151" height="48"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="해제하기">
                         <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -272,7 +272,7 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q22-lL-jK0" customClass="MultiSlider" customModule="MultiSlider">
-                    <rect key="frame" x="24" y="311.5" width="327" height="41"/>
+                    <rect key="frame" x="24" y="281.5" width="327" height="41"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" red="1" green="0.4823529411764706" blue="0.13333333333333333" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>

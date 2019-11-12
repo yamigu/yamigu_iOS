@@ -35,7 +35,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     var chatRefHandle : DatabaseHandle!
    
     func checkId() {
-        print(meetingDict)
+        
         
         var received = Dictionary<String, Any>()
         var sent = Dictionary<String, Any>()
@@ -62,6 +62,10 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                 managerData = dict
             }
         }
+        
+        print(meetingDict)
+        print(managerData)
+        print(matchDict)
         
         let dateString = meetingDict["date"] as! String
         
@@ -97,6 +101,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Bundle.main.loadNibNamed("ChattingHeaderVIew", owner: self, options: nil)
+        collectionView.register(UINib(nibName: "ChattingHeaderVIew", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         
         collectionView?.register(ChattingCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(ChattingLeftCell.self, forCellWithReuseIdentifier: cellLeftId)
@@ -230,7 +236,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             print("datedouble = \(dateDoube)")
             let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
             
-            let dateFomatter = DateFormatter(format: "a H:mm")
+            let dateFomatter = DateFormatter(format: "a KK:mm")
             dateFomatter.locale = Locale(identifier: "ko_kr")
             dateFomatter.timeZone = TimeZone(abbreviation: "KST")
             cell.timeLabel.text = dateFomatter.string(from: date)
@@ -260,7 +266,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             print("datedouble = \(dateDoube)")
             let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
             
-            let dateFomatter = DateFormatter(format: "a H:mm")
+            let dateFomatter = DateFormatter(format: "a KK:mm")
             dateFomatter.locale = Locale(identifier: "ko_kr")
             dateFomatter.timeZone = TimeZone(abbreviation: "KST")
             cell.timeLabel.text = dateFomatter.string(from: date)
@@ -290,7 +296,89 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         return CGSize(width: view.frame.width, height: height)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: self.collectionView.frame.width, height: 413.0)
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath) as! ChattingHeaderVIew
+        
+        let profileImageView = header.viewWithTag(21) as! UIImageView
+        let profileImageVIew2 = header.viewWithTag(22) as! UIImageView
+        let label_name = header.viewWithTag(2) as! UILabel
+        let label_name2 = header.viewWithTag(3) as! UILabel
+        let label_time = header.viewWithTag(4) as! UILabel
+        let label_time2 = header.viewWithTag(5) as! UILabel
+        let label_openbyName = header.viewWithTag(10) as! UILabel
+        let label_openbyDepartment = header.viewWithTag(11) as! UILabel
+        let label_partnerName = header.viewWithTag(12) as! UILabel
+        let label_partnerDepartment = header.viewWithTag(13) as! UILabel
+        let label_date = header.viewWithTag(14) as! UILabel
+        let label_place = header.viewWithTag(15) as! UILabel
+        let label_type = header.viewWithTag(16) as! UILabel
+        
+        
+        
+        profileImageView.downloaded(from: "\(self.managerData["manager_profile"]!)")
+        profileImageVIew2.downloaded(from: "\(self.managerData["manager_profile"]!)")
+        
+        label_name.text = "야미구 매니저 \(self.managerData["manager_name"]!)"
+        label_name2.text = "야미구 매니저 \(self.managerData["manager_name"]!)"
+        
+        let DateString = "\(self.managerData["accepted_at"]!)"
+        let dateDouble = Double(DateString)
+        let date = Date(timeIntervalSince1970: dateDouble as! TimeInterval)
+        let dateFomatter = DateFormatter(format: "a KK:mm")
+        dateFomatter.locale = Locale(identifier: "ko_kr")
+        dateFomatter.timeZone = TimeZone(abbreviation: "KST")
+        label_time.text = dateFomatter.string(from: date)
+        label_time2.text = dateFomatter.string(from: date)
+        label_openbyName.text = "\(self.meetingDict["openby_nickname"]!)" + "(\(self.meetingDict["openby_age"]!))"
+        label_openbyDepartment.text = "\(self.meetingDict["openby_department"]!) \(self.meetingDict["openby_belong"]!)"
+        
+        var matchedDict = Dictionary<String, Any>()
+        matchedDict = self.meetingDict["matched_meeting"] as! Dictionary<String, Any>
+        
+        label_partnerName.text = "\(matchedDict["openby_nickname"]!)" + "(\(matchedDict["openby_age"]!))"
+        label_partnerDepartment.text = "\(matchedDict["openby_department"]!) \(matchedDict["openby_belong"]!)"
+        
+        label_date.text = "\(self.meetingDict["date"]!)"
+        label_place.text = "\(self.meetingDict["place_type_name"]!)"
+        
+        let type = self.meetingDict["meeting_type"] as! Int
+        if type == 1 {
+            label_type.text = "2:2 소개팅"
+        } else if type == 2{
+            label_type.text = "3:3 미팅"
+        } else {
+            label_type.text = "4:4 미팅"
+        }
+        
+        
+        let gender = userDictionary["gender"] as! Int
+        if gender == 1 {
+            label_openbyName.textColor = UIColor(rgb: 0x298CFF)
+            label_partnerName.textColor = UIColor(rgb: 0xFF538F)
+        } else {
+            label_openbyName.textColor = UIColor(rgb: 0xFF538F)
+            label_partnerName.textColor = UIColor(rgb: 0x298CFF)
+        }
+        
+        return header
+    }
+    
     @IBAction func quitBtnPressed(_ sender: Any) {
+        let logoutAlert = UIAlertController(title: "", message: "매칭 카드를 다시 신청해드릴까요?\n전에 작성하신 인원, 날짜, 장소, 원하는 말은\n모두 똑같이 신청돼요!", preferredStyle: UIAlertController.Style.alert)
+        
+        logoutAlert.addAction(UIAlertAction(title: "아니요", style: .default, handler: { (action: UIAlertAction!) in
+            print("Handle Ok logic here")
+        }))
+
+        logoutAlert.addAction(UIAlertAction(title: "네,신청해주세요", style: .default, handler: nil))
+
+        present(logoutAlert, animated: true, completion: nil)
+        
     }
     @IBAction func sendBtnPressed(_ sender: Any) {
         if self.tf_message.text! != "" {
@@ -358,7 +446,14 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         }
     }
     @IBAction func callBtnPressed(_ sender: Any) {
-        
+        //icon_chatting_alarm
+        //self.button_call.tintColor = UIColor(rgb: 0xFF7B22)
+        self.view.makeToast("매니저를 호출하였습니다.")
+        self.button_call.setImage(UIImage(named: "icon_chatting_alarm_on"), for: .normal)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            //self.button_call.tintColor = UIColor(rgb: 0x707070)
+            self.button_call.setImage(UIImage(named: "icon_chatting_alarm"), for: .normal)
+        }
     }
     @IBAction func dismissBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

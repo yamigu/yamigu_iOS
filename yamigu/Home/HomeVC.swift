@@ -463,7 +463,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF7B22)
                 cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF7B22)
                 cell.label_isMatched.textColor = UIColor(rgb: 0xFF7B22)
-                cell.image_bottom.image = UIImage(named: "view_bottomBar")
+                cell.image_bottom.image = UIImage(named: "orange_bar")
             } else if cell.label_type.text == "3:3 미팅" {
                 cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
                 cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF6024)
