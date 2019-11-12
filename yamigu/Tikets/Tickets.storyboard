@@ -36,7 +36,7 @@
         <!--야미구 티켓으로-->
         <scene sceneID="m9G-0S-6qO">
             <objects>
-                <viewController id="NFe-Jx-9ZS" customClass="TicketsVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="NFe-Jx-9ZS" customClass="TicketsVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VEj-Wn-8El">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9H-Qx-Nee">
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                             </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPK-bl-vgh" customClass="CHIPageControlChimayo" customModule="CHIPageControl">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DPK-bl-vgh" customClass="CHIPageControlChimayo" customModule="CHIPageControl">
                                 <rect key="frame" x="186" y="609" width="42" height="10"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,7 +127,7 @@
         <!--Ticket-->
         <scene sceneID="Lxs-be-mPB">
             <objects>
-                <viewController title="Ticket" id="c6s-AA-COR" customClass="BuyTicketVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ticket" modalPresentationStyle="fullScreen" id="c6s-AA-COR" customClass="BuyTicketVC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cb4-Ag-HJp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

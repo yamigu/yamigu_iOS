@@ -19,7 +19,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pBY-JQ-f5D">
             <objects>
-                <navigationController id="uzg-ye-alR" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="uzg-ye-alR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J8j-As-70A">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -98,7 +98,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5E9-g5-6XW"/>
                     </view>
-                    <navigationItem key="navigationItem" title="알림" id="KtO-fA-QL3"/>
+                    <navigationItem key="navigationItem" title="알림" id="KtO-fA-QL3">
+                        <barButtonItem key="leftBarButtonItem" image="bar_icon_back" id="WFs-Hh-ZTU">
+                            <color key="tintColor" red="0.34509803921568627" green="0.34509803921568627" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="backBtnPressed:" destination="qvR-v5-ccm" id="YIw-Be-Y1d"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="per-bV-Ckx" id="KWo-vj-0RF"/>
                     </connections>
@@ -109,6 +116,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bar_icon_back" width="22" height="22"/>
         <image name="icon_next" width="22" height="22"/>
     </resources>
 </document>

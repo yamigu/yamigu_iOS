@@ -180,10 +180,37 @@
                                             <action selector="ticketBtnPressed:" destination="6Fk-HZ-iur" eventType="touchUpInside" id="q5f-Ed-vrg"/>
                                         </connections>
                                     </button>
+                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8To-Cg-IJD">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="209"/>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LD-Zr-Qqk">
+                                        <rect key="frame" x="128" y="86.666666666666671" width="142" height="36"/>
+                                        <color key="backgroundColor" red="1" green="0.62745098039215685" blue="0.050980392156862744" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="142" id="Mzv-8N-ZXc"/>
+                                            <constraint firstAttribute="height" constant="36" id="fbR-xx-9AW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                        <state key="normal" title="소속 인증하기">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.98039215686274506" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="xwr-WX-vYa" firstAttribute="top" secondItem="mcV-Us-ZHh" secondAttribute="top" id="0Kp-zj-uDe"/>
+                                    <constraint firstItem="8To-Cg-IJD" firstAttribute="width" secondItem="5pM-TC-aVr" secondAttribute="width" id="0fx-Eh-Uyf"/>
                                     <constraint firstItem="4Mw-zp-Pev" firstAttribute="centerX" secondItem="5pM-TC-aVr" secondAttribute="centerX" id="1L0-yW-Cp9"/>
                                     <constraint firstItem="752-6U-XLy" firstAttribute="leading" secondItem="uuZ-Nq-Ykd" secondAttribute="trailing" id="1xP-LK-5kh"/>
                                     <constraint firstItem="ECt-hF-7eV" firstAttribute="leading" secondItem="752-6U-XLy" secondAttribute="trailing" id="3Yh-6n-2Zk"/>
@@ -193,16 +220,21 @@
                                     <constraint firstItem="752-6U-XLy" firstAttribute="top" secondItem="4Mw-zp-Pev" secondAttribute="bottom" id="LPb-mk-YoV"/>
                                     <constraint firstAttribute="height" constant="209" id="Og5-Qk-CAu"/>
                                     <constraint firstItem="uuZ-Nq-Ykd" firstAttribute="leading" secondItem="5pM-TC-aVr" secondAttribute="leading" id="Plh-38-Prt"/>
+                                    <constraint firstItem="1LD-Zr-Qqk" firstAttribute="centerX" secondItem="8To-Cg-IJD" secondAttribute="centerX" id="Puh-o7-8se"/>
                                     <constraint firstItem="ECt-hF-7eV" firstAttribute="top" secondItem="4Mw-zp-Pev" secondAttribute="bottom" id="Slz-eP-GAT"/>
                                     <constraint firstItem="xwr-WX-vYa" firstAttribute="leading" secondItem="mcV-Us-ZHh" secondAttribute="trailing" constant="40" id="b87-Dj-U6T"/>
+                                    <constraint firstItem="1LD-Zr-Qqk" firstAttribute="centerY" secondItem="8To-Cg-IJD" secondAttribute="centerY" id="hCU-GZ-4q0"/>
                                     <constraint firstAttribute="bottom" secondItem="uuZ-Nq-Ykd" secondAttribute="bottom" id="heR-FQ-kYc"/>
                                     <constraint firstAttribute="bottom" secondItem="752-6U-XLy" secondAttribute="bottom" id="jHU-6g-dAG"/>
                                     <constraint firstItem="mcV-Us-ZHh" firstAttribute="leading" secondItem="5pM-TC-aVr" secondAttribute="leading" constant="29" id="k6W-mI-xHy"/>
+                                    <constraint firstItem="8To-Cg-IJD" firstAttribute="centerY" secondItem="5pM-TC-aVr" secondAttribute="centerY" id="kc5-Sp-JxB"/>
                                     <constraint firstItem="uuZ-Nq-Ykd" firstAttribute="top" secondItem="4Mw-zp-Pev" secondAttribute="bottom" id="klx-qh-duI"/>
                                     <constraint firstItem="9oz-rd-xlX" firstAttribute="centerX" secondItem="mcV-Us-ZHh" secondAttribute="centerX" id="nxA-gM-nbC"/>
                                     <constraint firstAttribute="bottom" secondItem="4Mw-zp-Pev" secondAttribute="bottom" constant="43.5" id="oYK-DY-djh"/>
+                                    <constraint firstItem="8To-Cg-IJD" firstAttribute="centerX" secondItem="5pM-TC-aVr" secondAttribute="centerX" id="rbt-56-u1j"/>
                                     <constraint firstAttribute="bottom" secondItem="ECt-hF-7eV" secondAttribute="bottom" id="sjv-46-WRm"/>
                                     <constraint firstAttribute="trailing" secondItem="ECt-hF-7eV" secondAttribute="trailing" id="tKg-aI-d9d"/>
+                                    <constraint firstItem="8To-Cg-IJD" firstAttribute="height" secondItem="5pM-TC-aVr" secondAttribute="height" id="tW0-rB-Cbr"/>
                                     <constraint firstItem="9oz-rd-xlX" firstAttribute="centerY" secondItem="mcV-Us-ZHh" secondAttribute="bottom" id="xXP-eg-PfB"/>
                                 </constraints>
                             </view>
@@ -383,13 +415,17 @@
                         <outlet property="button_comp" destination="41p-zS-eh2" id="qgk-1h-JTa"/>
                         <outlet property="button_notification" destination="uuZ-Nq-Ykd" id="Iea-v7-VD5"/>
                         <outlet property="button_tickets" destination="ECt-hF-7eV" id="fRD-tY-SM1"/>
+                        <outlet property="button_verifyBelong" destination="1LD-Zr-Qqk" id="Fm2-RQ-ccz"/>
                         <outlet property="image_profile" destination="mcV-Us-ZHh" id="u1C-Jx-yLT"/>
                         <outlet property="label_able" destination="qb2-Id-70u" id="2Ps-nC-UJL"/>
                         <outlet property="label_belong" destination="ePe-Xb-H4x" id="Fe1-BV-BLC"/>
                         <outlet property="label_department" destination="JKM-qE-DOe" id="5P0-ns-Zag"/>
+                        <outlet property="label_verified" destination="w5y-y2-aYz" id="N2T-qw-5Bp"/>
                         <outlet property="tf_name" destination="HOO-8i-I5h" id="ech-vb-oAY"/>
+                        <outlet property="view_blur" destination="8To-Cg-IJD" id="h8j-JQ-Rah"/>
                         <outlet property="view_underline" destination="cua-WM-xr0" id="9BA-SP-T5Z"/>
                         <segue destination="4eB-HM-N8P" kind="show" identifier="segue_notification" id="ISy-KD-Xg3"/>
+                        <segue destination="vnV-RP-t5E" kind="show" identifier="segue_tickets" id="VsF-eb-2G7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ciH-9J-9vm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -405,6 +441,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jPo-eL-YEP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="863" y="-30"/>
+        </scene>
+        <!--Tickets-->
+        <scene sceneID="CKc-Bt-dYr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Tickets" id="vnV-RP-t5E" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="haD-5j-qTd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kf8-ti-0Qm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="843" y="192"/>
         </scene>
     </scenes>
     <resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,6 +20,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xyP-VW-173" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="611" y="-642"/>
+        </scene>
+        <!--Notification-->
+        <scene sceneID="vgr-YV-D7o">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notification" id="Y9h-Zs-wiX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pir-S4-QYU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fXA-Y9-QO4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="721" y="-443"/>
         </scene>
         <!--RegisterMeeting-->
         <scene sceneID="9jL-eL-icw">
@@ -57,6 +67,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Lc-sB-GDn">
                                         <rect key="frame" x="319.66666666666669" y="16.666666666666664" width="20" height="24"/>
                                         <state key="normal" image="icon_bell"/>
+                                        <connections>
+                                            <segue destination="Y9h-Zs-wiX" kind="show" id="3qq-ZP-jYN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -183,6 +196,8 @@
                     <size key="freeformSize" width="414" height="1400"/>
                     <connections>
                         <outlet property="button_addMeeting" destination="BjQ-Vh-4XW" id="PDb-0W-vrn"/>
+                        <outlet property="button_notification" destination="1Lc-sB-GDn" id="sHU-t5-yqx"/>
+                        <outlet property="button_tickets" destination="yEv-ij-uOo" id="LEX-Rn-ERF"/>
                         <outlet property="myMeetingTableView" destination="Oyr-Ct-7Wx" id="WAY-VU-PTw"/>
                         <outlet property="myMeetingTableViewHeight" destination="l67-Id-1w5" id="4kD-uz-yj7"/>
                         <outlet property="recommendMeetingCollectionView" destination="po1-Py-6OO" id="Bvs-YX-ubu"/>
