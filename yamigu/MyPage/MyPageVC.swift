@@ -14,6 +14,9 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var label_belong: UILabel!
     @IBOutlet weak var label_department: UILabel!
     
+    @IBOutlet weak var label_verified: UILabel!
+    @IBOutlet weak var view_blur: UIView!
+    @IBOutlet weak var button_verifyBelong: UIButton!
     
     @IBOutlet weak var button_comp: UIBarButtonItem!
     @IBOutlet weak var button_cancel: UIBarButtonItem!
@@ -28,7 +31,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var button_notification: UIButton!
     @IBOutlet weak var button_tickets: UIButton!
     
-    
+    var isStudent = false
     var isChanged = false
     
     override func viewDidLoad() {
@@ -47,7 +50,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         
         tf_name.isUserInteractionEnabled = false
         
-        self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
+        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -222,6 +225,15 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
                                 self.image_profile.image = UIImage(named: "sample_profile")
                             }
                             
+                            if newValue["is_certified"] as? String != "1" {
+                                self.label_verified.isHidden = true
+                                self.view_blur.isHidden = false
+                                self.button_verifyBelong.isHidden = false
+                            } else {
+                                self.label_verified.isHidden = false
+                                self.view_blur.isHidden = true
+                                self.button_verifyBelong.isHidden = true
+                            }
                         }
                     }
                 } catch {
@@ -277,6 +289,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func ticketBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "segue_tickets", sender: self)
     }
     
     @IBAction func shareBtnPressed(_ sender: Any) {

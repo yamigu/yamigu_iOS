@@ -12,6 +12,7 @@ class NotisVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +27,11 @@ class NotisVC: UIViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
+    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 
 }
 

@@ -13,6 +13,9 @@ var selectedDate = ""
 
 class HomeVC: UIViewController {
     
+    @IBOutlet weak var button_notification: UIButton!
+    @IBOutlet weak var button_tickets: UIButton!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var myMeetingTableView: UITableView!
     @IBOutlet weak var myMeetingTableViewHeight: NSLayoutConstraint!
@@ -62,8 +65,10 @@ class HomeVC: UIViewController {
         
         ref = Database.database().reference()
         
-        
     }
+    
+    
+    
     @IBAction func addMeetingBtnPressed(_ sender: Any) {
         let tabView = self.tabBarController as! MainTC
         tabView.pressed(sender: tabView.menuButton)
