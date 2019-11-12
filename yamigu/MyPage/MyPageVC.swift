@@ -10,6 +10,11 @@ import UIKit
 
 class MyPageVC: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var image_profile: UIImageView!
+    @IBOutlet weak var label_belong: UILabel!
+    @IBOutlet weak var label_department: UILabel!
+    
+    
     @IBOutlet weak var button_comp: UIBarButtonItem!
     @IBOutlet weak var button_cancel: UIBarButtonItem!
     
@@ -19,6 +24,11 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var view_underline: UIView!
     
     @IBOutlet weak var label_able: UILabel!
+    
+    @IBOutlet weak var button_notification: UIButton!
+    @IBOutlet weak var button_tickets: UIButton!
+    
+    
     var isChanged = false
     
     override func viewDidLoad() {
@@ -36,6 +46,8 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         button_cancel.tintColor = .clear
         
         tf_name.isUserInteractionEnabled = false
+        
+        self.getUserInfo(urlString: "http://147.47.208.44:9999/api/user/info/")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +59,6 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         
         if isChanged {
             isChanged = false
-            
             
         } else {
             setAble()
@@ -159,6 +170,70 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         task.resume()
     }
     
+    func getUserInfo(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        if "\(newValue["nickname"]!)" == "<null>" {
+                            print("is null")
+                        }
+                        else if newValue["nickname"] == nil {
+                        }
+                        else {
+                            self.tf_name.text = "\(newValue["nickname"] as! String)(\(newValue["age"]!))"
+                            self.label_belong.text = newValue["belong"] as? String
+                            self.label_department.text = newValue["department"] as? String
+                            
+                            if newValue["openby_profile"] != nil {
+                                if let imageUrl = URL(string: "\(newValue["openby_profile"]!)") {
+                                    print("openby_profile = \(newValue["openby_profile"]!)")
+                                    self.image_profile.downloaded(from: imageUrl)
+                                }
+                            } else {
+                                self.image_profile.image = UIImage(named: "sample_profile")
+                            }
+                            
+                        }
+                    }
+                } catch {
+                    print(error)
+                    
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
     func postRequest(_ urlString: String, bodyString: String){
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
@@ -197,6 +272,12 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         }.resume()
     }
     
+    @IBAction func notiBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "segue_notification", sender: self)
+    }
+    
+    @IBAction func ticketBtnPressed(_ sender: Any) {
+    }
     
     @IBAction func shareBtnPressed(_ sender: Any) {
         
