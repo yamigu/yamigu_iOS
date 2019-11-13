@@ -13,13 +13,13 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var text_departmetn: UITextField!
     @IBOutlet weak var text_belong: UITextField!
     var userDict = Dictionary<String, Any>()
-
+    
     @IBOutlet weak var button_go: UIButton!
     @IBOutlet weak var button_certi: UIButton!
     @IBOutlet weak var imageVIew_certi: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func nextCertiBtnPressed(_ sender: Any) {
@@ -99,55 +99,24 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
     }
     
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
-         
-          guard let url = URL(string: urlString) else {return}
-          var request = URLRequest(url: url)
-          request.httpMethod = "POST"
-          request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-          //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-          request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-    
-          
-         if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
-                   var jsonString = String(data: data, encoding: .utf8) {
-                   //jsonString = jsonString.replacingOccurrences(of: "'", with: "")
-                   //jsonString = jsonString.replacingOccurrences(of: " ", with: "")
-                   //jsonString = jsonString.replacingOccurrences(of: "\n", with: "")
-                   let data = jsonString.data(using: .utf8, allowLossyConversion: false)
-            request.httpBody = data
-        }
-          
-          let session = URLSession.shared
-          session.dataTask(with: request) { (data, response, error) in
-              if let res = response{
-                  
-                  print(res)
-                  
-              }
-              
-            DispatchQueue.main.async {
-                // 동작 실행
-                self.navigationController?.popToRootViewController(animated: false)
-                //self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-                //self.performSegue(withIdentifier: "segue_main", sender: self)
-            }
-          }.resume()
-      }
-    
-    func postRequest(_ urlString: String, bodyString: String){
+        
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        
-        //[serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-        //[serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        //request.httpBody = body
-        let data : Data = NSKeyedArchiver.archivedData(withRootObject: self.userDict)
-        JSONSerialization.isValidJSONObject(self.userDict)
-        request.httpBody = data
+        
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
+            var jsonString = String(data: data, encoding: .utf8) {
+            //jsonString = jsonString.replacingOccurrences(of: "'", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: " ", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: "\n", with: "")
+            let data = jsonString.data(using: .utf8, allowLossyConversion: false)
+            request.httpBody = data
+        }
+        
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
@@ -156,31 +125,14 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
                 
             }
             
-            if let data = data {
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
-                    
-                    guard let newValue = json as? Dictionary<String, Any> else {
-                        print("invalid format")
-                        return
-                        
-                    }
-                    
-                    print("newValue = \(newValue)")
-                    
-                    
-                } catch {
-                    print(error)
-                    //self.performSegue(withIdentifier: "segue_main", sender: self)
-                    DispatchQueue.main.async {
-                        self.navigationController?.popToRootViewController(animated: false)
-                    }
-                    
-                    // 회원가입 이력이 없는경우
-                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
-                }
+            DispatchQueue.main.async {
+                // 동작 실행
+                self.navigationController?.popToRootViewController(animated: false)
+                //self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+                //self.performSegue(withIdentifier: "segue_main", sender: self)
             }
         }.resume()
     }
+    
+    
 }

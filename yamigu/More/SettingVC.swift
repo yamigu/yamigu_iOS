@@ -20,6 +20,10 @@ class SettingVC: UIViewController {
     @IBOutlet weak var view_logout: UIView!
     @IBOutlet weak var button_withdrawal: UIButton!
     
+    @IBOutlet weak var view_privacyStatementsDetail: UIView!
+    @IBOutlet weak var view_serviceAccessTermsDetail: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,7 +40,14 @@ class SettingVC: UIViewController {
     }
     
     @IBAction func switch_chattingNoti(_ sender: UISwitch) {
-        
+    }
+    
+    @objc func privacyStatementsTap(_ sender: UITapGestureRecognizer? = nil) {
+        self.view_privacyStatementsDetail.isHidden = false
+    }
+    
+    @objc func serviceAccessTermsTap(_ sender: UITapGestureRecognizer? = nil) {
+        self.view_serviceAccessTermsDetail.isHidden = false
     }
     
     @objc func noticeTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -67,6 +78,12 @@ class SettingVC: UIViewController {
 
         present(logoutAlert, animated: true, completion: nil)
     }
+    
+    @IBAction func closeDetailBtnPressed(_ sender: Any) {
+        self.view_privacyStatementsDetail.isHidden = true
+        self.view_serviceAccessTermsDetail.isHidden = true
+    }
+    
     
 
     func postRequest(_ urlString: String){
@@ -116,9 +133,18 @@ extension SettingVC {
         let noticeTap = UITapGestureRecognizer(target: self, action: #selector(self.noticeTap(_:)))
         self.view_notices.addGestureRecognizer(noticeTap)
         
+        let privacyStatementsTap = UITapGestureRecognizer(target: self, action: #selector(self.privacyStatementsTap(_:)))
+        self.view_privacyStatements.addGestureRecognizer(privacyStatementsTap)
+        
+        let serviceAccessTermsTap = UITapGestureRecognizer(target: self, action: #selector(self.serviceAccessTermsTap(_:)))
+        self.view_serviceAccessTerms.addGestureRecognizer(serviceAccessTermsTap)
+        
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        self.view_privacyStatementsDetail.isHidden = true
+        self.view_serviceAccessTermsDetail.isHidden = true
     }
     
     
