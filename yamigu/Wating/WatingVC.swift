@@ -177,7 +177,7 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.makeBody()
+        
         
         self.selectedTmpType.removeAll()
         self.selectedType.removeAll()
@@ -187,6 +187,10 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
         self.selectedAge = [20.0, 31.0]
         self.selectedTmpAge = [20.0, 31.0]
         
+        for btn in dateButtons {
+            btn.isSelected = false
+        }
+        
         self.filterView.slider.value = [20.0, 31.0]
         self.selectedAge = [20.0, 31.0]
         self.selectedTmpAge = [20.0, 31.0]
@@ -195,9 +199,13 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
         
         self.button_filter.tintColor = UIColor(rgb: 0x505050)
         
+        self.updateUI()
+        
         if isFilterShow {
             self.showFilter(self)
         }
+        
+        self.makeBody()
         
     }
     
@@ -465,6 +473,12 @@ extension WatingVC: FilterViewDelegate {
     func filterClearAll() {
         self.selectedType.removeAll()
         self.selectedPlace.removeAll()
+        self.selectedDate.removeAll()
+        self.selectedAge.removeAll()
+        
+        self.selectedTmpType.removeAll()
+        self.selectedTmpPlace.removeAll()
+        self.selectedTmpAge.removeAll()
         
         self.filterView.slider.value = [20.0, 31.0]
         self.selectedAge = [20.0, 31.0]
@@ -480,6 +494,10 @@ extension WatingVC: FilterViewDelegate {
         for i in 0..<6 {
             self.filterView.button_places[i].isSelected = true
             self.filterView.button_places[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
+        }
+        
+        for btn in dateButtons {
+            btn.isSelected = false
         }
         
         self.makeBody()
