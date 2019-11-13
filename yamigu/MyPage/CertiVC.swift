@@ -68,17 +68,13 @@ class CertiVC: UIViewController {
         
         self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
         
-        guard let imageData = self.imageView_certi.image!.jpegData(compressionQuality: 1.0) else {
-            print("oops")
-            return
-        }
-        //let bodyImageString = "uploaded_file=\(String(describing: imageData)))"
-
-        var jsonImg = Dictionary<String, Any>()
-        jsonImg["uploaded_file"] = imageData.base64EncodedData()
-        print(imageData)
-
-        self.postRequest2("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
+//        let imageData = imageView_certi.image!.jpegData(compressionQuality: 1)
+//
+//
+//        var jsonImg = Dictionary<String, Any>()
+//        jsonImg["uploaded_file"] = imageData
+//
+//        self.postRequest2("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
     }
     
     func getUserInfo(urlString : String) {
