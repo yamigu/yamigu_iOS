@@ -782,6 +782,8 @@ extension RegisterMeetingVC {
             if label.text == self.button_people.titleLabel?.text {
                 cell.setSelected(true, animated: false)
             }
+            
+            cell.isUserInteractionEnabled = true
         }
         
         if isDate {
@@ -889,6 +891,7 @@ extension RegisterMeetingVC {
             if label.text == self.button_place.titleLabel?.text {
                 cell.setSelected(true, animated: false)
             }
+            cell.isUserInteractionEnabled = true
         }
         
         return cell

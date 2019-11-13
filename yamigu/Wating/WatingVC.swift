@@ -332,7 +332,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             if meeting_type == "1" {
                 cell.label_type.text = "2:2 소개팅"
                 cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
-                cell.image_bottomBar.image = UIImage(named: "view_bottomBar")
+                cell.image_bottomBar.image = UIImage(named: "orange_bar")
                 cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF7B22)
                 cell.rating.settings.filledColor = UIColor(rgb: 0xFF7B22)
                 cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF7B22)
@@ -912,32 +912,28 @@ extension WatingVC: WatingTableViewDelegate {
                         var myMeeting = Dictionary<String, Any>()
                         
                         for value in newValue {
+                            myMeetings.append(value)
                             
-                            if (value["is_matched"] as! Bool) {
-                            } else {
-                                myMeetings.append(value)
-                                
-                                let dateFormatter = DateFormatter()
-                                dateFormatter.dateFormat = "yyyy-MM-dd"
-                                
-                                var date = Date()
-                                date = dateFormatter.date(from: "\(value["date"]!)")!
-                                
-                                dateFormatter.dateFormat = "MM월 d일"
-                                let dateString = dateFormatter.string(from: date)
-                                
-                                let dateFormatter2 = DateFormatter()
-                                dateFormatter2.dateFormat = "yyyy-MM-dd"
-                                
-                                var date2 = Date()
-                                date2 = dateFormatter2.date(from: "\(self.selectedMatching["date"]!)")!
-                                
-                                dateFormatter2.dateFormat = "MM월 d일"
-                                let dateString2 = dateFormatter2.string(from: date2)
-                                
-                                if dateString == dateString2 {
-                                    myMeeting = value
-                                }
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            
+                            var date = Date()
+                            date = dateFormatter.date(from: "\(value["date"]!)")!
+                            
+                            dateFormatter.dateFormat = "MM월 d일"
+                            let dateString = dateFormatter.string(from: date)
+                            
+                            let dateFormatter2 = DateFormatter()
+                            dateFormatter2.dateFormat = "yyyy-MM-dd"
+                            
+                            var date2 = Date()
+                            date2 = dateFormatter2.date(from: "\(self.selectedMatching["date"]!)")!
+                            
+                            dateFormatter2.dateFormat = "MM월 d일"
+                            let dateString2 = dateFormatter2.string(from: date2)
+                            
+                            if dateString == dateString2 {
+                                myMeeting = value
                             }
                         }
                         
@@ -960,14 +956,14 @@ extension WatingVC: WatingTableViewDelegate {
                         dateFormatter2.dateFormat = "MM월 d일"
                         let dateString2 = dateFormatter2.string(from: date2)
                         
-                        if myMeeting == nil {
+                        if myMeeting.count == 0 {
                             self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
                         } else {
                             let myMeeting_type = "\(myMeeting["meeting_type"]!)"
                             let myMeeting_place = "\(myMeeting["place_type"]!)"
                             
                             if ((myMeeting_type != meeting_type) || myMeeting_place != place) {
-                                self.view.makeToast("미팅 타입과 장소가 달라요!")
+                                self.view.makeToast("미팅 신청이 불가능합니다!")
                             } else {
                                 self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
                             }

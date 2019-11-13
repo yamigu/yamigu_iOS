@@ -33,7 +33,10 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     var chatRef: DatabaseReference!
     var chatRefHandle : DatabaseHandle!
-   
+    
+    var myMessageCount = 0
+    var partnerMessageCount = 0
+    
     func checkId() {
         
         
@@ -106,6 +109,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         collectionView?.register(ChattingCell.self, forCellWithReuseIdentifier: cellId)
         collectionView.register(ChattingLeftCell.self, forCellWithReuseIdentifier: cellLeftId)
+        collectionView.register(ChattingImageCell.self, forCellWithReuseIdentifier: "shopCell")
         collectionView.delegate = self
         collectionView.dataSource = self
         
@@ -173,10 +177,16 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             print(snapshot.value)
             if let snapshot_messages = snapshot.value as? Dictionary<String,Any> {
                 //for mg in snapshot_messages {
-                    //self.messages.append(mg)
+                //self.messages.append(mg)
                 //}
                 
                 self.messages.append(snapshot_messages)
+                
+                if (snapshot_messages["idSender"] as! String) == (userDictionary["uid"] as! String) {
+                    self.myMessageCount += 1
+                } else {
+                    self.partnerMessageCount += 1
+                }
                 
                 self.collectionView.reloadData()
                 let item = self.collectionView(self.collectionView, numberOfItemsInSection: 0) - 1
@@ -216,6 +226,24 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         
         let message = self.messages[indexPath.row]
+        
+        if (message["message"] as! String) == "###manager-place-content###" {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shopCell", for: indexPath) as! ChattingImageCell
+            
+            let dateString =  "\(message["time"]!)"
+            let dateDoube = Double(dateString)! / 1000.0
+            print("datedouble = \(dateDoube)")
+            let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
+            
+            let dateFomatter = DateFormatter(format: "a KK:mm")
+            dateFomatter.locale = Locale(identifier: "ko_kr")
+            dateFomatter.timeZone = TimeZone(abbreviation: "KST")
+            cell.timeLabel.text = dateFomatter.string(from: date)
+            
+            cell.profileImageView.downloaded(from: "\(self.managerData["manager_profile"]!)")
+            
+            return cell
+        }
         
         if (message["idSender"] as! String) == (userDictionary["uid"] as! String) {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChattingCell
@@ -294,6 +322,9 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         var width = estimateFrameForText(text).width
         
         
+        if text == "###manager-place-content###"  {
+            return CGSize(width: view.frame.width, height: 194.0)
+        }
         return CGSize(width: view.frame.width, height: height)
     }
     
@@ -374,80 +405,94 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         logoutAlert.addAction(UIAlertAction(title: "아니요", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
         }))
-
+        
         logoutAlert.addAction(UIAlertAction(title: "네,취소할게요", style: .default, handler: { (action: UIAlertAction!) in
             var json = Dictionary<String, Any>()
             json["match_id"] = self.matchingId
             
             self.postRequest2("http://106.10.39.154:9999/api/matching/cancel_matching/", bodyString: "", json: json)
         }))
-
+        
         present(logoutAlert, animated: true, completion: nil)
         
     }
     @IBAction func sendBtnPressed(_ sender: Any) {
         if self.tf_message.text! != "" {
-        var newRef = self.ref.child("message").child(matchingId).childByAutoId()
-        let key = newRef.key
-        
-        var messageDict = Dictionary<String, Any>()
-        messageDict["id"] = key
-        messageDict["idSender"] = userDictionary["uid"]!
-        messageDict["message"] = self.tf_message.text!
-        messageDict["userName"] = userDictionary["nickname"]!
-        messageDict["time"] = Date().currentTimeMillis()
-        
-        newRef.updateChildValues(messageDict)
-        
-        var dict = Dictionary<String, Any>()
-        dict["id"] = key
-        dict["isUnread"] = false
-        self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
-        
-        dict["isUnread"] = true
-        
-        self.ref.child("user").child(userDictionary["uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
-        
-        
-        
-        
-        var json = [String:Any]()
-        
-        //json["receiverId"] = matchDict["openby_uid"]!
-        json["receiverId"] = matchDict["openby_uid"]!
-        //json["message"] = self.tf_message.text!
-        //json["activity"] = "ChattingActivity"
-        
-        var intent_args = [String:Any]()
-        intent_args["partner_age"] = meetingDict["openby_age"]!
-        intent_args["partner_belong"] = meetingDict["openby_belong"]!
-        intent_args["partner_department"] = meetingDict["openby_department"]!
-        intent_args["partner_nickname"] = meetingDict["openby_nickname"]!
-        intent_args["partner_uid"] = meetingDict["id"]!
-        
-        intent_args["date"] = meetingDict["date"]!
-        intent_args["place"] = meetingDict["place_type_name"]!
-        intent_args["type"] = meetingDict["meeting_type"]!
-        intent_args["meeting_id"] = meetingDict["id"]!
-        intent_args["matching_id"] = matchingId
-        intent_args["manage_name"] = managerData["manager_name"]!
-        //intent_args["partner_uid"] = matchDict["openby_uid"]!
-        intent_args["manager_uid"] = managerData["manager_uid"]!
-        intent_args["accepted_at"] = managerData["accepted_at"]!
-        
-        var data = [String:Any]()
-        
-        data["title"] = meetingDict["openby_nickname"]!
-        data["content"] = self.tf_message.text!
-        data["clickAction"] = ".ChattingActivity"
-        data["intentArgs"] = intent_args
-        
-        json["data"] = data
-        
-        
-        self.postRequest("http://106.10.39.154:9999/api/fcm/send_push/", bodyString: "", json: json)
-        
-        self.tf_message.text = ""
+            var newRef = self.ref.child("message").child(matchingId).childByAutoId()
+            let key = newRef.key
+            
+            var messageDict = Dictionary<String, Any>()
+            messageDict["id"] = key
+            messageDict["idSender"] = userDictionary["uid"]!
+            messageDict["message"] = self.tf_message.text!
+            messageDict["userName"] = userDictionary["nickname"]!
+            messageDict["time"] = Date().currentTimeMillis()
+            
+            newRef.updateChildValues(messageDict)
+            
+            if partnerMessageCount > 0 && myMessageCount == 0 {
+                let newRef2 = self.ref.child("message").child(matchingId).childByAutoId()
+                let key2 = newRef2.key
+                
+                var messageDict2 = Dictionary<String, Any>()
+                messageDict2["id"] = key
+                messageDict2["idSender"] = managerData["manager_uid"]!
+                messageDict2["message"] = "###manager-place-content###"
+                messageDict2["userName"] = managerData["manager_name"]!
+                messageDict2["time"] = Date().currentTimeMillis()
+                
+                newRef2.updateChildValues(messageDict2)
+            }
+            
+            var dict = Dictionary<String, Any>()
+            dict["id"] = key
+            dict["isUnread"] = false
+            self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
+            
+            dict["isUnread"] = true
+            
+            self.ref.child("user").child(userDictionary["uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
+            
+            
+            
+            
+            var json = [String:Any]()
+            
+            //json["receiverId"] = matchDict["openby_uid"]!
+            json["receiverId"] = matchDict["openby_uid"]!
+            //json["message"] = self.tf_message.text!
+            //json["activity"] = "ChattingActivity"
+            
+            var intent_args = [String:Any]()
+            intent_args["partner_age"] = meetingDict["openby_age"]!
+            intent_args["partner_belong"] = meetingDict["openby_belong"]!
+            intent_args["partner_department"] = meetingDict["openby_department"]!
+            intent_args["partner_nickname"] = meetingDict["openby_nickname"]!
+            intent_args["partner_uid"] = meetingDict["id"]!
+            
+            intent_args["date"] = meetingDict["date"]!
+            intent_args["place"] = meetingDict["place_type_name"]!
+            intent_args["type"] = meetingDict["meeting_type"]!
+            intent_args["meeting_id"] = meetingDict["id"]!
+            intent_args["matching_id"] = matchingId
+            intent_args["manage_name"] = managerData["manager_name"]!
+            //intent_args["partner_uid"] = matchDict["openby_uid"]!
+            intent_args["manager_uid"] = managerData["manager_uid"]!
+            intent_args["accepted_at"] = managerData["accepted_at"]!
+            
+            var data = [String:Any]()
+            
+            data["title"] = meetingDict["openby_nickname"]!
+            data["content"] = self.tf_message.text!
+            data["clickAction"] = ".ChattingActivity"
+            data["intentArgs"] = intent_args
+            
+            json["data"] = data
+            
+            
+            self.postRequest("http://106.10.39.154:9999/api/fcm/send_push/", bodyString: "", json: json)
+            
+            self.tf_message.text = ""
         }
     }
     @IBAction func callBtnPressed(_ sender: Any) {
@@ -537,7 +582,7 @@ extension ChattingVC {
                     print(error)
                 }
             }
-            }.resume()
+        }.resume()
     }
     
     func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
@@ -583,6 +628,6 @@ extension ChattingVC {
                     print(error)
                 }
             }
-            }.resume()
+        }.resume()
     }
 }
