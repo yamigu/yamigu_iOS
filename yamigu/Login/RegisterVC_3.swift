@@ -92,11 +92,27 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBAction func goBtnPressed(_ sender: Any) {
         userDict["belong"] = self.text_belong.text
         userDict["department"] = self.text_departmetn.text
+//        guard let imageData = self.imageVIew_certi.image!.jpegData(compressionQuality: 1.0) else {
+//            return
+//        }
+//
+//        let boundary = "Boundary-\(NSUUID().uuidString)"
+//        let body = NSMutableData()
+//        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+//        body.append(NSString(format: "Content-Disposition: form-data; name=\"api_token\"\r\n\r\n" as NSString).data(using: String.Encoding.utf8.rawValue)!)
+//        body.append(NSString(format: (UserDefaults.standard.string(forKey: "api_token")! as NSString)).data(using: String.Encoding.utf8.rawValue)!)
+//        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+//        body.append(NSString(format:"Content-Disposition: form-data; name=\"profile_img\"; filename=\"testfromios.jpg\"\r\n").data(using: String.Encoding.utf8.rawValue)!)
+//        body.append(NSString(format: "Content-Type: application/octet-stream\r\n\r\n").data(using: String.Encoding.utf8.rawValue)!)
+//        body.append(imageData)
+//        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+//
+//        userDict["cert_img"] = body as Data
         
         //self.postRequest("http://147.47.208.44:9999/api/auth/signup", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
         //self.postRequest("http://147.47.208.44:9999/api/auth/signup/", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
         
-        let bodyString = "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))"
+        let bodyString = "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))&cert_img=\(String(describing: userDict["cert_img"]))"
         
         var json = Dictionary<String, Any>()
         json["nickname"] = userDict["nickname"] as! String
@@ -107,6 +123,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         json["belong"] = userDict["belong"] as! String
         json["department"] = userDict["department"] as! String
         json["age"] = userDict["age"] as! Int
+        json["cert_img"] = userDict["cert_img"] as! Data
         
         self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
         
