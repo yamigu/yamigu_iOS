@@ -43,7 +43,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
@@ -234,24 +234,24 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         dict["appeal"] = self.textView.text!
         dict["meeting_id"] = "\(self.meetingDict["id"]!)"
         
-
+        
         self.postRequest2("http://106.10.39.154:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
         
         /*DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }*/
+         self.dismiss(animated: true, completion: nil)
+         }*/
     }
     
     @IBAction func deleteCardBtnPressed(_ sender: Any) {
         let id = "\(self.meetingDict["id"]!)"
         let dict : [String: Any] = ["meeting_id" : id]
         print(dict)
-
+        
         self.postRequest2("http://106.10.39.154:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
         
         /*DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }*/
+         self.dismiss(animated: true, completion: nil)
+         }*/
     }
     
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
@@ -283,7 +283,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             if let res = response{
                 
                 print(res)
-            
+                
                 
             }
             if let data = data {
@@ -291,23 +291,23 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                     self.dismiss(animated: true, completion: nil)
                 }
                 /*do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print(json)
-                    
-                    guard let newValue = json as? Int else {
-                        print("invalid format")
-                        return
-                        
-                    }
-                    
-                    DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                } catch {
-                    print(error)
-                }*/
+                 let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                 print(json)
+                 
+                 guard let newValue = json as? Int else {
+                 print("invalid format")
+                 return
+                 
+                 }
+                 
+                 DispatchQueue.main.async {
+                 self.dismiss(animated: true, completion: nil)
+                 }
+                 } catch {
+                 print(error)
+                 }*/
             }
-            }.resume()
+        }.resume()
     }
     
     func handleButtonImage() {
@@ -390,9 +390,9 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.label_description.text = "꼭 친구들과 가능한 날짜를 선택해주세요!"
         self.label_bottom_description.text = "일주일 이내의 날짜만 선택 가능"
         /*
-        if button_date.titleLabel?.text != "날짜" {
-            self.button_place.sendActions(for: .allEvents)
-        }*/
+         if button_date.titleLabel?.text != "날짜" {
+         self.button_place.sendActions(for: .allEvents)
+         }*/
         handleButtonImage()
         self.tableView.reloadData()
     }
@@ -458,23 +458,29 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     }
     @IBAction func requestBtnPressed(_ sender: Any) {
         
-        if !isRequest {
-            //- meeting_type: 미팅 타입
-            //- date: 날짜
-            //- place_type: 장소
-            //- appeal: 어필 문구
-    
-            
-            self.postRequest("http://106.10.39.154:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+        if textView.text == "키, 학력, 나이, 친구들 스타일 등 모든 것을 자랑하세요!" {
+            self.view.makeToast("자신과 친구들을 표현해주세요!")
         } else {
-            //- meeting_type: 미팅 타입
-            //- date: 날짜
-            //- place: 장소
-            //- appeal: 어필 문구
-            //- receiver: 신청 대상 미팅
-            
-            self.postRequest("http://106.10.39.154:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
+            if !isRequest {
+                //- meeting_type: 미팅 타입
+                //- date: 날짜
+                //- place_type: 장소
+                //- appeal: 어필 문구
+                
+                
+                self.postRequest("http://106.10.39.154:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+            } else {
+                //- meeting_type: 미팅 타입
+                //- date: 날짜
+                //- place: 장소
+                //- appeal: 어필 문구
+                //- receiver: 신청 대상 미팅
+                
+                self.postRequest("http://106.10.39.154:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
+            }
         }
+        
+        
         
         
     }
@@ -580,14 +586,40 @@ extension RegisterMeetingVC {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         //cell?.backgroundColor =
-        cell?.contentView.backgroundColor = UIColor(rgb: 0xFF7B22)
+        //cell?.contentView.backgroundColor = UIColor(rgb: 0xFF7B22)
+        let gradient = CAGradientLayer()
+        gradient.frame = cell!.contentView.frame
+        
+        gradient.startPoint = CGPoint(x: 0.5, y: 0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1)
+        //gradient.opacity = 0.0
+        cell!.layer.opacity = 0.0
+        gradient.colors = [
+            //UIColor(rgb: 0xFFA022).cgColor, // Top0xFF6C2B
+            //UIColor(rgb: 0xFF6C2B).cgColor // Bottom
+            
+            UIColor(red: 255.0 / 255.0, green: 160.0 / 255.0, blue: 34.0 / 255.0, alpha: 1.0).cgColor,
+            UIColor(red: 255.0 / 255.0, green: 108.0 / 255.0, blue: 43.0 / 255.0, alpha: 1.0).cgColor
+        ]
+        gradient.locations = [0, 0.5, 1]
+        cell!.layer.insertSublayer(gradient, at: 1)
+        
+        UIView.animate(withDuration: Double(0.3), animations: { () -> Void in
+            
+            cell!.layer.opacity = 1.0
+            
+            }, completion: { (_) -> Void in
+                gradient.removeFromSuperlayer()
+        })
+        
+        
         let label = cell!.viewWithTag(1) as! UILabel
         label.textColor = UIColor.white
         
         if isPeople {
             self.button_people.setTitle(label.text, for: .normal)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 //self.button_date.sendActions(for: .allEvents)
                 self.dateBtnHandler()
             }
@@ -612,26 +644,38 @@ extension RegisterMeetingVC {
             
             self.button_date.setTitle(result, for: .normal)
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 //self.button_place.sendActions(for: .allEvents)
-                self.placeBtnHandler()
+                if self.button_people.titleLabel?.text == "인원" {
+                    self.peopleBtnPressed(self.button_people)
+                } else {
+                    self.placeBtnHandler()
+                }
+                
             }
         }
         
         if isPlace {
             self.button_place.setTitle(label.text, for: .normal)
             self.selectedPlace = indexPath.row
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                self.textView.isHidden = false
-                self.label_caution.isHidden = false
-                self.button_request.isHidden = false
-                self.tableView.isHidden = true
-                self.label_textCount.isHidden = false
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                if self.button_people.titleLabel?.text == "인원" {
+                    self.peopleBtnPressed(self.button_people)
+                } else if self.button_date.titleLabel?.text == "날짜" {
+                    self.dateBtnPressed(self.button_date)
+                } else {
+                    self.textView.isHidden = false
+                    self.label_caution.isHidden = false
+                    self.button_request.isHidden = false
+                    self.tableView.isHidden = true
+                    self.label_textCount.isHidden = false
+                    
+                    self.label_bottom_description.isHidden = true
+                    
+                    self.label_title.text = "자신과 친구들을 표현해 주세요!"
+                    self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
+                }
                 
-                self.label_bottom_description.isHidden = true
-                
-                self.label_title.text = "자신과 친구들을 표현해 주세요!"
-                self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
                 
             }
             
@@ -652,6 +696,8 @@ extension RegisterMeetingVC {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        
         cell.contentView.backgroundColor = UIColor.clear
         cell.isSelected = false
         let label = cell.viewWithTag(1) as! UILabel

@@ -406,7 +406,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 let matchBelong = matchDict["openby_belong"] as! String
                 let matchDepart = matchDict["openby_department"] as! String
                 
-                cell.label_matchingName.text = matchName + "(\(matchAge))"
+                cell.label_matchingName.text = matchName + " (\(matchAge))"
                 cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
                 ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
                     for snap in snapshot.children.allObjects as! [DataSnapshot] {

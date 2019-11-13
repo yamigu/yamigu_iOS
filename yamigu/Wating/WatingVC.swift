@@ -328,7 +328,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             if meeting_type == "1" {
                 cell.label_type.text = "2:2 소개팅"
                 cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
-                cell.image_bottomBar.image = UIImage(named: "orange_bar")
+                cell.image_bottomBar.image = UIImage(named: "view_bottomBar")
                 cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF7B22)
                 cell.rating.settings.filledColor = UIColor(rgb: 0xFF7B22)
                 cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF7B22)
