@@ -33,6 +33,10 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var label_description: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var label_bottom_description: UILabel!
+    
+    var myMeetings = [Dictionary<String, Any>]()
+    var dateStrings = [String]()
+    
     var isPeople = true
     
     var isDate = false
@@ -127,6 +131,8 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         button_editMeeting.isHidden = true
         button_deleteCard.isHidden = true
+        
+        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -315,6 +321,60 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                  }*/
             }
         }.resume()
+    }
+    
+    func getMyMeeting(urlString : String) {
+        
+        self.myMeetings.removeAll()
+        
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.myMeetings.removeAll()
+                        self.dateStrings.removeAll()
+                        for value in newValue {
+                            self.myMeetings.append(value)
+                            self.dateStrings.append(value["date"] as! String)
+                            
+                        }
+                        
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            
+        })
+        task.resume()
     }
     
     func handleButtonImage() {
@@ -701,6 +761,7 @@ extension RegisterMeetingVC {
     
     
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
@@ -802,6 +863,18 @@ extension RegisterMeetingVC {
             if label.text == self.button_date.titleLabel?.text {
                 cell.setSelected(true, animated: false)
             }
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            let dateString = formatter.string(from: date)
+            
+            print("dateString = \(dateString)")
+            
+            if self.dateStrings.contains(dateString) {
+                label.textColor = UIColor.lightGray
+                cell.isUserInteractionEnabled = false
+            }
+            
         }
         
         if isPlace {

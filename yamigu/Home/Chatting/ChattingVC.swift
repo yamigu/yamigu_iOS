@@ -327,7 +327,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         label_name2.text = "야미구 매니저 \(self.managerData["manager_name"]!)"
         
         let DateString = "\(self.managerData["accepted_at"]!)"
-        let dateDouble = Double(DateString)
+        let dateDouble = Double(DateString)!  / 1000.0
         let date = Date(timeIntervalSince1970: dateDouble as! TimeInterval)
         let dateFomatter = DateFormatter(format: "a KK:mm")
         dateFomatter.locale = Locale(identifier: "ko_kr")
@@ -514,6 +514,10 @@ extension ChattingVC {
                 
                 print(res)
                 
+            }
+            
+            DispatchQueue.main.async {
+                self.dismiss(animated: false, completion: nil)
             }
             if let data = data {
                 do{

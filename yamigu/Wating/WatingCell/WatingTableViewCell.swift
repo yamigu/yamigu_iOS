@@ -31,8 +31,9 @@ class WatingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        
-        self.tv_description.centerVertically()
+        DispatchQueue.main.async {
+            self.tv_description.centerVertically()
+        }
         self.button_meeting.isHidden = true
         self.constraintHeight.constant = 0.0
         self.layoutIfNeeded()

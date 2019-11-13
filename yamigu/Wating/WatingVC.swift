@@ -309,7 +309,11 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         cell.layer.cornerRadius = 10.0
         cell.cornerradius = 10.0
         cell.clipsToBounds = true
-        cell.tv_description.centerVertically()
+        DispatchQueue.main.async {
+            cell.tv_description.centerVertically()
+           
+        }
+        cell.layoutIfNeeded()
         
         if self.matchingList.count != 0 {
             let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
@@ -383,6 +387,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             cell.label_belong.text = belong + " " + department
             
             cell.tv_description.text = meetingObj["appeal"] as! String
+            
         }
         
         
@@ -409,6 +414,12 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "watingTableViewCell") as! WatingTableViewCell
+        DispatchQueue.main.async {
+            cell.tv_description.centerVertically()
+        }
+        
+        
         return 222.0
     }
     
