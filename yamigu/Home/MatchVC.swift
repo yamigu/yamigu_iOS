@@ -130,14 +130,17 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     }
     @IBAction func leftBtnPressed(_ sender: Any) {
         if button_left.titleLabel?.text! == "미팅하기" {
-            print(button_left.titleLabel?.text)
-            let id = "\(self.receiveMatchingList[newPage]["id"]!)"
-            let dict : [String: Any] = ["request_id" : id]
-            self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
-            
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
+            if self.receiveMatchingList.count != 0 {
+                print(button_left.titleLabel?.text)
+                let id = "\(self.receiveMatchingList[newPage]["id"]!)"
+                let dict : [String: Any] = ["request_id" : id]
+                self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+                
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
+            
         } else if button_left.titleLabel?.text! == "대기중" {
             print(button_left.titleLabel?.text)
         }
@@ -145,17 +148,23 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     }
     @IBAction func rightBtnPressed(_ sender: Any) {
         if button_right.titleLabel?.text! == "거절하기" {
-            print(button_right.titleLabel?.text)
-            let id = "\(self.receiveMatchingList[newPage]["id"]!)"
-            let dict : [String: Any] = ["request_id" : id]
-            self.postRequest("http://106.10.39.154:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+            if self.receiveMatchingList.count != 0 {
+                print(button_right.titleLabel?.text)
+                let id = "\(self.receiveMatchingList[newPage]["id"]!)"
+                let dict : [String: Any] = ["request_id" : id]
+                self.postRequest("http://106.10.39.154:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+            }
+            
             
         } else if button_right.titleLabel?.text! == "취소하기" {
-            print(button_right.titleLabel?.text)
-            let id = "\(self.requestMatchingList[newPage]["id"]!)"
-            let dict : [String: Any] = ["request_id" : id]
+            if self.requestMatchingList.count != 0 {
+                print(button_right.titleLabel?.text)
+                let id = "\(self.requestMatchingList[newPage]["id"]!)"
+                let dict : [String: Any] = ["request_id" : id]
+                
+                self.postRequest("http://106.10.39.154:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+            }
             
-            self.postRequest("http://106.10.39.154:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
             
         }
         
