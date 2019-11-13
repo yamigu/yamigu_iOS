@@ -154,7 +154,8 @@ class LoginVC: UIViewController {
                         if let nick = userDictionary["nickname"] {
                 
                             if ("\(userDictionary["nickname"] ?? "<null>")") != "<null>" {
-                                self.dismiss(animated: false, completion: nil)
+                                //self.dismiss(animated: false, completion: nil)
+                                self.performSegue(withIdentifier: "segue_loginCheck", sender: self)
                             } else {
                                 self.performSegue(withIdentifier: "segue_agreement", sender: self)
                             }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIM-ZU-Fn3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIM-ZU-Fn3">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -82,6 +82,7 @@
                         <outlet property="btn_question" destination="tyn-A4-Bi6" id="wgC-KE-eAi"/>
                         <outlet property="lbl_description" destination="Wvs-3K-8Nb" id="LoZ-Dy-PYD"/>
                         <segue destination="ddB-no-QXr" kind="show" identifier="segue_agreement" id="apv-ig-8eh"/>
+                        <segue destination="Agp-4P-vBk" kind="show" identifier="segue_loginCheck" id="bSP-1n-i81"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hu-tU-TuU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -108,6 +109,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YbM-yg-HSa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1143" y="-191"/>
+        </scene>
+        <!--LoginCheck-->
+        <scene sceneID="3nq-b9-L4t">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginCheck" id="Agp-4P-vBk" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="gXp-Gc-scA"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5LP-dZ-7IU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="775" y="278"/>
         </scene>
         <!--본인인증-->
         <scene sceneID="Lb5-Mc-rfT">
@@ -682,6 +693,7 @@
                         <outlet property="text_belong" destination="gZ7-88-Dki" id="DNw-fR-kQU"/>
                         <outlet property="text_departmetn" destination="AqR-v7-7kz" id="SKk-pK-igB"/>
                         <segue destination="Fgn-d0-dpk" kind="show" identifier="segue_main" id="F4E-gg-26S"/>
+                        <segue destination="6Os-WD-Whw" kind="show" identifier="segue_loginCheck" id="Nk1-d4-ScY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUg-K2-GDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -697,6 +709,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F0m-lb-wV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4248" y="-191"/>
+        </scene>
+        <!--LoginCheck-->
+        <scene sceneID="knh-co-AYA">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LoginCheck" id="6Os-WD-Whw" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="RgH-sK-lr6"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tcN-dI-B08" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4212" y="89"/>
         </scene>
     </scenes>
     <resources>

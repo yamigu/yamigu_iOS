@@ -75,7 +75,7 @@ class CertiVC: UIViewController {
         //let bodyImageString = "uploaded_file=\(String(describing: imageData)))"
 
         var jsonImg = Dictionary<String, Any>()
-        jsonImg["uploaded_file"] = imageData
+        jsonImg["uploaded_file"] = imageData.base64EncodedData()
         print(imageData)
 
         self.postRequest2("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)

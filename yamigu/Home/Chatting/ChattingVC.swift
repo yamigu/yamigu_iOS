@@ -459,6 +459,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             //self.button_call.tintColor = UIColor(rgb: 0x707070)
             self.button_call.setImage(UIImage(named: "icon_chatting_alarm"), for: .normal)
         }
+        
     }
     @IBAction func dismissBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

@@ -51,7 +51,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         textView.text = "키, 학력, 나이, 친구들 스타일 등 모든 것을 자랑하세요!"
         textView.textColor = UIColor.lightGray
-        
+        textView.addDoneButton(title: "Done", target: self, selector: #selector(keyboardHide))
         
         textView.layer.cornerRadius = 4.0
         textView.clipsToBounds = false
@@ -61,6 +61,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.clipsToBounds = false
         tableView.layer.shadowOpacity = 0.4
         tableView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        
         
         NotificationCenter.default.addObserver(
             self,
@@ -75,6 +76,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             name: UIResponder.keyboardWillHideNotification,
             object: nil
         )
+        
         
         handleButtonImage()
         
@@ -94,6 +96,11 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     @objc func keyboardWillHide(_ notification: Notification) {
         self.constraint_labelBottom.constant =  -13
         self.view.layoutIfNeeded()
+    }
+    
+    @objc func keyboardHide() {
+        self.view.endEditing(false)
+        self.constraint_labelBottom.constant =  -13
         self.view.layoutIfNeeded()
     }
     

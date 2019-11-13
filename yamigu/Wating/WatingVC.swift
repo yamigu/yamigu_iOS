@@ -813,27 +813,11 @@ extension WatingVC: FilterViewDelegate {
 
 extension WatingVC: WatingTableViewDelegate {
     func meetingBtnPressed() {
-        //- meeting_type: 미팅 타입
-        //- date: 날짜
-        //- place: 장소
-        //- appeal: 어필 문구
-        //- receiver: 신청 대상 미팅 -> meeting_id
-        let meeting_type = "\(self.selectedMatching["meeting_type"]!)"
-        //let date = "\(self.selectedMatching["date"]!)"
-        let place = "\(self.selectedMatching["place_type"]!)"
-        let appeal = "\(self.selectedMatching["appeal"]!)"
-        let meeting_id = "\(self.selectedMatching["id"]!)"
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
         
-        var date = Date()
-        date = dateFormatter.date(from: "\(self.selectedMatching["date"]!)")!
+        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         
-        dateFormatter.dateFormat = "MM월 d일"
-        let dateString = dateFormatter.string(from: date)
-        
-        self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
+        //self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
     }
     
     func postRequest(_ urlString: String, bodyString: String){
@@ -866,6 +850,8 @@ extension WatingVC: WatingTableViewDelegate {
                         let message = newValue["message"] as! String
                         if message == "You should create new meeting for matching" {
                             self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
+                        } else {
+                            
                         }
                         //self.dismiss(animated: false, completion: nil)
                     }
@@ -876,6 +862,119 @@ extension WatingVC: WatingTableViewDelegate {
                 }
             }
         }.resume()
+    }
+    
+    func getMyMeeting(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        var myMeetings = [Dictionary<String, Any>]()
+                        var myMeeting = Dictionary<String, Any>()
+                        
+                        for value in newValue {
+                            
+                            if (value["is_matched"] as! Bool) {
+                            } else {
+                                myMeetings.append(value)
+                                
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd"
+                                
+                                var date = Date()
+                                date = dateFormatter.date(from: "\(value["date"]!)")!
+                                
+                                dateFormatter.dateFormat = "MM월 d일"
+                                let dateString = dateFormatter.string(from: date)
+                                
+                                let dateFormatter2 = DateFormatter()
+                                dateFormatter2.dateFormat = "yyyy-MM-dd"
+                                
+                                var date2 = Date()
+                                date2 = dateFormatter2.date(from: "\(self.selectedMatching["date"]!)")!
+                                
+                                dateFormatter2.dateFormat = "MM월 d일"
+                                let dateString2 = dateFormatter2.string(from: date2)
+                                
+                                if dateString == dateString2 {
+                                    myMeeting = value
+                                }
+                            }
+                        }
+                        
+                        //- meeting_type: 미팅 타입
+                        //- date: 날짜
+                        //- place: 장소
+                        //- appeal: 어필 문구
+                        //- receiver: 신청 대상 미팅 -> meeting_id
+                        let meeting_type = "\(self.selectedMatching["meeting_type"]!)"
+                        //let date = "\(self.selectedMatching["date"]!)"
+                        let place = "\(self.selectedMatching["place_type"]!)"
+                        let appeal = "\(self.selectedMatching["appeal"]!)"
+                        let meeting_id = "\(self.selectedMatching["id"]!)"
+                        let dateFormatter2 = DateFormatter()
+                        dateFormatter2.dateFormat = "yyyy-MM-dd"
+                        
+                        var date2 = Date()
+                        date2 = dateFormatter2.date(from: "\(self.selectedMatching["date"]!)")!
+                        
+                        dateFormatter2.dateFormat = "MM월 d일"
+                        let dateString2 = dateFormatter2.string(from: date2)
+                        
+                        if myMeeting == nil {
+                            self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                        } else {
+                            let myMeeting_type = "\(myMeeting["meeting_type"]!)"
+                            let myMeeting_place = "\(myMeeting["place_type"]!)"
+                            
+                            if ((myMeeting_type != meeting_type) || myMeeting_place != place) {
+                                self.view.makeToast("미팅 타입과 장소가 달라요!")
+                            } else {
+                                self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                            }
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            
+        })
+        task.resume()
     }
     
 }

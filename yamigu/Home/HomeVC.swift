@@ -188,8 +188,23 @@ class HomeVC: UIViewController {
         task.resume()
     }
     
-    func daysBetween(start: Date, end: Date) -> Int {
+    /*func daysBetween(start: Date, end: Date) -> Int {
         return Calendar.current.dateComponents([.day], from: start, to: end).day!
+    }*/
+    
+    /*func daysBetween(date: Date) -> Int {
+        return Date.daysBetween(start: self, end: date)
+    }*/
+
+    func daysBetween(start: Date, end: Date) -> Int {
+        let calendar = Calendar.current
+
+        // Replace the hour (time) of both dates with 00:00
+        let date1 = calendar.startOfDay(for: start)
+        let date2 = calendar.startOfDay(for: end)
+
+        let a = calendar.dateComponents([.day], from: date1, to: date2)
+        return a.value(for: .day)!
     }
     
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
