@@ -10,6 +10,12 @@ import UIKit
 
 class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var label_belong: UILabel!
+    @IBOutlet weak var label_department: UILabel!
+    @IBOutlet weak var label_certificate: UILabel!
+    @IBOutlet weak var label_certiDetail: UILabel!
+    
+    
     @IBOutlet weak var text_departmetn: UITextField!
     @IBOutlet weak var text_belong: UITextField!
     var userDict = Dictionary<String, Any>()
@@ -17,11 +23,24 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var button_go: UIButton!
     @IBOutlet weak var button_certi: UIButton!
     @IBOutlet weak var imageVIew_certi: UIImageView!
+    
+    var isStudent = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        if !isStudent {
+            self.label_belong.text = "직업 입력"
+            self.text_belong.placeholder = "ex) 직장인, 디자이너, 치과의사, 선생님"
+            self.label_department.text = "회사 입력"
+            self.text_departmetn.placeholder = "ex) 삼성전자, 스타트업, 프리랜서, 개인병원, 고등학교"
+            self.label_certificate.text = "직장 인증"
+            self.label_certiDetail.text = "사원증, 명함, 사업자등록증, 자격증, 면허증 등 첨부해주세요 !"
+        }
     }
+    
     @IBAction func nextCertiBtnPressed(_ sender: Any) {
         DispatchQueue.main.async {
             self.userDict["belong"] = self.text_belong.text

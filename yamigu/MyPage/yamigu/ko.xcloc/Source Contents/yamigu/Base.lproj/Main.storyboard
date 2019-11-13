@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eQT-Ym-YfZ">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--MainTC-->
+        <scene sceneID="J1w-aB-Del">
+            <objects>
+                <tabBarController modalPresentationStyle="fullScreen" id="eQT-Ym-YfZ" customClass="MainTC" customModule="yamigu" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="497-LT-47h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="1" green="0.46274509803921571" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ssp-7o-yvx" kind="relationship" relationship="viewControllers" id="GyZ-d8-C9I"/>
+                        <segue destination="pXk-Q7-Ppr" kind="relationship" relationship="viewControllers" id="xwk-yX-aZQ"/>
+                        <segue destination="jxQ-rd-lKJ" kind="relationship" relationship="viewControllers" id="G0z-AZ-UTd"/>
+                        <segue destination="dhM-zG-vf2" kind="relationship" relationship="viewControllers" id="cUR-El-SSG"/>
+                        <segue destination="zDp-oO-BaK" kind="relationship" relationship="viewControllers" id="A4F-3m-RCe"/>
+                        <segue destination="H4t-gi-3AH" kind="show" identifier="segue_registermeeting" id="TAV-0i-Wrr"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="efu-dZ-PF5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-739" y="-118"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="Hmb-mM-3Qf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="ssp-7o-yvx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="tabbar_home" selectedImage="tabbar_home" id="l5p-S1-cBU">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="5"/>
+                    </tabBarItem>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bAy-mv-8wk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93" y="-407"/>
+        </scene>
+        <!--MyPage-->
+        <scene sceneID="4rf-fe-KiX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MyPage" id="dhM-zG-vf2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="vRh-1l-UcF"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bur-Tv-xRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="97" y="-161"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="f7o-k8-yZE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="jxQ-rd-lKJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="s4I-YB-BWS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WH7-Cw-Vpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="-225"/>
+        </scene>
+        <!--Wating-->
+        <scene sceneID="2tU-kL-LOH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wating" id="pXk-Q7-Ppr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="qRw-aC-gpM"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jE0-fj-TKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93" y="-299"/>
+        </scene>
+        <!--More-->
+        <scene sceneID="AQ8-by-Lrl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="More" id="zDp-oO-BaK" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="5vt-cN-91l"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w97-IZ-ixT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="12"/>
+        </scene>
+        <!--RegisterMeeting-->
+        <scene sceneID="VwR-QV-CMK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RegisterMeeting" id="H4t-gi-3AH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4oj-8e-fwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="314"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tabbar_home" width="21.333333969116211" height="21.333333969116211"/>
+    </resources>
+</document>
