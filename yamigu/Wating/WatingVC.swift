@@ -586,7 +586,7 @@ extension WatingVC: FilterViewDelegate {
         }
         
         if selectedTmpPlace.count == 0 {
-            body += "place=1&place=2&place=3&place=4&place=5&place=6&"
+            body += "place=1&place=2&place=3&"
         }
         
         for pc in self.selectedTmpPlace {
@@ -637,7 +637,7 @@ extension WatingVC: FilterViewDelegate {
         }
         
         if selectedPlace.count == 0 {
-            body += "place=1&place=2&place=3&place=4&place=5&place=6&"
+            body += "place=1&place=2&place=3&"
         }
         
         for pc in self.selectedPlace {

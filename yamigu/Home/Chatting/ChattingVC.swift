@@ -369,13 +369,18 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     @IBAction func quitBtnPressed(_ sender: Any) {
-        let logoutAlert = UIAlertController(title: "", message: "매칭 카드를 다시 신청해드릴까요?\n전에 작성하신 인원, 날짜, 장소, 원하는 말은\n모두 똑같이 신청돼요!", preferredStyle: UIAlertController.Style.alert)
+        let logoutAlert = UIAlertController(title: "", message: "매칭을 취소하시겠어요?\n취소하기전에 상대방에게 사유를 전달해주세요\n단, 매칭 취소시 티켓은 반환되지 않습니다", preferredStyle: UIAlertController.Style.alert)
         
         logoutAlert.addAction(UIAlertAction(title: "아니요", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
         }))
 
-        logoutAlert.addAction(UIAlertAction(title: "네,신청해주세요", style: .default, handler: nil))
+        logoutAlert.addAction(UIAlertAction(title: "네,취소할게요", style: .default, handler: { (action: UIAlertAction!) in
+            var json = Dictionary<String, Any>()
+            json["match_id"] = self.matchingId
+            
+            self.postRequest2("http://106.10.39.154:9999/api/matching/cancel_matching/", bodyString: "", json: json)
+        }))
 
         present(logoutAlert, animated: true, completion: nil)
         
@@ -484,8 +489,7 @@ extension ChattingVC {
         
         return NSString(string: text).boundingRect(with: size, options: options, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 14.0)]), context: nil)
     }
-    
-    func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
+    func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
         
         //let jsonData = try? JSONSerialization.data(withJSONObject: json)
         //request.httpBody = jsonData
@@ -497,7 +501,7 @@ extension ChattingVC {
         //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         
-        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
             let jsonString = String(data: data, encoding: .utf8) {
             print("jsonString = \(jsonString.data(using: .utf8))")
             request.httpBody = jsonString.data(using: .utf8)!
@@ -512,10 +516,56 @@ extension ChattingVC {
             }
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.dismiss(animated: false, completion: nil)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            }.resume()
+    }
+    
+    func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
+        
+        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //request.httpBody = jsonData
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
+            let jsonString = String(data: data, encoding: .utf8) {
+            print("jsonString = \(jsonString.data(using: .utf8))")
+            request.httpBody = jsonString.data(using: .utf8)!
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
