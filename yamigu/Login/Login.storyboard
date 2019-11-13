@@ -679,6 +679,10 @@
                         <outlet property="button_certi" destination="USI-YE-iFb" id="PL5-Y1-PGa"/>
                         <outlet property="button_go" destination="CNP-y6-SMn" id="JhR-Lk-QSB"/>
                         <outlet property="imageVIew_certi" destination="Y4x-e6-pVZ" id="01K-Ee-B8j"/>
+                        <outlet property="label_belong" destination="Kdi-7a-c6o" id="v4s-I6-uCt"/>
+                        <outlet property="label_certiDetail" destination="o8w-3S-pZ2" id="O52-2e-BD6"/>
+                        <outlet property="label_certificate" destination="5Kr-ze-o3d" id="FBs-qb-rNF"/>
+                        <outlet property="label_department" destination="d5M-V7-oMI" id="FgY-uZ-VlU"/>
                         <outlet property="text_belong" destination="gZ7-88-Dki" id="DNw-fR-kQU"/>
                         <outlet property="text_departmetn" destination="AqR-v7-7kz" id="SKk-pK-igB"/>
                         <segue destination="Fgn-d0-dpk" kind="show" identifier="segue_main" id="F4E-gg-26S"/>

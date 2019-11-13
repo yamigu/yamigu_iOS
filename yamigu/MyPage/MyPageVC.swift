@@ -118,7 +118,9 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
         print("nickName = \(nickName!)")
         var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName!)"
-        urlString = String(utf8String: urlString.cString(using: .utf8)!)!
+        let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        urlString = String(utf8String: str_url.cString(using: .utf8)!)!
         checkNickname(urlString: urlString, isComp: false)
         
         return true
