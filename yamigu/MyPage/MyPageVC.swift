@@ -50,11 +50,13 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         
         tf_name.isUserInteractionEnabled = false
         
-        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tf_name.text = "\(userDictionary["nickname"] as! String)(\(userDictionary["age"]!))"
+        
+        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
     }
     
     @IBAction func changeBtnPressed(_ sender: Any) {
@@ -225,10 +227,17 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
                                 self.image_profile.image = UIImage(named: "sample_profile")
                             }
                             
-                            if newValue["is_certified"] as? String != "1" {
+                            if newValue["user_certified"] as? Int != 2 {
                                 self.label_verified.isHidden = true
                                 self.view_blur.isHidden = false
                                 self.button_verifyBelong.isHidden = false
+                                
+                                if newValue["user_certified"] as? Int == 1 {
+                                    self.button_verifyBelong.setTitle("인증 진행중입니다", for: .normal)
+                                }
+                                else if newValue["user_certified"] as? Int == 0 {
+                                    
+                                }
                             } else {
                                 self.label_verified.isHidden = false
                                 self.view_blur.isHidden = true
@@ -283,6 +292,11 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
             }
         }.resume()
     }
+    
+    @IBAction func certiBelongBtnPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "segue_certi", sender: self)
+    }
+    
     
     @IBAction func notiBtnPressed(_ sender: Any) {
         self.performSegue(withIdentifier: "segue_notification", sender: self)
