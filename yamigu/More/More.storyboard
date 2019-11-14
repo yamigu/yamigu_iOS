@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7au-ma-mdq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7au-ma-mdq">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -319,7 +319,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QcH-mu-4jv">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QcH-mu-4jv">
                                         <rect key="frame" x="328" y="9.6666666666666714" width="49" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="31" id="WUG-2r-eVA"/>
@@ -575,7 +575,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uwV-Yz-KGg">
                                         <rect key="frame" x="15" y="59" width="384" height="598"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <mutableString key="text">야미구 이용약관 (2019.09.19 개정v0.1)
+                                        <string key="text">야미구 이용약관 (2019.09.19 개정v0.1)
 
 제1조 목적
 이 약관은 야미구㈜(이하 "회사")가 제공하는 온라인 다수대다수만남(이하 "미팅") 주선 서비스 이용과 관련하여 회사와 사용자의 사용 시 권리와 의무, 책임사항 등 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -746,7 +746,7 @@ d. 회원은 구매시점으로부터 7일 이내인 경우 환불이 가능하�
 
 제18조 준거법 및 재판관할
 1. 회사와 회원 간 제기된 소송에는 대한민국법을 준거법으로 합니다.
-2. 회사와 회원간 발생한 분쟁에 관한 소송은 민사소송법 상의 관할법원에 제소합니다.</mutableString>
+2. 회사와 회원간 발생한 분쟁에 관한 소송은 민사소송법 상의 관할법원에 제소합니다.</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -783,7 +783,7 @@ d. 회원은 구매시점으로부터 7일 이내인 경우 환불이 가능하�
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iLi-JJ-MH8">
                                         <rect key="frame" x="15" y="59" width="384" height="598"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <mutableString key="text">개인정보 처리방침
+                                        <string key="text">개인정보 처리방침
 
 야미구는 이용자의 개인정보를 소중히 다루고 있습니다. 야미구는「정보통신망 이용촉진 및 정보보호 등에 관한 법률」을 비롯한 관련 법규상의 개인정보 보호규정 및 개인정보 보호지침을 준수하며, 관련 법령에 의거한 개인정보 처리방침을 제정하여 이용자의 권익 보호에 최선을 다하고 있습니다.
 
@@ -983,7 +983,7 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
 - 경찰청 사이버테러대응센터 (www.ctrc.go.kr / 02-392-0330)
 
 16. 고지의 의무
-이 개인정보 처리방침은 2019년 11월에 제정되었습니다. 현 개인정보취급방침 내용 추가, 삭제 및 수정이 있을 시에는 개정 최소 7일전부터 모바일 어플리케이션의 '공지사항' 게시판을 통해 고지할 것입니다.</mutableString>
+이 개인정보 처리방침은 2019년 11월에 제정되었습니다. 현 개인정보취급방침 내용 추가, 삭제 및 수정이 있을 시에는 개정 최소 7일전부터 모바일 어플리케이션의 '공지사항' 게시판을 통해 고지할 것입니다.</string>
                                         <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

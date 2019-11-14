@@ -224,6 +224,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
                                 if let imageUrl = URL(string: "\(newValue["openby_profile"]!)") {
                                     print("openby_profile = \(newValue["openby_profile"]!)")
                                     self.image_profile.downloaded(from: imageUrl)
+                                    self.image_profile.contentMode = .scaleAspectFill
                                 }
                             } else {
                                 self.image_profile.image = UIImage(named: "sample_profile")

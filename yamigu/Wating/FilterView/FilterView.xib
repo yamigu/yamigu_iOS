@@ -55,7 +55,7 @@
                         <constraint firstAttribute="width" constant="99" id="WhE-ae-NZW"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <state key="normal" title="2:2 소개팅">
+                    <state key="normal" title="2:2 미팅">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <userDefinedRuntimeAttributes>

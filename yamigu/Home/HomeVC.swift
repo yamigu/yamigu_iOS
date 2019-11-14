@@ -33,7 +33,7 @@ class HomeVC: UIViewController {
     
     var selectedMyMeeting = Dictionary<String, Any>()
     
-    let meetingType = ["2:2 소개팅", "3:3 미팅", "4:4 미팅"]
+    let meetingType = ["2:2 미팅", "3:3 미팅", "4:4 미팅"]
     let places = ["신촌/홍대", "건대/왕십리", "강남", "수원역", "인천 송도", "부산 서면"]
     
     var reviewDict = Dictionary<String, Any>()
@@ -337,7 +337,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.layoutIfNeeded()
                 
                 cell.button_applyTeam.isHidden = false
-                cell.button_watingTeam.isHidden = false
+                cell.button_watingTeam.isHidden = true
                 cell.button_edit.isHidden = false
                 
                 cell.label_isMatched.isHidden = true
@@ -476,7 +476,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
             }
             
-            if cell.label_type.text == "2:2 소개팅" {
+            if cell.label_type.text == "2:2 미팅" {
                 cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
                 cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF7B22)
                 cell.button_edit.tintColor = UIColor(rgb: 0xFF7B22)
@@ -531,7 +531,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             }
             
             
-            if cell.label_type.text == "2:2 소개팅" {
+            if cell.label_type.text == "2:2 미팅" {
                 cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
             } else if cell.label_type.text == "3:3 미팅" {
                 cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
@@ -548,6 +548,12 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == self.myMeetingTableView {
             self.selectedMyMeeting = myMeetings[indexPath.section]
+            //meetingDict["is_matched"] as! Bool
+            //self.selectedMyMeeting = self.myMeetings[index]
+            if self.selectedMyMeeting["is_matched"] as! Bool {
+                self.performSegue(withIdentifier: "segue_chatting", sender: self)
+            }
+            
         }
     }
     
@@ -558,11 +564,11 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         var height = 167.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(44 * matchingMeetingCount)
         
         self.myMeetingTableViewHeight.constant = CGFloat(height)
-        var height2 = 86.0 * Double(todaymeetingCount) + 11.0 * Double(todaymeetingCount - 1)
+        //var height2 = 86.0 * Double(todaymeetingCount) + 11.0 * Double(todaymeetingCount - 1)
         
-        self.todayMeetingTableViewHeight.constant = CGFloat(height2)
+        //self.todayMeetingTableViewHeight.constant = CGFloat(height2)
         
-        height = height + height2
+        //height = height + height2
         
         DispatchQueue.main.async {
             self.scrollView.layoutIfNeeded()

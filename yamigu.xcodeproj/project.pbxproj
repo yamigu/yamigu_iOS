@@ -19,6 +19,8 @@
 		04618BB023487162002DF8A8 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04618BAF23487162002DF8A8 /* MyPageVC.swift */; };
 		550CC97423795DC200CD687B /* ChattingHeaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550CC97223795DC200CD687B /* ChattingHeaderVIew.swift */; };
 		550CC97523795DC200CD687B /* ChattingHeaderVIew.xib in Resources */ = {isa = PBXBuildFile; fileRef = 550CC97323795DC200CD687B /* ChattingHeaderVIew.xib */; };
+		550CC97E237D444F00CD687B /* CustomWKWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 550CC97C237D444F00CD687B /* CustomWKWebView.m */; };
+		550CC97F237D444F00CD687B /* UIWebViewGuide.m in Sources */ = {isa = PBXBuildFile; fileRef = 550CC97D237D444F00CD687B /* UIWebViewGuide.m */; };
 		55224D8B234F0599003FBCA3 /* RegisterVC_1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */; };
 		55224D8D234F05AA003FBCA3 /* RegisterVC_2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */; };
 		55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55224D8F234F0ED5003FBCA3 /* AgreementTableViewCell.swift */; };
@@ -138,6 +140,11 @@
 		492A156B580C7A2348935908 /* Pods-yamiguUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamiguUITests.release.xcconfig"; path = "Target Support Files/Pods-yamiguUITests/Pods-yamiguUITests.release.xcconfig"; sourceTree = "<group>"; };
 		550CC97223795DC200CD687B /* ChattingHeaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingHeaderVIew.swift; sourceTree = "<group>"; };
 		550CC97323795DC200CD687B /* ChattingHeaderVIew.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChattingHeaderVIew.xib; sourceTree = "<group>"; };
+		550CC979237D444D00CD687B /* yamigu-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "yamigu-Bridging-Header.h"; sourceTree = "<group>"; };
+		550CC97A237D444F00CD687B /* UIWebVIewGuide.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebVIewGuide.h; sourceTree = "<group>"; };
+		550CC97B237D444F00CD687B /* CustomWKWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomWKWebView.h; sourceTree = "<group>"; };
+		550CC97C237D444F00CD687B /* CustomWKWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomWKWebView.m; sourceTree = "<group>"; };
+		550CC97D237D444F00CD687B /* UIWebViewGuide.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewGuide.m; sourceTree = "<group>"; };
 		55224D8A234F0599003FBCA3 /* RegisterVC_1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC_1.swift; sourceTree = "<group>"; };
 		55224D8C234F05AA003FBCA3 /* RegisterVC_2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC_2.swift; sourceTree = "<group>"; };
 		55224D8F234F0ED5003FBCA3 /* AgreementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementTableViewCell.swift; sourceTree = "<group>"; };
@@ -304,6 +311,18 @@
 			path = FilterView;
 			sourceTree = "<group>";
 		};
+		550CC978237D443900CD687B /* NICEWebView */ = {
+			isa = PBXGroup;
+			children = (
+				550CC97B237D444F00CD687B /* CustomWKWebView.h */,
+				550CC97C237D444F00CD687B /* CustomWKWebView.m */,
+				550CC97A237D444F00CD687B /* UIWebVIewGuide.h */,
+				550CC97D237D444F00CD687B /* UIWebViewGuide.m */,
+				550CC979237D444D00CD687B /* yamigu-Bridging-Header.h */,
+			);
+			path = NICEWebView;
+			sourceTree = "<group>";
+		};
 		55224D8E234F05BA003FBCA3 /* AgreementCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +367,7 @@
 		5528EA8723407A4000461B2A /* yamigu */ = {
 			isa = PBXGroup;
 			children = (
+				550CC978237D443900CD687B /* NICEWebView */,
 				5582E23E2370241300A9E0FE /* yamigu.entitlements */,
 				04618B9123481713002DF8A8 /* fonts */,
 				5528EAC22340961C00461B2A /* Login */,
@@ -612,6 +632,7 @@
 				TargetAttributes = {
 					5528EA8423407A4000461B2A = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1120;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -803,6 +824,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550CC97F237D444F00CD687B /* UIWebViewGuide.m in Sources */,
 				55224D8B234F0599003FBCA3 /* RegisterVC_1.swift in Sources */,
 				04618BAA23485F78002DF8A8 /* FilterView.swift in Sources */,
 				55224DE5235CAF5C003FBCA3 /* TicketsVC.swift in Sources */,
@@ -832,6 +854,7 @@
 				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
 				5582E2352368376B00A9E0FE /* ChattingCell.swift in Sources */,
 				5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */,
+				550CC97E237D444F00CD687B /* CustomWKWebView.m in Sources */,
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
 				55224DCF2356ECBF003FBCA3 /* LoginCheckVC.swift in Sources */,
 				9F09984C23694A20006B2750 /* HomeReviewCell.swift in Sources */,
@@ -1022,10 +1045,11 @@
 			baseConfigurationReference = 38F428581F082323AF225DA3 /* Pods-yamigu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1040,6 +1064,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = party.yamigu.www.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "yamigu/NICEWebView/yamigu-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1050,10 +1076,11 @@
 			baseConfigurationReference = D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1068,6 +1095,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = party.yamigu.www.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "yamigu/NICEWebView/yamigu-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

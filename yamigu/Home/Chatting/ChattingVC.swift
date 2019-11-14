@@ -238,7 +238,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             let dateFomatter = DateFormatter(format: "a KK:mm")
             dateFomatter.locale = Locale(identifier: "ko_kr")
             dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-            cell.timeLabel.text = dateFomatter.string(from: date)
+            cell.timeLabel.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
             
             cell.profileImageView.downloaded(from: "\(self.managerData["manager_profile"]!)")
             
@@ -267,7 +267,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             let dateFomatter = DateFormatter(format: "a KK:mm")
             dateFomatter.locale = Locale(identifier: "ko_kr")
             dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-            cell.timeLabel.text = dateFomatter.string(from: date)
+            cell.timeLabel.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
             
             cell.nameLabel.text = message["userName"] as! String
             
@@ -297,7 +297,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             let dateFomatter = DateFormatter(format: "a KK:mm")
             dateFomatter.locale = Locale(identifier: "ko_kr")
             dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-            cell.timeLabel.text = dateFomatter.string(from: date)
+            cell.timeLabel.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
             
             cell.nameLabel.text = message["userName"] as! String
             
@@ -363,8 +363,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         let dateFomatter = DateFormatter(format: "a KK:mm")
         dateFomatter.locale = Locale(identifier: "ko_kr")
         dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-        label_time.text = dateFomatter.string(from: date)
-        label_time2.text = dateFomatter.string(from: date)
+        label_time.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
+        label_time2.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
         label_openbyName.text = "\(self.meetingDict["openby_nickname"]!)" + "(\(self.meetingDict["openby_age"]!))"
         label_openbyDepartment.text = "\(self.meetingDict["openby_department"]!) \(self.meetingDict["openby_belong"]!)"
         
@@ -372,14 +372,21 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         matchedDict = self.meetingDict["matched_meeting"] as! Dictionary<String, Any>
         
         label_partnerName.text = "\(matchedDict["openby_nickname"]!)" + "(\(matchedDict["openby_age"]!))"
-        label_partnerDepartment.text = "\(matchedDict["openby_department"]!) \(matchedDict["openby_belong"]!)"
+        label_partnerDepartment.text = "\(matchedDict["openby_belong"]!) \(matchedDict["openby_department"]!)"
         
-        label_date.text = "\(self.meetingDict["date"]!)"
+        //label_date.text = "\(self.meetingDict["date"]!)"
+        let dateString2 = "\(self.meetingDict["date"]!)"
+        var dateFomatter2 = DateFormatter(format: "yyyy-MM-dd")
+        let date2 = dateFomatter2.date(from: dateString2)
+        dateFomatter2.dateFormat = "M월 d일"
+        label_date.text = dateFomatter2.string(from: date2!)
+        
+        
         label_place.text = "\(self.meetingDict["place_type_name"]!)"
         
         let type = self.meetingDict["meeting_type"] as! Int
         if type == 1 {
-            label_type.text = "2:2 소개팅"
+            label_type.text = "2:2 미팅"
         } else if type == 2{
             label_type.text = "3:3 미팅"
         } else {

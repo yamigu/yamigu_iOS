@@ -321,6 +321,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             if let imageUrl = URL(string: "\(meetingObj["openby_profile"]!)") {
                 print("openby_profile = \(meetingObj["openby_profile"]!)")
                 cell.image_profile.downloaded(from: imageUrl)
+                cell.image_profile.contentMode = .scaleAspectFill
             }
             
             cell.constraintHeight.constant = 0.0
@@ -330,7 +331,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             
             let meeting_type = "\(meetingObj["meeting_type"]!)"
             if meeting_type == "1" {
-                cell.label_type.text = "2:2 소개팅"
+                cell.label_type.text = "2:2 미팅"
                 cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
                 cell.image_bottomBar.image = UIImage(named: "orange_bar")
                 cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF7B22)
@@ -848,7 +849,7 @@ extension WatingVC: WatingTableViewDelegate {
             }
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
                     guard let newValue = json as? Dictionary<String, Any> else {
@@ -861,6 +862,8 @@ extension WatingVC: WatingTableViewDelegate {
                         let message = newValue["message"] as! String
                         if message == "You should create new meeting for matching" {
                             self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
+                        } else if message == "aleady exists" {
+                            self.view.makeToast("이미 신청했습니다.")
                         } else {
                             
                         }

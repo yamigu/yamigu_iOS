@@ -53,6 +53,8 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         self.textView.delegate = self
         
+        self.label_textCount.isHidden = true
+        
         textView.text = "키, 학력, 나이, 친구들 스타일 등 모든 것을 자랑하세요!"
         textView.textColor = UIColor.lightGray
         textView.addDoneButton(title: "Done", target: self, selector: #selector(keyboardHide))
@@ -168,7 +170,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 var type = ""
                 let tmpType = "\(self.meetingDict["meeting_type"]!)"
                 if tmpType == "1" {
-                    type = "2:2 소개팅"
+                    type = "2:2 미팅"
                 } else if tmpType == "2" {
                     type = "3:3 미팅"
                 } else if tmpType == "3" {
@@ -192,6 +194,9 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 button_place.setTitle(place, for: .normal)
                 button_date.setTitle(monthString + " "  + dayString, for: .normal)
                 
+                self.label_title.text = "자신과 친구들을 표현해 주세요!"
+                self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
+                
             } else {
                 button_editMeeting.isHidden = false
                 button_deleteCard.isHidden = false
@@ -204,7 +209,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 var type = ""
                 let tmpType = "\(self.meetingDict["meeting_type"]!)"
                 if tmpType == "1" {
-                    type = "2:2 소개팅"
+                    type = "2:2 미팅"
                 } else if tmpType == "2" {
                     type = "3:3 미팅"
                 } else if tmpType == "3" {
@@ -229,6 +234,10 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 button_date.setTitle(monthString + " " + dayString, for: .normal)
                 
                 textView.text = self.meetingDict["appeal"] as! String
+                
+                self.label_title.text = "자신과 친구들을 표현해 주세요!"
+                self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
+                
             }
             
             
@@ -241,9 +250,25 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         var dict : [String: Any] = ["meeting_id" : id]
         
         
-        dict["meeting_type"] = Int("\((self.selectedType + 1))")
+        //dict["meeting_type"] = Int("\((self.selectedType + 1))")
+        if self.button_place.titleLabel?.text == "신촌/홍대" {
+            dict["place"] = 1
+        } else if self.button_place.titleLabel?.text == "건대/왕십리" {
+            dict["place"] = 2
+        } else if self.button_place.titleLabel?.text == "강님" {
+            dict["place"] = 3
+        }
+        
+        if self.button_people.titleLabel?.text == "2:2 미팅" {
+            dict["meeting_type"] = 1
+        } else if self.button_people.titleLabel?.text == "3:3 미팅" {
+            dict["meeting_type"] = 2
+        } else if self.button_people.titleLabel?.text == "4:4 미팅" {
+            dict["meeting_type"] = 3
+        }
+        
         dict["date"] = (button_date.titleLabel?.text!)!
-        dict["place"] = Int("\(self.selectedPlace + 1)")
+        //dict["place"] = Int("\(self.selectedPlace + 1)")
         dict["appeal"] = self.textView.text!
         dict["meeting_id"] = "\(self.meetingDict["id"]!)"
         
@@ -772,7 +797,7 @@ extension RegisterMeetingVC {
         label.textColor = UIColor.black
         if isPeople {
             if indexPath.row == 0 {
-                label.text = "2:2 소개팅"
+                label.text = "2:2 미팅"
             } else if indexPath.row == 1 {
                 label.text = "3:3 미팅"
             } else if indexPath.row == 2 {
@@ -787,6 +812,8 @@ extension RegisterMeetingVC {
         }
         
         if isDate {
+            
+            cell.isUserInteractionEnabled = true
             var date = Date()
             
             var dateComponents = DateComponents()

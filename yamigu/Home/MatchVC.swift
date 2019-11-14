@@ -25,7 +25,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     var receiveMatchingList = [Dictionary<String, Any>]()
     var requestMatchingList = [Dictionary<String, Any>]()
     
-    let meetingType = ["2:2 소개팅", "3:3 미팅", "4:4 미팅"]
+    let meetingType = ["2:2 미팅", "3:3 미팅", "4:4 미팅"]
 
     
     
@@ -71,7 +71,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         var type = ""
         let tmpType = "\(self.matchingDict["meeting_type"]!)"
         if tmpType == "1" {
-            type = "2:2 소개팅"
+            type = "2:2 미팅"
         } else if tmpType == "2" {
             type = "3:3 미팅"
         } else if tmpType == "3" {
@@ -420,6 +420,7 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             
             if let imageUrl = URL(string: "\(detailsDict["openby_profile"]!)") {
                 cell.image_profile.downloaded(from: imageUrl)
+                cell.image_profile.contentMode = .scaleAspectFill
             }
 
             cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
@@ -431,7 +432,7 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             
             var color = UIColor(rgb: 0x000000)
             
-            if cell.label_meetingType.text == "2:2 소개팅" {
+            if cell.label_meetingType.text == "2:2 미팅" {
                 color = UIColor(rgb: 0xFF7B22)
                 cell.image_bottom.image = UIImage(named: "orange_bar")
             } else if cell.label_meetingType.text == "3:3 미팅" {
@@ -472,6 +473,7 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
 
             if let imageUrl = URL(string: "\(detailsDict["openby_profile"]!)") {
                 cell.image_profile.downloaded(from: imageUrl)
+                cell.image_profile.contentMode = .scaleAspectFill
             }
 
             cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
@@ -483,7 +485,7 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             
             var color = UIColor(rgb: 0x000000)
             
-            if cell.label_meetingType.text == "2:2 소개팅" {
+            if cell.label_meetingType.text == "2:2 미팅" {
                 color = UIColor(rgb: 0xFF7B22)
                 cell.image_bottom.image = UIImage(named: "orange_bar")
             } else if cell.label_meetingType.text == "3:3 미팅" {
