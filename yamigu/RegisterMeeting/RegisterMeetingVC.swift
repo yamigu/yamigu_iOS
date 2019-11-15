@@ -586,12 +586,8 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        //request.httpBody = body
-        //let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
-        //request.httpBody = body
+        
         var requestDict = Dictionary<String, Any>()
         requestDict["meeting_type"] = "\((self.selectedType + 1))"
         requestDict["date"] = (button_date.titleLabel?.text!)!

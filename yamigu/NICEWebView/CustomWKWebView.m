@@ -7,7 +7,7 @@
 //
 
 #import "CustomWKWebView.h"
-#import "WKWebViewGuide.h"
+#import "UIWebViewGuide.h"
 
 #import <WebKit/WebKit.h>
 #import <AVFoundation/AVFoundation.h>

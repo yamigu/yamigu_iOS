@@ -325,7 +325,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             cell.delegate = self
             cell.index = indexPath.section
             let meetingDict = myMeetings[indexPath.section]
-            cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+            /*cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
             cell.label_place.text = meetingDict["place_type_name"] as! String
             
             
@@ -501,7 +501,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.image_bottom.image = UIImage(named: "orange_bar_3")
                 cell.label_isMatched.textColor = UIColor(rgb: 0xFF4600)
             }
-            
+            */
             // review cell
             let reviewCell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
             reviewCell.delegate = self

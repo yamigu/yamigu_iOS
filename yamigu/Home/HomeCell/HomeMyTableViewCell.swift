@@ -51,7 +51,7 @@ class HomeMyTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.constraint_bottomHeight.constant = 44.0
+        //self.constraint_bottomHeight.constant = 44.0
         self.layoutIfNeeded()
     }
 

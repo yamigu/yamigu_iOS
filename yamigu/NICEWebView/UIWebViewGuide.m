@@ -44,7 +44,7 @@
             return YES;	//반드시 YES로 설정해 주셔야합니다.
         }
     } else {
-        if ([[urlString hasPrefix:@"tauthlink"] || [urlString hasPrefix:@"ktauthexternalcall"] || [urlString hasPrefix:@"upluscorporation"] || [urlString hasPrefix:@"niceipin2"]) {
+        if ( [urlString hasPrefix:@"tauthlink"] || [urlString hasPrefix:@"ktauthexternalcall"] || [urlString hasPrefix:@"upluscorporation"] || [urlString hasPrefix:@"niceipin2"] ) {
 			//외부 앱 Scheme로 URL이 시작되는 경우
 			//tauthLink(SKT PASS 인증앱)
 			//ktauthexternalcall(KT PASS 인증앱)
