@@ -430,22 +430,20 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             cell.label_meetingDate.text = monthString+dayString
             cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
             
-            var color = UIColor(rgb: 0x000000)
+//            var color = UIColor(rgb: 0x000000)
+//
+//            if cell.label_meetingType.text == "2:2 미팅" {
+//                color = UIColor(rgb: 0xFF7B22)
+//                cell.image_bottom.image = UIImage(named: "orange_bar")
+//            } else if cell.label_meetingType.text == "3:3 미팅" {
+//                color = UIColor(rgb: 0xFF6024)
+//                cell.image_bottom.image = UIImage(named: "orange_bar_2")
+//            } else {
+//                color = UIColor(rgb: 0xFF4600)
+//                cell.image_bottom.image = UIImage(named: "orange_bar_3")
+//            }
+//            cell.label_meetingType.backgroundColor = color
             
-            if cell.label_meetingType.text == "2:2 미팅" {
-                color = UIColor(rgb: 0xFF7B22)
-                cell.image_bottom.image = UIImage(named: "orange_bar")
-            } else if cell.label_meetingType.text == "3:3 미팅" {
-                color = UIColor(rgb: 0xFF6024)
-                cell.image_bottom.image = UIImage(named: "orange_bar_2")
-            } else {
-                color = UIColor(rgb: 0xFF4600)
-                cell.image_bottom.image = UIImage(named: "orange_bar_3")
-            }
-            cell.label_meetingType.backgroundColor = color
-            cell.ratings.settings.filledColor = color
-            cell.ratings.settings.emptyBorderColor = color
-            cell.ratings.settings.filledBorderColor = color
             
             
         }
@@ -479,26 +477,24 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
             cell.textview_details.text = detailsDict["appeal"] as! String
             cell.label_nicknameAndAge.text = "\(nickName)(\(age))"
-            cell.label_belongAndDepartment.text = "\(belong),\(department)"
+            cell.label_belongAndDepartment.text = "\(belong), \(department)"
             cell.label_meetingDate.text = monthString+dayString
             cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
             
-            var color = UIColor(rgb: 0x000000)
+//            var color = UIColor(rgb: 0x000000)
+//
+//            if cell.label_meetingType.text == "2:2 미팅" {
+//                color = UIColor(rgb: 0xFF7B22)
+//                cell.image_bottom.image = UIImage(named: "orange_bar")
+//            } else if cell.label_meetingType.text == "3:3 미팅" {
+//                color = UIColor(rgb: 0xFF6024)
+//                cell.image_bottom.image = UIImage(named: "orange_bar_2")
+//            } else {
+//                color = UIColor(rgb: 0xFF4600)
+//                cell.image_bottom.image = UIImage(named: "orange_bar_3")
+//            }
+//            cell.label_meetingType.backgroundColor = color
             
-            if cell.label_meetingType.text == "2:2 미팅" {
-                color = UIColor(rgb: 0xFF7B22)
-                cell.image_bottom.image = UIImage(named: "orange_bar")
-            } else if cell.label_meetingType.text == "3:3 미팅" {
-                color = UIColor(rgb: 0xFF6024)
-                cell.image_bottom.image = UIImage(named: "orange_bar_2")
-            } else {
-                color = UIColor(rgb: 0xFF4600)
-                cell.image_bottom.image = UIImage(named: "orange_bar_3")
-            }
-            cell.label_meetingType.backgroundColor = color
-            cell.ratings.settings.filledColor = color
-            cell.ratings.settings.emptyBorderColor = color
-            cell.ratings.settings.filledBorderColor = color
         }
         
         

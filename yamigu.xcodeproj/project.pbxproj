@@ -220,6 +220,10 @@
 		9F1407112379632200C9D491 /* NotisVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotisVC.swift; sourceTree = "<group>"; };
 		9F3AD99C2373D4890005FE71 /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
 		9F68945F237BAC400036A4C5 /* CertiVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CertiVC.swift; sourceTree = "<group>"; };
+		9F689475238259EA0036A4C5 /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundL.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundL.ttf"; sourceTree = "<group>"; };
+		9F689476238259EA0036A4C5 /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundB.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundB.ttf"; sourceTree = "<group>"; };
+		9F689477238259EA0036A4C5 /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundR.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundR.ttf"; sourceTree = "<group>"; };
+		9F689478238259EB0036A4C5 /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundEB.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundEB.ttf"; sourceTree = "<group>"; };
 		D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.release.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -265,6 +269,10 @@
 				04618B9B23481723002DF8A8 /* NanumGothicBold.ttf */,
 				04618B9423481723002DF8A8 /* NanumGothicExtraBold.ttf */,
 				04618B9323481723002DF8A8 /* NanumMyeongjo.ttf */,
+				9F689476238259EA0036A4C5 /* NanumSquareRoundB.ttf */,
+				9F689478238259EB0036A4C5 /* NanumSquareRoundEB.ttf */,
+				9F689475238259EA0036A4C5 /* NanumSquareRoundL.ttf */,
+				9F689477238259EA0036A4C5 /* NanumSquareRoundR.ttf */,
 				04618B9523481723002DF8A8 /* NanumMyeongjoBold.ttf */,
 				04618B9723481723002DF8A8 /* NanumMyeongjoExtraBold.ttf */,
 				04618B9823481723002DF8A8 /* NanumPen.ttf */,

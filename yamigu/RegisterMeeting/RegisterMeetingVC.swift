@@ -20,19 +20,21 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var button_placeUnderline: UIView!
+    @IBOutlet weak var button_dateUnderline: UIView!
+    @IBOutlet weak var button_peopleUnderline: UIView!
+    
     @IBOutlet weak var button_place: UIButton!
     @IBOutlet weak var button_date: UIButton!
     @IBOutlet weak var button_people: UIButton!
     @IBOutlet weak var height: NSLayoutConstraint!
     
+    
     @IBOutlet weak var constraint_labelBottom: NSLayoutConstraint!
     @IBOutlet weak var label_textCount: UILabel!
     @IBOutlet weak var button_request: UIButton!
-    @IBOutlet weak var label_caution: UILabel!
     @IBOutlet weak var label_title: UILabel!
-    @IBOutlet weak var label_description: UILabel!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var label_bottom_description: UILabel!
     
     var myMeetings = [Dictionary<String, Any>]()
     var dateStrings = [String]()
@@ -44,6 +46,11 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     var selectedType = 0
     var selectedPlace = 0
+    
+    var textColorOn = UIColor(rgb: 0xFF7B22)
+    var textColorOff = UIColor(rgb: 0x707070)
+    var buttonSelected = UIImage(named: "icon_arrow_bottom_on")
+    var buttonDeselected = UIImage(named: "icon_arrow_bottom")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +65,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         textView.text = "키, 학력, 나이, 친구들 스타일 등 모든 것을 자랑하세요!"
         textView.textColor = UIColor.lightGray
         textView.addDoneButton(title: "Done", target: self, selector: #selector(keyboardHide))
+        textView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
         textView.layer.cornerRadius = 4.0
         textView.clipsToBounds = false
@@ -195,7 +203,6 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 button_date.setTitle(monthString + " "  + dayString, for: .normal)
                 
                 self.label_title.text = "자신과 친구들을 표현해 주세요!"
-                self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
                 
             } else {
                 button_editMeeting.isHidden = false
@@ -236,7 +243,6 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 textView.text = self.meetingDict["appeal"] as! String
                 
                 self.label_title.text = "자신과 친구들을 표현해 주세요!"
-                self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
                 
             }
             
@@ -423,16 +429,11 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = false
         
         self.textView.isHidden = true
-        self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-        
-        self.label_bottom_description.isHidden = false
-        
-        self.label_title.text = "몇대몇 할래요?"
-        self.label_description.text = "친구들중 대표로 한명만 신청하면 돼요!"
-        self.label_bottom_description.text = "친구와 함께 하는 야미구"
+                
+        self.label_title.text = "몇명이서 미팅 나가요?"
         
         
         self.tableView.reloadData()
@@ -446,17 +447,12 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = false
         
         self.textView.isHidden = true
-        self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-        
-        self.label_bottom_description.isHidden = false
-        
+                
         self.label_title.text = "언제가 좋아요?"
-        self.label_description.text = "꼭 친구들과 가능한 날짜를 선택해주세요!"
-        self.label_bottom_description.text = "일주일 이내의 날짜만 선택 가능"
-        
+       
         if button_date.titleLabel?.text != "날짜" {
             //self.button_place.sendActions(for: .allEvents)
             placeBtnHandler()
@@ -471,16 +467,12 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = false
         
         self.textView.isHidden = true
-        self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-        
-        self.label_bottom_description.isHidden = false
-        
+                
         self.label_title.text = "언제가 좋아요?"
-        self.label_description.text = "꼭 친구들과 가능한 날짜를 선택해주세요!"
-        self.label_bottom_description.text = "일주일 이내의 날짜만 선택 가능"
+       
         /*
          if button_date.titleLabel?.text != "날짜" {
          self.button_place.sendActions(for: .allEvents)
@@ -495,28 +487,19 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = true
         
         self.textView.isHidden = true
-        self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-        
-        self.label_bottom_description.isHidden = false
-        
+                
         self.label_title.text = "어디가 좋아요?"
-        self.label_description.text = "장소는 미팅이 잡혀도 언제든지 변경 가능해요!"
-        self.label_bottom_description.text = "타 지역은 추후 업데이트 예정"
         
-        if button_place.titleLabel?.text != "장소" {
+        if button_place.titleLabel?.text != "선호 장소" {
             self.textView.isHidden = false
-            self.label_caution.isHidden = false
             self.button_request.isHidden = false
             self.tableView.isHidden = true
             self.label_textCount.isHidden = false
-            
-            self.label_bottom_description.isHidden = true
-            
+                        
             self.label_title.text = "자신과 친구들을 표현해 주세요!"
-            self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
             //self.label_bottom_description.text = "타 지역은 추후 업데이트 예정"
         }
         handleButtonImage()
@@ -529,16 +512,11 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = true
         
         self.textView.isHidden = true
-        self.label_caution.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-        
-        self.label_bottom_description.isHidden = false
-        
+                
         self.label_title.text = "어디가 좋아요?"
-        self.label_description.text = "장소는 미팅이 잡혀도 언제든지 변경 가능해요!"
-        self.label_bottom_description.text = "타 지역은 추후 업데이트 예정"
         
         self.tableView.reloadData()
     }
@@ -706,6 +684,9 @@ extension RegisterMeetingVC {
         
         if isPeople {
             self.button_people.setTitle(label.text, for: .normal)
+            self.button_people.setTitleColor(self.textColorOn, for: .normal)
+            self.button_people.setImage(self.buttonSelected, for: .normal)
+            self.button_peopleUnderline.backgroundColor = self.textColorOn
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 //self.button_date.sendActions(for: .allEvents)
@@ -720,7 +701,7 @@ extension RegisterMeetingVC {
             
             let formatter = DateFormatter()
             
-            formatter.dateFormat = "M월 d일 EE"
+            formatter.dateFormat = "M/d EE"
             formatter.locale = Locale(identifier: "ko_kr")
             formatter.timeZone = TimeZone(abbreviation: "KST")
             let resultDate = formatter.date(from: dateString)
@@ -731,6 +712,9 @@ extension RegisterMeetingVC {
             
             
             self.button_date.setTitle(result, for: .normal)
+            self.button_date.setTitleColor(self.textColorOn, for: .normal)
+            self.button_date.setImage(self.buttonSelected, for: .normal)
+            self.button_dateUnderline.backgroundColor = self.textColorOn
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 //self.button_place.sendActions(for: .allEvents)
@@ -745,6 +729,10 @@ extension RegisterMeetingVC {
         
         if isPlace {
             self.button_place.setTitle(label.text, for: .normal)
+            self.button_place.setTitleColor(self.textColorOn, for: .normal)
+            self.button_place.setImage(self.buttonSelected, for: .normal)
+            self.button_placeUnderline.backgroundColor = self.textColorOn
+            
             self.selectedPlace = indexPath.row
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
                 if self.button_people.titleLabel?.text == "인원" {
@@ -753,15 +741,11 @@ extension RegisterMeetingVC {
                     self.dateBtnPressed(self.button_date)
                 } else {
                     self.textView.isHidden = false
-                    self.label_caution.isHidden = false
                     self.button_request.isHidden = false
                     self.tableView.isHidden = true
                     self.label_textCount.isHidden = false
-                    
-                    self.label_bottom_description.isHidden = true
-                    
+                                        
                     self.label_title.text = "자신과 친구들을 표현해 주세요!"
-                    self.label_description.text = "원하는 이성 스타일이나 본인과 친구들을 소개해주세요!"
                 }
                 
                 
@@ -788,6 +772,13 @@ extension RegisterMeetingVC {
         
         
         cell.contentView.backgroundColor = UIColor.clear
+        
+//        if indexPath.row % 2 == 0 {
+//            cell.contentView.backgroundColor = UIColor(rgb: 0xFCFCFC)
+//        }
+        
+        cell.layer.masksToBounds = true
+        cell.layer.cornerRadius = 4
         cell.isSelected = false
         let label = cell.viewWithTag(1) as! UILabel
         label.textColor = UIColor.black
@@ -818,7 +809,7 @@ extension RegisterMeetingVC {
             if indexPath.row == 0 {
                 let formatter = DateFormatter()
                 
-                formatter.dateFormat = "M월 d일 EE"
+                formatter.dateFormat = "M/d EE"
                 formatter.locale = Locale(identifier: "ko_kr")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
@@ -827,7 +818,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(1, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일 EE"
+                formatter.dateFormat = "M/d EE"
                 formatter.locale = Locale(identifier: "ko_kr")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
@@ -837,7 +828,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(2, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일 EE"
+                formatter.dateFormat = "M/d EE"
                 formatter.locale = Locale(identifier: "ko_kr")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
@@ -847,7 +838,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(3, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일 EE"
+                formatter.dateFormat = "M/d EE"
                 formatter.locale = Locale(identifier: "ko_kr")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
@@ -857,7 +848,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(4, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일 EE"
+                formatter.dateFormat = "M/d EE"
                 formatter.locale = Locale(identifier: "ko_kr")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
@@ -867,7 +858,7 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(5, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일 EE"
+                formatter.dateFormat = "M/d EE"
                 formatter.locale = Locale(identifier: "ko_kr")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
@@ -877,12 +868,19 @@ extension RegisterMeetingVC {
                 dateComponents.setValue(6, for: .day);
                 date = Calendar.current.date(byAdding: dateComponents, to: date)!
                 let formatter = DateFormatter()
-                formatter.dateFormat = "M월 d일 EE"
+                formatter.dateFormat = "M/d EE"
                 formatter.locale = Locale(identifier: "ko_kr")
                 formatter.timeZone = TimeZone(abbreviation: "KST")
                 let result = formatter.string(from: date)
                 label.text = result
                 
+            }
+            
+            if label.text?.last == "토" {
+                label.textColor = UIColor.blue
+            }
+            else if label.text?.last == "일" {
+                label.textColor = UIColor.red
             }
             
             if label.text == self.button_date.titleLabel?.text {
@@ -916,6 +914,7 @@ extension RegisterMeetingVC {
             }
             cell.isUserInteractionEnabled = true
         }
+        
         
         return cell
     }

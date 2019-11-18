@@ -17,6 +17,7 @@ class WatingTableViewCell: UITableViewCell {
     
     weak var delegate : WatingTableViewDelegate!
 
+    @IBOutlet weak var view_bottom: UIView!
     @IBOutlet weak var image_bottomBar: UIImageView!
     @IBOutlet weak var button_meeting: UIButton!
     @IBOutlet weak var label_type: UILabel!
@@ -24,16 +25,15 @@ class WatingTableViewCell: UITableViewCell {
     @IBOutlet weak var label_belong: UILabel!
     @IBOutlet weak var label_date: UILabel!
     @IBOutlet weak var label_place: UILabel!
-    @IBOutlet weak var tv_description: VerticallyCenteredTextView!
-    @IBOutlet weak var rating: CosmosView!
+    @IBOutlet weak var textview_detail: UITextView!
+    
     @IBOutlet weak var image_profile: UIImageView!
     @IBOutlet weak var constraintHeight: NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        DispatchQueue.main.async {
-            self.tv_description.centerVertically()
-        }
+        
         self.button_meeting.isHidden = true
         self.constraintHeight.constant = 0.0
         self.layoutIfNeeded()
@@ -51,7 +51,7 @@ class WatingTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        self.tv_description.centerVertically()
+        //self.tv_description.centerVertically()
     }
     
 }

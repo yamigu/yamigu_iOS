@@ -9,6 +9,19 @@
 import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var label_meetingType: UILabel!
+     @IBOutlet weak var image_profile: UIImageView!
+    
+     @IBOutlet weak var textview_details: UITextView!
+     
+     @IBOutlet weak var image_bottom: UIImageView!
+     
+     @IBOutlet weak var label_nicknameAndAge: UILabel!
+     @IBOutlet weak var label_belongAndDepartment: UILabel!
+     
+     @IBOutlet weak var label_meetingDate: UILabel!
+     @IBOutlet weak var label_meetingPlace: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

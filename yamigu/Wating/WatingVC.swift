@@ -309,10 +309,10 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         cell.layer.cornerRadius = 10.0
         cell.cornerradius = 10.0
         cell.clipsToBounds = true
-        DispatchQueue.main.async {
-            cell.tv_description.centerVertically()
-           
-        }
+//        DispatchQueue.main.async {
+//            cell.tv_description.centerVertically()
+//
+//        }
         cell.layoutIfNeeded()
         
         if self.matchingList.count != 0 {
@@ -332,28 +332,28 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             let meeting_type = "\(meetingObj["meeting_type"]!)"
             if meeting_type == "1" {
                 cell.label_type.text = "2:2 미팅"
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
-                cell.image_bottomBar.image = UIImage(named: "orange_bar")
-                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF7B22)
-                cell.rating.settings.filledColor = UIColor(rgb: 0xFF7B22)
-                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF7B22)
-                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF7B22)
+//                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
+//                cell.image_bottomBar.image = UIImage(named: "orange_bar")
+//                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF7B22)
+//                cell.rating.settings.filledColor = UIColor(rgb: 0xFF7B22)
+//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF7B22)
+//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF7B22)
             } else if meeting_type == "2" {
                 cell.label_type.text = "3:3 미팅"
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
-                cell.image_bottomBar.image = UIImage(named: "orange_bar_2")
-                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF6024)
-                cell.rating.settings.filledColor = UIColor(rgb: 0xFF6024)
-                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF6024)
-                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF6024)
+//                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
+//                cell.image_bottomBar.image = UIImage(named: "orange_bar_2")
+//                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF6024)
+//                cell.rating.settings.filledColor = UIColor(rgb: 0xFF6024)
+//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF6024)
+//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF6024)
             } else if meeting_type == "3" {
                 cell.label_type.text = "4:4 미팅"
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
-                cell.image_bottomBar.image = UIImage(named: "orange_bar_3")
-                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF4600)
-                cell.rating.settings.filledColor = UIColor(rgb: 0xFF4600)
-                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF4600)
-                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF4600)
+//                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
+//                cell.image_bottomBar.image = UIImage(named: "orange_bar_3")
+//                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF4600)
+//                cell.rating.settings.filledColor = UIColor(rgb: 0xFF4600)
+//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF4600)
+//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF4600)
             }
             
             if meetingObj["is_matched"] as! Bool {
@@ -361,10 +361,10 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
                 cell.label_type.backgroundColor = UIColor(rgb: 0x707070)
                 cell.image_bottomBar.image = UIImage(named: "gray_bar")
                 cell.button_meeting.backgroundColor = UIColor(rgb: 0x707070)
-                cell.rating.tintColor = UIColor(rgb: 0x707070)
-                cell.rating.settings.filledColor = UIColor(rgb: 0x707070)
-                cell.rating.settings.filledBorderColor = UIColor(rgb: 0x707070)
-                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0x707070)
+//                cell.rating.tintColor = UIColor(rgb: 0x707070)
+//                cell.rating.settings.filledColor = UIColor(rgb: 0x707070)
+//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0x707070)
+//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0x707070)
             }
             
             let dateString = meetingObj["date"] as! String
@@ -385,9 +385,9 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             let belong = meetingObj["openby_belong"] as! String
             let department = meetingObj["openby_department"] as! String
             
-            cell.label_belong.text = belong + " " + department
+            cell.label_belong.text = belong + ", " + department
             
-            cell.tv_description.text = meetingObj["appeal"] as! String
+            cell.textview_detail.text = meetingObj["appeal"] as! String
             
         }
         
@@ -416,9 +416,9 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "watingTableViewCell") as! WatingTableViewCell
-        DispatchQueue.main.async {
-            cell.tv_description.centerVertically()
-        }
+//        DispatchQueue.main.async {
+//            cell.tv_description.centerVertically()
+//        }
         
         
         return 222.0
@@ -441,7 +441,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.button_meeting.isHidden = false
             
-            cell.constraintHeight.constant = 54.5
+            cell.constraintHeight.constant = 44.0
             
             
             UIView.animate(withDuration: 0.5, animations: {

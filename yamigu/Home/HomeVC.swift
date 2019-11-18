@@ -28,6 +28,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
+    var recommendMeetings = [Dictionary<String, Any>]()
     
     var matchingMeetingCount = 0
     
@@ -638,11 +639,40 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
         
-        cell.contentView.layer.borderColor = UIColor(rgb: 0xE0E0E0).cgColor
-        cell.contentView.layer.borderWidth = 1.0
-        cell.contentView.layer.cornerRadius = 10.0
-        
-        cell.layer.cornerRadius = 10.0
+//        let meetingDict = recommendMeetings[indexPath.section]
+//
+//        let nickName = meetingDict["openby_nickname"] as! String
+//        let age = meetingDict["openby_age"] as! String
+//        let belong = meetingDict["openby_belong"] as! String
+//        let department = meetingDict["openby_department"] as! String
+//
+//        cell.label_meetingType.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+//        cell.label_meetingPlace.text = meetingDict["place_type_name"] as! String
+//
+//        let dateString = meetingDict["date"] as! String
+//        let dateFormatter = DateFormatter()
+//
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        let date = dateFormatter.date(from:dateString)
+//
+//        dateFormatter.dateFormat = "M월 "
+//        let monthString = dateFormatter.string(from: date!)
+//
+//        dateFormatter.dateFormat = "d일 "
+//        let dayString = dateFormatter.string(from: date!)
+//        
+//        // date 받아올때 요일?
+//
+//        if let imageUrl = URL(string: "\(meetingDict["openby_profile"]!)") {
+//            cell.image_profile.downloaded(from: imageUrl)
+//            cell.image_profile.contentMode = .scaleAspectFill
+//        }
+//
+//        cell.textview_details.text = meetingDict["appeal"] as! String
+//
+//        cell.label_nicknameAndAge.text = "\(nickName)(\(age))"
+//        cell.label_belongAndDepartment.text = "\(belong), \(department)"
+//        cell.label_meetingDate.text = monthString+dayString
         
         
         return cell
@@ -659,7 +689,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 291.0, height: 222.0)
+        return CGSize(width: self.recommendMeetingCollectionView.frame.width, height: 210.0)
     }
     
     func collectionView(_ collectionView: UICollectionView,
