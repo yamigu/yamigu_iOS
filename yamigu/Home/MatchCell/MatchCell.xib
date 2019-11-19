@@ -216,6 +216,10 @@
                 <outlet property="label_meetingType" destination="Oq7-Xd-QEs" id="9bs-8h-RJe"/>
                 <outlet property="label_nicknameAndAge" destination="1SW-MK-XXs" id="npn-XS-SAT"/>
                 <outlet property="textview_details" destination="akQ-aN-6NB" id="sgL-Iv-X08"/>
+                <outlet property="view_textContainer" destination="K6t-Qh-N8k" id="gz5-li-oOh"/>
+                <outletCollection property="textUnderline" destination="PQN-HK-9zF" collectionClass="NSMutableArray" id="7Dn-sg-i6y"/>
+                <outletCollection property="textUnderline" destination="Dpi-uA-lnr" collectionClass="NSMutableArray" id="tEm-4z-3HZ"/>
+                <outletCollection property="textUnderline" destination="saW-K8-tUR" collectionClass="NSMutableArray" id="HoL-Ea-qaR"/>
             </connections>
             <point key="canvasLocation" x="-129" y="54"/>
         </collectionViewCell>

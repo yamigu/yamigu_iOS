@@ -430,19 +430,48 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             cell.label_meetingDate.text = monthString+dayString
             cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
             
-//            var color = UIColor(rgb: 0x000000)
-//
-//            if cell.label_meetingType.text == "2:2 미팅" {
-//                color = UIColor(rgb: 0xFF7B22)
-//                cell.image_bottom.image = UIImage(named: "orange_bar")
-//            } else if cell.label_meetingType.text == "3:3 미팅" {
-//                color = UIColor(rgb: 0xFF6024)
-//                cell.image_bottom.image = UIImage(named: "orange_bar_2")
-//            } else {
-//                color = UIColor(rgb: 0xFF4600)
-//                cell.image_bottom.image = UIImage(named: "orange_bar_3")
-//            }
-//            cell.label_meetingType.backgroundColor = color
+            let meeting_type = "\(detailsDict["meeting_type"]!)"
+            
+            if meeting_type == "1" {
+                cell.label_meetingType.text = "2:2 미팅"
+                cell.label_meetingType.textColor = color2
+                cell.image_bottom.image = UIImage(named: "orange_bar")
+                cell.view_textContainer.bordercolor = color2
+                
+                cell.label_meetingPlace.textColor = color2
+                cell.label_meetingDate.textColor = color2
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color2
+                }
+
+            } else if meeting_type == "2" {
+                cell.label_meetingType.text = "3:3 미팅"
+                cell.label_meetingType.textColor = color3
+                cell.image_bottom.image = UIImage(named: "orange_bar_2")
+                cell.view_textContainer.bordercolor = color3
+                
+                cell.label_meetingPlace.textColor = color3
+                cell.label_meetingDate.textColor = color3
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color3
+                }
+
+            } else if meeting_type == "3" {
+                cell.label_meetingType.text = "3:3 미팅"
+                cell.label_meetingType.textColor = color4
+                cell.image_bottom.image = UIImage(named: "orange_bar_3")
+                cell.view_textContainer.bordercolor = color4
+                
+                cell.label_meetingPlace.textColor = color4
+                cell.label_meetingDate.textColor = color4
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color4
+                }
+
+            }
             
             
             
@@ -477,21 +506,50 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             cell.label_meetingDate.text = dateFormatter.string(from: date!)
             cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
             
-//            var color = UIColor(rgb: 0x000000)
-//
-//            if cell.label_meetingType.text == "2:2 미팅" {
-//                color = UIColor(rgb: 0xFF7B22)
-//                cell.image_bottom.image = UIImage(named: "orange_bar")
-//            } else if cell.label_meetingType.text == "3:3 미팅" {
-//                color = UIColor(rgb: 0xFF6024)
-//                cell.image_bottom.image = UIImage(named: "orange_bar_2")
-//            } else {
-//                color = UIColor(rgb: 0xFF4600)
-//                cell.image_bottom.image = UIImage(named: "orange_bar_3")
-//            }
-//            cell.label_meetingType.backgroundColor = color
+            let meeting_type = "\(detailsDict["meeting_type"]!)"
             
+            if meeting_type == "1" {
+                cell.label_meetingType.text = "2:2 미팅"
+                cell.label_meetingType.textColor = color2
+                cell.image_bottom.image = UIImage(named: "orange_bar")
+                cell.view_textContainer.bordercolor = color2
+                
+                cell.label_meetingPlace.textColor = color2
+                cell.label_meetingDate.textColor = color2
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color2
+                }
+
+            } else if meeting_type == "2" {
+                cell.label_meetingType.text = "3:3 미팅"
+                cell.label_meetingType.textColor = color3
+                cell.image_bottom.image = UIImage(named: "orange_bar_2")
+                cell.view_textContainer.bordercolor = color3
+                
+                cell.label_meetingPlace.textColor = color3
+                cell.label_meetingDate.textColor = color3
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color3
+                }
+
+            } else if meeting_type == "3" {
+                cell.label_meetingType.text = "3:3 미팅"
+                cell.label_meetingType.textColor = color4
+                cell.image_bottom.image = UIImage(named: "orange_bar_3")
+                cell.view_textContainer.bordercolor = color4
+                
+                cell.label_meetingPlace.textColor = color4
+                cell.label_meetingDate.textColor = color4
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color4
+                }
+
+            }
         }
+        
         
         
         return cell
