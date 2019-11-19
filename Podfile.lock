@@ -136,7 +136,7 @@ DEPENDENCIES:
   - Toast-Swift
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AvailableHapticFeedback
     - CHIPageControl
     - Cosmos
@@ -194,4 +194,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: b12e91419e61e3c6a9a5c97e7b3d65a98ca64a2b
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.5
