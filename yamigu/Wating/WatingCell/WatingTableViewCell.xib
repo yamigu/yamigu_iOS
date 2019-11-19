@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -206,6 +206,7 @@
                 <constraints>
                     <constraint firstItem="jBt-L3-beM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="1a1-fG-f0g"/>
                     <constraint firstItem="ebp-Pe-biv" firstAttribute="top" secondItem="lDx-kB-WiZ" secondAttribute="bottom" constant="-10" id="7sf-Aq-kyY"/>
+                    <constraint firstItem="jBt-L3-beM" firstAttribute="top" secondItem="lDx-kB-WiZ" secondAttribute="bottom" constant="-7" id="CUf-Ll-ITM"/>
                     <constraint firstAttribute="trailing" secondItem="lDx-kB-WiZ" secondAttribute="trailing" id="I5L-Lf-lXs"/>
                     <constraint firstItem="lDx-kB-WiZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ktj-ae-c2b"/>
                     <constraint firstAttribute="bottom" secondItem="mNx-nq-yvN" secondAttribute="bottom" id="P2f-An-bDg"/>
@@ -216,7 +217,6 @@
                     <constraint firstItem="ebp-Pe-biv" firstAttribute="centerX" secondItem="mNx-nq-yvN" secondAttribute="centerX" id="lrv-8Q-Nwn"/>
                     <constraint firstItem="mNx-nq-yvN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rRJ-Do-3LA"/>
                     <constraint firstItem="mNx-nq-yvN" firstAttribute="top" secondItem="ebp-Pe-biv" secondAttribute="bottom" constant="-2" id="tTx-Fd-Uoy"/>
-                    <constraint firstAttribute="bottom" secondItem="jBt-L3-beM" secondAttribute="bottom" id="ynW-De-Ke7"/>
                 </constraints>
                 <userDefinedRuntimeAttributes>
                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
