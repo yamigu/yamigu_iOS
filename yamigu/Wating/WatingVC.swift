@@ -370,6 +370,8 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             let dateString = meetingObj["date"] as! String
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+            dateFormatter.locale = Locale(identifier: "ko_kr")
             let date = dateFormatter.date(from: dateString)
             
             dateFormatter.dateFormat = "MM월 dd일 (EE)"

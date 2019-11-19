@@ -92,7 +92,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         }
         
         self.navigationController?.title = resultDateString + " || " + placeString + " || " + typeString
-        self.title = resultDateString + " || " + placeString + " || " + typeString
+        self.title = resultDateString + " || " + typeString
         
         
     }

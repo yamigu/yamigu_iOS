@@ -102,7 +102,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             
-            self.constraint_labelBottom.constant = -keyboardHeight + 100
+            self.constraint_labelBottom.constant = -keyboardHeight + 170
             self.view.layoutIfNeeded()
         }
     }

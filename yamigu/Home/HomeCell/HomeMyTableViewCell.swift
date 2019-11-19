@@ -31,6 +31,7 @@ class HomeMyTableViewCell: UITableViewCell {
     @IBOutlet weak var label_type: UILabel!
     @IBOutlet weak var label_place: UILabel!
     @IBOutlet weak var label_isMatched: UILabel!
+    @IBOutlet weak var label_isWating: UILabel!
     @IBOutlet weak var label_teamCount: UILabel!
     @IBOutlet weak var button_applyTeam: UIButton!
     @IBOutlet weak var button_watingTeam: UIButton!
@@ -44,7 +45,7 @@ class HomeMyTableViewCell: UITableViewCell {
         // Initialization code
         self.selectionStyle = .none
         
-        self.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
+        //self.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
     
         
         

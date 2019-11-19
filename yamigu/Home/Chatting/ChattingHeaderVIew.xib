@@ -81,14 +81,14 @@
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" tag="15" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신촌/홍대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38x-gA-iBK">
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" tag="15" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="신촌/홍대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38x-gA-iBK">
                             <rect key="frame" x="93" y="142" width="45.5" height="14"/>
                             <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" tag="16" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2:2 소개팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNI-sT-kYo">
-                            <rect key="frame" x="91.5" y="156" width="48.5" height="14"/>
+                            <rect key="frame" x="91.5" y="142" width="48.5" height="14"/>
                             <fontDescription key="fontDescription" name="Binggrae" family="Binggrae" pointSize="10"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -97,13 +97,13 @@
                     <color key="backgroundColor" red="1" green="0.94901960784313721" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Nxr-rP-JIV" firstAttribute="centerX" secondItem="llE-ll-LBU" secondAttribute="centerX" id="7MT-LV-8E6"/>
-                        <constraint firstItem="GNI-sT-kYo" firstAttribute="top" secondItem="38x-gA-iBK" secondAttribute="bottom" id="7Om-4Y-ofH"/>
                         <constraint firstItem="7k0-2t-oqF" firstAttribute="centerX" secondItem="Nxr-rP-JIV" secondAttribute="centerX" id="7xt-om-M9N"/>
                         <constraint firstItem="7k0-2t-oqF" firstAttribute="top" secondItem="Nxr-rP-JIV" secondAttribute="bottom" constant="7" id="B2m-a2-9eZ"/>
                         <constraint firstAttribute="height" constant="180" id="HAW-U1-P28"/>
                         <constraint firstItem="Ozi-hA-r9J" firstAttribute="top" secondItem="7k0-2t-oqF" secondAttribute="bottom" id="IXg-TA-pmG"/>
                         <constraint firstItem="GNI-sT-kYo" firstAttribute="centerX" secondItem="38x-gA-iBK" secondAttribute="centerX" id="IcY-sN-goD"/>
                         <constraint firstItem="eMU-sz-ige" firstAttribute="centerX" secondItem="Ozi-hA-r9J" secondAttribute="centerX" id="Nbw-DG-fII"/>
+                        <constraint firstItem="GNI-sT-kYo" firstAttribute="top" secondItem="Ezc-SM-3sW" secondAttribute="bottom" id="b7p-e1-q8X"/>
                         <constraint firstAttribute="width" constant="231" id="c5d-S9-UGw"/>
                         <constraint firstItem="Ozi-hA-r9J" firstAttribute="centerX" secondItem="7k0-2t-oqF" secondAttribute="centerX" id="dZi-10-9MJ"/>
                         <constraint firstItem="Ezc-SM-3sW" firstAttribute="centerX" secondItem="8Wd-mC-vKA" secondAttribute="centerX" id="jQu-MI-Tla"/>

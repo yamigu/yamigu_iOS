@@ -117,7 +117,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="연하를 선호하지만 28살까지 괜찮습니다! 키는 165미만이신분이 좋습니다 여행이나 맛집가는거 좋아하고 화를 잘 안내는 온화한? 스타일이에요 관리자님 수고많으십니다~!" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhv-I1-w3R">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="연하를 선호하지만 28살까지 괜찮습니다! 키는 165미만이신분이 좋습니다 여행이나 맛집가는거 좋아하고 화를 잘 안내는 온화한? 스타일이에요 관리자님 수고많으십니다~!" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhv-I1-w3R">
                                 <rect key="frame" x="113" y="53" width="227" height="92"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="13"/>

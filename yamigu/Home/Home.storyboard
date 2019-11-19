@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,7 +90,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="169"/>
                                     </imageView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oyr-Ct-7Wx">
-                                        <rect key="frame" x="0.0" y="189" width="414" height="166"/>
+                                        <rect key="frame" x="12" y="189" width="390" height="166"/>
                                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="166" id="l67-Id-1w5"/>
@@ -164,13 +164,13 @@
                                     <constraint firstAttribute="bottom" secondItem="82w-nu-THA" secondAttribute="bottom" constant="1174" id="KnZ-27-lT0"/>
                                     <constraint firstItem="po1-Py-6OO" firstAttribute="top" secondItem="wgR-JP-Qc9" secondAttribute="bottom" constant="11" id="Kwi-xv-nDe"/>
                                     <constraint firstAttribute="trailing" secondItem="82w-nu-THA" secondAttribute="trailing" id="L33-Zn-oSr"/>
-                                    <constraint firstAttribute="trailing" secondItem="Oyr-Ct-7Wx" secondAttribute="trailing" id="Q0T-vk-zwM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Oyr-Ct-7Wx" secondAttribute="trailing" constant="12" id="Q0T-vk-zwM"/>
                                     <constraint firstItem="82w-nu-THA" firstAttribute="width" secondItem="SL5-Rl-UJ6" secondAttribute="width" id="jjb-de-xQX"/>
                                     <constraint firstItem="wgR-JP-Qc9" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="30" id="oA7-bo-8pb"/>
                                     <constraint firstItem="po1-Py-6OO" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="12" id="oNr-NJ-JXo"/>
                                     <constraint firstItem="BjQ-Vh-4XW" firstAttribute="centerX" secondItem="82w-nu-THA" secondAttribute="centerX" id="qpL-SZ-Plj"/>
                                     <constraint firstItem="82w-nu-THA" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" id="trJ-m1-cGx"/>
-                                    <constraint firstItem="Oyr-Ct-7Wx" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" id="uA3-Cl-Lcc"/>
+                                    <constraint firstItem="Oyr-Ct-7Wx" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="12" id="uA3-Cl-Lcc"/>
                                     <constraint firstItem="Oyr-Ct-7Wx" firstAttribute="top" secondItem="82w-nu-THA" secondAttribute="bottom" constant="20" id="ych-I3-3Am"/>
                                 </constraints>
                             </scrollView>
