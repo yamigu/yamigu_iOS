@@ -20,6 +20,10 @@ class WatingTableViewCell: UITableViewCell {
     @IBOutlet weak var view_bottom: UIView!
     @IBOutlet weak var image_bottomBar: UIImageView!
     @IBOutlet weak var button_meeting: UIButton!
+    
+    @IBOutlet weak var view_textContainer: UIView!
+    @IBOutlet var textUnderline: [UIView]!
+    
     @IBOutlet weak var label_type: UILabel!
     @IBOutlet weak var label_nickname: UILabel!
     @IBOutlet weak var label_belong: UILabel!

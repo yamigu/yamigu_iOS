@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -250,6 +250,10 @@
                 <outlet property="label_type" destination="BTz-o8-OFh" id="akV-E4-Yhy"/>
                 <outlet property="textview_detail" destination="Nhv-I1-w3R" id="7B7-Ne-FQQ"/>
                 <outlet property="view_bottom" destination="mNx-nq-yvN" id="jc4-9f-Cqw"/>
+                <outlet property="view_textContainer" destination="lDx-kB-WiZ" id="MgC-S4-rPL"/>
+                <outletCollection property="textUnderline" destination="Mch-CR-bhl" collectionClass="NSMutableArray" id="6hv-x9-MYT"/>
+                <outletCollection property="textUnderline" destination="a08-eM-wuo" collectionClass="NSMutableArray" id="gDR-UR-Gls"/>
+                <outletCollection property="textUnderline" destination="jS5-IC-yC0" collectionClass="NSMutableArray" id="6P5-VQ-kju"/>
             </connections>
             <point key="canvasLocation" x="-230.43478260869566" y="136.60714285714286"/>
         </tableViewCell>

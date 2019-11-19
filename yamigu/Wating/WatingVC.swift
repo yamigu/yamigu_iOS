@@ -8,6 +8,10 @@
 
 import UIKit
 
+var color2 = UIColor(rgb: 0xFF7B22)
+var color3 = UIColor(rgb: 0xFF6024)
+var color4 = UIColor(rgb: 0xFF4600)
+
 class WatingVC: UIViewController, UIGestureRecognizerDelegate {
     
     var refreshControl: UIRefreshControl!
@@ -332,39 +336,54 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             let meeting_type = "\(meetingObj["meeting_type"]!)"
             if meeting_type == "1" {
                 cell.label_type.text = "2:2 미팅"
-//                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
-//                cell.image_bottomBar.image = UIImage(named: "orange_bar")
-//                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF7B22)
-//                cell.rating.settings.filledColor = UIColor(rgb: 0xFF7B22)
-//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF7B22)
-//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF7B22)
+                cell.label_type.textColor = color2
+                cell.image_bottomBar.image = UIImage(named: "orange_bar")
+                cell.button_meeting.backgroundColor = color2
+                cell.view_textContainer.bordercolor = color2
+                
+                cell.label_place.textColor = color2
+                cell.label_date.textColor = color2
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color2
+                }
+
             } else if meeting_type == "2" {
                 cell.label_type.text = "3:3 미팅"
-//                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
-//                cell.image_bottomBar.image = UIImage(named: "orange_bar_2")
-//                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF6024)
-//                cell.rating.settings.filledColor = UIColor(rgb: 0xFF6024)
-//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF6024)
-//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF6024)
+                cell.label_type.textColor = color3
+                cell.image_bottomBar.image = UIImage(named: "orange_bar_2")
+                cell.button_meeting.backgroundColor = color3
+                cell.view_textContainer.bordercolor = color3
+                
+                cell.label_place.textColor = color3
+                cell.label_date.textColor = color3
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color3
+                }
+
             } else if meeting_type == "3" {
                 cell.label_type.text = "4:4 미팅"
-//                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
-//                cell.image_bottomBar.image = UIImage(named: "orange_bar_3")
-//                cell.button_meeting.backgroundColor = UIColor(rgb: 0xFF4600)
-//                cell.rating.settings.filledColor = UIColor(rgb: 0xFF4600)
-//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0xFF4600)
-//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0xFF4600)
+                cell.label_type.textColor = color4
+                cell.image_bottomBar.image = UIImage(named: "orange_bar_3")
+                cell.button_meeting.backgroundColor = color4
+                cell.view_textContainer.bordercolor = color4
+                
+                cell.label_place.textColor = color4
+                cell.label_date.textColor = color4
+                
+                for i in 0...2 {
+                    cell.textUnderline[i].backgroundColor = color4
+                }
+
             }
             
             if meetingObj["is_matched"] as! Bool {
                 cell.label_type.text = "매칭완료"
-                cell.label_type.backgroundColor = UIColor(rgb: 0x707070)
+                //cell.label_type.backgroundColor = UIColor(rgb: 0x707070)
                 cell.image_bottomBar.image = UIImage(named: "gray_bar")
                 cell.button_meeting.backgroundColor = UIColor(rgb: 0x707070)
-//                cell.rating.tintColor = UIColor(rgb: 0x707070)
-//                cell.rating.settings.filledColor = UIColor(rgb: 0x707070)
-//                cell.rating.settings.filledBorderColor = UIColor(rgb: 0x707070)
-//                cell.rating.settings.emptyBorderColor = UIColor(rgb: 0x707070)
+
             }
             
             let dateString = meetingObj["date"] as! String

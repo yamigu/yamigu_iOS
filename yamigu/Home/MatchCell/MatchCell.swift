@@ -11,6 +11,9 @@ import Cosmos
 
 class MatchCell: UICollectionViewCell {
     
+    @IBOutlet weak var view_textContainer: UIView!
+    @IBOutlet var textUnderline: [UIView]!
+    
     @IBOutlet weak var label_meetingType: UILabel!
     @IBOutlet weak var image_profile: UIImageView!
    
