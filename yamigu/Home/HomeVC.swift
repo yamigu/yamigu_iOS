@@ -20,12 +20,14 @@ class HomeVC: UIViewController {
     @IBOutlet weak var myMeetingTableView: UITableView!
     @IBOutlet weak var myMeetingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var recommendMeetingCollectionView: UICollectionView!
+    @IBOutlet weak var label_recommendMeeting: UILabel!
     
     @IBOutlet weak var todayMeetingTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var todayMeetingTableView: UITableView!
     
     @IBOutlet weak var button_addMeeting: UIButton!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
     var recommendMeetings = [Dictionary<String, Any>]()
@@ -57,6 +59,7 @@ class HomeVC: UIViewController {
         
         ref = Database.database().reference()
         
+        self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
     }
     
     
@@ -65,6 +68,8 @@ class HomeVC: UIViewController {
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         
         ref = Database.database().reference()
+        
+        self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
         
     }
     
@@ -655,13 +660,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //        dateFormatter.dateFormat = "yyyy-MM-dd"
 //        let date = dateFormatter.date(from:dateString)
 //
-//        dateFormatter.dateFormat = "M월 "
-//        let monthString = dateFormatter.string(from: date!)
-//
-//        dateFormatter.dateFormat = "d일 "
-//        let dayString = dateFormatter.string(from: date!)
-//        
-//        // date 받아올때 요일?
+//        dateFormatter.dateFormat = "MM월 dd일 (EE)"
 //
 //        if let imageUrl = URL(string: "\(meetingDict["openby_profile"]!)") {
 //            cell.image_profile.downloaded(from: imageUrl)
@@ -670,9 +669,9 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
 //
 //        cell.textview_details.text = meetingDict["appeal"] as! String
 //
-//        cell.label_nicknameAndAge.text = "\(nickName)(\(age))"
+//        cell.label_nicknameAndAge.text = "\(nickName) (\(age))"
 //        cell.label_belongAndDepartment.text = "\(belong), \(department)"
-//        cell.label_meetingDate.text = monthString+dayString
+//        cell.label_meetingDate.text = dateFormatter.string(from: date!)
         
         
         return cell

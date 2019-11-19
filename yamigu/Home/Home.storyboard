@@ -198,6 +198,7 @@
                         <outlet property="button_addMeeting" destination="BjQ-Vh-4XW" id="PDb-0W-vrn"/>
                         <outlet property="button_notification" destination="1Lc-sB-GDn" id="sHU-t5-yqx"/>
                         <outlet property="button_tickets" destination="yEv-ij-uOo" id="LEX-Rn-ERF"/>
+                        <outlet property="label_recommendMeeting" destination="wgR-JP-Qc9" id="eU9-dg-yq8"/>
                         <outlet property="myMeetingTableView" destination="Oyr-Ct-7Wx" id="WAY-VU-PTw"/>
                         <outlet property="myMeetingTableViewHeight" destination="l67-Id-1w5" id="4kD-uz-yj7"/>
                         <outlet property="recommendMeetingCollectionView" destination="po1-Py-6OO" id="Bvs-YX-ubu"/>

@@ -372,7 +372,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let date = dateFormatter.date(from: dateString)
             
-            dateFormatter.dateFormat = "MM월 dd일"
+            dateFormatter.dateFormat = "MM월 dd일 (EE)"
             
             cell.label_date.text = dateFormatter.string(from: date!)
             
@@ -400,7 +400,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 0.0
         }
-        return 21.0
+        return 23.0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

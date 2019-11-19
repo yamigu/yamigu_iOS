@@ -463,11 +463,7 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let date = dateFormatter.date(from:dateString)
             
-            dateFormatter.dateFormat = "M월"
-            let monthString = dateFormatter.string(from: date!)
-            
-            dateFormatter.dateFormat = "d일"
-            let dayString = dateFormatter.string(from: date!)
+            dateFormatter.dateFormat = "MM월 dd일 (EE)"
 
             if let imageUrl = URL(string: "\(detailsDict["openby_profile"]!)") {
                 cell.image_profile.downloaded(from: imageUrl)
@@ -476,9 +472,9 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
 
             cell.label_meetingType.text = self.meetingType[Int((detailsDict["meeting_type"] as! Int) - 1)]
             cell.textview_details.text = detailsDict["appeal"] as! String
-            cell.label_nicknameAndAge.text = "\(nickName)(\(age))"
+            cell.label_nicknameAndAge.text = "\(nickName) (\(age))"
             cell.label_belongAndDepartment.text = "\(belong), \(department)"
-            cell.label_meetingDate.text = monthString+dayString
+            cell.label_meetingDate.text = dateFormatter.string(from: date!)
             cell.label_meetingPlace.text = detailsDict["place_type_name"] as! String
             
 //            var color = UIColor(rgb: 0x000000)
