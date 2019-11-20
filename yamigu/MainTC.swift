@@ -35,10 +35,17 @@ class MainTC: UITabBarController {
 
                         alarmDicts.append(data)
                         print("data = \(data)")
+                        
+                        if data["isUnread"] as! Bool {
+                            alarmCount += 1
+                        }
                     }
                 }
-                alarmCount = snapshot.children.allObjects.count
                 alarmDicts.reverse()
+                let homeController = self.viewControllers![0] as! HomeVC
+                if homeController != nil {
+                    homeController.updateAlarmCountLabel()
+                }
                 
             }
         })

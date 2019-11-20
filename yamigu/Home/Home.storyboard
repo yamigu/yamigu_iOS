@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Nem-OC-K9e">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -71,6 +71,25 @@
                                             <segue destination="Y9h-Zs-wiX" kind="show" id="3qq-ZP-jYN"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USf-Cw-eaw">
+                                        <rect key="frame" x="329.66666666666669" y="6.6666666666666679" width="20" height="20"/>
+                                        <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="818-Ld-y8f"/>
+                                            <constraint firstAttribute="width" constant="20" id="CnS-iQ-t84"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -79,7 +98,9 @@
                                     <constraint firstItem="Ni0-Ym-i6X" firstAttribute="leading" secondItem="a5m-9h-AH5" secondAttribute="leading" constant="5.5" id="ITy-We-vqE"/>
                                     <constraint firstAttribute="trailing" secondItem="yEv-ij-uOo" secondAttribute="trailing" constant="12.4" id="M0J-O5-nyu"/>
                                     <constraint firstAttribute="height" constant="57" id="OV5-zo-c2f"/>
+                                    <constraint firstItem="USf-Cw-eaw" firstAttribute="leading" secondItem="1Lc-sB-GDn" secondAttribute="trailing" constant="-10" id="UmY-PT-2HM"/>
                                     <constraint firstItem="Ni0-Ym-i6X" firstAttribute="centerY" secondItem="a5m-9h-AH5" secondAttribute="centerY" id="bij-Bf-MmB"/>
+                                    <constraint firstItem="USf-Cw-eaw" firstAttribute="bottom" secondItem="1Lc-sB-GDn" secondAttribute="bottom" constant="-14" id="fTU-Td-W85"/>
                                     <constraint firstItem="yEv-ij-uOo" firstAttribute="centerY" secondItem="Ni0-Ym-i6X" secondAttribute="centerY" id="oAf-MF-Sge"/>
                                 </constraints>
                             </view>
@@ -208,6 +229,7 @@
                         <outlet property="button_addMeeting" destination="BjQ-Vh-4XW" id="PDb-0W-vrn"/>
                         <outlet property="button_notification" destination="1Lc-sB-GDn" id="sHU-t5-yqx"/>
                         <outlet property="button_tickets" destination="yEv-ij-uOo" id="LEX-Rn-ERF"/>
+                        <outlet property="label_alarmCount" destination="USf-Cw-eaw" id="xPR-qa-PjC"/>
                         <outlet property="label_recommendMeeting" destination="wgR-JP-Qc9" id="eU9-dg-yq8"/>
                         <outlet property="myMeetingReviewTableView" destination="yDI-Uk-jka" id="8h9-UB-nEN"/>
                         <outlet property="myMeetingReviewTableViewHeight" destination="uqE-qA-7ar" id="MX9-Tw-oav"/>

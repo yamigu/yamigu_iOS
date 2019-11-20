@@ -48,7 +48,8 @@ class HomeMyTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         
         //self.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
-    
+
+        self.view_bottom.isHidden = false
         
         
     }

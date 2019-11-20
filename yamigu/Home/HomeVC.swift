@@ -32,6 +32,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var button_addMeeting: UIButton!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var label_alarmCount: UILabel!
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
     var recommendMeetings = [Dictionary<String, Any>]()
@@ -43,7 +44,7 @@ class HomeVC: UIViewController {
     
     let meetingType = ["2:2 미팅", "3:3 미팅", "4:4 미팅"]
     let places = ["신촌/홍대", "건대/왕십리", "강남", "수원역", "인천 송도", "부산 서면"]
-            
+    
     var ref: DatabaseReference!
     var refHandle : DatabaseHandle!
     
@@ -53,7 +54,7 @@ class HomeVC: UIViewController {
         self.setupTableView()
         self.setupCollectionView()
         
-        self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
+        //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
         
@@ -65,7 +66,7 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
+        //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
         
@@ -324,6 +325,15 @@ class HomeVC: UIViewController {
         }.resume()
     }
     
+    func updateAlarmCountLabel() {
+        if alarmCount == 0 {
+            self.label_alarmCount.isHidden = true
+        } else {
+            self.label_alarmCount.isHidden = false
+            self.label_alarmCount.text = "\(alarmCount)"
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue_matching" {
             let destination = segue.destination as! UINavigationController
@@ -392,11 +402,20 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             // matching cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeMyTableViewCell") as! HomeMyTableViewCell
             
+            
             cell.delegate = self
             cell.index = indexPath.section
             let meetingDict = myMeetings[indexPath.section]
             
+            cell.view_bottom.isHidden = false
+            cell.constraint_bottomHeight.constant = 40.0
+            cell.layoutIfNeeded()
+            
             if !(meetingDict["is_matched"] as! Bool) {
+                cell.clipsToBounds = true
+                cell.layer.cornerRadius = 10
+                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+                
                 cell.view_bottom.isHidden = true
                 cell.constraint_bottomHeight.constant = 0.0
                 cell.layoutIfNeeded()
@@ -406,7 +425,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.label_isMatched.isHidden = true
                 
                 cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
-                cell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10.0)
+                //cell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10.0)
                 
                 var received = Dictionary<String, Any>()
                 received = meetingDict["received_request"] as! Dictionary<String, Any>
@@ -437,23 +456,36 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 
                 cell.backgroundColor = UIColor.white
                 
+                
             } else {
+                
+                cell.clipsToBounds = true
+                cell.layer.cornerRadius = 10
+                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                
+                //cell.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
                 cell.backgroundColor = UIColor(rgb: 0xFFF9F6)
                 
-                cell.view_bottom.isHidden = false
+                cell.label_isWating.isHidden = true
+                cell.button_edit.isHidden = true
+                cell.button_applyTeam.isHidden = true
+                
+                DispatchQueue.main.async {
+                    cell.view_bottom.isHidden = false
+                }
+                
+                cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
                 cell.constraint_bottomHeight.constant = 40.0
                 cell.layoutIfNeeded()
                 
                 cell.label_matchingName.isHidden = false
                 cell.label_matchingDepart.isHidden = false
                 cell.label_isMatched.isHidden = false
-                cell.label_isWating.isHidden = true
-                cell.button_edit.isHidden = true
-                cell.button_applyTeam.isHidden = true
                 
-                cell.roundCorners(corners: [.topLeft, .topRight, ], radius: 10.0)
                 
-                let type = Int((meetingDict["meeting_type"] as! Int))
+                
+                
+                var type = Int((meetingDict["meeting_type"] as! Int))
                 var textColor = UIColor.white
                 if type == 1 {
                     textColor = UIColor(rgb: 0xFF7B22)
@@ -462,6 +494,8 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 } else {
                     textColor = UIColor(rgb: 0xFF4600)
                 }
+                
+                
                 
                 cell.label_isMatched.textColor = textColor
                 
@@ -532,147 +566,12 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                                 //
                                 cell.label_lastChat.text = message
                             }
-
-                            
-                            
                         }
-                        
-                        
-                        
                     }
                 }
-                
             }
-            /*cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
-             cell.label_place.text = meetingDict["place_type_name"] as! String
-             
-             
-             
-             
-             if !(meetingDict["is_matched"] as! Bool) {
-             cell.view_bottom.isHidden = true
-             cell.constraint_bottomHeight.constant = 0.0
-             cell.layoutIfNeeded()
-             
-             cell.button_applyTeam.isHidden = false
-             cell.button_watingTeam.isHidden = true
-             cell.button_edit.isHidden = false
-             
-             cell.label_isMatched.isHidden = true
-             
-             cell.label_matchingDepart.isHidden = true
-             cell.label_matchingName.isHidden = true
-             
-             
-             var received = Dictionary<String, Any>()
-             received = meetingDict["received_request"] as! Dictionary<String, Any>
-             
-             var received_request = Array<Dictionary<String, Any>>()
-             
-             received_request = received["data"] as! Array<Dictionary<String, Any>>
-             
-             if received_request.count == 0 {
-             //cell.label_teamCount.isHidden = true
-             cell.label_teamCount.isHidden = false
-             cell.label_teamCount.text = "\(received_request.count)팀 신청!"
-             } else {
-             cell.label_teamCount.isHidden = false
-             cell.label_teamCount.text = "\(received_request.count)팀 신청!"
-             }
-             
-             } else {
-             cell.view_bottom.isHidden = false
-             cell.constraint_bottomHeight.constant = 44.0
-             cell.layoutIfNeeded()
-             
-             cell.button_applyTeam.isHidden = true
-             cell.button_watingTeam.isHidden = true
-             cell.button_edit.isHidden = true
-             
-             cell.label_isMatched.isHidden = false
-             cell.label_teamCount.isHidden = true
-             
-             cell.label_matchingDepart.isHidden = false
-             cell.label_matchingName.isHidden = false
-             
-             
-             var matchingId = ""
-             
-             var received = Dictionary<String, Any>()
-             var sent = Dictionary<String, Any>()
-             
-             received = meetingDict["received_request"] as! Dictionary<String, Any>
-             sent = meetingDict["sent_request"] as! Dictionary<String, Any>
-             
-             var received_request = Array<Dictionary<String, Any>>()
-             var sent_request = Array<Dictionary<String, Any>>()
-             
-             received_request = received["data"] as! Array<Dictionary<String, Any>>
-             sent_request = sent["data"] as! Array<Dictionary<String, Any>>
-             
-             for dict in received_request {
-             if (dict["is_selected"] as! Bool) {
-             matchingId = "\(dict["id"]!)"
-             }
-             }
-             
-             for dict in sent_request {
-             if (dict["is_selected"] as! Bool) {
-             matchingId = "\(dict["id"]!)"
-             }
-             }
-             
-             self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
-             print("count = \(count)")
-             if count == 0 {
-             cell.label_chattingCount.isHidden = true
-             } else {
-             cell.label_chattingCount.isHidden = false
-             cell.label_chattingCount.text = "\(count)"
-             }
-             }
-             
-             let matchDict = meetingDict["matched_meeting"] as! Dictionary<String, Any>
-             
-             let matchAge = matchDict["openby_age"] as! String
-             let matchName = matchDict["openby_nickname"] as! String
-             let matchBelong = matchDict["openby_belong"] as! String
-             let matchDepart = matchDict["openby_department"] as! String
-             
-             cell.label_matchingName.text = matchName + " (\(matchAge))"
-             cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
-             ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
-             for snap in snapshot.children.allObjects as! [DataSnapshot] {
-             let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
-             let time = value["time"]!
-             print("time \(time)")
-             
-             let dateString = "\(time)"
-             let dateDoube = Double(dateString)! / 1000.0
-             print("datedouble = \(dateDoube)")
-             let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
-             
-             let dateFomatter = DateFormatter(format: "a H:mm")
-             dateFomatter.locale = Locale(identifier: "ko_kr")
-             dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-             cell.label_chattingTime.text = dateFomatter.string(from: date)
-             
-             
-             if let message = value["message"] as? String {
-             DispatchQueue.main.async {
-             //
-             cell.label_lastChat.text = message
-             }
-             
-             
-             }
-             
-             
-             
-             }
-             }
-             }
-             */
+            
+            
             let dateString = meetingDict["date"] as! String
             let dateFormatter = DateFormatter()
             
@@ -685,7 +584,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             cell.label_day.text = dateFormatter.string(from: date!)
             
             let type = Int((meetingDict["meeting_type"] as! Int))
-            var textColor = UIColor.white
+            let textColor = UIColor.white
             if type == 1 {
                 cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical")
                 cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical")
@@ -697,76 +596,9 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical3")
             }
             
-            
-            
-            // review cell
-            //let reviewCell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
-            //reviewCell.delegate = self
-            /*if daysBetween(start: Date(), end: date!) == 0 {
-             cell.label_dday.text = "today"
-             } else {
-             cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
-             }*/
-            /*
-             if cell.label_type.text == "2:2 미팅" {
-             cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
-             cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF7B22)
-             cell.button_edit.tintColor = UIColor(rgb: 0xFF7B22)
-             cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF7B22)
-             cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF7B22)
-             cell.label_isMatched.textColor = UIColor(rgb: 0xFF7B22)
-             cell.image_bottom.image = UIImage(named: "orange_bar")
-             } else if cell.label_type.text == "3:3 미팅" {
-             cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
-             cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF6024)
-             cell.button_edit.tintColor = UIColor(rgb: 0xFF6024)
-             cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF6024)
-             cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF6024)
-             cell.image_bottom.image = UIImage(named: "orange_bar_2")
-             cell.label_isMatched.textColor = UIColor(rgb: 0xFF6024)
-             } else {
-             cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
-             cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF4600)
-             cell.button_edit.tintColor = UIColor(rgb: 0xFF4600)
-             cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF4600)
-             cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF4600)
-             cell.image_bottom.image = UIImage(named: "orange_bar_3")
-             cell.label_isMatched.textColor = UIColor(rgb: 0xFF4600)
-             }
-             */
-            
-            
-            
             return cell
             
-        } else if tableView == self.todayMeetingTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "homeExpectedTableViewCell") as! HomeExpectedTableViewCell
-            let meetingDict = todayMeetings[indexPath.section]
-            //cell.contentView.layer.borderColor = UIColor(rgb: 0xE5E5E5).cgColor
-            //cell.contentView.layer.borderWidth = 1.0
-            cell.contentView.layer.cornerRadius = 10.0
-            
-            cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
-            cell.label_place.text = meetingDict["place_type_name"] as! String
-            
-            if (indexPath.section % 2) == 0 {
-                cell.contentView.backgroundColor = UIColor(rgb: 0xFFF2E6)
-            } else {
-                cell.contentView.backgroundColor = UIColor(rgb: 0xFFE7DF)
-            }
-            
-            
-            if cell.label_type.text == "2:2 미팅" {
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
-            } else if cell.label_type.text == "3:3 미팅" {
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
-            } else {
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
-            }
-            return cell
-        }
-            
-        else if tableView == self.myMeetingReviewTableView {
+        } else if tableView == self.myMeetingReviewTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
             
             cell.delegate = self

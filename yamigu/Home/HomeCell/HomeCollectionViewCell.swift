@@ -26,6 +26,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.image_profile.image = UIImage(named: "sample_profile")
+    }
+    override func prepareForReuse() {
+        self.image_profile.image = UIImage(named: "sample_profile")
     }
 
 }

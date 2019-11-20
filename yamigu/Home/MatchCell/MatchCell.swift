@@ -34,6 +34,11 @@ class MatchCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        image_profile.image = UIImage(named: "sample_profile")
+    }
+    
+    override func prepareForReuse() {
+        image_profile.image = UIImage(named: "sample_profile")
     }
 
 }

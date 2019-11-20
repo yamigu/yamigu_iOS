@@ -36,6 +36,8 @@ class WatingTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.image_profile.image = UIImage(named: "sample_profile")
         self.selectionStyle = .none
         
         self.button_meeting.isHidden = true
@@ -56,6 +58,7 @@ class WatingTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         //self.tv_description.centerVertically()
+        self.image_profile.image = UIImage(named: "sample_profile")
     }
     
 }
