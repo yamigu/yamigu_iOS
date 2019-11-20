@@ -24,6 +24,8 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var button_certi: UIButton!
     @IBOutlet weak var imageVIew_certi: UIImageView!
     
+    @IBOutlet weak var imageView_description: UIImageView!
+    
     var isStudent = true
     
     override func viewDidLoad() {
@@ -38,6 +40,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             self.text_departmetn.placeholder = "ex) 삼성전자, 스타트업, 프리랜서, 개인병원, 고등학교"
             self.label_certificate.text = "직장 인증"
             self.label_certiDetail.text = "사원증, 명함, 사업자등록증, 자격증, 면허증 등 첨부해주세요 !"
+            self.imageView_description.image = UIImage(named: "descriptIon_register2")
         }
     }
     

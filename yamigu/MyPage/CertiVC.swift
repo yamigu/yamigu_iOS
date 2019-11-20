@@ -24,6 +24,7 @@ class CertiVC: UIViewController {
     @IBOutlet weak var button_certiBelong: UIButton!
     
     var userDict = Dictionary<String, Any>()
+    var isStudent = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,60 +79,7 @@ class CertiVC: UIViewController {
         self.postRequestImage("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
     }
     
-    func getUserInfo(urlString : String) {
-        guard let url = URL(string: urlString) else {return}
-        
-        var request = URLRequest(url: url)
-        
-        request.httpMethod = "get"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-        
-        let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
-            
-            print(response)
-            
-            guard error == nil && data != nil else {
-                if let err = error {
-                    print(err.localizedDescription)
-                }
-                return
-            }
-            
-            if let data = data {
-                do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-                    print(json)
-                    
-                    guard let newValue = json as? Dictionary<String, Any> else {
-                        print("invalid format")
-                        return
-                        
-                    }
-                    
-                    self.userDict = newValue
-                    
-                    DispatchQueue.main.async {
-                        if newValue["is_student"] as? Int == 0 {
-                            self.label_belong.text = "직업 입력"
-                            self.tf_belong.placeholder = "ex) 직장인, 디자이너, 치과의사, 선생님"
-                            self.label_department.text = "회사 입력"
-                            self.tf_belong.placeholder = "ex) 삼성전자, 스타트업, 프리랜서, 개인병원, 고등학교"
-                            self.label_certificate.text = "직장 인증"
-                            self.label_certiDetail.text = "사원증, 명함, 사업자등록증, 자격증, 면허증 등 첨부해주세요 !"
-                        }
-                        
-                    }
-                } catch {
-                    print(error)
-                    
-                }
-            }
-            
-        })
-        task.resume()
-    }
+    
     
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
         
@@ -236,11 +184,19 @@ class CertiVC: UIViewController {
 extension CertiVC : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func setupUI() {
-        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
         
         let backButton = UIBarButtonItem()
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        if !isStudent {
+            self.label_belong.text = "직업 입력"
+            self.tf_belong.placeholder = "ex) 직장인, 디자이너, 치과의사, 선생님"
+            self.label_department.text = "회사 입력"
+            self.tf_belong.placeholder = "ex) 삼성전자, 스타트업, 프리랜서, 개인병원, 고등학교"
+            self.label_certificate.text = "직장 인증"
+            self.label_certiDetail.text = "사원증, 명함, 사업자등록증, 자격증, 면허증 등 첨부해주세요 !"
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
