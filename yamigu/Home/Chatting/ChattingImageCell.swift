@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol ChattingImageCellDelegate: class {
+    func viewRecomandPlace()
+}
+
 class ChattingImageCell: UICollectionViewCell {
+    weak var delegate : ChattingImageCellDelegate?
+    
     let textView: UITextView = {
         let tv = UITextView()
         tv.text = "지역별로 야미구에서 만나기 좋은 매장을 추천해주고 있어요!\n\n아래 추천 매장에서 만나 보세요!"
@@ -76,7 +82,7 @@ class ChattingImageCell: UICollectionViewCell {
     }()
     
     let shopButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.titleLabel?.font = UIFont.init(name: "Binggrae", size: 14)
@@ -87,11 +93,19 @@ class ChattingImageCell: UICollectionViewCell {
         button.layer.cornerRadius = 2
         button.layer.masksToBounds = true
         button.backgroundColor = UIColor.white
+        button.isUserInteractionEnabled = true
+        
         
         return button
     }()
     
     var bubbleWidthAnchor: NSLayoutConstraint?
+    
+    @objc func shopButtonPressed() {
+        print("button pressed")
+        
+        self.delegate?.viewRecomandPlace()
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,10 +113,13 @@ class ChattingImageCell: UICollectionViewCell {
         addSubview(profileImageView)
         addSubview(bubbleView)
         bubbleView.addSubview(titleLabel)
-        bubbleView.addSubview(shopButton)
+        
         addSubview(textView)
         addSubview(timeLabel)
         addSubview(nameLabel)
+        addSubview(shopButton)
+        
+        shopButton.addTarget(self, action: #selector(shopButtonPressed), for: .touchUpInside)
         
         profileImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 18).isActive = true
         profileImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true

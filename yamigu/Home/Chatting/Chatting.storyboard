@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bdx-5j-wya">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bdx-5j-wya">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -105,6 +105,7 @@
                         <outlet property="collectionView" destination="i6I-mQ-vrb" id="83q-bi-rsW"/>
                         <outlet property="constraint_bottom" destination="wip-N2-zUS" id="gcq-7o-hML"/>
                         <outlet property="tf_message" destination="pTT-4z-iyZ" id="e8L-GD-n20"/>
+                        <segue destination="JPh-GT-tsY" kind="show" identifier="segue_place" id="ZGE-sc-swT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J6e-CB-MSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -118,6 +119,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NY2-jB-RoY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Binggrae-Bold" family="Binggrae" pointSize="16"/>
                             <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -131,11 +133,64 @@
             </objects>
             <point key="canvasLocation" x="-274" y="-581"/>
         </scene>
+        <!--미팅하기 좋은 매장-->
+        <scene sceneID="Ais-tP-JW3">
+            <objects>
+                <viewController title="미팅하기 좋은 매장" modalPresentationStyle="fullScreen" id="JPh-GT-tsY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AdZ-eZ-N39">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1259"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iZa-DE-Bfo">
+                                <rect key="frame" x="0.0" y="44" width="414" height="1215"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJF-v2-uU1">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1170"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_place_list" translatesAutoresizingMaskIntoConstraints="NO" id="ONE-WJ-ylL">
+                                                <rect key="frame" x="37.666666666666657" y="13" width="339" height="1157"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1170" id="U6E-Wl-DRw"/>
+                                            <constraint firstItem="ONE-WJ-ylL" firstAttribute="centerX" secondItem="ZJF-v2-uU1" secondAttribute="centerX" id="hLw-eC-ZqO"/>
+                                            <constraint firstItem="ONE-WJ-ylL" firstAttribute="top" secondItem="ZJF-v2-uU1" secondAttribute="top" constant="13" id="nlT-Oq-Q4q"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ZJF-v2-uU1" firstAttribute="width" secondItem="iZa-DE-Bfo" secondAttribute="width" id="6dd-4r-9FW"/>
+                                    <constraint firstItem="ZJF-v2-uU1" firstAttribute="leading" secondItem="iZa-DE-Bfo" secondAttribute="leading" id="SnC-6s-1te"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZJF-v2-uU1" secondAttribute="bottom" id="oDH-WD-HUe"/>
+                                    <constraint firstItem="ZJF-v2-uU1" firstAttribute="top" secondItem="iZa-DE-Bfo" secondAttribute="top" id="qhH-Ro-bAj"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZJF-v2-uU1" secondAttribute="trailing" id="ryF-B2-dbC"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iZa-DE-Bfo" firstAttribute="width" secondItem="AdZ-eZ-N39" secondAttribute="width" id="2Td-gz-aop"/>
+                            <constraint firstItem="Av3-Gc-xtd" firstAttribute="trailing" secondItem="iZa-DE-Bfo" secondAttribute="trailing" id="G9U-ub-92O"/>
+                            <constraint firstItem="Av3-Gc-xtd" firstAttribute="bottom" secondItem="iZa-DE-Bfo" secondAttribute="bottom" id="fxs-oh-hAi"/>
+                            <constraint firstItem="iZa-DE-Bfo" firstAttribute="top" secondItem="Av3-Gc-xtd" secondAttribute="top" id="suJ-Xg-osJ"/>
+                            <constraint firstItem="iZa-DE-Bfo" firstAttribute="leading" secondItem="Av3-Gc-xtd" secondAttribute="leading" id="wfH-b1-7M0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Av3-Gc-xtd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nCw-jy-huN"/>
+                    <size key="freeformSize" width="414" height="1259"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PJ8-kV-7MD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1714" y="-368"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bar_icon_back" width="22" height="22"/>
         <image name="bar_item_exit" width="23" height="23"/>
         <image name="icon_chatting_alarm" width="30" height="30"/>
         <image name="icon_send" width="24" height="24"/>
+        <image name="image_place_list" width="339" height="1157"/>
     </resources>
 </document>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -115,6 +115,11 @@
                         <constraint firstItem="8Wd-mC-vKA" firstAttribute="centerX" secondItem="eMU-sz-ige" secondAttribute="centerX" id="wC0-UT-fUW"/>
                         <constraint firstItem="Ezc-SM-3sW" firstAttribute="top" secondItem="8Wd-mC-vKA" secondAttribute="bottom" constant="14" id="yRF-0Y-MhF"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="22" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="ALy-PD-M2h">
                     <rect key="frame" x="18" y="210.5" width="42" height="42"/>
@@ -148,6 +153,11 @@
                         <constraint firstItem="Oof-PK-0Wl" firstAttribute="centerX" secondItem="ZFJ-nT-tCf" secondAttribute="centerX" id="bIB-cO-2GB"/>
                         <constraint firstAttribute="height" constant="164" id="j7k-7k-AfH"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오후 04:22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fUn-O5-ZyA">
                     <rect key="frame" x="305" y="181.5" width="49" height="12"/>
@@ -185,6 +195,6 @@
     </objects>
     <resources>
         <image name="chatting_description" width="210" height="144"/>
-        <image name="sample_profile" width="70" height="70"/>
+        <image name="sample_profile" width="92" height="92"/>
     </resources>
 </document>

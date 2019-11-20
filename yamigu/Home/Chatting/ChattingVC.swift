@@ -10,6 +10,10 @@ import UIKit
 import FirebaseDatabase
 
 class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
+   
+    
+    
+    
     
     @IBOutlet weak var button_send: UIButton!
     
@@ -229,7 +233,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         if (message["message"] as! String) == "###manager-place-content###" {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "shopCell", for: indexPath) as! ChattingImageCell
-            
+            cell.delegate = self
             let dateString =  "\(message["time"]!)"
             let dateDoube = Double(dateString)! / 1000.0
             print("datedouble = \(dateDoube)")
@@ -241,7 +245,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             cell.timeLabel.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
             
             cell.profileImageView.downloaded(from: "\(self.managerData["manager_profile"]!)")
-            
+            cell.profileImageView.contentMode = .scaleToFill
             return cell
         }
         
@@ -275,6 +279,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(message["message"] as! String).width + 32
+            
+            cell.profileImageView.contentMode = .scaleToFill
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellLeftId, for: indexPath) as! ChattingLeftCell
@@ -305,6 +311,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(message["message"] as! String).width + 32
+            cell.profileImageView.contentMode = .scaleToFill
             return cell
         }
         
@@ -353,6 +360,9 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         profileImageView.downloaded(from: "\(self.managerData["manager_profile"]!)")
         profileImageVIew2.downloaded(from: "\(self.managerData["manager_profile"]!)")
+        
+        profileImageView.contentMode = .scaleToFill
+        profileImageVIew2.contentMode = .scaleToFill
         
         label_name.text = "야미구 매니저 \(self.managerData["manager_name"]!)"
         label_name2.text = "야미구 매니저 \(self.managerData["manager_name"]!)"
@@ -636,5 +646,11 @@ extension ChattingVC {
                 }
             }
         }.resume()
+    }
+}
+
+extension ChattingVC: ChattingImageCellDelegate {
+    func viewRecomandPlace() {
+        self.performSegue(withIdentifier: "segue_place", sender: self)
     }
 }
