@@ -371,7 +371,11 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                     cell.button_applyTeam.setAttributedTitle(myAttrString, for: .normal)
                 }
                 
+                cell.backgroundColor = UIColor.white
+                
             } else {
+                cell.backgroundColor = UIColor(rgb: 0xFFF9F6)
+                
                 cell.view_bottom.isHidden = false
                 cell.constraint_bottomHeight.constant = 40.0
                 cell.layoutIfNeeded()
@@ -467,143 +471,11 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                                 
                                 
                             }
-                            
-                            
-                            
                         }
                     }
             
             }
-            /*cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
-            cell.label_place.text = meetingDict["place_type_name"] as! String
             
-            
-            
-            
-            if !(meetingDict["is_matched"] as! Bool) {
-                cell.view_bottom.isHidden = true
-                cell.constraint_bottomHeight.constant = 0.0
-                cell.layoutIfNeeded()
-                
-                cell.button_applyTeam.isHidden = false
-                cell.button_watingTeam.isHidden = true
-                cell.button_edit.isHidden = false
-                
-                cell.label_isMatched.isHidden = true
-                
-                cell.label_matchingDepart.isHidden = true
-                cell.label_matchingName.isHidden = true
-                
-                
-                var received = Dictionary<String, Any>()
-                received = meetingDict["received_request"] as! Dictionary<String, Any>
-                
-                var received_request = Array<Dictionary<String, Any>>()
-                
-                received_request = received["data"] as! Array<Dictionary<String, Any>>
-                
-                if received_request.count == 0 {
-                    //cell.label_teamCount.isHidden = true
-                    cell.label_teamCount.isHidden = false
-                    cell.label_teamCount.text = "\(received_request.count)팀 신청!"
-                } else {
-                    cell.label_teamCount.isHidden = false
-                    cell.label_teamCount.text = "\(received_request.count)팀 신청!"
-                }
-                
-            } else {
-                cell.view_bottom.isHidden = false
-                cell.constraint_bottomHeight.constant = 44.0
-                cell.layoutIfNeeded()
-                
-                cell.button_applyTeam.isHidden = true
-                cell.button_watingTeam.isHidden = true
-                cell.button_edit.isHidden = true
-                
-                cell.label_isMatched.isHidden = false
-                cell.label_teamCount.isHidden = true
-                
-                cell.label_matchingDepart.isHidden = false
-                cell.label_matchingName.isHidden = false
-                
-                
-                var matchingId = ""
-                
-                var received = Dictionary<String, Any>()
-                var sent = Dictionary<String, Any>()
-                
-                received = meetingDict["received_request"] as! Dictionary<String, Any>
-                sent = meetingDict["sent_request"] as! Dictionary<String, Any>
-                
-                var received_request = Array<Dictionary<String, Any>>()
-                var sent_request = Array<Dictionary<String, Any>>()
-                
-                received_request = received["data"] as! Array<Dictionary<String, Any>>
-                sent_request = sent["data"] as! Array<Dictionary<String, Any>>
-                
-                for dict in received_request {
-                    if (dict["is_selected"] as! Bool) {
-                        matchingId = "\(dict["id"]!)"
-                    }
-                }
-                
-                for dict in sent_request {
-                    if (dict["is_selected"] as! Bool) {
-                        matchingId = "\(dict["id"]!)"
-                    }
-                }
-                
-                self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
-                    print("count = \(count)")
-                    if count == 0 {
-                        cell.label_chattingCount.isHidden = true
-                    } else {
-                        cell.label_chattingCount.isHidden = false
-                        cell.label_chattingCount.text = "\(count)"
-                    }
-                }
-                
-                let matchDict = meetingDict["matched_meeting"] as! Dictionary<String, Any>
-                
-                let matchAge = matchDict["openby_age"] as! String
-                let matchName = matchDict["openby_nickname"] as! String
-                let matchBelong = matchDict["openby_belong"] as! String
-                let matchDepart = matchDict["openby_department"] as! String
-                
-                cell.label_matchingName.text = matchName + " (\(matchAge))"
-                cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
-                ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
-                    for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                            let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
-                            let time = value["time"]!
-                            print("time \(time)")
-                            
-                            let dateString = "\(time)"
-                            let dateDoube = Double(dateString)! / 1000.0
-                            print("datedouble = \(dateDoube)")
-                            let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
-                            
-                            let dateFomatter = DateFormatter(format: "a H:mm")
-                            dateFomatter.locale = Locale(identifier: "ko_kr")
-                            dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-                            cell.label_chattingTime.text = dateFomatter.string(from: date)
-                            
-                            
-                            if let message = value["message"] as? String {
-                                DispatchQueue.main.async {
-                                    //
-                                    cell.label_lastChat.text = message
-                                }
-                                
-                                
-                            }
-                            
-                            
-                            
-                        }
-                    }
-                }
-            */
             let dateString = meetingDict["date"] as! String
             let dateFormatter = DateFormatter()
             
@@ -615,38 +487,21 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             dateFormatter.timeZone = TimeZone(abbreviation: "KST")
             cell.label_day.text = dateFormatter.string(from: date!)
             
-            /*if daysBetween(start: Date(), end: date!) == 0 {
-                cell.label_dday.text = "today"
+            let type = Int((meetingDict["meeting_type"] as! Int))
+            var textColor = UIColor.white
+            if type == 1 {
+                cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical")
+                cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical")
+            } else if type == 2 {
+                cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical2")
+                cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical2")
             } else {
-                cell.label_dday.text = "D-\(daysBetween(start: Date(), end: date!))"
-            }*/
-            /*
-            if cell.label_type.text == "2:2 미팅" {
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF7B22)
-                cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF7B22)
-                cell.button_edit.tintColor = UIColor(rgb: 0xFF7B22)
-                cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF7B22)
-                cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF7B22)
-                cell.label_isMatched.textColor = UIColor(rgb: 0xFF7B22)
-                cell.image_bottom.image = UIImage(named: "orange_bar")
-            } else if cell.label_type.text == "3:3 미팅" {
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF6024)
-                cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF6024)
-                cell.button_edit.tintColor = UIColor(rgb: 0xFF6024)
-                cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF6024)
-                cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF6024)
-                cell.image_bottom.image = UIImage(named: "orange_bar_2")
-                cell.label_isMatched.textColor = UIColor(rgb: 0xFF6024)
-            } else {
-                cell.label_type.backgroundColor = UIColor(rgb: 0xFF4600)
-                cell.view_backgroundMonth.backgroundColor = UIColor(rgb: 0xFF4600)
-                cell.button_edit.tintColor = UIColor(rgb: 0xFF4600)
-                cell.button_applyTeam.tintColor = UIColor(rgb: 0xFF4600)
-                cell.button_watingTeam.tintColor = UIColor(rgb: 0xFF4600)
-                cell.image_bottom.image = UIImage(named: "orange_bar_3")
-                cell.label_isMatched.textColor = UIColor(rgb: 0xFF4600)
+                cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical3")
+                cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical3")
             }
-            */
+            
+            
+            
             // review cell
             let reviewCell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
             reviewCell.delegate = self

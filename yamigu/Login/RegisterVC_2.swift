@@ -90,11 +90,11 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
         
             print("\(self.textField_nickName.text!)")
             self.userDict["nickname"] = self.textField_nickName.text!
-            self.userDict["real_name"] = "김신욱"
-            self.userDict["gender"] = 1
-            self.userDict["phone"] = "010-2512-8143"
+            //self.userDict["real_name"] = "김신욱"
+            //self.userDict["gender"] = 1
+            //self.userDict["phone"] = "010-2512-8143"
             self.userDict["is_student"] = isCollage
-            self.userDict["age"] = 20
+            //self.userDict["age"] = 20
             
             performSegue(withIdentifier: "segue_register3", sender: self)
             

@@ -696,7 +696,7 @@
                         <outlet property="label_department" destination="d5M-V7-oMI" id="FgY-uZ-VlU"/>
                         <outlet property="text_belong" destination="gZ7-88-Dki" id="DNw-fR-kQU"/>
                         <outlet property="text_departmetn" destination="AqR-v7-7kz" id="SKk-pK-igB"/>
-                        <segue destination="Fgn-d0-dpk" kind="show" identifier="segue_main" id="F4E-gg-26S"/>
+                        <segue destination="Fgn-d0-dpk" kind="presentation" identifier="segue_main" id="F4E-gg-26S"/>
                         <segue destination="6Os-WD-Whw" kind="show" identifier="segue_loginCheck" id="Nk1-d4-ScY"/>
                     </connections>
                 </viewController>

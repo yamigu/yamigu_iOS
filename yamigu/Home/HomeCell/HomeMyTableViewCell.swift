@@ -39,6 +39,8 @@ class HomeMyTableViewCell: UITableViewCell {
     @IBOutlet weak var view_bottom: UIView!
     @IBOutlet weak var view_backgroundMonth: UIView!
     @IBOutlet weak var image_bottom: UIImageView!
+    @IBOutlet weak var image_view_bar1: UIImageView!
+    @IBOutlet weak var image_view_bar2: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

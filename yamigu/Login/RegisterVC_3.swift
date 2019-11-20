@@ -123,7 +123,8 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         json["belong"] = userDict["belong"] as! String
         json["department"] = userDict["department"] as! String
         json["age"] = userDict["age"] as! Int
-        json["cert_img"] = userDict["cert_img"] as! Data
+        //
+        //json["cert_img"] = userDict["cert_img"] as! Data
         
         self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
         

@@ -9,10 +9,14 @@
 import UIKit
 import KakaoCommon
 import KakaoOpenSDK
+import WebKit
 
-class RegisterVC_1: UIViewController {
+class RegisterVC_1: UIViewController , WKNavigationDelegate{
     
     var isLogined = true
+    var webView = WKWebView()
+    
+    var userDict = Dictionary<String,Any>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +26,16 @@ class RegisterVC_1: UIViewController {
     
     @IBAction func verificationBtnPressed(_ sender: Any) {
         if !isLogined {
-            performSegue(withIdentifier: "segue_register2", sender: self)
+            //performSegue(withIdentifier: "segue_register2", sender: self)
+            webView.frame = self.view.frame
+            self.view.addSubview(webView)
+            webView.navigationDelegate = self
+            
+            guard let url = URL(string:"http://106.10.39.154:5000/checkplus_main") else {return}
+
+            let request = URLRequest(url: url)
+
+            webView.load(request)
         }
         
     }
@@ -164,4 +177,67 @@ class RegisterVC_1: UIViewController {
         task.resume()
     }
     
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        if let response = navigationResponse.response as? HTTPURLResponse {
+            let headers = response.allHeaderFields
+            //do something with headers
+            //print(headers)
+            
+            
+        }
+        decisionHandler(.allow)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue_register2" {
+            let desVC:RegisterVC_2 = segue.destination as! RegisterVC_2
+            desVC.userDict = self.userDict
+        }
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        webView.evaluateJavaScript("document.getElementsByTagName('pre')[0].innerHTML") { innerHTML, error in
+            
+            if let html = innerHTML {
+                let htmlString = html as! String
+                let data = htmlString.data(using: .utf8)!
+                do {
+                    if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,Any>
+                    {
+                       print(jsonArray) // use the json here
+                        self.userDict = jsonArray
+                        
+                        let birthDayString = jsonArray["birthdate"] as! String
+                        self.userDict["real_name"] = jsonArray["name"] as! String
+                        self.userDict["phone"] = jsonArray["mobileno"] as! String
+                        self.userDict["gender"] = Int(jsonArray["gender"] as! String)
+                        
+                        self.userDict["age"] = self.calcAge(birthday: birthDayString)
+                        
+                        self.performSegue(withIdentifier: "segue_register2", sender: self)
+                    } else {
+                        print("bad json")
+                    }
+                } catch let error as NSError {
+                    print(error)
+                }
+                
+            }
+            
+            
+        }
+    }
+    
+    func calcAge(birthday: String) -> Int {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyyMMdd"
+        let birthdayDate = dateFormater.date(from: birthday)
+        let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
+        let now = Date()
+        let calcAge = calendar.components(.year, from: birthdayDate!, to: now, options: [])
+        let age = calcAge.year
+        return age!
+    }
+    
 }
+

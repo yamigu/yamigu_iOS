@@ -213,6 +213,8 @@
                 <outlet property="button_applyTeam" destination="mnM-dJ-HkU" id="rLh-oh-2eK"/>
                 <outlet property="button_edit" destination="WgK-cf-gds" id="cnS-7w-p3K"/>
                 <outlet property="constraint_bottomHeight" destination="M1w-dH-wlv" id="yof-eL-6h2"/>
+                <outlet property="image_view_bar1" destination="tgg-I9-3Qw" id="ESa-tJ-Ar2"/>
+                <outlet property="image_view_bar2" destination="Tly-0Y-YkQ" id="8KZ-x6-ZxL"/>
                 <outlet property="label_chattingCount" destination="rHJ-9K-lwe" id="bwt-P1-v8X"/>
                 <outlet property="label_chattingTime" destination="kgy-nU-eNN" id="XwG-3X-Hju"/>
                 <outlet property="label_day" destination="lEh-fP-UHt" id="Mp5-lU-oqm"/>
