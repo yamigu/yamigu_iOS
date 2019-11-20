@@ -75,7 +75,7 @@ class CertiVC: UIViewController {
         var jsonImg = Dictionary<String, Data>()
         //jsonImg["uploaded_file"] = self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
         jsonImg.updateValue(self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!, forKey: "uploaded_file")
-//
+
         self.postRequestImage("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
     }
     
