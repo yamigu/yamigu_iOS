@@ -189,6 +189,8 @@ class HomeVC: UIViewController {
                         
                         if self.myMeetings.count != 0 {
                             self.button_addMeeting.isHidden = true
+                        } else {
+                            self.button_addMeeting.isHidden = false
                         }
                         
                         self.myMeetingTableView.reloadData()
@@ -244,6 +246,8 @@ class HomeVC: UIViewController {
                         
                         if self.reviewMeetings.count != 0 {
                             self.button_addMeeting.isHidden = true
+                        } else {
+                            self.button_addMeeting.isHidden = false
                         }
                         
                         self.myMeetingReviewTableView.reloadData()
@@ -430,7 +434,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 
                 if received_request.count == 0 {
                     let myAttribute = [ NSAttributedString.Key.foregroundColor: textColor, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ] as [NSAttributedString.Key : Any]
-                    let myAttrString = NSAttributedString(string: "신청팀보기", attributes: myAttribute)
+                    let myAttrString = NSAttributedString(string: "신청팀보기 (0)", attributes: myAttribute)
                     cell.button_applyTeam.setAttributedTitle(myAttrString, for: .normal)
                 } else {
                     let myAttribute = [ NSAttributedString.Key.foregroundColor: textColor, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ] as [NSAttributedString.Key : Any]

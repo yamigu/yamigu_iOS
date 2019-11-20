@@ -45,10 +45,6 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
         if let presendtindVC = self.presentingViewController {
             let mainTC = presendtindVC  as! MainTC
             let homeController = mainTC.viewControllers![0] as! HomeVC
@@ -58,6 +54,10 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
             }
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
         
     }
     

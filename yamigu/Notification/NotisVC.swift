@@ -41,12 +41,13 @@ extension NotisVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return alarmCount
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
+        let alarmDic = alarmDicts[indexPath.section]
         
         return cell
     }

@@ -9,14 +9,34 @@
 import UIKit
 import KakaoCommon
 import KakaoOpenSDK
+import FirebaseDatabase
+
+var alarmDicts = Array<Dictionary<String, Any>>()
+var alarmCount = 0
 
 class MainTC: UITabBarController {
     
     let menuButton = UIButton(frame: CGRect.zero)
+    
+    var ref: DatabaseReference!
+    var refHandle : DatabaseHandle!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMiddleButton()
+        
+        ref = Database.database().reference()
+        /*refHandle = ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").observe(.value, with: { (snapshot) in
+            if let dictionary = snapshot.children.allObjects as? [DataSnapshot] {
+                
+                for dict in dictionary {
+                    let data = dict.value as! Dictionary<String, Any>
+                    alarmDicts.append(data)
+                    print("data = \(data)")
+                }
+                
+            }
+        })*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
