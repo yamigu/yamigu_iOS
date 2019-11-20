@@ -187,6 +187,10 @@ class HomeVC: UIViewController {
                         //                            self.topConstraint.constant = 15.5
                         //                        }
                         
+                        if self.myMeetings.count != 0 {
+                            self.button_addMeeting.isHidden = true
+                        }
+                        
                         self.myMeetingTableView.reloadData()
                         let tabbarController = self.tabBarController as! MainTC
                         tabbarController.menuButton.setTitle("\(self.myMeetings.count)/3", for: .normal)
@@ -237,12 +241,9 @@ class HomeVC: UIViewController {
                             self.reviewMeetings.append(value)
                         }
                         
-                        if self.reviewMeetings.count == 0 && self.myMeetings.count == 0 {
-                            self.button_addMeeting.isHidden = false
-                            self.topConstraint.constant = 107
-                        } else {
+                        
+                        if self.reviewMeetings.count != 0 {
                             self.button_addMeeting.isHidden = true
-                            self.topConstraint.constant = 15.5
                         }
                         
                         self.myMeetingReviewTableView.reloadData()
@@ -702,8 +703,8 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             
             
             // review cell
-            let reviewCell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
-            reviewCell.delegate = self
+            //let reviewCell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
+            //reviewCell.delegate = self
             /*if daysBetween(start: Date(), end: date!) == 0 {
              cell.label_dday.text = "today"
              } else {

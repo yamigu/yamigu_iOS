@@ -378,14 +378,6 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
 
             }
             
-            if meetingObj["is_matched"] as! Bool {
-                cell.label_type.text = "매칭완료"
-                //cell.label_type.backgroundColor = UIColor(rgb: 0x707070)
-                cell.image_bottomBar.image = UIImage(named: "gray_bar")
-                cell.button_meeting.backgroundColor = UIColor(rgb: 0x707070)
-
-            }
-            
             let dateString = meetingObj["date"] as! String
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -409,6 +401,26 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
             cell.label_belong.text = belong + ", " + department
             
             cell.textview_detail.text = meetingObj["appeal"] as! String
+            
+            if meetingObj["is_matched"] as! Bool {
+                //cell.label_type.text = "매칭완료"
+                //cell.label_type.backgroundColor = UIColor(rgb: 0x707070)
+                cell.label_place.text = "매칭 완료"
+                
+                cell.label_place.textColor = UIColor(rgb: 0x707070)
+                cell.label_type.textColor = UIColor(rgb: 0x707070)
+                cell.label_date.textColor = UIColor(rgb: 0x707070)
+                
+                for underline in cell.textUnderline {
+                    underline.backgroundColor = UIColor(rgb: 0x707070)
+                }
+                
+                cell.view_textContainer.bordercolor = UIColor(rgb: 0x707070)
+                
+                cell.image_bottomBar.image = UIImage(named: "gray_bar")
+                cell.button_meeting.backgroundColor = UIColor(rgb: 0x707070)
+
+            }
             
         }
         
@@ -986,7 +998,7 @@ extension WatingVC: WatingTableViewDelegate {
                             let myMeeting_type = "\(myMeeting["meeting_type"]!)"
                             let myMeeting_place = "\(myMeeting["place_type"]!)"
                             
-                            if ((myMeeting_type != meeting_type) || myMeeting_place != place) {
+                            if ((myMeeting_type != meeting_type)) {
                                 self.view.makeToast("미팅 신청이 불가능합니다!")
                             } else {
                                 self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
