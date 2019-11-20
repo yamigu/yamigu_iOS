@@ -822,7 +822,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from:dateString)
-        
+        dateFormatter.locale = Locale(identifier: "ko_kr")
+        dateFormatter.timeZone = TimeZone(abbreviation: "KST")
         dateFormatter.dateFormat = "MM월 dd일 (EE)"
         
         if let imageUrl = URL(string: "\(meetingDict["openby_profile"]!)") {
