@@ -244,6 +244,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 self.label_title.text = "자신과 친구들을 표현해 주세요!"
                 
+                self.navigationItem.title = "미팅 수정"
             }
             
             

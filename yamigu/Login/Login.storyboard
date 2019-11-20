@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIM-ZU-Fn3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIM-ZU-Fn3">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -639,7 +639,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="descriptIon_register" translatesAutoresizingMaskIntoConstraints="NO" id="uyi-ng-Igb">
-                                <rect key="frame" x="90" y="434.66666666666669" width="234" height="89.000000000000057"/>
+                                <rect key="frame" x="53" y="434.66666666666669" width="308" height="89.000000000000057"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Tq-kz-BLs">
                                 <rect key="frame" x="301" y="625" width="70" height="29"/>
@@ -690,6 +690,7 @@
                         <outlet property="button_certi" destination="USI-YE-iFb" id="PL5-Y1-PGa"/>
                         <outlet property="button_go" destination="CNP-y6-SMn" id="JhR-Lk-QSB"/>
                         <outlet property="imageVIew_certi" destination="Y4x-e6-pVZ" id="01K-Ee-B8j"/>
+                        <outlet property="imageView_description" destination="uyi-ng-Igb" id="ww1-N8-NLs"/>
                         <outlet property="label_belong" destination="Kdi-7a-c6o" id="v4s-I6-uCt"/>
                         <outlet property="label_certiDetail" destination="o8w-3S-pZ2" id="O52-2e-BD6"/>
                         <outlet property="label_certificate" destination="5Kr-ze-o3d" id="FBs-qb-rNF"/>
@@ -726,7 +727,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="descriptIon_register" width="234" height="89"/>
+        <image name="descriptIon_register" width="308" height="89"/>
         <image name="icon_caution" width="40" height="40"/>
         <image name="icon_certification" width="24" height="24"/>
         <image name="icon_phone" width="167" height="167"/>

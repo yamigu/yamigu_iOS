@@ -126,18 +126,34 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
         let cell1 = self.tableView.cellForRow(at: index1)
         let cell2 = self.tableView.cellForRow(at: index2)
         
-        if( cell1!.isSelected && cell2!.isSelected && self.textField_nickName.text != "" ) {
-            if( isCollage || isOffice ) {
-                if isAvailableNickName {
-                    self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
-                    return true
+//        if( cell1!.isSelected && cell2!.isSelected && self.textField_nickName.text != "" ) {
+//            if( isCollage || isOffice ) {
+//                if isAvailableNickName {
+//                    self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
+//                    return true
+//                }
+//            } else {
+//                self.view.makeToast("소속을 선택해주세요!")
+//            }
+//        } else {
+//            self.view.makeToast("약관에 동의해주세요!")
+//        }
+        
+        if cell1!.isSelected && cell2!.isSelected {
+            if self.textField_nickName.text != "" {
+                if( isCollage || isOffice ) {
+                    if isAvailableNickName {
+                        self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
+                        return true
+                    }
+                } else {
+                    self.view.makeToast("소속을 선택해주세요!")
                 }
-            } else {
-                self.view.makeToast("소속을 선택해주세요!")
             }
         } else {
             self.view.makeToast("약관에 동의해주세요!")
         }
+        
         self.button_certi.backgroundColor = UIColor(rgb: 0xC6C6C6)
         return false
     }
@@ -174,7 +190,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
                             self.isAvailableNickName = true
                             self.label_check.text = "사용 가능합니다."
                             self.label_check.textColor = UIColor.blue
-                            //self.check()
+                            self.check()
                         } else {
                             self.isAvailableNickName = false
                             self.label_check.text = "사용 불가능합니다."

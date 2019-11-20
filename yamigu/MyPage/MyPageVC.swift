@@ -31,7 +31,9 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var button_notification: UIButton!
     @IBOutlet weak var button_tickets: UIButton!
     
-    var isStudent = false
+    var userDict = Dictionary<String, Any>()
+    
+    var isStudent = true
     var isChanged = false
     
     override func viewDidLoad() {
@@ -209,6 +211,8 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
                         
                     }
                     
+                    self.userDict = newValue
+                    
                     DispatchQueue.main.async {
                         if "\(newValue["nickname"]!)" == "<null>" {
                             print("is null")
@@ -222,7 +226,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
                             
                             if newValue["openby_profile"] != nil {
                                 if let imageUrl = URL(string: "\(newValue["openby_profile"]!)") {
-                                    print("openby_profile = \(newValue["openby_profile"]!)")
+                                    
                                     self.image_profile.downloaded(from: imageUrl)
                                     self.image_profile.contentMode = .scaleAspectFill
                                 }
@@ -296,7 +300,18 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         }.resume()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue_certi" {
+            let desVC: CertiVC = segue.destination as! CertiVC
+            desVC.userDict = self.userDict
+            desVC.isStudent = self.isStudent
+        }
+    }
+    
+    
     @IBAction func certiBelongBtnPressed(_ sender: Any) {
+        isStudent = self.userDict["is_student"] as! Bool
+        
         self.performSegue(withIdentifier: "segue_certi", sender: self)
     }
     
