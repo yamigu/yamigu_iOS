@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import Cosmos
 
 protocol HomeReviewDelegate: class {
-    func sendReview()
-    func sendRatings()
+    func sendReview(review: String)
+    func skipReview()
 }
 
 class HomeReviewCell: UITableViewCell {
@@ -21,18 +20,11 @@ class HomeReviewCell: UITableViewCell {
     @IBOutlet weak var label_meetingDate: UILabel!
     @IBOutlet weak var button_writeReview: UIButton!
     
-    @IBOutlet weak var ratingsContainerView: UIView!
-    @IBOutlet weak var ratingLook: CosmosView!
-    @IBOutlet weak var ratingFun: CosmosView!
-    @IBOutlet weak var ratingManner: CosmosView!
-    
     @IBOutlet weak var textReviewContainerView: UIView!
     @IBOutlet weak var textview_review: UITextView!
-    @IBOutlet weak var button_skip: UIButton!
     
-    var ratedLook = 0.0
-    var ratedFun = 0.0
-    var ratedManner = 0.0
+    @IBOutlet var button_skip: [UIButton]!
+    
     
     @IBOutlet weak var writeReviewEndView: UIView!
     
@@ -42,32 +34,7 @@ class HomeReviewCell: UITableViewCell {
         
         setupUI()
         
-        ratingLook.didTouchCosmos = { rating in
-            self.ratedLook = rating
-            print("ratedLook: \(self.ratedLook)")
-        }
         
-        ratingFun.didTouchCosmos = { rating in
-            self.ratedFun = rating
-            print("ratedFun: \(self.ratedFun)")
-        }
-        
-        ratingManner.didTouchCosmos = { rating in
-            self.ratedManner = rating
-            print("ratedManner: \(self.ratedManner)")
-        }
-        
-        ratingLook.didFinishTouchingCosmos = { rating in
-            self.checkRatingDone()
-        }
-        
-        ratingFun.didFinishTouchingCosmos = { rating in
-            self.checkRatingDone()
-        }
-        
-        ratingManner.didFinishTouchingCosmos = { rating in
-            self.checkRatingDone()
-        }
     }
     
 
@@ -77,41 +44,38 @@ class HomeReviewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func checkRatingDone() {
-        if ratedLook != 0.0 && ratedFun != 0.0 && ratedManner != 0.0 {
-            textReviewContainerView.isHidden = false
-            self.bringSubviewToFront(textReviewContainerView)
-            
-            delegate?.sendRatings()
-        }
-    }
     
     @IBAction func writeReviewBtnPressed(_ sender: Any) {
-        ratingsContainerView.isHidden = false
-        self.bringSubviewToFront(ratingsContainerView)
+        textReviewContainerView.isHidden = false
+        self.bringSubviewToFront(textReviewContainerView)
     }
     
     
     @IBAction func sendToYamiguBtnPressed(_ sender: Any) {
         writeReviewEndView.isHidden = false
         
-        delegate?.sendReview()
+        delegate?.sendReview(review: textview_review.text)
     }
     
     @IBAction func skipBtnPressed(_ sender: Any) {
         writeReviewEndView.isHidden = false
+        
+        delegate?.skipReview()
     }
     
 }
 
 extension HomeReviewCell: UITextViewDelegate {
     func setupUI() {
-        ratingsContainerView.isHidden = true
         textReviewContainerView.isHidden = true
         writeReviewEndView.isHidden = true
         
         textview_review.delegate = self
         textview_review.textContainerInset = UIEdgeInsets(top: 10, left: 13, bottom: 10, right: 13)
+        
+        for i in 0...1 {
+            self.button_skip[i].underline()
+        }
     }
     
     func textViewSetupView() {
