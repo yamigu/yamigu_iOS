@@ -93,44 +93,52 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
     }
     
     @IBAction func goBtnPressed(_ sender: Any) {
-        userDict["belong"] = self.text_belong.text
-        userDict["department"] = self.text_departmetn.text
-//        guard let imageData = self.imageVIew_certi.image!.jpegData(compressionQuality: 1.0) else {
-//            return
-//        }
-//
-//        let boundary = "Boundary-\(NSUUID().uuidString)"
-//        let body = NSMutableData()
-//        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
-//        body.append(NSString(format: "Content-Disposition: form-data; name=\"api_token\"\r\n\r\n" as NSString).data(using: String.Encoding.utf8.rawValue)!)
-//        body.append(NSString(format: (UserDefaults.standard.string(forKey: "api_token")! as NSString)).data(using: String.Encoding.utf8.rawValue)!)
-//        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
-//        body.append(NSString(format:"Content-Disposition: form-data; name=\"profile_img\"; filename=\"testfromios.jpg\"\r\n").data(using: String.Encoding.utf8.rawValue)!)
-//        body.append(NSString(format: "Content-Type: application/octet-stream\r\n\r\n").data(using: String.Encoding.utf8.rawValue)!)
-//        body.append(imageData)
-//        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
-//
-//        userDict["cert_img"] = body as Data
         
-        //self.postRequest("http://147.47.208.44:9999/api/auth/signup", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
-        //self.postRequest("http://147.47.208.44:9999/api/auth/signup/", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
-        
-        let bodyString = "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))&cert_img=\(String(describing: userDict["cert_img"]))"
-        
-        var json = Dictionary<String, Any>()
-        json["nickname"] = userDict["nickname"] as! String
-        json["real_name"] = userDict["real_name"] as! String
-        json["gender"] = userDict["gender"] as! Int
-        json["phone"] = userDict["phone"] as! String
-        json["is_student"] = userDict["is_student"] as! Bool
-        json["belong"] = userDict["belong"] as! String
-        json["department"] = userDict["department"] as! String
-        json["age"] = userDict["age"] as! Int
-        //
-        //json["cert_img"] = userDict["cert_img"] as! Data
-        
-        self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
-        
+        if imageVIew_certi.image != nil {
+            userDict["belong"] = self.text_belong.text
+                    userDict["department"] = self.text_departmetn.text
+            //        guard let imageData = self.imageVIew_certi.image!.jpegData(compressionQuality: 1.0) else {
+            //            return
+            //        }
+            //
+            //        let boundary = "Boundary-\(NSUUID().uuidString)"
+            //        let body = NSMutableData()
+            //        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+            //        body.append(NSString(format: "Content-Disposition: form-data; name=\"api_token\"\r\n\r\n" as NSString).data(using: String.Encoding.utf8.rawValue)!)
+            //        body.append(NSString(format: (UserDefaults.standard.string(forKey: "api_token")! as NSString)).data(using: String.Encoding.utf8.rawValue)!)
+            //        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+            //        body.append(NSString(format:"Content-Disposition: form-data; name=\"profile_img\"; filename=\"testfromios.jpg\"\r\n").data(using: String.Encoding.utf8.rawValue)!)
+            //        body.append(NSString(format: "Content-Type: application/octet-stream\r\n\r\n").data(using: String.Encoding.utf8.rawValue)!)
+            //        body.append(imageData)
+            //        body.append(NSString(format: "\r\n--%@\r\n", boundary).data(using: String.Encoding.utf8.rawValue)!)
+            //
+            //        userDict["cert_img"] = body as Data
+                    
+                    //self.postRequest("http://147.47.208.44:9999/api/auth/signup", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
+                    //self.postRequest("http://147.47.208.44:9999/api/auth/signup/", bodyString: "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))")
+                    
+                    let bodyString = "nickname=\(String(describing: userDict["nickname"]))&real_name=\(String(describing: userDict["real_name"]))&gender=\(String(describing: userDict["gender"]))&phone=\(String(describing: userDict["phone"]))&is_student=\(String(describing: userDict["is_student"]))&belong=\(String(describing: userDict["belong"]))&department=\(String(describing: userDict["department"]))&age=\(String(describing: userDict["age"]))&cert_img=\(String(describing: userDict["cert_img"]))"
+                    
+                    var json = Dictionary<String, Any>()
+                    json["nickname"] = userDict["nickname"] as! String
+                    json["real_name"] = userDict["real_name"] as! String
+                    json["gender"] = userDict["gender"] as! Int
+                    json["phone"] = userDict["phone"] as! String
+                    json["is_student"] = userDict["is_student"] as! Bool
+                    json["belong"] = userDict["belong"] as! String
+                    json["department"] = userDict["department"] as! String
+                    json["age"] = userDict["age"] as! Int
+                    //
+                    //json["cert_img"] = userDict["cert_img"] as! Data
+                    
+                    self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
+                    
+                    var jsonImg = Dictionary<String, Data>()
+                    //jsonImg["uploaded_file"] = self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+                    jsonImg.updateValue(self.imageVIew_certi.image!.jpegData(compressionQuality: 1.0)!, forKey: "uploaded_file")
+
+                    self.postRequestImage("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
+        }
         
     }
     
@@ -175,5 +183,65 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         }.resume()
     }
     
-    
+    func postRequestImage(_ urlString: String, bodyString: String, json: [String: Data]){
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data;boundary=*****", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("Keep-Alive", forHTTPHeaderField: "Connection")
+        request.setValue("multipart/form-data", forHTTPHeaderField: "ENCTYPE")
+        request.setValue("certiimage.jpeg", forHTTPHeaderField: "uploaded_file")
+        
+        /*if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed) {
+            //var jsonString = String(data: data, encoding: .utf8) {
+            //jsonString = jsonString.replacingOccurrences(of: "'", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: " ", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: "\n", with: "")
+            //let data = jsonString.data(using: .utf8, allowLossyConversion: false)
+            request.httpBody = data as Data
+        }*/
+        
+        var body = Data()
+        guard let imageData = self.imageVIew_certi.image!.jpegData(compressionQuality: 1.0) else {
+            print("oops")
+            return
+        }
+        
+        let lineEnd = "\r\n"
+        let twoHyphens = "--"
+        let boundary = "*****"
+        
+        // file data //
+        //body.append(("\"uploaded_file\":\"").data(using: .utf8)!)
+        //body.append(imageData as Data)
+        //body.append(("\"").data(using: .utf8)!)
+        
+        body.append((twoHyphens + boundary + lineEnd).data(using: .utf8)!)
+        body.append(("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"certiimage.jpeg\"" + lineEnd).data(using: .utf8)!)
+        body.append((lineEnd).data(using: .utf8)!)
+        body.append(imageData as Data)
+        body.append((lineEnd).data(using: .utf8)!)
+        body.append((twoHyphens + boundary + lineEnd).data(using: .utf8)!)
+        
+        request.httpBody = body
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                print(res)
+                
+            }
+            
+            DispatchQueue.main.async {
+                // 동작 실행
+                //self.navigationController?.popToRootViewController(animated: false)
+                self.dismiss(animated: true, completion: nil)
+                //self.performSegue(withIdentifier: "segue_main", sender: self)
+            }
+        }.resume()
+    }
 }

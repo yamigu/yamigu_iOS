@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import KakaoCommon
+import KakaoOpenSDK
 
 class SettingVC: UIViewController {
     
@@ -60,6 +62,8 @@ class SettingVC: UIViewController {
         logoutAlert.addAction(UIAlertAction(title: "로그아웃", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
             self.postRequest("http://106.10.39.154:9999/api/auth/logout/")
+            
+            
         }))
 
         logoutAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
@@ -112,8 +116,20 @@ class SettingVC: UIViewController {
                     }
                     
                     DispatchQueue.main.async {
+                        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                         
-                        //self.dismiss(animated: false, completion: nil)
+                        guard let session = KOSession.shared() else { return }
+                        session.logoutAndClose { (success, error) in
+                          if success {
+                            print("logout success.")
+                            //self.dismiss(animated: true, completion: nil)
+                          } else {
+                            print(error?.localizedDescription)
+                          }
+                        }
+                                                
+
+                        
                     }
                 } catch {
                     print(error)
