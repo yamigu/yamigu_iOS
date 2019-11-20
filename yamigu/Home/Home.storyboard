@@ -104,7 +104,7 @@
                                         </constraints>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjQ-Vh-4XW">
-                                        <rect key="frame" x="39.666666666666657" y="185" width="335" height="76"/>
+                                        <rect key="frame" x="32" y="185" width="350" height="76"/>
                                         <state key="normal" image="image_add_meeting"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -460,7 +460,7 @@
         <image name="icon_bell" width="20" height="24"/>
         <image name="icon_home_logo" width="121.66666412353516" height="29.333333969116211"/>
         <image name="icon_tickets" width="25" height="24"/>
-        <image name="image_add_meeting" width="335" height="76"/>
+        <image name="image_add_meeting" width="350" height="76"/>
         <image name="image_home_main" width="375.33334350585938" height="169"/>
         <image name="tabbar_home" width="21.333333969116211" height="21.333333969116211"/>
     </resources>
