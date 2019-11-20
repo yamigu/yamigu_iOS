@@ -43,11 +43,7 @@ class HomeVC: UIViewController {
     
     let meetingType = ["2:2 미팅", "3:3 미팅", "4:4 미팅"]
     let places = ["신촌/홍대", "건대/왕십리", "강남", "수원역", "인천 송도", "부산 서면"]
-    
-    var reviewDict = Dictionary<String, Any>()
-    
-    var reviewText = ""
-    
+            
     var ref: DatabaseReference!
     var refHandle : DatabaseHandle!
     
@@ -79,6 +75,9 @@ class HomeVC: UIViewController {
         
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+    }
     
     
     @IBAction func addMeetingBtnPressed(_ sender: Any) {
@@ -776,7 +775,10 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         else if tableView == self.myMeetingReviewTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
             
-            self.reviewDict = reviewMeetings[indexPath.section]
+            cell.delegate = self
+            cell.index = indexPath.section
+            
+            let reviewDict = reviewMeetings[indexPath.section]
             
             let dateString = reviewDict["date"] as! String
             let dateFormatter = DateFormatter()
@@ -1049,19 +1051,22 @@ extension HomeVC : HomeTalbeViewDelegate {
 }
 
 extension HomeVC: HomeReviewDelegate {
-    func sendReview(review: String) {
-        let id = "\(self.reviewDict["id"]!)"
-        let dict : [String: Any] = ["meeting_id" : id]
+    func sendReview(review: String, index: Int) {
+        let id = "\(self.reviewMeetings[index]["id"]!)"
+        let dict : [String: Any] = ["meeting_id" : id, "feedback" : review]
         
-        self.reviewText = review
+        self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
-        self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(self.reviewText)", json: dict)
+        self.reviewMeetings.remove(at: index)
+        self.myMeetingReviewTableView.reloadData()
+        
     }
     
     
-    func skipReview() {
-        self.reviewDict.removeAll()
+    func skipReview(index: Int) {
+        self.reviewMeetings.remove(at: index)
         self.myMeetingReviewTableView.reloadData()
+        
     }
     
 }

@@ -9,8 +9,8 @@
 import UIKit
 
 protocol HomeReviewDelegate: class {
-    func sendReview(review: String)
-    func skipReview()
+    func sendReview(review: String, index: Int)
+    func skipReview(index: Int)
 }
 
 class HomeReviewCell: UITableViewCell {
@@ -25,6 +25,7 @@ class HomeReviewCell: UITableViewCell {
     
     @IBOutlet var button_skip: [UIButton]!
     
+    var index: Int!
     
     @IBOutlet weak var writeReviewEndView: UIView!
     
@@ -54,13 +55,13 @@ class HomeReviewCell: UITableViewCell {
     @IBAction func sendToYamiguBtnPressed(_ sender: Any) {
         writeReviewEndView.isHidden = false
         
-        delegate?.sendReview(review: textview_review.text)
+        delegate?.sendReview(review: textview_review.text, index: index)
     }
     
     @IBAction func skipBtnPressed(_ sender: Any) {
         writeReviewEndView.isHidden = false
         
-        delegate?.skipReview()
+        delegate?.skipReview(index: index)
     }
     
 }
