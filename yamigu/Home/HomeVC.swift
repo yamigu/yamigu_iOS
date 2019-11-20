@@ -8,10 +8,13 @@
 
 import UIKit
 import FirebaseDatabase
+import CHIPageControl
 
 var selectedDate = ""
 
 class HomeVC: UIViewController {
+    
+     var newPage = 0
     
     @IBOutlet weak var button_notification: UIButton!
     @IBOutlet weak var button_tickets: UIButton!
@@ -32,6 +35,7 @@ class HomeVC: UIViewController {
     @IBOutlet weak var button_addMeeting: UIButton!
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var pageController: CHIPageControlChimayo!
     @IBOutlet weak var label_alarmCount: UILabel!
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
@@ -57,10 +61,12 @@ class HomeVC: UIViewController {
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
+        self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
         
         ref = Database.database().reference()
         
         self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
+        
     }
     
     
@@ -69,6 +75,7 @@ class HomeVC: UIViewController {
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
+        self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
         
         ref = Database.database().reference()
         
@@ -235,6 +242,54 @@ class HomeVC: UIViewController {
                         
                         
                         self.myMeetingReviewTableView.reloadData()
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
+    func getRecomandMeeting(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        self.recommendMeetings.removeAll()
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(json)
+                    
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        for value in newValue {
+                            self.recommendMeetings.append(value)
+                        }
+                        
+                        self.recommendMeetingCollectionView.reloadData()
                     }
                 } catch {
                     print(error)
@@ -542,6 +597,16 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 let matchBelong = matchDict["openby_belong"] as! String
                 let matchDepart = matchDict["openby_department"] as! String
                 
+                self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
+                    print("count = \(count)")
+                    if count == 0 {
+                        cell.label_chattingCount.isHidden = true
+                    } else {
+                        cell.label_chattingCount.isHidden = false
+                        cell.label_chattingCount.text = "\(count)"
+                    }
+                }
+                
                 cell.label_matchingName.text = matchName + " (\(matchAge))"
                 cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
                 ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
@@ -565,6 +630,10 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                             DispatchQueue.main.async {
                                 //
                                 cell.label_lastChat.text = message
+                                if message == "###manager-place-content###" {
+                                    cell.label_lastChat.text = "추천 장소를 확인해보세요!"
+                                }
+                                
                             }
                         }
                     }
@@ -731,40 +800,84 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return self.recommendMeetings.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "homeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
         
-        //        let meetingDict = recommendMeetings[indexPath.section]
-        //
-        //        let nickName = meetingDict["openby_nickname"] as! String
-        //        let age = meetingDict["openby_age"] as! String
-        //        let belong = meetingDict["openby_belong"] as! String
-        //        let department = meetingDict["openby_department"] as! String
-        //
-        //        cell.label_meetingType.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
-        //        cell.label_meetingPlace.text = meetingDict["place_type_name"] as! String
-        //
-        //        let dateString = meetingDict["date"] as! String
-        //        let dateFormatter = DateFormatter()
-        //
-        //        dateFormatter.dateFormat = "yyyy-MM-dd"
-        //        let date = dateFormatter.date(from:dateString)
-        //
-        //        dateFormatter.dateFormat = "MM월 dd일 (EE)"
-        //
-        //        if let imageUrl = URL(string: "\(meetingDict["openby_profile"]!)") {
-        //            cell.image_profile.downloaded(from: imageUrl)
-        //            cell.image_profile.contentMode = .scaleAspectFill
-        //        }
-        //
-        //        cell.textview_details.text = meetingDict["appeal"] as! String
-        //
-        //        cell.label_nicknameAndAge.text = "\(nickName) (\(age))"
-        //        cell.label_belongAndDepartment.text = "\(belong), \(department)"
-        //        cell.label_meetingDate.text = dateFormatter.string(from: date!)
+        
+        let meetingDict = recommendMeetings[indexPath.row]
+        
+        let nickName = meetingDict["openby_nickname"] as! String
+        let age = meetingDict["openby_age"] as! String
+        let belong = meetingDict["openby_belong"] as! String
+        let department = meetingDict["openby_department"] as! String
+        
+        cell.label_meetingType.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+        cell.label_meetingPlace.text = meetingDict["place_type_name"] as! String
+        
+        let dateString = meetingDict["date"] as! String
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from:dateString)
+        
+        dateFormatter.dateFormat = "MM월 dd일 (EE)"
+        
+        if let imageUrl = URL(string: "\(meetingDict["openby_profile"]!)") {
+            cell.image_profile.downloaded(from: imageUrl)
+            cell.image_profile.contentMode = .scaleAspectFill
+        }
+        
+        cell.textview_details.text = meetingDict["appeal"] as! String
+        
+        cell.label_nicknameAndAge.text = "\(nickName) (\(age))"
+        cell.label_belongAndDepartment.text = "\(belong), \(department)"
+        cell.label_meetingDate.text = dateFormatter.string(from: date!)
+        
+        let meeting_type = "\(meetingDict["meeting_type"]!)"
+        
+        if meeting_type == "1" {
+            cell.label_meetingType.text = "2:2 미팅"
+            cell.label_meetingType.textColor = color2
+            cell.image_bottom.image = UIImage(named: "orange_bar")
+            cell.contentView.bordercolor = color2
+            
+            cell.label_meetingPlace.textColor = color2
+            cell.label_meetingDate.textColor = color2
+            
+            for i in 0...2 {
+                cell.textUnderline[i].backgroundColor = color2
+            }
+
+        } else if meeting_type == "2" {
+            cell.label_meetingType.text = "3:3 미팅"
+            cell.label_meetingType.textColor = color3
+            cell.image_bottom.image = UIImage(named: "orange_bar_2")
+            cell.contentView.bordercolor = color3
+            
+            cell.label_meetingPlace.textColor = color3
+            cell.label_meetingDate.textColor = color3
+            
+            for i in 0...2 {
+                cell.textUnderline[i].backgroundColor = color3
+            }
+
+        } else if meeting_type == "3" {
+            cell.label_meetingType.text = "3:3 미팅"
+            cell.label_meetingType.textColor = color4
+            cell.image_bottom.image = UIImage(named: "orange_bar_3")
+            cell.contentView.bordercolor = color4
+            
+            cell.label_meetingPlace.textColor = color4
+            cell.label_meetingDate.textColor = color4
+            
+            for i in 0...2 {
+                cell.textUnderline[i].backgroundColor = color4
+            }
+
+        }
         
         
         return cell
@@ -781,19 +894,34 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: self.recommendMeetingCollectionView.frame.width, height: 210.0)
+        return CGSize(width: self.view.frame.width - 25, height: 210.0)
     }
+    
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20.0
+        return 25
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20.0
+        return 25
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 25 / 2, bottom: 0, right: 25 / 2)
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let x = self.recommendMeetingCollectionView.contentOffset.x
+        let w = self.recommendMeetingCollectionView.bounds.size.width
+        newPage = Int(ceil(x/w))
+        
+        self.pageController.set(progress: newPage, animated: false)
+        
+        print(newPage)
     }
     
     func getMessages(uid:String, matchId:String, completionHandler:@escaping (Int) -> ()){

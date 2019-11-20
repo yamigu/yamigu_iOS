@@ -142,8 +142,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="po1-Py-6OO">
-                                        <rect key="frame" x="12" y="596.66666666666663" width="389" height="222"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="po1-Py-6OO">
+                                        <rect key="frame" x="0.0" y="596.66666666666663" width="414" height="222"/>
                                         <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="222" id="7si-ef-NbT"/>
@@ -165,6 +165,34 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
+                                    <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="haF-NP-c49" customClass="CHIPageControlPuya" customModule="CHIPageControl">
+                                        <rect key="frame" x="170" y="832.66666666666663" width="74" height="10"/>
+                                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="tintColor" red="0.69019607843137254" green="0.69019607843137254" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="numberOfPages">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="progress">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="padding">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="radius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="inactiveTransparency">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="currentPageTintColor">
+                                                <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 예정 미팅" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMf-QM-dTs">
                                         <rect key="frame" x="30.000000000000007" y="833.66666666666663" width="111.66666666666669" height="21"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
@@ -172,7 +200,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IjA-R8-b6S">
-                                        <rect key="frame" x="12" y="865.66666666666663" width="389" height="86"/>
+                                        <rect key="frame" x="0.0" y="865.66666666666663" width="414" height="86"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="86" id="Lan-aW-Lgf"/>
@@ -183,7 +211,7 @@
                                     <constraint firstItem="kMf-QM-dTs" firstAttribute="leading" secondItem="wgR-JP-Qc9" secondAttribute="leading" id="0ku-fl-glc"/>
                                     <constraint firstItem="IjA-R8-b6S" firstAttribute="leading" secondItem="po1-Py-6OO" secondAttribute="leading" id="5VV-gH-KPw"/>
                                     <constraint firstItem="wgR-JP-Qc9" firstAttribute="top" secondItem="Oyr-Ct-7Wx" secondAttribute="bottom" constant="15.5" id="A3r-Ia-gLm"/>
-                                    <constraint firstAttribute="trailing" secondItem="po1-Py-6OO" secondAttribute="trailing" constant="13" id="ApS-f2-keC"/>
+                                    <constraint firstAttribute="trailing" secondItem="po1-Py-6OO" secondAttribute="trailing" id="ApS-f2-keC"/>
                                     <constraint firstItem="82w-nu-THA" firstAttribute="top" secondItem="SL5-Rl-UJ6" secondAttribute="top" id="BCA-Rn-kuV"/>
                                     <constraint firstItem="IjA-R8-b6S" firstAttribute="trailing" secondItem="po1-Py-6OO" secondAttribute="trailing" id="Eny-M3-JRi"/>
                                     <constraint firstItem="BjQ-Vh-4XW" firstAttribute="top" secondItem="82w-nu-THA" secondAttribute="bottom" constant="16" id="Gke-p9-xtV"/>
@@ -199,10 +227,12 @@
                                     <constraint firstAttribute="trailing" secondItem="yDI-Uk-jka" secondAttribute="trailing" id="aJt-yH-0Y5"/>
                                     <constraint firstItem="82w-nu-THA" firstAttribute="width" secondItem="SL5-Rl-UJ6" secondAttribute="width" id="jjb-de-xQX"/>
                                     <constraint firstItem="wgR-JP-Qc9" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="30" id="oA7-bo-8pb"/>
-                                    <constraint firstItem="po1-Py-6OO" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="12" id="oNr-NJ-JXo"/>
+                                    <constraint firstItem="po1-Py-6OO" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" id="oNr-NJ-JXo"/>
                                     <constraint firstItem="BjQ-Vh-4XW" firstAttribute="centerX" secondItem="82w-nu-THA" secondAttribute="centerX" id="qpL-SZ-Plj"/>
                                     <constraint firstItem="82w-nu-THA" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" id="trJ-m1-cGx"/>
                                     <constraint firstItem="Oyr-Ct-7Wx" firstAttribute="leading" secondItem="SL5-Rl-UJ6" secondAttribute="leading" constant="12" id="uA3-Cl-Lcc"/>
+                                    <constraint firstItem="po1-Py-6OO" firstAttribute="bottom" secondItem="haF-NP-c49" secondAttribute="top" constant="-14" id="yZu-qz-mXJ"/>
+                                    <constraint firstItem="haF-NP-c49" firstAttribute="centerX" secondItem="po1-Py-6OO" secondAttribute="centerX" id="zDp-YE-bbs"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -235,6 +265,7 @@
                         <outlet property="myMeetingReviewTableViewHeight" destination="uqE-qA-7ar" id="MX9-Tw-oav"/>
                         <outlet property="myMeetingTableView" destination="Oyr-Ct-7Wx" id="WAY-VU-PTw"/>
                         <outlet property="myMeetingTableViewHeight" destination="l67-Id-1w5" id="4kD-uz-yj7"/>
+                        <outlet property="pageController" destination="haF-NP-c49" id="KLO-Qz-gwW"/>
                         <outlet property="recommendMeetingCollectionView" destination="po1-Py-6OO" id="Bvs-YX-ubu"/>
                         <outlet property="scrollView" destination="SL5-Rl-UJ6" id="c3k-Jo-F0U"/>
                         <outlet property="todayMeetingTableView" destination="IjA-R8-b6S" id="NzV-IV-nhX"/>

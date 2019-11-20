@@ -221,6 +221,9 @@
                 <outlet property="label_meetingType" destination="GQW-Jp-u7s" id="OS9-j8-bl5"/>
                 <outlet property="label_nicknameAndAge" destination="1kR-h6-lej" id="VlY-hw-tx9"/>
                 <outlet property="textview_details" destination="9fo-Fq-qzO" id="h5I-NI-eOc"/>
+                <outletCollection property="textUnderline" destination="LEL-51-Unh" collectionClass="NSMutableArray" id="fgB-ss-Vmu"/>
+                <outletCollection property="textUnderline" destination="Osv-SN-sLP" collectionClass="NSMutableArray" id="3t7-xs-sl7"/>
+                <outletCollection property="textUnderline" destination="7OS-Ti-1OW" collectionClass="NSMutableArray" id="lx3-Bu-Eiw"/>
             </connections>
             <point key="canvasLocation" x="47.826086956521742" y="47.544642857142854"/>
         </collectionViewCell>

@@ -23,6 +23,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
      @IBOutlet weak var label_meetingDate: UILabel!
      @IBOutlet weak var label_meetingPlace: UILabel!
 
+    @IBOutlet var textUnderline: [UIView]!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
