@@ -54,7 +54,19 @@ class HomeMyTableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        //self.constraint_bottomHeight.constant = 44.0
+        self.constraint_bottomHeight.constant = 40.0
+        self.label_matchingDepart.isHidden = false
+        self.label_matchingName.isHidden = false
+        self.label_chattingTime.isHidden = false
+        self.label_lastChat.isHidden = false
+        self.label_day.isHidden = false
+        self.label_type.isHidden = false
+        self.label_isMatched.isHidden = false
+        self.label_isWating.isHidden = false
+        self.button_applyTeam.isHidden = false
+        self.button_edit.isHidden = false
+        self.view_bottom.isHidden = false
+
         self.layoutIfNeeded()
     }
 

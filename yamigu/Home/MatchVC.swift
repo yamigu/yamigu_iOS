@@ -136,9 +136,6 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 let dict : [String: Any] = ["request_id" : id]
                 self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
                 
-                DispatchQueue.main.async {
-                    self.dismiss(animated: true, completion: nil)
-                }
             }
             
         } else if button_left.titleLabel?.text! == "대기중" {
@@ -168,9 +165,6 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             
         }
         
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }
     }
     
     func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
@@ -192,7 +186,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         //JSONSerialization.isValidJSONObject(requestDict)
         //request.httpBody = data
         
-        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
             let jsonString = String(data: data, encoding: .utf8) {
             request.httpBody = jsonString.data(using: .utf8)
         }
@@ -206,16 +200,19 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             }
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
                     }
                     
                     DispatchQueue.main.async {
+
+                        self.dismiss(animated: true, completion: nil)
+                        
                     }
                 } catch {
                     print(error)

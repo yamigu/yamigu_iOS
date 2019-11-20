@@ -26,17 +26,22 @@ class MainTC: UITabBarController {
         setupMiddleButton()
         
         ref = Database.database().reference()
-        /*refHandle = ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").observe(.value, with: { (snapshot) in
+        refHandle = ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").observe(.value, with: { (snapshot) in
             if let dictionary = snapshot.children.allObjects as? [DataSnapshot] {
-                
+                alarmCount = 0
+                alarmDicts.removeAll()
                 for dict in dictionary {
-                    let data = dict.value as! Dictionary<String, Any>
-                    alarmDicts.append(data)
-                    print("data = \(data)")
+                    if let data = dict.value as? Dictionary<String, Any> {
+
+                        alarmDicts.append(data)
+                        print("data = \(data)")
+                    }
                 }
+                alarmCount = snapshot.children.allObjects.count
+                alarmDicts.reverse()
                 
             }
-        })*/
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

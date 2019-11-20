@@ -76,7 +76,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let date = dateFormatter.date(from: dateString)
         
-        dateFormatter.dateFormat = "d일"
+        dateFormatter.dateFormat = "M월 d일"
         let resultDateString = dateFormatter.string(from: date!)
         
         let placeString = meetingDict["place_type_name"] as! String
@@ -84,11 +84,11 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         let type = "\(meetingDict["meeting_type"]!)"
         var typeString = ""
         if type == "1" {
-            typeString = "2:2"
+            typeString = "2:2 미팅"
         } else if type == "2" {
-            typeString = "3:3"
+            typeString = "3:3 미팅"
         } else {
-            typeString = "4:4"
+            typeString = "4:4 미팅"
         }
         
         self.navigationController?.title = resultDateString + " || " + placeString + " || " + typeString
@@ -329,7 +329,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: self.collectionView.frame.width, height: 413.0)
+        return CGSize(width: self.collectionView.frame.width, height: 398.0)
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
