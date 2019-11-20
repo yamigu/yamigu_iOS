@@ -178,19 +178,7 @@ class HomeVC: UIViewController {
                             }
                         }
                         
-                        //                        if self.myMeetings.count == 0 {
-                        //                            self.button_addMeeting.isHidden = false
-                        //                            self.topConstraint.constant = 107
-                        //                        } else {
-                        //                            self.button_addMeeting.isHidden = true
-                        //                            self.topConstraint.constant = 15.5
-                        //                        }
-                        
-                        if self.myMeetings.count != 0 {
-                            self.button_addMeeting.isHidden = true
-                        } else {
-                            self.button_addMeeting.isHidden = false
-                        }
+                        self.checkTableView()
                         
                         self.myMeetingTableView.reloadData()
                         let tabbarController = self.tabBarController as! MainTC
@@ -242,12 +230,8 @@ class HomeVC: UIViewController {
                             self.reviewMeetings.append(value)
                         }
                         
+                        self.checkTableView()
                         
-                        if self.reviewMeetings.count != 0 {
-                            self.button_addMeeting.isHidden = true
-                        } else {
-                            self.button_addMeeting.isHidden = false
-                        }
                         
                         self.myMeetingReviewTableView.reloadData()
                     }
@@ -258,6 +242,16 @@ class HomeVC: UIViewController {
             
         })
         task.resume()
+    }
+    
+    func checkTableView() {
+        if self.reviewMeetings.count == 0 && self.myMeetings.count == 0 {
+            self.button_addMeeting.isHidden = false
+            self.topConstraint.constant = 73
+        } else {
+            self.button_addMeeting.isHidden = true
+            self.topConstraint.constant = 15.5
+        }
     }
     
     /*func daysBetween(start: Date, end: Date) -> Int {
@@ -793,6 +787,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             
             cell.label_meetingDate.text = "\(stringDate) 미팅 어떠셨나요?!"
             
+            
             return cell
         }
         
@@ -887,6 +882,12 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         
         self.myMeetingReviewTableView.dataSource = self
         self.myMeetingReviewTableView.delegate = self
+        
+        myMeetingReviewTableView.clipsToBounds = false
+        myMeetingReviewTableView.layer.shadowOpacity = 0.4
+        myMeetingReviewTableView.layer.shadowOffset = CGSize(width: 3, height: 3)
+        myMeetingReviewTableView.layer.shadowColor = UIColor.black.cgColor
+        myMeetingReviewTableView.layer.shadowRadius = 4
         
         self.myMeetingTableView.register(UINib(nibName: "HomeMyTableViewCell", bundle: nil), forCellReuseIdentifier: "homeMyTableViewCell")
         
@@ -1064,6 +1065,12 @@ extension HomeVC: HomeReviewDelegate {
     
     
     func skipReview(index: Int) {
+        let id = "\(self.reviewMeetings[index]["id"]!)"
+        let review = ""
+        let dict : [String: Any] = ["meeting_id" : id, "feedback" : review]
+        
+        self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
+        
         self.reviewMeetings.remove(at: index)
         self.myMeetingReviewTableView.reloadData()
         
