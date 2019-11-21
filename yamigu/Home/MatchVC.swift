@@ -199,22 +199,32 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 //print(res)
                 
             }
+            
+            
+            
             if let data = data {
+                DispatchQueue.main.async {
+                    if urlString == "http://106.10.39.154:9999/api/matching/decline_request/" {
+                        let id = "\(self.matchingDict["id"]!)"
+                        self.getReceiveMatching(urlString: "http://106.10.39.154:9999/api/matching/received_request/?meeting_id=\(id)")
+                        
+                    } else {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    
+                    
+                }
                 do{
                     let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, Any> else {
+                    /*guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
                     }
+                    */
                     
-                    DispatchQueue.main.async {
-
-                        self.dismiss(animated: true, completion: nil)
-                        
-                    }
                 } catch {
                     print(error)
                 }
@@ -277,7 +287,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         guard let url = URL(string: urlString) else {return}
         
         var request = URLRequest(url: url)
-        
+        self.receiveMatchingList.removeAll()
         request.httpMethod = "get"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authroization")
