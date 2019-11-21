@@ -135,18 +135,16 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.collectionView.reloadData()
     }
     @IBAction func leftBtnPressed(_ sender: Any) {
-        if button_right.titleLabel?.text! == "거절하기" {
+        if button_left.titleLabel?.text! == "거절하기" {
             if self.receiveMatchingList.count != 0 {
-                print(button_right.titleLabel?.text)
                 let id = "\(self.receiveMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
                 self.postRequest("http://106.10.39.154:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
             }
             
             
-        } else if button_right.titleLabel?.text! == "취소하기" {
+        } else if button_left.titleLabel?.text! == "취소하기" {
             if self.requestMatchingList.count != 0 {
-                print(button_right.titleLabel?.text)
                 let id = "\(self.requestMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
                 
@@ -157,17 +155,15 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         }
     }
     @IBAction func rightBtnPressed(_ sender: Any) {
-        if button_left.titleLabel?.text! == "미팅하기" {
+        if button_right.titleLabel?.text! == "미팅하기" {
             if self.receiveMatchingList.count != 0 {
-                print(button_left.titleLabel?.text)
                 let id = "\(self.receiveMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
                 self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
                 
             }
             
-        } else if button_left.titleLabel?.text! == "대기중" {
-            print(button_left.titleLabel?.text)
+        } else if button_right.titleLabel?.text! == "대기중" {
         }
         
     }
@@ -443,6 +439,8 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                 cell.label_meetingPlace.textColor = color2
                 cell.label_meetingDate.textColor = color2
                 
+                cell.bordercolor = color2
+                
                 for i in 0...2 {
                     cell.textUnderline[i].backgroundColor = color2
                 }
@@ -456,6 +454,8 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                 cell.label_meetingPlace.textColor = color3
                 cell.label_meetingDate.textColor = color3
                 
+                cell.bordercolor = color3
+                
                 for i in 0...2 {
                     cell.textUnderline[i].backgroundColor = color3
                 }
@@ -468,6 +468,8 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                 
                 cell.label_meetingPlace.textColor = color4
                 cell.label_meetingDate.textColor = color4
+                
+                cell.bordercolor = color4
                 
                 for i in 0...2 {
                     cell.textUnderline[i].backgroundColor = color4

@@ -60,7 +60,12 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         self.textView.delegate = self
         
-        self.label_textCount.isHidden = true
+        if isEdit || isRequest {
+            self.label_textCount.isHidden = false
+        } else {
+            self.label_textCount.isHidden = true
+        }
+        
         
         textView.text = "키, 학력, 나이, 친구들 스타일 등 모든 것을 자랑하세요!"
         textView.textColor = UIColor.lightGray
