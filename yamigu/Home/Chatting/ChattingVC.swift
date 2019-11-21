@@ -376,7 +376,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         label_time.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
         label_time2.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
         label_openbyName.text = "\(self.meetingDict["openby_nickname"]!)" + "(\(self.meetingDict["openby_age"]!))"
-        label_openbyDepartment.text = "\(self.meetingDict["openby_department"]!) \(self.meetingDict["openby_belong"]!)"
+        label_openbyDepartment.text = "\(self.meetingDict["openby_belong"]!) \(self.meetingDict["openby_department"]!)"
         
         var matchedDict = Dictionary<String, Any>()
         matchedDict = self.meetingDict["matched_meeting"] as! Dictionary<String, Any>
