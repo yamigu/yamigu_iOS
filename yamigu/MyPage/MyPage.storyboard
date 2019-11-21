@@ -263,22 +263,22 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="친구초대코드 :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWD-E0-Uuk">
-                                <rect key="frame" x="26.999999999999993" y="251.00000000000003" width="87.333333333333314" height="16.333333333333343"/>
+                                <rect key="frame" x="26.999999999999993" y="237" width="87.333333333333314" height="16.333333333333343"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="q1jsw2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfi-HB-QkD">
-                                <rect key="frame" x="117.33333333333333" y="251.00000000000003" width="47.333333333333329" height="16.333333333333343"/>
+                                <rect key="frame" x="117.33333333333333" y="237" width="47.333333333333329" height="16.333333333333343"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underline_orange" translatesAutoresizingMaskIntoConstraints="NO" id="EdN-Oh-a4E">
-                                <rect key="frame" x="27" y="269.33333333333331" width="26" height="4"/>
+                                <rect key="frame" x="27" y="255.33333333333337" width="26" height="4"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHa-IR-Nci">
-                                <rect key="frame" x="8" y="277.33333333333331" width="398" height="83"/>
+                                <rect key="frame" x="8" y="263.33333333333331" width="398" height="83"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text_mypage1" translatesAutoresizingMaskIntoConstraints="NO" id="evQ-zn-Xxi">
                                         <rect key="frame" x="12" y="6.6666666666666856" width="250" height="55"/>
@@ -297,7 +297,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PGy-G3-1Mf">
-                                <rect key="frame" x="30" y="345" width="354" height="44.333333333333314"/>
+                                <rect key="frame" x="30" y="331" width="354" height="44.333333333333314"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.86274509799999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44.329999999999998" id="nFa-AX-cdv"/>
@@ -316,16 +316,16 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="야미구와 1:1 대화하기" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wz0-24-0Op">
-                                <rect key="frame" x="27" y="414.33333333333331" width="134.33333333333334" height="16.333333333333314"/>
+                                <rect key="frame" x="27" y="390.33333333333331" width="134.33333333333334" height="16.333333333333314"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underline_orange" translatesAutoresizingMaskIntoConstraints="NO" id="F6B-hs-9QS">
-                                <rect key="frame" x="27" y="432.66666666666669" width="26" height="4"/>
+                                <rect key="frame" x="27" y="408.66666666666669" width="26" height="4"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fou-Xu-0bB">
-                                <rect key="frame" x="8" y="440.66666666666669" width="398" height="83.000000000000057"/>
+                                <rect key="frame" x="8" y="416.66666666666669" width="398" height="83"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text_mypage2" translatesAutoresizingMaskIntoConstraints="NO" id="so0-cK-TxF">
                                         <rect key="frame" x="12" y="6.3333333333333144" width="193" height="55"/>
@@ -344,7 +344,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eue-ov-bC7">
-                                <rect key="frame" x="30" y="508.33333333333331" width="354" height="44.333333333333314"/>
+                                <rect key="frame" x="30" y="484.33333333333331" width="354" height="44.333333333333314"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.86274509799999999" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44.329999999999998" id="Bk9-cq-foN"/>
@@ -375,7 +375,7 @@
                             <constraint firstItem="Fou-Xu-0bB" firstAttribute="trailing" secondItem="5pM-TC-aVr" secondAttribute="trailing" id="LrD-gu-LGW"/>
                             <constraint firstItem="PGy-G3-1Mf" firstAttribute="leading" secondItem="YHa-IR-Nci" secondAttribute="leading" constant="22" id="N78-8K-FYV"/>
                             <constraint firstItem="5pM-TC-aVr" firstAttribute="top" secondItem="1qd-n4-RmB" secondAttribute="top" constant="13" id="Nec-Sm-NV1"/>
-                            <constraint firstItem="Wz0-24-0Op" firstAttribute="top" secondItem="PGy-G3-1Mf" secondAttribute="bottom" constant="25" id="NwR-sf-OYV"/>
+                            <constraint firstItem="Wz0-24-0Op" firstAttribute="top" secondItem="PGy-G3-1Mf" secondAttribute="bottom" constant="15" id="NwR-sf-OYV"/>
                             <constraint firstItem="PGy-G3-1Mf" firstAttribute="trailing" secondItem="YHa-IR-Nci" secondAttribute="trailing" constant="-22" id="O6g-fu-4bP"/>
                             <constraint firstItem="F6B-hs-9QS" firstAttribute="leading" secondItem="Wz0-24-0Op" secondAttribute="leading" id="OHA-tU-4Rw"/>
                             <constraint firstItem="F6B-hs-9QS" firstAttribute="top" secondItem="Wz0-24-0Op" secondAttribute="bottom" constant="2" id="PMj-Ui-c6t"/>
@@ -386,7 +386,7 @@
                             <constraint firstItem="YHa-IR-Nci" firstAttribute="top" secondItem="CWD-E0-Uuk" secondAttribute="bottom" constant="10" id="fuH-gq-FCe"/>
                             <constraint firstItem="CWD-E0-Uuk" firstAttribute="leading" secondItem="1qd-n4-RmB" secondAttribute="leading" constant="27" id="gFC-m2-KzW"/>
                             <constraint firstItem="EdN-Oh-a4E" firstAttribute="leading" secondItem="CWD-E0-Uuk" secondAttribute="leading" id="hXp-7G-nek"/>
-                            <constraint firstItem="CWD-E0-Uuk" firstAttribute="top" secondItem="5pM-TC-aVr" secondAttribute="bottom" constant="29" id="hqf-fj-Hns"/>
+                            <constraint firstItem="CWD-E0-Uuk" firstAttribute="top" secondItem="5pM-TC-aVr" secondAttribute="bottom" constant="15" id="hqf-fj-Hns"/>
                             <constraint firstItem="Wz0-24-0Op" firstAttribute="leading" secondItem="CWD-E0-Uuk" secondAttribute="leading" id="iLD-LC-mhI"/>
                             <constraint firstItem="1qd-n4-RmB" firstAttribute="trailing" secondItem="5pM-TC-aVr" secondAttribute="trailing" constant="8" id="lIo-dS-uqH"/>
                             <constraint firstItem="Fou-Xu-0bB" firstAttribute="leading" secondItem="5pM-TC-aVr" secondAttribute="leading" id="mNg-t0-cEq"/>
@@ -599,7 +599,10 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="descriptIon_register" translatesAutoresizingMaskIntoConstraints="NO" id="cnf-rp-gsU">
-                                <rect key="frame" x="90" y="378.66666666666669" width="234" height="89"/>
+                                <rect key="frame" x="36" y="378.66666666666669" width="342" height="89"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="89" id="itc-MC-JCh"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 학생증과 전자 학생증만 가능해요 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oD-5e-4Pl">
                                 <rect key="frame" x="237" y="338" width="141" height="14.666666666666686"/>
@@ -620,9 +623,11 @@
                             <constraint firstItem="52V-bb-bUW" firstAttribute="centerX" secondItem="uaQ-q1-78A" secondAttribute="centerX" id="ANJ-xT-5Lt"/>
                             <constraint firstItem="wea-HF-Fys" firstAttribute="leading" secondItem="Nt1-FZ-eVF" secondAttribute="leading" id="CBT-BR-HZw"/>
                             <constraint firstItem="uaQ-q1-78A" firstAttribute="bottom" secondItem="52V-bb-bUW" secondAttribute="bottom" constant="20" id="Eq6-OH-RlF"/>
+                            <constraint firstItem="cnf-rp-gsU" firstAttribute="leading" secondItem="Nt1-FZ-eVF" secondAttribute="leading" id="HIJ-Wn-udJ"/>
                             <constraint firstItem="cnf-rp-gsU" firstAttribute="centerX" secondItem="uaQ-q1-78A" secondAttribute="centerX" id="IDq-K1-PWT"/>
                             <constraint firstItem="YBc-Kv-e2E" firstAttribute="top" secondItem="pqf-RM-HRl" secondAttribute="bottom" constant="5" id="J7I-31-6rB"/>
                             <constraint firstItem="wea-HF-Fys" firstAttribute="bottom" secondItem="Nt1-FZ-eVF" secondAttribute="bottom" id="NjX-0r-poq"/>
+                            <constraint firstItem="cnf-rp-gsU" firstAttribute="trailing" secondItem="Nt1-FZ-eVF" secondAttribute="trailing" id="SLn-DB-fZN"/>
                             <constraint firstItem="YBc-Kv-e2E" firstAttribute="leading" secondItem="uaQ-q1-78A" secondAttribute="leading" constant="36" id="UOz-dw-81V"/>
                             <constraint firstItem="oKS-JG-toz" firstAttribute="leading" secondItem="pqf-RM-HRl" secondAttribute="leading" id="Y0R-7L-Cfe"/>
                             <constraint firstItem="f3m-aH-5ts" firstAttribute="top" secondItem="XV5-Om-okd" secondAttribute="bottom" constant="20" id="a02-Kf-0D8"/>
@@ -644,6 +649,7 @@
                         <outlet property="button_certi" destination="Nt1-FZ-eVF" id="hUD-o7-XQs"/>
                         <outlet property="button_certiBelong" destination="52V-bb-bUW" id="fhe-Z3-JPx"/>
                         <outlet property="imageView_certi" destination="wea-HF-Fys" id="rBY-Rs-ija"/>
+                        <outlet property="imageView_description" destination="cnf-rp-gsU" id="uth-Sy-97d"/>
                         <outlet property="label_belong" destination="pqf-RM-HRl" id="VPF-TJ-2WK"/>
                         <outlet property="label_certiDetail" destination="9oD-5e-4Pl" id="lC0-8f-bS2"/>
                         <outlet property="label_certificate" destination="f3m-aH-5ts" id="NHh-Mf-G2v"/>
@@ -658,7 +664,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="descriptIon_register" width="234" height="89"/>
+        <image name="descriptIon_register" width="308" height="89"/>
         <image name="icon_bell" width="20" height="24"/>
         <image name="icon_certification" width="24" height="24"/>
         <image name="icon_certify" width="142" height="36"/>
@@ -666,7 +672,7 @@
         <image name="icon_photo_circle" width="30" height="30"/>
         <image name="icon_tickets" width="25" height="24"/>
         <image name="kakao" width="13" height="13"/>
-        <image name="sample_profile" width="70" height="70"/>
+        <image name="sample_profile" width="92" height="92"/>
         <image name="tabbar_mypage" width="16.333333969116211" height="16.333333969116211"/>
         <image name="text_mypage1" width="250" height="55"/>
         <image name="text_mypage2" width="193" height="55"/>
