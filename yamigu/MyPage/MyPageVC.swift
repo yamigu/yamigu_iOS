@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MyPageVC: UIViewController, UITextFieldDelegate {
+class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var button_changeProfileImage: UIButton!
     @IBOutlet weak var image_profile: UIImageView!
     @IBOutlet weak var label_belong: UILabel!
     @IBOutlet weak var label_department: UILabel!
@@ -59,6 +60,28 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
         tf_name.text = "\(userDictionary["nickname"] as! String)(\(userDictionary["age"]!))"
         
         self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+    }
+    
+    
+    @IBAction func changeProfileBtnPressed(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        
+        image.sourceType = UIImagePickerController.SourceType.photoLibrary
+        image.allowsEditing = false
+        
+        self.present(image, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        {
+            self.image_profile.image = image
+        } else {
+            // error
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func changeBtnPressed(_ sender: Any) {
@@ -313,7 +336,10 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     @IBAction func certiBelongBtnPressed(_ sender: Any) {
         isStudent = userDictionary["is_student"] as! Bool
         
-        self.performSegue(withIdentifier: "segue_certi", sender: self)
+        
+        if userDict["user_certified"] as? Int == 0 {
+            self.performSegue(withIdentifier: "segue_certi", sender: self)
+        }
     }
     
     

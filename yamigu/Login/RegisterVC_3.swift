@@ -114,6 +114,8 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             }
             
         }))
+        
+        certiAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
 
         present(certiAlert, animated: true, completion: nil)
         
