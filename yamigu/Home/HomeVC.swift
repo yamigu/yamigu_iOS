@@ -728,9 +728,9 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             self.scrollView.layoutIfNeeded()
             self.myMeetingTableView.layoutIfNeeded()
             if self.myMeetings.count == 0 {
-                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight + 107.0)
+                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight + 75.0)
             } else {
-                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight)
+                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 20.0)
             }
             
             

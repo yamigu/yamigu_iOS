@@ -311,7 +311,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func certiBelongBtnPressed(_ sender: Any) {
-        isStudent = self.userDict["is_student"] as! Bool
+        isStudent = userDictionary["is_student"] as! Bool
         
         self.performSegue(withIdentifier: "segue_certi", sender: self)
     }

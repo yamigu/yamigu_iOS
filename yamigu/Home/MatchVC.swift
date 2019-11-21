@@ -64,8 +64,8 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.button_receive.isSelected = true
         
-        self.button_left.setTitle("미팅하기", for: .normal)
-        self.button_right.setTitle("거절하기", for: .normal)
+        self.button_left.setTitle("거절하기", for: .normal)
+        self.button_right.setTitle("미팅하기", for: .normal)
         
         let date = self.matchingDict["date"] as! String
         var type = ""
@@ -101,8 +101,11 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.button_receive.isSelected = true
         self.button_request.isSelected = false
         
-        self.button_left.setTitle("미팅하기", for: .normal)
-        self.button_right.setTitle("거절하기", for: .normal)
+        self.button_left.setTitle("거절하기", for: .normal)
+        self.button_right.setTitle("미팅하기", for: .normal)
+        
+        self.button_left.isHidden = false
+        self.button_right.isHidden = false
         
         self.newPage = 0
         self.label_count.text = "1"
@@ -120,6 +123,9 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.button_left.setTitle("대기중", for: .normal)
         self.button_right.setTitle("취소하기", for: .normal)
         
+        self.button_left.isHidden = true
+        self.button_right.isHidden = true
+        
         self.newPage = 0
         self.label_count.text = "1"
         if self.requestMatchingList.count == 0 {
@@ -129,21 +135,6 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         self.collectionView.reloadData()
     }
     @IBAction func leftBtnPressed(_ sender: Any) {
-        if button_left.titleLabel?.text! == "미팅하기" {
-            if self.receiveMatchingList.count != 0 {
-                print(button_left.titleLabel?.text)
-                let id = "\(self.receiveMatchingList[newPage]["id"]!)"
-                let dict : [String: Any] = ["request_id" : id]
-                self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
-                
-            }
-            
-        } else if button_left.titleLabel?.text! == "대기중" {
-            print(button_left.titleLabel?.text)
-        }
-        
-    }
-    @IBAction func rightBtnPressed(_ sender: Any) {
         if button_right.titleLabel?.text! == "거절하기" {
             if self.receiveMatchingList.count != 0 {
                 print(button_right.titleLabel?.text)
@@ -163,6 +154,20 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             }
             
             
+        }
+    }
+    @IBAction func rightBtnPressed(_ sender: Any) {
+        if button_left.titleLabel?.text! == "미팅하기" {
+            if self.receiveMatchingList.count != 0 {
+                print(button_left.titleLabel?.text)
+                let id = "\(self.receiveMatchingList[newPage]["id"]!)"
+                let dict : [String: Any] = ["request_id" : id]
+                self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+                
+            }
+            
+        } else if button_left.titleLabel?.text! == "대기중" {
+            print(button_left.titleLabel?.text)
         }
         
     }

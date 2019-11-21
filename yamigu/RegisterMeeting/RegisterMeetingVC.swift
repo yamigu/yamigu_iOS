@@ -133,9 +133,18 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        label_textCount.text = "\(self.textView.text.count)/100"
+        
         
         return true
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        label_textCount.text = "\(self.textView.text.count)/100"
+        if self.textView.text.count > 100 {
+            self.label_textCount.textColor = UIColor.red
+        } else {
+            self.label_textCount.textColor = UIColor(rgb: 0xC6C6C6)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,24 +152,21 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         button_deleteCard.isHidden = true
         
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
         
-        if isEdit {
-            let mainTC = self.presentingViewController as! MainTC
-            let homeController = mainTC.viewControllers![0] as! HomeVC
-            
-            DispatchQueue.main.async {
-                homeController.myMeetings.removeAll()
-                homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
-            }
-            
-        }
-    }
+        if isEdit || isRequest {
+            self.button_people.isUserInteractionEnabled = false
+            self.button_date.isUserInteractionEnabled = false
+            self.button_placeUnderline.backgroundColor = UIColor(rgb: 0xFF7B22)
+            self.button_place.setTitleColor(UIColor(rgb: 0xFF7B22), for: .normal)
+            self.button_place.setImage(self.buttonSelected, for: .normal)
     
-    override func viewDidAppear(_ animated: Bool) {
-        //self.dismiss(animated: false, completion: nil)
+        } else {
+            self.button_people.isUserInteractionEnabled = true
+            self.button_date.isUserInteractionEnabled = true
+            self.button_placeUnderline.backgroundColor = UIColor(rgb: 0x707070)
+            self.button_place.setTitleColor(UIColor(rgb: 0x707070), for: .normal)
+            self.button_place.setImage(self.buttonDeselected, for: .normal)
+        }
         
         if isEdit {
             if isRequest {
@@ -252,30 +258,36 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        if isEdit {
+            let mainTC = self.presentingViewController as! MainTC
+            let homeController = mainTC.viewControllers![0] as! HomeVC
+            
+            DispatchQueue.main.async {
+                homeController.myMeetings.removeAll()
+                homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+            }
+            
+        }
+    }
+    
     @IBAction func editMeetingBtnPressed(_ sender: Any) {
         let id = "\(self.meetingDict["id"]!)"
         var dict : [String: Any] = ["meeting_id" : id]
         
+        print("selected place = \((self.button_place.titleLabel!.text)!)")
         
-        //dict["meeting_type"] = Int("\((self.selectedType + 1))")
-        if self.button_place.titleLabel?.text == "신촌/홍대" {
-            dict["place"] = 1
-        } else if self.button_place.titleLabel?.text == "건대/왕십리" {
-            dict["place"] = 2
-        } else if self.button_place.titleLabel?.text == "강님" {
-            dict["place"] = 3
-        }
-        
-        if self.button_people.titleLabel?.text == "2:2 미팅" {
+        if self.button_people.titleLabel!.text == "2:2 미팅" {
             dict["meeting_type"] = 1
-        } else if self.button_people.titleLabel?.text == "3:3 미팅" {
+        } else if self.button_people.titleLabel!.text == "3:3 미팅" {
             dict["meeting_type"] = 2
-        } else if self.button_people.titleLabel?.text == "4:4 미팅" {
+        } else if self.button_people.titleLabel!.text == "4:4 미팅" {
             dict["meeting_type"] = 3
         }
         
-        dict["date"] = (button_date.titleLabel?.text!)!
-        //dict["place"] = Int("\(self.selectedPlace + 1)")
+        dict["date"] = (button_date.titleLabel!.text)!
+        dict["place"] = Int("\(self.selectedPlace + 1)")
         dict["appeal"] = self.textView.text!
         dict["meeting_id"] = "\(self.meetingDict["id"]!)"
         
@@ -531,6 +543,8 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         if textView.text == "키, 학력, 나이, 친구들 스타일 등 모든 것을 자랑하세요!" {
             self.view.makeToast("자신과 친구들을 표현해주세요!")
+        } else if textView.text.count > 100 {
+            self.view.makeToast("표현을 조금만 줄여주세요!")
         } else {
             if !isRequest {
                 //- meeting_type: 미팅 타입
@@ -546,6 +560,21 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 //- place: 장소
                 //- appeal: 어필 문구
                 //- receiver: 신청 대상 미팅
+                if self.button_people.titleLabel!.text == "2:2 미팅" {
+                    self.selectedType = 0
+                } else if self.button_people.titleLabel!.text == "3:3 미팅" {
+                    self.selectedType = 1
+                } else {
+                    self.selectedType = 2
+                }
+                
+                if self.button_place.titleLabel!.text == "신촌/홍대" {
+                    self.selectedPlace = 0
+                } else if self.button_place.titleLabel!.text == "건대/왕십리" {
+                    self.selectedPlace = 1
+                } else {
+                    self.selectedPlace = 2
+                }
                 
                 self.postRequest("http://106.10.39.154:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
             }

@@ -515,7 +515,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     @IBAction func callBtnPressed(_ sender: Any) {
         //icon_chatting_alarm
         //self.button_call.tintColor = UIColor(rgb: 0xFF7B22)
-        self.view.makeToast("매니저를 호출하였습니다.")
+        self.view.makeToast("매니저를 호출했어요!")
         self.button_call.setImage(UIImage(named: "icon_chatting_alarm_on"), for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             //self.button_call.tintColor = UIColor(rgb: 0x707070)
