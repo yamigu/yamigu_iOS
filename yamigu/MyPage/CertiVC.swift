@@ -20,6 +20,7 @@ class CertiVC: UIViewController {
     @IBOutlet weak var imageView_certi: UIImageView!
     @IBOutlet weak var button_certi: UIButton!
     @IBOutlet weak var label_certiDetail: UILabel!
+    @IBOutlet weak var imageView_description: UIImageView!
     
     @IBOutlet weak var button_certiBelong: UIButton!
     
@@ -34,20 +35,46 @@ class CertiVC: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setupUI()
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
     
     @IBAction func certiBtnPressed(_ sender: Any) {
-        let image = UIImagePickerController()
-        image.delegate = self
         
-        image.sourceType = UIImagePickerController.SourceType.photoLibrary
-        image.allowsEditing = false
-        
-        self.present(image, animated: true) {
+        let certiAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        certiAlert.addAction(UIAlertAction(title: "사진찍기", style: .default, handler: { (action: UIAlertAction!) in
             
-        }
+            let image = UIImagePickerController()
+            image.delegate = self
+            
+            image.sourceType = UIImagePickerController.SourceType.camera
+            image.allowsEditing = false
+            
+            self.present(image, animated: true)
+            
+        }))
+
+        certiAlert.addAction(UIAlertAction(title: "앨범에서 가져오기", style: .default, handler: {
+            (action: UIAlertAction!) in
+            
+            let image = UIImagePickerController()
+            image.delegate = self
+            
+            image.sourceType = UIImagePickerController.SourceType.photoLibrary
+            image.allowsEditing = false
+            
+            self.present(image, animated: true) {
+                
+            }
+            
+        }))
+
+        present(certiAlert, animated: true, completion: nil)
     }
     
     @IBAction func certiBelongBtnPressed(_ sender: Any) {
@@ -190,12 +217,13 @@ extension CertiVC : UIImagePickerControllerDelegate, UINavigationControllerDeleg
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
         if !isStudent {
-            self.label_belong.text = "직업 입력"
-            self.tf_belong.placeholder = "ex) 직장인, 디자이너, 치과의사, 선생님"
-            self.label_department.text = "회사 입력"
+            self.label_belong.text = "회사 입력"
             self.tf_belong.placeholder = "ex) 삼성전자, 스타트업, 프리랜서, 개인병원, 고등학교"
+            self.label_department.text = "직업 입력"
+            self.tf_department.placeholder = "ex) 직장인, 디자이너, 치과의사, 선생님"
             self.label_certificate.text = "직장 인증"
             self.label_certiDetail.text = "사원증, 명함, 사업자등록증, 자격증, 면허증 등 첨부해주세요 !"
+            self.imageView_description.image = UIImage(named: "descriptIon_register2")
         }
     }
     

@@ -144,6 +144,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
                 if( isCollage || isOffice ) {
                     if isAvailableNickName {
                         self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
+                        self.button_certi.isEnabled = true
                         return true
                     }
                 } else {
@@ -154,6 +155,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
             self.view.makeToast("약관에 동의해주세요!")
         }
         
+        self.button_certi.isEnabled = false
         self.button_certi.backgroundColor = UIColor(rgb: 0xC6C6C6)
         return false
     }
