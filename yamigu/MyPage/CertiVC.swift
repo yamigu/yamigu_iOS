@@ -73,6 +73,8 @@ class CertiVC: UIViewController {
             }
             
         }))
+        
+        certiAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
 
         present(certiAlert, animated: true, completion: nil)
     }
