@@ -94,6 +94,7 @@
 		9F1407122379632200C9D491 /* NotisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1407112379632200C9D491 /* NotisVC.swift */; };
 		9F3AD99D2373D4890005FE71 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3AD99C2373D4890005FE71 /* SettingVC.swift */; };
 		9F689460237BAC400036A4C5 /* CertiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F68945F237BAC400036A4C5 /* CertiVC.swift */; };
+		9FF00FD92387C26A00239345 /* KakaoPlusFriend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF00FD82387C26A00239345 /* KakaoPlusFriend.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -224,6 +225,7 @@
 		9F689476238259EA0036A4C5 /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundB.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundB.ttf"; sourceTree = "<group>"; };
 		9F689477238259EA0036A4C5 /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundR.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundR.ttf"; sourceTree = "<group>"; };
 		9F689478238259EB0036A4C5 /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundEB.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundEB.ttf"; sourceTree = "<group>"; };
+		9FF00FD82387C26A00239345 /* KakaoPlusFriend.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoPlusFriend.framework; path = "kakao-ios-sdk-1/KakaoPlusFriend.framework"; sourceTree = "<group>"; };
 		D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.release.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +234,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FF00FD92387C26A00239345 /* KakaoPlusFriend.framework in Frameworks */,
 				5582E2422372BE4900A9E0FE /* PushKit.framework in Frameworks */,
 				01DA3566ED289EDDEC22B120 /* Pods_yamigu.framework in Frameworks */,
 				55224DD42356EFEB003FBCA3 /* KakaoCommon.framework in Frameworks */,
@@ -557,6 +560,7 @@
 		E5B000252B1BBE7A11FA8795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9FF00FD82387C26A00239345 /* KakaoPlusFriend.framework */,
 				5582E2412372BE4900A9E0FE /* PushKit.framework */,
 				5582E23F2372B63200A9E0FE /* StoreKit.framework */,
 				55224DD22356EFEA003FBCA3 /* KakaoCommon.framework */,
