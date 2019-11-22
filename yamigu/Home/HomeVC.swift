@@ -23,6 +23,7 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var myMeetingReviewTableView: UITableView!
     @IBOutlet weak var myMeetingReviewTableViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var myMeetingTableViewTopConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var myMeetingTableView: UITableView!
     @IBOutlet weak var myMeetingTableViewHeight: NSLayoutConstraint!
@@ -236,6 +237,14 @@ class HomeVC: UIViewController {
                     DispatchQueue.main.async {
                         for value in newValue {
                             self.reviewMeetings.append(value)
+                        }
+                        
+                        if self.reviewMeetings.count == 0 {
+                            self.myMeetingTableViewTopConstraint.constant = 0.0
+                            self.view.layoutIfNeeded()
+                        } else {
+                            self.myMeetingTableViewTopConstraint.constant = 20.0
+                            self.view.layoutIfNeeded()
                         }
                         
                         self.checkTableView()
@@ -723,16 +732,18 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         //self.todayMeetingTableViewHeight.constant = CGFloat(height2)
         
         //height = height + height2
+        let scrollViewHeight = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 20.0)
         
         DispatchQueue.main.async {
-            self.scrollView.layoutIfNeeded()
-            self.myMeetingTableView.layoutIfNeeded()
-            if self.myMeetings.count == 0 {
-                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight + 75.0)
-            } else {
-                self.scrollView.contentSize.height = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 20.0)
-            }
             
+            if self.myMeetings.count == 0 {
+                self.scrollView.contentSize.height = scrollViewHeight
+            } else {
+                self.scrollView.contentSize.height = scrollViewHeight
+            }
+            print("scrollview height = \(scrollViewHeight) height = \(height) reviewHeight = \(reviewHeight)")
+            self.myMeetingTableView.layoutIfNeeded()
+            self.scrollView.layoutIfNeeded()
             
         }
         

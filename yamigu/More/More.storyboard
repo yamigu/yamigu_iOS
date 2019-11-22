@@ -310,7 +310,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDA-B6-OsI">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDA-B6-OsI">
                                 <rect key="frame" x="0.0" y="77.333333333333329" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="푸시 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cn3-yv-y0F">
@@ -351,7 +351,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiV-6l-bVt">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiV-6l-bVt">
                                 <rect key="frame" x="0.0" y="127.33333333333331" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="채팅 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5a-5J-C7E">
@@ -393,7 +393,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHj-du-I9J">
-                                <rect key="frame" x="0.0" y="177.33333333333334" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="77.333333333333329" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PL-2o-gzU">
                                         <rect key="frame" x="39" y="17" width="52.666666666666657" height="16.333333333333329"/>
@@ -421,13 +421,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-Df-JDh">
-                                <rect key="frame" x="39" y="247.33333333333334" width="37.666666666666657" height="23.333333333333343"/>
+                                <rect key="frame" x="39" y="147.33333333333334" width="37.666666666666657" height="23.333333333333343"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5S-2Y-xcx">
-                                <rect key="frame" x="0.0" y="277.66666666666669" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="177.66666666666666" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 버전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbq-Hf-OjL">
                                         <rect key="frame" x="39" y="17" width="43.666666666666657" height="16.333333333333329"/>
@@ -463,7 +463,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVF-AZ-3fw">
-                                <rect key="frame" x="0.0" y="327.66666666666669" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="227.66666666666666" width="414" height="49.999999999999972"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보 취급방침" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCu-Gd-jxE">
                                         <rect key="frame" x="38.999999999999993" y="17" width="109.33333333333331" height="16.333333333333329"/>
@@ -491,7 +491,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-EY-9Ah">
-                                <rect key="frame" x="0.0" y="377.66666666666669" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="277.66666666666669" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-jk-Xa6">
                                         <rect key="frame" x="38.999999999999993" y="17" width="96.333333333333314" height="16.333333333333329"/>
@@ -519,7 +519,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-n1-Phk">
-                                <rect key="frame" x="0.0" y="427.66666666666669" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="327.66666666666669" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azC-Iz-ffr">
                                         <rect key="frame" x="39" y="17" width="52.666666666666657" height="16.333333333333329"/>
@@ -546,7 +546,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-gy-wFy">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-gy-wFy">
                                 <rect key="frame" x="174.66666666666666" y="684" width="65" height="27"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="13"/>
                                 <state key="normal" title="야미구 탈퇴">
@@ -556,7 +556,7 @@
                                     <action selector="withdrawalBtnPressed:" destination="YLE-QE-2vy" eventType="touchUpInside" id="3Sv-7U-MZd"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0to-Dk-ICh">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0to-Dk-ICh">
                                 <rect key="frame" x="174.66666666666666" y="706" width="65" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1016,7 +1016,6 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                             <constraint firstItem="HEq-2a-Uwk" firstAttribute="bottom" secondItem="2Z7-mf-H9a" secondAttribute="bottom" constant="25" id="4cm-My-X16"/>
                             <constraint firstItem="HEq-2a-Uwk" firstAttribute="bottom" secondItem="jfh-gy-wFy" secondAttribute="bottom" constant="25" id="6Ap-4c-10Y"/>
                             <constraint firstItem="HEq-2a-Uwk" firstAttribute="trailing" secondItem="2Z7-mf-H9a" secondAttribute="trailing" id="6PK-xw-Av3"/>
-                            <constraint firstItem="KHj-du-I9J" firstAttribute="top" secondItem="TiV-6l-bVt" secondAttribute="bottom" id="8hT-Cu-LBC"/>
                             <constraint firstItem="2Z7-mf-H9a" firstAttribute="top" secondItem="HEq-2a-Uwk" secondAttribute="top" id="CQI-Ao-jOl"/>
                             <constraint firstItem="U5S-2Y-xcx" firstAttribute="centerX" secondItem="KHj-du-I9J" secondAttribute="centerX" id="Crw-mZ-lVE"/>
                             <constraint firstItem="QOb-bw-pEz" firstAttribute="leading" secondItem="HEq-2a-Uwk" secondAttribute="leading" id="DNK-e9-JCY"/>
@@ -1038,6 +1037,7 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                             <constraint firstItem="AFY-n1-Phk" firstAttribute="centerX" secondItem="TnQ-EY-9Ah" secondAttribute="centerX" id="dca-hn-U8z"/>
                             <constraint firstItem="vcy-lU-yw4" firstAttribute="leading" secondItem="HEq-2a-Uwk" secondAttribute="leading" constant="39" id="e7L-hu-yb3"/>
                             <constraint firstItem="TiV-6l-bVt" firstAttribute="centerX" secondItem="jDA-B6-OsI" secondAttribute="centerX" id="eRw-OT-scS"/>
+                            <constraint firstItem="KHj-du-I9J" firstAttribute="top" secondItem="vcy-lU-yw4" secondAttribute="bottom" constant="7" id="gqg-05-Se9"/>
                             <constraint firstItem="U5S-2Y-xcx" firstAttribute="top" secondItem="cLP-Df-JDh" secondAttribute="bottom" constant="7" id="h9k-r1-HVp"/>
                             <constraint firstItem="jDA-B6-OsI" firstAttribute="centerX" secondItem="HEq-2a-Uwk" secondAttribute="centerX" id="iO5-4y-REN"/>
                             <constraint firstItem="TnQ-EY-9Ah" firstAttribute="width" secondItem="UVF-AZ-3fw" secondAttribute="width" id="n7f-7M-juB"/>

@@ -433,7 +433,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 0.0
         }
-        return 23.0
+        return 11.5
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
