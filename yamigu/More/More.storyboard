@@ -780,8 +780,15 @@ d. 회원은 구매시점으로부터 7일 이내인 경우 환불이 가능하�
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iLi-JJ-MH8">
-                                        <rect key="frame" x="15" y="59" width="384" height="598"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sV-dF-DTp">
+                                        <rect key="frame" x="379" y="20" width="15" height="22"/>
+                                        <state key="normal" image="btn_close"/>
+                                        <connections>
+                                            <action selector="closeDetailBtnPressed:" destination="YLE-QE-2vy" eventType="touchUpInside" id="v2T-mQ-sW6"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iLi-JJ-MH8">
+                                        <rect key="frame" x="15" y="61" width="384" height="598"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <string key="text">개인정보 처리방침
 
@@ -988,13 +995,6 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sV-dF-DTp">
-                                        <rect key="frame" x="379" y="20" width="15" height="22"/>
-                                        <state key="normal" image="btn_close"/>
-                                        <connections>
-                                            <action selector="closeDetailBtnPressed:" destination="YLE-QE-2vy" eventType="touchUpInside" id="v2T-mQ-sW6"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>

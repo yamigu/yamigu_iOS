@@ -58,6 +58,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     
     override func viewWillAppear(_ animated: Bool) {
         tf_name.text = "\(userDictionary["nickname"] as! String)(\(userDictionary["age"]!))"
+        self.button_notification.setTitle(" \(alarmCount)", for: .normal)
         
         self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
     }
@@ -356,5 +357,12 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     }
     @IBAction func talkBtnPressed(_ sender: Any) {
         
+    }
+    
+    func updateAlarmCountButton() {
+        if self.button_notification != nil {
+            self.button_notification.setTitle(" \(alarmCount)", for: .normal)
+        }
+        //
     }
 }

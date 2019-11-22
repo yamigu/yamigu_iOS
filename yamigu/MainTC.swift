@@ -46,6 +46,11 @@ class MainTC: UITabBarController {
                 if homeController != nil {
                     homeController.updateAlarmCountLabel()
                 }
+                let mypageNavController = self.viewControllers![3] as! UINavigationController
+                let mypageController = mypageNavController.topViewController as! MyPageVC
+                if mypageController != nil {
+                    mypageController.updateAlarmCountButton()
+                }
                 
             }
         })
