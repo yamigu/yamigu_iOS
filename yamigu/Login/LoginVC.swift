@@ -156,6 +156,7 @@ class LoginVC: UIViewController {
                             if ("\(userDictionary["nickname"] ?? "<null>")") != "<null>" {
                                 //self.dismiss(animated: false, completion: nil)
                                 self.performSegue(withIdentifier: "segue_loginCheck", sender: self)
+                                self.navigationController?.isNavigationBarHidden = true
                             } else {
                                 self.performSegue(withIdentifier: "segue_agreement", sender: self)
                             }

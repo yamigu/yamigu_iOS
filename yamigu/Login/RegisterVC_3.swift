@@ -236,6 +236,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
                 //self.dismiss(animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
                 //self.performSegue(withIdentifier: "segue_main", sender: self)
                 self.performSegue(withIdentifier: "segue_loginCheck", sender: self)
+                self.navigationController?.isNavigationBarHidden = true
 
             }
         }.resume()

@@ -271,8 +271,8 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                             self.label_department.text = newValue["department"] as? String
                             
                             
-                            if self.userDict["openby_profile"] != nil {
-                                if let imageUrl = URL(string: "\(self.userDict["openby_profile"]!)") {
+                            if self.userDict["image"] != nil {
+                                if let imageUrl = URL(string: "\(self.userDict["image"]!)") {
                                     
                                     self.image_profile.downloaded(from: imageUrl)
                                     self.image_profile.contentMode = .scaleAspectFill
