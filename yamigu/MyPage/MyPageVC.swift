@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KakaoPlusFriend
 
 class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -118,7 +119,13 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         }
     }
     @IBAction func compBtnPressed(_ sender: Any) {
-        checkNickname(urlString: "http://106.10.39.154:9999/api/user/validation/nickname/\(self.tf_name.text!)", isComp: true)
+        let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
+        print("nickName = \(nickName!)")
+        var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName!)"
+        let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
+        urlString = String(utf8String: str_url.cString(using: .utf8)!)!
+        checkNickname(urlString: urlString, isComp: true)
     }
     
     @IBAction func cancelBtnPressed(_ sender: Any) {
@@ -440,13 +447,13 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         
     }
     @IBAction func talkBtnPressed(_ sender: Any) {
-        
+        KPFPlusFriend(id: "_xjxamkT").chat()
     }
     
     func updateAlarmCountButton() {
         if self.button_notification != nil {
             self.button_notification.setTitle(" \(alarmCount)", for: .normal)
         }
-        //
+        
     }
 }
