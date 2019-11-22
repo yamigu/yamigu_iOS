@@ -60,8 +60,24 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         tf_name.text = "\(userDictionary["nickname"] as! String)(\(userDictionary["age"]!))"
         
         self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(gesture:)))
+
+        image_profile.addGestureRecognizer(tapGesture)
     }
     
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+
+            let image = UIImagePickerController()
+            image.delegate = self
+            
+            image.sourceType = UIImagePickerController.SourceType.photoLibrary
+            image.allowsEditing = false
+            
+            self.present(image, animated: true)
+        }
+    }
     
     @IBAction func changeProfileBtnPressed(_ sender: Any) {
         let image = UIImagePickerController()
@@ -77,6 +93,12 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         {
             self.image_profile.image = image
+            
+            var jsonImg = Dictionary<String, Data>()
+            //jsonImg["uploaded_file"] = self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+            jsonImg.updateValue(self.image_profile.image!.jpegData(compressionQuality: 1.0)!, forKey: "uploaded_file")
+            
+            self.postRequestImage("http://106.10.39.154:9999/api/user/change/avata/", bodyString: "uploaded_file=", json: jsonImg)
         } else {
             // error
         }
@@ -320,6 +342,68 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                 }
             }else{
                 print("data nil")
+            }
+        }.resume()
+    }
+    
+    func postRequestImage(_ urlString: String, bodyString: String, json: [String: Data]){
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("multipart/form-data;boundary=*****", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        request.setValue("Keep-Alive", forHTTPHeaderField: "Connection")
+        request.setValue("multipart/form-data", forHTTPHeaderField: "ENCTYPE")
+        request.setValue("certiimage.jpeg", forHTTPHeaderField: "uploaded_file")
+        
+        /*if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed) {
+         //var jsonString = String(data: data, encoding: .utf8) {
+         //jsonString = jsonString.replacingOccurrences(of: "'", with: "")
+         //jsonString = jsonString.replacingOccurrences(of: " ", with: "")
+         //jsonString = jsonString.replacingOccurrences(of: "\n", with: "")
+         //let data = jsonString.data(using: .utf8, allowLossyConversion: false)
+         request.httpBody = data as Data
+         }*/
+        
+        var body = Data()
+        guard let imageData = self.image_profile.image!.jpegData(compressionQuality: 1.0) else {
+            print("oops")
+            return
+        }
+        
+        let lineEnd = "\r\n"
+        let twoHyphens = "--"
+        let boundary = "*****"
+        
+        // file data //
+        //body.append(("\"uploaded_file\":\"").data(using: .utf8)!)
+        //body.append(imageData as Data)
+        //body.append(("\"").data(using: .utf8)!)
+        
+        body.append((twoHyphens + boundary + lineEnd).data(using: .utf8)!)
+        body.append(("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"certiimage.jpeg\"" + lineEnd).data(using: .utf8)!)
+        body.append((lineEnd).data(using: .utf8)!)
+        body.append(imageData as Data)
+        body.append((lineEnd).data(using: .utf8)!)
+        body.append((twoHyphens + boundary + lineEnd).data(using: .utf8)!)
+        
+        request.httpBody = body
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                print(res)
+                
+            }
+            
+            DispatchQueue.main.async {
+                // 동작 실행
+                //self.navigationController?.popToRootViewController(animated: false)
+                //self.dismiss(animated: true, completion: nil)
+                //self.performSegue(withIdentifier: "segue_main", sender: self)
             }
         }.resume()
     }

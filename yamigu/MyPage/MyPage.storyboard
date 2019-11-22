@@ -64,16 +64,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pM-TC-aVr">
                                 <rect key="frame" x="8" y="13" width="398" height="209"/>
                                 <subviews>
-                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8To-Cg-IJD">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="209"/>
-                                        <color key="backgroundColor" red="0.98039215686274506" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
-                                                <real key="value" value="17"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="mcV-Us-ZHh">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample_profile" translatesAutoresizingMaskIntoConstraints="NO" id="mcV-Us-ZHh">
                                         <rect key="frame" x="29" y="16" width="110" height="110"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="110" id="mCD-Cf-4gN"/>
@@ -192,6 +183,15 @@
                                             <action selector="ticketBtnPressed:" destination="6Fk-HZ-iur" eventType="touchUpInside" id="q5f-Ed-vrg"/>
                                         </connections>
                                     </button>
+                                    <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8To-Cg-IJD">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="209"/>
+                                        <color key="backgroundColor" red="0.98039215686274506" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                                <real key="value" value="17"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LD-Zr-Qqk">
                                         <rect key="frame" x="128" y="86.666666666666671" width="142" height="36"/>
                                         <constraints>
