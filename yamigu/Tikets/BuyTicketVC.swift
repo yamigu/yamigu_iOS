@@ -9,7 +9,27 @@
 import UIKit
 import StoreKit
 
-class BuyTicketVC: UIViewController, SKProductsRequestDelegate {
+class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions as! [SKPaymentTransaction] {
+            
+            switch transaction.transactionState {
+                
+            case SKPaymentTransactionState.purchased:
+                print("Transaction Approved")
+                print("Product Identifier: \(transaction.payment.productIdentifier)")
+                
+                SKPaymentQueue.default().finishTransaction(transaction)
+                
+            case SKPaymentTransactionState.failed:
+                print("Transaction Failed")
+                SKPaymentQueue.default().finishTransaction(transaction)
+            default:
+                break
+            }
+        }
+    }
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         var products = response.products
         for product in products {
@@ -58,6 +78,9 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestProductData()
+        
+        button_ticket_1.setImage(UIImage(named: "image_ticket_1_on"), for: .highlighted)
+        button_ticket_2.setImage(UIImage(named: "image_ticket_3_on"), for: .highlighted)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,7 +88,7 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate {
     }
     
     @IBAction func buttonPressed_1(_ sender: Any) {
-        if isButtonPressed {
+        /*if isButtonPressed {
             isButtonPressed = false
             
             button_ticket_1.setImage(UIImage(named: "image_ticket_1"), for: .normal)
@@ -77,10 +100,12 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate {
             let payment = SKPayment(product: productsArray[0])
             SKPaymentQueue.default().add(payment)
             
-        }
+        }*/
+        let payment = SKPayment(product: productsArray[0])
+                   SKPaymentQueue.default().add(payment)
     }
     @IBAction func buttonPressed_2(_ sender: Any) {
-        if isButtonPressed2 {
+        /*if isButtonPressed2 {
             isButtonPressed2 = false
             
             button_ticket_2.setImage(UIImage(named: "image_ticket_3"), for: .normal)
@@ -92,7 +117,9 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate {
             let payment = SKPayment(product: productsArray[1])
             SKPaymentQueue.default().add(payment)
             
-        }
+        }*/
+        let payment = SKPayment(product: productsArray[1])
+        SKPaymentQueue.default().add(payment)
     }
     
 }

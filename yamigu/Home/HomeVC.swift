@@ -366,15 +366,17 @@ class HomeVC: UIViewController {
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
                 
             }
             if let data = data {
+                print("\(data)")
+                
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
@@ -629,11 +631,12 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                         print("datedouble = \(dateDoube)")
                         let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
                         
-                        let dateFomatter = DateFormatter(format: "a H:mm")
+                        let dateFomatter = DateFormatter(format: "a KK:mm")
                         dateFomatter.locale = Locale(identifier: "ko_kr")
                         dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-                        cell.label_chattingTime.text = dateFomatter.string(from: date)
                         
+                        cell.label_chattingTime.text = dateFomatter.string(from: date)
+                        cell.label_chattingTime.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
                         
                         if let message = value["message"] as? String {
                             DispatchQueue.main.async {
@@ -1030,8 +1033,27 @@ extension HomeVC: HomeReviewDelegate {
         
         self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
-        self.reviewMeetings.remove(at: index)
-        self.myMeetingReviewTableView.reloadData()
+        let cell = self.myMeetingReviewTableView.cellForRow(at: IndexPath(row: 0, section: index)) as! HomeReviewCell
+        cell.heightConstraint.constant = 0.0
+        cell.contentView.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
+        cell.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
+        
+        for view in cell.subviews {
+            if view != cell.contentView {
+                view.isHidden = true
+            }
+        }
+        
+        UIView.animate(withDuration: 0.0, animations: {
+            cell.layoutIfNeeded()
+        }) { (comp) in
+            if comp {
+                self.reviewMeetings.remove(at: index)
+                self.myMeetingReviewTableView.reloadData()
+            }
+        }
+        
+        
         
     }
     
@@ -1043,8 +1065,25 @@ extension HomeVC: HomeReviewDelegate {
         
         self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
-        self.reviewMeetings.remove(at: index)
-        self.myMeetingReviewTableView.reloadData()
+        let cell = self.myMeetingReviewTableView.cellForRow(at: IndexPath(row: 0, section: index)) as! HomeReviewCell
+        cell.heightConstraint.constant = 0.0
+        cell.contentView.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
+        cell.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
+        
+        for view in cell.subviews {
+            if view != cell.contentView {
+                view.isHidden = true
+            }
+        }
+        
+        UIView.animate(withDuration: 0.0, animations: {
+            cell.layoutIfNeeded()
+        }) { (comp) in
+            if comp {
+                self.reviewMeetings.remove(at: index)
+                self.myMeetingReviewTableView.reloadData()
+            }
+        }
         
     }
     

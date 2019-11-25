@@ -26,7 +26,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
     var requestMatchingList = [Dictionary<String, Any>]()
     
     let meetingType = ["2:2 미팅", "3:3 미팅", "4:4 미팅"]
-
+    var blackBackgroundView = UIView()
     
     
     override func viewDidLoad() {
@@ -160,7 +160,10 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 let id = "\(self.receiveMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
                 self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
-                
+                self.blackBackgroundView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
+                self.blackBackgroundView.makeToastActivity(.center)
+                self.blackBackgroundView.frame = self.view.frame
+                self.view.addSubview(blackBackgroundView)
             }
             
         } else if button_right.titleLabel?.text! == "대기중" {
@@ -196,7 +199,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
                 
             }
             
