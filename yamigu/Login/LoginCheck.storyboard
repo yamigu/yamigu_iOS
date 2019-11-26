@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xvv-b4-XSu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xvv-b4-XSu">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_loginCheckLogo" translatesAutoresizingMaskIntoConstraints="NO" id="MUC-jg-qvP">
-                                <rect key="frame" x="131" y="248" width="172" height="140"/>
+                                <rect key="frame" x="122" y="248" width="170" height="132.66666666666663"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="yamigu_inc" translatesAutoresizingMaskIntoConstraints="NO" id="AZL-mj-vsP">
                                 <rect key="frame" x="163.66666666666666" y="677" width="87" height="18"/>
@@ -26,7 +26,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MUC-jg-qvP" firstAttribute="top" secondItem="gEq-oe-hV0" secondAttribute="top" constant="248" id="09G-3z-gwT"/>
-                            <constraint firstItem="MUC-jg-qvP" firstAttribute="centerX" secondItem="gEq-oe-hV0" secondAttribute="centerX" constant="10" id="D2T-NR-d6b"/>
+                            <constraint firstItem="MUC-jg-qvP" firstAttribute="centerX" secondItem="gEq-oe-hV0" secondAttribute="centerX" id="D2T-NR-d6b"/>
                             <constraint firstItem="AZL-mj-vsP" firstAttribute="centerX" secondItem="gEq-oe-hV0" secondAttribute="centerX" id="NaY-qS-ILj"/>
                             <constraint firstItem="gEq-oe-hV0" firstAttribute="bottom" secondItem="AZL-mj-vsP" secondAttribute="bottom" constant="41" id="xho-cA-GVR"/>
                         </constraints>
@@ -59,7 +59,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="image_loginCheckLogo" width="172" height="140"/>
+        <image name="image_loginCheckLogo" width="170" height="132.66667175292969"/>
         <image name="yamigu_inc" width="87" height="18"/>
     </resources>
 </document>
