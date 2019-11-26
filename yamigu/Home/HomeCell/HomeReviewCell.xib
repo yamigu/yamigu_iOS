@@ -182,6 +182,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="button_writeReview" destination="8IW-Gh-BKM" id="hUp-WL-Qe6"/>
+                <outlet property="heightConstraint" destination="KDX-6P-CBZ" id="5gO-Bo-ncf"/>
                 <outlet property="label_meetingDate" destination="eDV-yp-qra" id="QK6-xL-CvY"/>
                 <outlet property="textReviewContainerView" destination="nzr-xz-ANA" id="9aN-Bq-UAx"/>
                 <outlet property="textview_review" destination="Kp7-x9-Wqc" id="vNU-LX-zia"/>

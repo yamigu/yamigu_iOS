@@ -20,6 +20,7 @@ class HomeReviewCell: UITableViewCell {
     @IBOutlet weak var label_meetingDate: UILabel!
     @IBOutlet weak var button_writeReview: UIButton!
     
+    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var textReviewContainerView: UIView!
     @IBOutlet weak var textview_review: UITextView!
     
