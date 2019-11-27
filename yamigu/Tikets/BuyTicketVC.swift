@@ -77,14 +77,14 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestProductData()
+        //requestProductData()
         
         button_ticket_1.setImage(UIImage(named: "image_ticket_1_on"), for: .highlighted)
         button_ticket_2.setImage(UIImage(named: "image_ticket_3_on"), for: .highlighted)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //xrequestProductData()
+        requestProductData()
     }
     
     @IBAction func buttonPressed_1(_ sender: Any) {
