@@ -5,7 +5,6 @@
 //  Created by Yoon on 04/10/2019.
 //  Copyright © 2019 Yoon. All rights reserved.
 //
-
 import UIKit
 import FirebaseDatabase
 import CHIPageControl
@@ -20,16 +19,13 @@ class HomeVC: UIViewController {
     @IBOutlet weak var button_tickets: UIButton!
     
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var myMeetingReviewTableView: UITableView!
     @IBOutlet weak var myMeetingReviewTableViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var myMeetingReviewTableViewTopConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var myMeetingTableViewTopConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var myMeetingTableView: UITableView!
     @IBOutlet weak var myMeetingTableViewHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var recommendMeetingCollectionView: UICollectionView!
     @IBOutlet weak var label_recommendMeeting: UILabel!
     
@@ -41,7 +37,6 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var pageController: CHIPageControlChimayo!
     @IBOutlet weak var label_alarmCount: UILabel!
-    
     var myMeetings = [Dictionary<String, Any>]()
     var todayMeetings = [Dictionary<String, Any>]()
     var recommendMeetings = [Dictionary<String, Any>]()
@@ -60,7 +55,8 @@ class HomeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.setupTableView()
+        self.setupCollectionView()
         
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
@@ -71,8 +67,6 @@ class HomeVC: UIViewController {
         
         self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
         
-        self.setupTableView()
-        self.setupCollectionView()
     }
     
     
@@ -87,9 +81,7 @@ class HomeVC: UIViewController {
         
         self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
         
-        
     }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
@@ -208,10 +200,9 @@ class HomeVC: UIViewController {
                             }
                         }
                         
+                        self.checkTableView()
                         
-                        //self.checkTableView()
-                        
-                        
+                        self.myMeetingTableView.reloadData()
                         let tabbarController = self.tabBarController as! MainTC
                         tabbarController.menuButton.setTitle("\(self.myMeetings.count)/3", for: .normal)
                     }
@@ -261,11 +252,18 @@ class HomeVC: UIViewController {
                             self.reviewMeetings.append(value)
                         }
                         
+                        if self.reviewMeetings.count == 0 {
+                            self.myMeetingTableViewTopConstraint.constant = 0.0
+                            self.view.layoutIfNeeded()
+                        } else {
+                            self.myMeetingTableViewTopConstraint.constant = 20.0
+                            self.view.layoutIfNeeded()
+                        }
                         
-                        //self.checkTableView()
+                        self.checkTableView()
                         
                         
-                        
+                        self.myMeetingReviewTableView.reloadData()
                     }
                 } catch {
                     print(error)
@@ -313,9 +311,6 @@ class HomeVC: UIViewController {
                             self.recommendMeetings.append(value)
                         }
                         
-                        
-                        self.checkTableView()
-                        
                         self.recommendMeetingCollectionView.reloadData()
                     }
                 } catch {
@@ -328,28 +323,13 @@ class HomeVC: UIViewController {
     }
     
     func checkTableView() {
-        
-        
-        if self.reviewMeetings.count == 0 {
-            //self.myMeetingReviewTableViewTopConstraint.constant = 0.0
-            self.myMeetingTableViewTopConstraint.constant = 0.0
-            
-            if self.myMeetings.count == 0 {
-                self.button_addMeeting.isHidden = false
-                self.topConstraint.constant = 87
-            } else {
-                self.button_addMeeting.isHidden = true
-                self.topConstraint.constant = 15.5
-            }
+        if self.reviewMeetings.count == 0 && self.myMeetings.count == 0 {
+            self.button_addMeeting.isHidden = false
+            self.topConstraint.constant = 73
         } else {
-            //self.myMeetingReviewTableViewTopConstraint.constant = 20.0
-            self.myMeetingTableViewTopConstraint.constant = 20.0
+            self.button_addMeeting.isHidden = true
+            self.topConstraint.constant = 15.5
         }
-        
-        self.myMeetingTableView.reloadData()
-        self.myMeetingReviewTableView.reloadData()
-        
-        self.scrollView.layoutIfNeeded()
     }
     
     /*func daysBetween(start: Date, end: Date) -> Int {
@@ -760,45 +740,26 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         let todaymeetingCount = self.todayMeetings.count
         let reviewMeetingCount = self.reviewMeetings.count
         
-        var height = 0.0
-        if mymeetingCount > 0 {
-            height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
-        } else {
-            height = Double(54 * matchingMeetingCount)
-        }
-        
-        var reviewHeight = 0.0
-        if reviewMeetingCount > 0 {
-            reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
-        }
-        
+        var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
+        var reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
         
         self.myMeetingTableViewHeight.constant = CGFloat(height)
         self.myMeetingReviewTableViewHeight.constant = CGFloat(reviewHeight)
+        //var height2 = 86.0 * Double(todaymeetingCount) + 11.0 * Double(todaymeetingCount - 1)
         
-        //let scrollViewHeight = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 20.0)
+        //self.todayMeetingTableViewHeight.constant = CGFloat(height2)
         
+        //height = height + height2
+        let scrollViewHeight = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 20.0)
         
         DispatchQueue.main.async {
             
-            var scrollViewHeight = CGFloat(169 + 222 + 94.5 + 92)
-            
-            if mymeetingCount == 0 && reviewMeetingCount == 0 && self.matchingMeetingCount == 0 {
-                scrollViewHeight = CGFloat(169 + 222 + 94.5 + 92 + 20)
+            if self.myMeetings.count == 0 {
+                self.scrollView.contentSize.height = scrollViewHeight
             } else {
-                scrollViewHeight = CGFloat(169 + 222 + 94.5 + 20 + height + reviewHeight)
+                self.scrollView.contentSize.height = scrollViewHeight
             }
-            
-//            if self.myMeetings.count == 0 {
-//                self.scrollView.contentSize.height = scrollViewHeight
-//            } else {
-//                self.scrollView.contentSize.height = scrollViewHeight
-//            }
-            self.scrollView.contentSize.height = scrollViewHeight
-            
             print("scrollview height = \(scrollViewHeight) height = \(height) reviewHeight = \(reviewHeight)")
-            print("scrollview contentsize = \(self.scrollView.contentSize.height)")
-            
             self.myMeetingTableView.layoutIfNeeded()
             self.scrollView.layoutIfNeeded()
             
@@ -1107,6 +1068,8 @@ extension HomeVC: HomeReviewDelegate {
             }
         }
         
+        
+        
     }
     
     
@@ -1140,6 +1103,3 @@ extension HomeVC: HomeReviewDelegate {
     }
     
 }
-
-
-
