@@ -235,6 +235,8 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
         let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
         let now = Date()
         let calcAge = calendar.components(.year, from: birthdayDate!, to: now, options: [])
+        let calcMont = calendar.components(.month, from: birthdayDate!, to: now, options: [])
+    
         let age = calcAge.year
         return age!
     }

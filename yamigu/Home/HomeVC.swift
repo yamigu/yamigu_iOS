@@ -472,7 +472,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             cell.delegate = self
             cell.index = indexPath.section
             let meetingDict = myMeetings[indexPath.section]
-            
+             cell.label_chattingTime.isHidden = true
             cell.view_bottom.isHidden = false
             cell.constraint_bottomHeight.constant = 40.0
             cell.layoutIfNeeded()
@@ -489,6 +489,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                 cell.label_matchingName.isHidden = true
                 cell.label_matchingDepart.isHidden = true
                 cell.label_isMatched.isHidden = true
+               
                 
                 cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
                 //cell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10.0)
@@ -637,6 +638,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                         
                         cell.label_chattingTime.text = dateFomatter.string(from: date)
                         cell.label_chattingTime.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
+                        cell.label_chattingTime.isHidden = false
                         
                         if let message = value["message"] as? String {
                             DispatchQueue.main.async {
