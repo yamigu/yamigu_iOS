@@ -87,7 +87,9 @@ class HomeVC: UIViewController {
         
         self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
         
+        
     }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
