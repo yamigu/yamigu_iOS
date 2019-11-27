@@ -262,7 +262,7 @@ class HomeVC: UIViewController {
                         }
                         
                         
-                        self.checkTableView()
+                        //self.checkTableView()
                         
                         
                         
@@ -777,21 +777,25 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         self.myMeetingReviewTableViewHeight.constant = CGFloat(reviewHeight)
         
         //let scrollViewHeight = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 20.0)
-        var scrollViewHeight = CGFloat(169 + 222 + 94.5 + 92)
         
-        if mymeetingCount == 0 && reviewMeetingCount == 0 {
-            scrollViewHeight = CGFloat(169 + 222 + 94.5 + 92 + 20)
-        } else {
-            scrollViewHeight = CGFloat(169 + 222 + 94.5 + 20 + height + reviewHeight)
-        }
         
         DispatchQueue.main.async {
             
-            if self.myMeetings.count == 0 {
-                self.scrollView.contentSize.height = scrollViewHeight
+            var scrollViewHeight = CGFloat(169 + 222 + 94.5 + 92)
+            
+            if mymeetingCount == 0 && reviewMeetingCount == 0 && self.matchingMeetingCount == 0 {
+                scrollViewHeight = CGFloat(169 + 222 + 94.5 + 92 + 20)
             } else {
-                self.scrollView.contentSize.height = scrollViewHeight
+                scrollViewHeight = CGFloat(169 + 222 + 94.5 + 20 + height + reviewHeight)
             }
+            
+//            if self.myMeetings.count == 0 {
+//                self.scrollView.contentSize.height = scrollViewHeight
+//            } else {
+//                self.scrollView.contentSize.height = scrollViewHeight
+//            }
+            self.scrollView.contentSize.height = scrollViewHeight
+            
             print("scrollview height = \(scrollViewHeight) height = \(height) reviewHeight = \(reviewHeight)")
             print("scrollview contentsize = \(self.scrollView.contentSize.height)")
             
