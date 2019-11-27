@@ -66,12 +66,13 @@ class HomeVC: UIViewController {
         ref = Database.database().reference()
         
         self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
+        print("tabbar height = \(self.tabBarController?.tabBar.frame.size.height)")
         
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        super.viewWillAppear(animated)
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
@@ -80,6 +81,8 @@ class HomeVC: UIViewController {
         ref = Database.database().reference()
         
         self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
+        
+        
         
     }
     
@@ -484,215 +487,218 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             
             cell.delegate = self
             cell.index = indexPath.section
-            let meetingDict = myMeetings[indexPath.section]
-             cell.label_chattingTime.isHidden = true
-            cell.view_bottom.isHidden = false
-            cell.constraint_bottomHeight.constant = 40.0
-            cell.layoutIfNeeded()
-            
-            if !(meetingDict["is_matched"] as! Bool) {
-                cell.clipsToBounds = true
-                cell.layer.cornerRadius = 10
-                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-                
-                cell.view_bottom.isHidden = true
-                cell.constraint_bottomHeight.constant = 0.0
-                cell.layoutIfNeeded()
-                
-                cell.label_matchingName.isHidden = true
-                cell.label_matchingDepart.isHidden = true
-                cell.label_isMatched.isHidden = true
-               
-                
-                cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
-                //cell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10.0)
-                
-                var received = Dictionary<String, Any>()
-                received = meetingDict["received_request"] as! Dictionary<String, Any>
-                
-                var received_request = Array<Dictionary<String, Any>>()
-                
-                received_request = received["data"] as! Array<Dictionary<String, Any>>
-                
-                let type = Int((meetingDict["meeting_type"] as! Int))
-                var textColor = UIColor.white
-                if type == 1 {
-                    textColor = UIColor(rgb: 0xFF7B22)
-                } else if type == 2 {
-                    textColor = UIColor(rgb: 0xFF6024)
-                } else {
-                    textColor = UIColor(rgb: 0xFF4600)
-                }
-                
-                if received_request.count == 0 {
-                    let myAttribute = [ NSAttributedString.Key.foregroundColor: textColor, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ] as [NSAttributedString.Key : Any]
-                    let myAttrString = NSAttributedString(string: "신청팀보기 (0)", attributes: myAttribute)
-                    cell.button_applyTeam.setAttributedTitle(myAttrString, for: .normal)
-                } else {
-                    let myAttribute = [ NSAttributedString.Key.foregroundColor: textColor, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ] as [NSAttributedString.Key : Any]
-                    let myAttrString = NSAttributedString(string: "신청팀보기 (\(received_request.count))", attributes: myAttribute)
-                    cell.button_applyTeam.setAttributedTitle(myAttrString, for: .normal)
-                }
-                
-                cell.backgroundColor = UIColor.white
-                
-                
-            } else {
-                
-                cell.clipsToBounds = true
-                cell.layer.cornerRadius = 10
-                cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-                
-                //cell.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
-                cell.backgroundColor = UIColor(rgb: 0xFFF9F6)
-                
-                cell.label_isWating.isHidden = true
-                cell.button_edit.isHidden = true
-                cell.button_applyTeam.isHidden = true
-                
-                DispatchQueue.main.async {
-                    cell.view_bottom.isHidden = false
-                }
-                
-                cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+            if myMeetings.count > 0 {
+                let meetingDict = myMeetings[indexPath.section]
+                 cell.label_chattingTime.isHidden = true
+                cell.view_bottom.isHidden = false
                 cell.constraint_bottomHeight.constant = 40.0
                 cell.layoutIfNeeded()
                 
-                cell.label_matchingName.isHidden = false
-                cell.label_matchingDepart.isHidden = false
-                cell.label_isMatched.isHidden = false
-                
-                
-                
-                
-                var type = Int((meetingDict["meeting_type"] as! Int))
-                var textColor = UIColor.white
-                if type == 1 {
-                    textColor = UIColor(rgb: 0xFF7B22)
-                } else if type == 2 {
-                    textColor = UIColor(rgb: 0xFF6024)
+                if !(meetingDict["is_matched"] as! Bool) {
+                    cell.clipsToBounds = true
+                    cell.layer.cornerRadius = 10
+                    cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+                    
+                    cell.view_bottom.isHidden = true
+                    cell.constraint_bottomHeight.constant = 0.0
+                    cell.layoutIfNeeded()
+                    
+                    cell.label_matchingName.isHidden = true
+                    cell.label_matchingDepart.isHidden = true
+                    cell.label_isMatched.isHidden = true
+                   
+                    
+                    cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+                    //cell.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: 10.0)
+                    
+                    var received = Dictionary<String, Any>()
+                    received = meetingDict["received_request"] as! Dictionary<String, Any>
+                    
+                    var received_request = Array<Dictionary<String, Any>>()
+                    
+                    received_request = received["data"] as! Array<Dictionary<String, Any>>
+                    
+                    let type = Int((meetingDict["meeting_type"] as! Int))
+                    var textColor = UIColor.white
+                    if type == 1 {
+                        textColor = UIColor(rgb: 0xFF7B22)
+                    } else if type == 2 {
+                        textColor = UIColor(rgb: 0xFF6024)
+                    } else {
+                        textColor = UIColor(rgb: 0xFF4600)
+                    }
+                    
+                    if received_request.count == 0 {
+                        let myAttribute = [ NSAttributedString.Key.foregroundColor: textColor, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ] as [NSAttributedString.Key : Any]
+                        let myAttrString = NSAttributedString(string: "신청팀보기 (0)", attributes: myAttribute)
+                        cell.button_applyTeam.setAttributedTitle(myAttrString, for: .normal)
+                    } else {
+                        let myAttribute = [ NSAttributedString.Key.foregroundColor: textColor, NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue ] as [NSAttributedString.Key : Any]
+                        let myAttrString = NSAttributedString(string: "신청팀보기 (\(received_request.count))", attributes: myAttribute)
+                        cell.button_applyTeam.setAttributedTitle(myAttrString, for: .normal)
+                    }
+                    
+                    cell.backgroundColor = UIColor.white
+                    
+                    
                 } else {
-                    textColor = UIColor(rgb: 0xFF4600)
-                }
-                
-                
-                
-                cell.label_isMatched.textColor = textColor
-                
-                var matchingId = ""
-                
-                var received = Dictionary<String, Any>()
-                var sent = Dictionary<String, Any>()
-                
-                received = meetingDict["received_request"] as! Dictionary<String, Any>
-                sent = meetingDict["sent_request"] as! Dictionary<String, Any>
-                
-                var received_request = Array<Dictionary<String, Any>>()
-                var sent_request = Array<Dictionary<String, Any>>()
-                
-                received_request = received["data"] as! Array<Dictionary<String, Any>>
-                sent_request = sent["data"] as! Array<Dictionary<String, Any>>
-                
-                for dict in received_request {
-                    if (dict["is_selected"] as! Bool) {
-                        matchingId = "\(dict["id"]!)"
+                    
+                    cell.clipsToBounds = true
+                    cell.layer.cornerRadius = 10
+                    cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+                    
+                    //cell.roundCorners(corners: [.topLeft, .topRight], radius: 10.0)
+                    cell.backgroundColor = UIColor(rgb: 0xFFF9F6)
+                    
+                    cell.label_isWating.isHidden = true
+                    cell.button_edit.isHidden = true
+                    cell.button_applyTeam.isHidden = true
+                    
+                    DispatchQueue.main.async {
+                        cell.view_bottom.isHidden = false
                     }
-                }
-                
-                for dict in sent_request {
-                    if (dict["is_selected"] as! Bool) {
-                        matchingId = "\(dict["id"]!)"
-                    }
-                }
-                
-                self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
-                    print("count = \(count)")
-                    if count == 0 {
-                        cell.label_chattingCount.isHidden = true
+                    
+                    cell.label_type.text = self.meetingType[Int((meetingDict["meeting_type"] as! Int) - 1)]
+                    cell.constraint_bottomHeight.constant = 40.0
+                    cell.layoutIfNeeded()
+                    
+                    cell.label_matchingName.isHidden = false
+                    cell.label_matchingDepart.isHidden = false
+                    cell.label_isMatched.isHidden = false
+                    
+                    
+                    
+                    
+                    var type = Int((meetingDict["meeting_type"] as! Int))
+                    var textColor = UIColor.white
+                    if type == 1 {
+                        textColor = UIColor(rgb: 0xFF7B22)
+                    } else if type == 2 {
+                        textColor = UIColor(rgb: 0xFF6024)
                     } else {
-                        cell.label_chattingCount.isHidden = false
-                        cell.label_chattingCount.text = "\(count)"
+                        textColor = UIColor(rgb: 0xFF4600)
                     }
-                }
-                
-                let matchDict = meetingDict["matched_meeting"] as! Dictionary<String, Any>
-                
-                let matchAge = matchDict["openby_age"] as! String
-                let matchName = matchDict["openby_nickname"] as! String
-                let matchBelong = matchDict["openby_belong"] as! String
-                let matchDepart = matchDict["openby_department"] as! String
-                
-                self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
-                    print("count = \(count)")
-                    if count == 0 {
-                        cell.label_chattingCount.isHidden = true
-                    } else {
-                        cell.label_chattingCount.isHidden = false
-                        cell.label_chattingCount.text = "\(count)"
+                    
+                    
+                    
+                    cell.label_isMatched.textColor = textColor
+                    
+                    var matchingId = ""
+                    
+                    var received = Dictionary<String, Any>()
+                    var sent = Dictionary<String, Any>()
+                    
+                    received = meetingDict["received_request"] as! Dictionary<String, Any>
+                    sent = meetingDict["sent_request"] as! Dictionary<String, Any>
+                    
+                    var received_request = Array<Dictionary<String, Any>>()
+                    var sent_request = Array<Dictionary<String, Any>>()
+                    
+                    received_request = received["data"] as! Array<Dictionary<String, Any>>
+                    sent_request = sent["data"] as! Array<Dictionary<String, Any>>
+                    
+                    for dict in received_request {
+                        if (dict["is_selected"] as! Bool) {
+                            matchingId = "\(dict["id"]!)"
+                        }
                     }
-                }
-                
-                cell.label_matchingName.text = matchName + " (\(matchAge))"
-                cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
-                ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
-                    for snap in snapshot.children.allObjects as! [DataSnapshot] {
-                        let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
-                        let time = value["time"]!
-                        print("time \(time)")
-                        
-                        let dateString = "\(time)"
-                        let dateDoube = Double(dateString)! / 1000.0
-                        print("datedouble = \(dateDoube)")
-                        let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
-                        
-                        let dateFomatter = DateFormatter(format: "a KK:mm")
-                        dateFomatter.locale = Locale(identifier: "ko_kr")
-                        dateFomatter.timeZone = TimeZone(abbreviation: "KST")
-                        
-                        cell.label_chattingTime.text = dateFomatter.string(from: date)
-                        cell.label_chattingTime.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
-                        cell.label_chattingTime.isHidden = false
-                        
-                        if let message = value["message"] as? String {
-                            DispatchQueue.main.async {
-                                //
-                                cell.label_lastChat.text = message
-                                if message == "###manager-place-content###" {
-                                    cell.label_lastChat.text = "추천 장소를 확인해보세요!"
+                    
+                    for dict in sent_request {
+                        if (dict["is_selected"] as! Bool) {
+                            matchingId = "\(dict["id"]!)"
+                        }
+                    }
+                    
+                    self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
+                        print("count = \(count)")
+                        if count == 0 {
+                            cell.label_chattingCount.isHidden = true
+                        } else {
+                            cell.label_chattingCount.isHidden = false
+                            cell.label_chattingCount.text = "\(count)"
+                        }
+                    }
+                    
+                    let matchDict = meetingDict["matched_meeting"] as! Dictionary<String, Any>
+                    
+                    let matchAge = matchDict["openby_age"] as! String
+                    let matchName = matchDict["openby_nickname"] as! String
+                    let matchBelong = matchDict["openby_belong"] as! String
+                    let matchDepart = matchDict["openby_department"] as! String
+                    
+                    self.getMessages(uid: userDictionary["uid"]! as! String, matchId: matchingId) { (count) in
+                        print("count = \(count)")
+                        if count == 0 {
+                            cell.label_chattingCount.isHidden = true
+                        } else {
+                            cell.label_chattingCount.isHidden = false
+                            cell.label_chattingCount.text = "\(count)"
+                        }
+                    }
+                    
+                    cell.label_matchingName.text = matchName + " (\(matchAge))"
+                    cell.label_matchingDepart.text = matchBelong + ", " + matchDepart
+                    ref.child("message/\(matchingId)/").queryLimited(toLast: 1).observe(.value) { (snapshot) in
+                        for snap in snapshot.children.allObjects as! [DataSnapshot] {
+                            let value = snap.value as? [String: Any] ?? [:] // A good way to unwrap optionals in a single line
+                            let time = value["time"]!
+                            print("time \(time)")
+                            
+                            let dateString = "\(time)"
+                            let dateDoube = Double(dateString)! / 1000.0
+                            print("datedouble = \(dateDoube)")
+                            let date = Date(timeIntervalSince1970: dateDoube as! TimeInterval)
+                            
+                            let dateFomatter = DateFormatter(format: "a KK:mm")
+                            dateFomatter.locale = Locale(identifier: "ko_kr")
+                            dateFomatter.timeZone = TimeZone(abbreviation: "KST")
+                            
+                            cell.label_chattingTime.text = dateFomatter.string(from: date)
+                            cell.label_chattingTime.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
+                            cell.label_chattingTime.isHidden = false
+                            
+                            if let message = value["message"] as? String {
+                                DispatchQueue.main.async {
+                                    //
+                                    cell.label_lastChat.text = message
+                                    if message == "###manager-place-content###" {
+                                        cell.label_lastChat.text = "추천 장소를 확인해보세요!"
+                                    }
+                                    
                                 }
-                                
                             }
                         }
                     }
                 }
+                
+                
+                let dateString = meetingDict["date"] as! String
+                let dateFormatter = DateFormatter()
+                
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                let date = dateFormatter.date(from:dateString)
+                
+                dateFormatter.dateFormat = "M월 d일 (EE)"
+                dateFormatter.locale = Locale(identifier: "ko_kr")
+                dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+                cell.label_day.text = dateFormatter.string(from: date!)
+                
+                let type = Int((meetingDict["meeting_type"] as! Int))
+                let textColor = UIColor.white
+                if type == 1 {
+                    cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical")
+                    cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical")
+                } else if type == 2 {
+                    cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical2")
+                    cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical2")
+                } else {
+                    cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical3")
+                    cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical3")
+                }
+                
+                return cell
             }
             
-            
-            let dateString = meetingDict["date"] as! String
-            let dateFormatter = DateFormatter()
-            
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            let date = dateFormatter.date(from:dateString)
-            
-            dateFormatter.dateFormat = "M월 d일 (EE)"
-            dateFormatter.locale = Locale(identifier: "ko_kr")
-            dateFormatter.timeZone = TimeZone(abbreviation: "KST")
-            cell.label_day.text = dateFormatter.string(from: date!)
-            
-            let type = Int((meetingDict["meeting_type"] as! Int))
-            let textColor = UIColor.white
-            if type == 1 {
-                cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical")
-                cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical")
-            } else if type == 2 {
-                cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical2")
-                cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical2")
-            } else {
-                cell.image_view_bar1.image = UIImage(named: "orange_bar_vertical3")
-                cell.image_view_bar2.image = UIImage(named: "orange_bar_vertical3")
-            }
-            
-            return cell
             
         } else if tableView == self.myMeetingReviewTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "homeReviewCell") as! HomeReviewCell
@@ -740,7 +746,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         let todaymeetingCount = self.todayMeetings.count
         let reviewMeetingCount = self.reviewMeetings.count
         
-        var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
+        /*var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
         var reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
         
         self.myMeetingTableViewHeight.constant = CGFloat(height)
@@ -763,7 +769,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             self.myMeetingTableView.layoutIfNeeded()
             self.scrollView.layoutIfNeeded()
             
-        }
+        }*/
         
         if tableView == self.myMeetingTableView {
             
@@ -786,6 +792,32 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let mymeetingCount = self.myMeetings.count
+        let todaymeetingCount = self.todayMeetings.count
+        let reviewMeetingCount = self.reviewMeetings.count
+        
+        var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
+        var reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
+        
+        self.myMeetingTableViewHeight.constant = CGFloat(height)
+        self.myMeetingReviewTableViewHeight.constant = CGFloat(reviewHeight)
+        //var height2 = 86.0 * Double(todaymeetingCount) + 11.0 * Double(todaymeetingCount - 1)
+        
+        //self.todayMeetingTableViewHeight.constant = CGFloat(height2)
+        
+        //height = height + height2
+        let scrollViewHeight = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 69.0)
+        
+        DispatchQueue.main.async {
+            
+            self.scrollView.contentSize.height = scrollViewHeight
+            
+            print("scrollview height = \(scrollViewHeight) height = \(height) reviewHeight = \(reviewHeight)")
+            self.myMeetingTableView.layoutIfNeeded()
+            self.scrollView.layoutIfNeeded()
+            
+        }
+        
         if tableView == self.myMeetingTableView {
             
             let meetingDict = self.myMeetings[indexPath.section]

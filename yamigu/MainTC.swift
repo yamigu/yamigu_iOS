@@ -14,6 +14,10 @@ import FirebaseDatabase
 var alarmDicts = Array<Dictionary<String, Any>>()
 var alarmCount = 0
 
+class TabBar: UITabBar {
+    
+}
+
 class MainTC: UITabBarController {
     
     let menuButton = UIButton(frame: CGRect.zero)
@@ -21,6 +25,12 @@ class MainTC: UITabBarController {
     var ref: DatabaseReference!
     var refHandle : DatabaseHandle!
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tabBar.invalidateIntrinsicContentSize()
+        menuButton.frame.origin.y = self.view.bounds.height - menuButton.frame.height - self.view.safeAreaInsets.bottom
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMiddleButton()
@@ -57,6 +67,8 @@ class MainTC: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         if KOSession.shared()?.token?.accessToken != nil {
             let access_token = (KOSession.shared()?.token?.accessToken)!
             print("access token2 = \(access_token)")
@@ -126,10 +138,6 @@ class MainTC: UITabBarController {
             }
         }
         
-    }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        menuButton.frame.origin.y = self.view.bounds.height - menuButton.frame.height - self.view.safeAreaInsets.bottom
     }
     
     func postRequest(_ urlString: String, bodyString: String){
