@@ -859,8 +859,23 @@ extension WatingVC: FilterViewDelegate {
 extension WatingVC: WatingTableViewDelegate {
     func meetingBtnPressed() {
         
+        print("userDictionary = \(userDictionary)")
+        if (userDictionary["user_certified"] as! Int == 0) {
+            let alert = UIAlertController(title: "", message: "소속을 인증해야 미팅 할 수 있어요", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else if (userDictionary["user_certified"] as! Int == 1) {
+            let alert = UIAlertController(title: "", message: "인증이 진행중이에요!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        }
         
-        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
         
         //self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
     }
@@ -896,7 +911,7 @@ extension WatingVC: WatingTableViewDelegate {
                         if message == "You should create new meeting for matching" {
                             self.performSegue(withIdentifier: "segue_editMeeting", sender: self)
                         } else if message == "aleady exists" {
-                            self.view.makeToast("이미 신청했습니다.")
+                            self.view.makeToast("이미 신청했어요!")
                         } else {
                             
                         }
@@ -991,9 +1006,16 @@ extension WatingVC: WatingTableViewDelegate {
                         
                         dateFormatter2.dateFormat = "MM월 d일"
                         let dateString2 = dateFormatter2.string(from: date2)
+                        print("\(myMeeting["is_matched"])")
                         
-                        if myMeeting.count == 0 {
+                        if myMeetings.count == 0 {
                             self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                            
+                            let alert = UIAlertController(title: "", message: "미팅이 신청되었어요!\n상대방이 수락하면 매칭이 완료됩니다!", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                                
+                            }))
+                            self.present(alert, animated: true, completion: nil)
                         } else {
                             let myMeeting_type = "\(myMeeting["meeting_type"]!)"
                             let myMeeting_place = "\(myMeeting["place_type"]!)"
@@ -1001,7 +1023,15 @@ extension WatingVC: WatingTableViewDelegate {
                             if ((myMeeting_type != meeting_type)) {
                                 self.view.makeToast("미팅 신청이 불가능합니다!")
                             } else {
+                                if Int("\(myMeeting["is_matched"]!)") == 1 {
+                                    self.view.makeToast("하루에 미팅은 한 번만 가능해요!")
+                                }
                                 self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                                let alert = UIAlertController(title: "", message: "미팅이 신청되었어요!\n상대방이 수락하면 매칭이 완료됩니다!", preferredStyle: UIAlertController.Style.alert)
+                                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                                    
+                                }))
+                                self.present(alert, animated: true, completion: nil)
                             }
                         }
                         

@@ -557,8 +557,16 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 //- place_type: 장소
                 //- appeal: 어필 문구
                 
+                let alert = UIAlertController(title: "", message: "미팅을 신청했어요, 이제 대기팀에서 이성팀을 찾아보세요!\n장소는 달라도 신청가능해요.", preferredStyle: UIAlertController.Style.alert)
                 
-                self.postRequest("http://106.10.39.154:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+                
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                    self.postRequest("http://106.10.39.154:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((self.button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+                    
+                }))
+                
+                present(alert, animated: true, completion: nil)
+                
             } else {
                 //- meeting_type: 미팅 타입
                 //- date: 날짜

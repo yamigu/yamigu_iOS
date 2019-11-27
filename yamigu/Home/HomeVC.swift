@@ -90,8 +90,22 @@ class HomeVC: UIViewController {
     
     
     @IBAction func addMeetingBtnPressed(_ sender: Any) {
-        let tabView = self.tabBarController as! MainTC
-        tabView.pressed(sender: tabView.menuButton)
+        if (userDictionary["user_certified"] as! Int == 0) {
+            let alert = UIAlertController(title: "", message: "소속을 인증해야 미팅 할 수 있어요", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else if (userDictionary["user_certified"] as! Int == 1) {
+            let alert = UIAlertController(title: "", message: "인증이 진행중이에요!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let tabView = self.tabBarController as! MainTC
+            tabView.pressed(sender: tabView.menuButton)
+        }
     }
     
     func getTodayMeeting(urlString : String) {

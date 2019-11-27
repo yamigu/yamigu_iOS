@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class NotisVC: UIViewController {
     
     let typeString = ["", "신청!", "매칭!", "거절!", "대기!", "완료!", "취소!"]
+    var ref: DatabaseReference!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,6 +25,16 @@ class NotisVC: UIViewController {
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         setupTableView()
+        
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        ref = Database.database().reference()
+        for alarm in alarmDicts {
+            let json = ["isUnread":false]
+            ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").child(alarm["id"] as! String).updateChildValues(json)
+        }
     }
     
     func setupTableView() {
@@ -78,9 +90,14 @@ extension NotisVC: UITableViewDelegate, UITableViewDataSource {
                 time.text = "\(Int(minutesBetweenDates(oldDate: date, newDate: Date()))/60)시간전"
             }
         }
+        
+        if alarmDic["isUnread"] as! Bool {
+            cell.backgroundColor = UIColor(rgb: 0xFFF2E6)
+        } else {
+            cell.backgroundColor = UIColor.white
+        }
          
-         
-                  
+        
          
         
         return cell

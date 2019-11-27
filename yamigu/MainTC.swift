@@ -106,7 +106,26 @@ class MainTC: UITabBarController {
     }
     
     @objc func pressed(sender: UIButton!) {
-        self.performSegue(withIdentifier: "segue_registermeeting", sender: self)
+        if (userDictionary["user_certified"] as! Int == 0) {
+            let alert = UIAlertController(title: "", message: "소속을 인증해야 미팅 할 수 있어요", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else if (userDictionary["user_certified"] as! Int == 1) {
+            let alert = UIAlertController(title: "", message: "인증이 진행중이에요!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            if menuButton.titleLabel?.text == "3/3" {
+                self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
+            } else {
+                self.performSegue(withIdentifier: "segue_registermeeting", sender: self)
+            }
+        }
+        
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

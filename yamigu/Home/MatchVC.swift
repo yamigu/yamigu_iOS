@@ -140,6 +140,13 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 let id = "\(self.receiveMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
                 self.postRequest("http://106.10.39.154:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+                
+                self.view.makeToast("미팅을 거절했어요!")
+                
+                self.blackBackgroundView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
+                self.blackBackgroundView.makeToastActivity(.center)
+                self.blackBackgroundView.frame = self.view.frame
+                self.view.addSubview(blackBackgroundView)
             }
             
             
@@ -209,6 +216,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 DispatchQueue.main.async {
                     if urlString == "http://106.10.39.154:9999/api/matching/decline_request/" {
                         let id = "\(self.matchingDict["id"]!)"
+                        self.blackBackgroundView.removeFromSuperview()
                         self.getReceiveMatching(urlString: "http://106.10.39.154:9999/api/matching/received_request/?meeting_id=\(id)")
                         
                     } else {

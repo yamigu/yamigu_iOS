@@ -229,16 +229,34 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
     }
     
     func calcAge(birthday: String) -> Int {
-        let dateFormater = DateFormatter()
+        var dateFormater = DateFormatter()
         dateFormater.dateFormat = "yyyyMMdd"
         let birthdayDate = dateFormater.date(from: birthday)
         let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
         let now = Date()
         let calcAge = calendar.components(.year, from: birthdayDate!, to: now, options: [])
-        let calcMont = calendar.components(.month, from: birthdayDate!, to: now, options: [])
     
-        let age = calcAge.year
-        return age!
+        var age = calcAge.year!
+        
+        dateFormater.dateFormat = "M"
+        let nowMonth = Int(dateFormater.string(from: now))!
+        let birthMonth = Int(dateFormater.string(from: birthdayDate!))!
+        
+        dateFormater.dateFormat = "d"
+        let nowDay = Int(dateFormater.string(from: now))!
+        let birthDay = Int(dateFormater.string(from: birthdayDate!))!
+        
+        if (birthMonth - nowMonth) >= 0 {
+            if (nowDay - birthDay) >= 0 {
+                age += 2
+            } else {
+                age += 1
+            }
+        } else {
+            age += 1
+        }
+        
+        return age
     }
     
 }
