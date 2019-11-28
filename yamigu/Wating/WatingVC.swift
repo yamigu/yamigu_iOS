@@ -1008,12 +1008,12 @@ extension WatingVC: WatingTableViewDelegate {
                         let dateString2 = dateFormatter2.string(from: date2)
                         print("\(myMeeting["is_matched"])")
                         
-                        if myMeetings.count == 0 {
-                            self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                        if myMeeting.count == 0 {
+                            
                             
                             let alert = UIAlertController(title: "", message: "미팅이 신청되었어요!\n상대방이 수락하면 매칭이 완료됩니다!", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                                
+                                self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
                             }))
                             self.present(alert, animated: true, completion: nil)
                         } else {

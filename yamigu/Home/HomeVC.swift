@@ -820,9 +820,11 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         
         if tableView == self.myMeetingTableView {
             
-            let meetingDict = self.myMeetings[indexPath.section]
-            if !(meetingDict["is_matched"] as! Bool) {
-                return 124.0
+            if self.myMeetings.count > 0 {
+                let meetingDict = self.myMeetings[indexPath.section]
+                if !(meetingDict["is_matched"] as! Bool) {
+                    return 124.0
+                }
             }
             return 178.0
             

@@ -98,7 +98,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
             
             var jsonImg = Dictionary<String, Data>()
             //jsonImg["uploaded_file"] = self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
-            jsonImg.updateValue(self.image_profile.image!.jpegData(compressionQuality: 1.0)!, forKey: "uploaded_file")
+            jsonImg.updateValue(self.image_profile.image!.jpegData(compressionQuality: 0.1)!, forKey: "uploaded_file")
             
             self.postRequestImage("http://106.10.39.154:9999/api/user/change/avata/", bodyString: "uploaded_file=", json: jsonImg)
         } else {
@@ -376,7 +376,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
          }*/
         
         var body = Data()
-        guard let imageData = self.image_profile.image!.jpegData(compressionQuality: 1.0) else {
+        guard let imageData = self.image_profile.image!.jpegData(compressionQuality: 0.1) else {
             print("oops")
             return
         }

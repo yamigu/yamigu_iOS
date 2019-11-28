@@ -190,7 +190,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             
             var jsonImg = Dictionary<String, Data>()
             //jsonImg["uploaded_file"] = self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
-            jsonImg.updateValue(self.imageVIew_certi.image!.jpegData(compressionQuality: 1.0)!, forKey: "uploaded_file")
+            jsonImg.updateValue(self.imageVIew_certi.image!.jpegData(compressionQuality: 0.1)!, forKey: "uploaded_file")
             
             self.postRequestImage("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
         }
@@ -264,7 +264,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
          }*/
         
         var body = Data()
-        guard let imageData = self.imageVIew_certi.image!.jpegData(compressionQuality: 1.0) else {
+        guard let imageData = self.imageVIew_certi.image!.jpegData(compressionQuality: 0.1) else {
             print("oops")
             return
         }
