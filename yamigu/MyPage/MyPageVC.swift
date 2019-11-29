@@ -426,7 +426,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     
     
     @IBAction func certiBelongBtnPressed(_ sender: Any) {
-        isStudent = userDictionary["is_student"] as! Bool
+        isStudent = userDict["is_student"] as! Bool
         
         
         if userDict["user_certified"] as? Int == 0 {
