@@ -242,7 +242,7 @@ class HomeVC: UIViewController {
             
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
                     guard let newValue = json as? Array<Dictionary<String, Any>> else {
@@ -251,10 +251,15 @@ class HomeVC: UIViewController {
                         
                     }
                     
+                    
+                    self.reviewMeetings.removeAll()
+                    
                     DispatchQueue.main.async {
                         for value in newValue {
                             self.reviewMeetings.append(value)
                         }
+                        
+                        
                         
                         if self.reviewMeetings.count == 0 {
                             self.myMeetingTableViewTopConstraint.constant = 0.0
@@ -263,6 +268,8 @@ class HomeVC: UIViewController {
                             self.myMeetingTableViewTopConstraint.constant = 20.0
                             self.view.layoutIfNeeded()
                         }
+                        
+                        print("review count = \(self.reviewMeetings.count)")
                         
                         self.checkTableView()
                         
