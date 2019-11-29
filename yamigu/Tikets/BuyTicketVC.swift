@@ -10,6 +10,9 @@ import UIKit
 import StoreKit
 
 class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransactionObserver {
+    
+    var blackBackgroundView = UIView()
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions as! [SKPaymentTransaction] {
             
@@ -45,6 +48,12 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 self.productIdentifier as Set<String>)
             request.delegate = self
             request.start()
+            
+            DispatchQueue.main.async {
+                self.blackBackgroundView.removeFromSuperview()
+            }
+            
+            
         } else {
             var alert = UIAlertController(title: "In-App Purchases Not Enabled", message: "Please enable In App Purchase in Settings", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Settings", style: UIAlertAction.Style.default, handler: { alertAction in
@@ -85,6 +94,8 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
     override func viewWillAppear(_ animated: Bool) {
         requestProductData()
+        
+        self.addLoadingView()
     }
     
     @IBAction func buttonPressed_1(_ sender: Any) {
@@ -102,7 +113,8 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             
         }*/
         let payment = SKPayment(product: productsArray[0])
-                   SKPaymentQueue.default().add(payment)
+        SKPaymentQueue.default().add(payment)
+        self.addLoadingView()
     }
     @IBAction func buttonPressed_2(_ sender: Any) {
         /*if isButtonPressed2 {
@@ -120,6 +132,15 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         }*/
         let payment = SKPayment(product: productsArray[1])
         SKPaymentQueue.default().add(payment)
+        
+        self.addLoadingView()
+    }
+    
+    func addLoadingView() {
+        self.blackBackgroundView.frame = self.view.frame
+        self.blackBackgroundView.backgroundColor = UIColor.init(white: 0, alpha: 0.5)
+        self.blackBackgroundView.makeToastActivity(.center)
+        self.view.addSubview(blackBackgroundView)
     }
     
 }
