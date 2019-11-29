@@ -766,7 +766,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         //self.todayMeetingTableViewHeight.constant = CGFloat(height2)
         
         //height = height + height2
-        let scrollViewHeight = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 20.0)
+        let scrollViewHeight = CGFloat(226.0 + 316.5 + height + reviewHeight - 20)
         
         DispatchQueue.main.async {
             
@@ -1072,6 +1072,7 @@ extension HomeVC: HomeReviewDelegate {
         cell.heightConstraint.constant = 0.0
         cell.contentView.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
         cell.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
+        cell.writeReviewEndView.isHidden = true
         
         for view in cell.subviews {
             if view != cell.contentView {
@@ -1085,6 +1086,14 @@ extension HomeVC: HomeReviewDelegate {
             if comp {
                 self.reviewMeetings.remove(at: index)
                 self.myMeetingReviewTableView.reloadData()
+                
+                if self.reviewMeetings.count == 0 {
+                    self.myMeetingTableViewTopConstraint.constant = 0.0
+                    self.view.layoutIfNeeded()
+                } else {
+                    self.myMeetingTableViewTopConstraint.constant = 20.0
+                    self.view.layoutIfNeeded()
+                }
             }
         }
         
@@ -1101,9 +1110,11 @@ extension HomeVC: HomeReviewDelegate {
         self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
         let cell = self.myMeetingReviewTableView.cellForRow(at: IndexPath(row: 0, section: index)) as! HomeReviewCell
+        
         cell.heightConstraint.constant = 0.0
         cell.contentView.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
         cell.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
+        cell.writeReviewEndView.isHidden = true
         
         for view in cell.subviews {
             if view != cell.contentView {
@@ -1111,12 +1122,20 @@ extension HomeVC: HomeReviewDelegate {
             }
         }
         
-        UIView.animate(withDuration: 0.0, animations: {
+        UIView.animate(withDuration: 0.3, animations: {
             cell.layoutIfNeeded()
         }) { (comp) in
             if comp {
                 self.reviewMeetings.remove(at: index)
                 self.myMeetingReviewTableView.reloadData()
+                
+                if self.reviewMeetings.count == 0 {
+                    self.myMeetingTableViewTopConstraint.constant = 0.0
+                    self.view.layoutIfNeeded()
+                } else {
+                    self.myMeetingTableViewTopConstraint.constant = 20.0
+                    self.view.layoutIfNeeded()
+                }
             }
         }
         

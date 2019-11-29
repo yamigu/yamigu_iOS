@@ -80,6 +80,18 @@ extension HomeReviewCell: UITextViewDelegate {
         }
     }
     
+    override func prepareForReuse() {
+        textReviewContainerView.isHidden = true
+        writeReviewEndView.isHidden = true
+        
+        textview_review.delegate = self
+        textview_review.textContainerInset = UIEdgeInsets(top: 10, left: 13, bottom: 10, right: 13)
+        
+        for i in 0...1 {
+            self.button_skip[i].underline()
+        }
+    }
+    
     func textViewSetupView() {
         if textview_review.text == "불편했던 점이나, 재밌었던 기억을 남겨주세요" {
             textview_review.text = ""
