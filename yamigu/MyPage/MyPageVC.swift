@@ -35,7 +35,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     
     var userDict = Dictionary<String, Any>()
     
-    var isStudent = true
+    var isStudent = 1
     var isChanged = false
     
     override func viewDidLoad() {
@@ -264,6 +264,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                         
                     }
                     
+                    userDictionary = newValue
                     self.userDict = newValue
                     
                     DispatchQueue.main.async {
@@ -426,10 +427,9 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     
     
     @IBAction func certiBelongBtnPressed(_ sender: Any) {
-        isStudent = userDict["is_student"] as! Bool
+        isStudent = userDictionary["is_student"] as! Int
         
-        
-        if userDict["user_certified"] as? Int == 0 {
+        if userDictionary["user_certified"] as? Int == 0 {
             self.performSegue(withIdentifier: "segue_certi", sender: self)
         }
     }

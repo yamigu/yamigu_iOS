@@ -25,7 +25,7 @@ class CertiVC: UIViewController {
     @IBOutlet weak var button_certiBelong: UIButton!
     
     var userDict = Dictionary<String, Any>()
-    var isStudent = true
+    var isStudent : Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -218,7 +218,7 @@ extension CertiVC : UIImagePickerControllerDelegate, UINavigationControllerDeleg
         backButton.title = ""
         self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
         
-        if !isStudent {
+        if isStudent == 0 {
             self.label_belong.text = "회사 입력"
             self.tf_belong.placeholder = "ex) 삼성전자, 스타트업, 프리랜서, 개인병원, 고등학교"
             self.label_department.text = "직업 입력"

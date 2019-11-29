@@ -60,8 +60,8 @@ class HomeVC: UIViewController {
         
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
-        self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
-        self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
+        //self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
+        //self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
         
         ref = Database.database().reference()
         
@@ -75,8 +75,8 @@ class HomeVC: UIViewController {
         super.viewWillAppear(animated)
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
-        self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
-        self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
+        //self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
+        //self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
         
         ref = Database.database().reference()
         
@@ -205,9 +205,10 @@ class HomeVC: UIViewController {
                         
                         self.checkTableView()
                         
-                        self.myMeetingTableView.reloadData()
                         let tabbarController = self.tabBarController as! MainTC
                         tabbarController.menuButton.setTitle("\(self.myMeetings.count)/3", for: .normal)
+                        
+                        self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
                     }
                 } catch {
                     print(error)
@@ -266,7 +267,7 @@ class HomeVC: UIViewController {
                         self.checkTableView()
                         
                         
-                        self.myMeetingReviewTableView.reloadData()
+                        self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
                     }
                 } catch {
                     print(error)
@@ -314,6 +315,8 @@ class HomeVC: UIViewController {
                             self.recommendMeetings.append(value)
                         }
                         
+                        self.myMeetingTableView.reloadData()
+                        self.myMeetingReviewTableView.reloadData()
                         self.recommendMeetingCollectionView.reloadData()
                     }
                 } catch {
@@ -746,7 +749,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         let todaymeetingCount = self.todayMeetings.count
         let reviewMeetingCount = self.reviewMeetings.count
         
-        /*var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
+        var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
         var reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
         
         self.myMeetingTableViewHeight.constant = CGFloat(height)
@@ -769,7 +772,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
             self.myMeetingTableView.layoutIfNeeded()
             self.scrollView.layoutIfNeeded()
             
-        }*/
+        }
         
         if tableView == self.myMeetingTableView {
             
@@ -792,31 +795,7 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let mymeetingCount = self.myMeetings.count
-        let todaymeetingCount = self.todayMeetings.count
-        let reviewMeetingCount = self.reviewMeetings.count
         
-        var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
-        var reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
-        
-        self.myMeetingTableViewHeight.constant = CGFloat(height)
-        self.myMeetingReviewTableViewHeight.constant = CGFloat(reviewHeight)
-        //var height2 = 86.0 * Double(todaymeetingCount) + 11.0 * Double(todaymeetingCount - 1)
-        
-        //self.todayMeetingTableViewHeight.constant = CGFloat(height2)
-        
-        //height = height + height2
-        let scrollViewHeight = CGFloat(226.0 + 316.5 + 50.0 + height + reviewHeight - 69.0)
-        
-        DispatchQueue.main.async {
-            
-            self.scrollView.contentSize.height = scrollViewHeight
-            
-            print("scrollview height = \(scrollViewHeight) height = \(height) reviewHeight = \(reviewHeight)")
-            self.myMeetingTableView.layoutIfNeeded()
-            self.scrollView.layoutIfNeeded()
-            
-        }
         
         if tableView == self.myMeetingTableView {
             

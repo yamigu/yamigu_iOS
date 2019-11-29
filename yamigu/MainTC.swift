@@ -67,7 +67,7 @@ class MainTC: UITabBarController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        //super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         
         if KOSession.shared()?.token?.accessToken != nil {
             let access_token = (KOSession.shared()?.token?.accessToken)!
