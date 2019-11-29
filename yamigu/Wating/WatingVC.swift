@@ -318,7 +318,7 @@ extension WatingVC: UITableViewDelegate, UITableViewDataSource {
 //
 //        }
         cell.layoutIfNeeded()
-        
+        cell.index = indexPath.section
         if self.matchingList.count != 0 {
             let meetingObj = self.matchingList[indexPath.section] as! Dictionary<String, Any>
             
@@ -857,8 +857,9 @@ extension WatingVC: FilterViewDelegate {
 }
 
 extension WatingVC: WatingTableViewDelegate {
-    func meetingBtnPressed() {
+    func meetingBtnPressed(index: Int) {
         
+        self.selectedMatching = self.matchingList[index]
         print("userDictionary = \(userDictionary)")
         if (userDictionary["user_certified"] as! Int == 0) {
             let alert = UIAlertController(title: "", message: "소속을 인증해야 미팅 할 수 있어요", preferredStyle: UIAlertController.Style.alert)
@@ -873,8 +874,20 @@ extension WatingVC: WatingTableViewDelegate {
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
-            self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+            let tabbar = self.tabBarController as! MainTC
+            
+            if tabbar.menuButton.titleLabel?.text == "3/3" {
+                self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
+            } else {
+                self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+            }
+            
         }
+    }
+    
+    func meetingBtnPressed() {
+        
+        
         
         
         //self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
@@ -1009,13 +1022,14 @@ extension WatingVC: WatingTableViewDelegate {
                         print("\(myMeeting["is_matched"])")
                         
                         if myMeeting.count == 0 {
+                            self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
                             
-                            
-                            let alert = UIAlertController(title: "", message: "미팅이 신청되었어요!\n상대방이 수락하면 매칭이 완료됩니다!", preferredStyle: UIAlertController.Style.alert)
+                            /*let alert = UIAlertController(title: "", message: "미팅이 신청되었어요!\n상대방이 수락하면 매칭이 완료됩니다!", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                                self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                                
                             }))
-                            self.present(alert, animated: true, completion: nil)
+                            self.present(alert, animated: true, completion: nil)*/
+                            
                         } else {
                             let myMeeting_type = "\(myMeeting["meeting_type"]!)"
                             let myMeeting_place = "\(myMeeting["place_type"]!)"

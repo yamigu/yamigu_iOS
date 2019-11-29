@@ -32,7 +32,7 @@ class ChattingImageCell: UICollectionViewCell {
         iv.image = UIImage(named: "sample_profile")
         iv.translatesAutoresizingMaskIntoConstraints = false
         //iv.roundCorners(corners: [.topLeft], radius: 10)
-        iv.layer.cornerRadius = 21.0
+        iv.layer.cornerRadius = 10.0
         iv.layer.masksToBounds = true
         
         return iv

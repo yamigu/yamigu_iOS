@@ -35,9 +35,17 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         var products = response.products
-        for product in products {
-            self.productsArray.append(product)
+        DispatchQueue.main.async {
+            for product in products {
+                self.productsArray.append(product)
+            }
+            
+            self.blackBackgroundView.removeFromSuperview()
         }
+    }
+    
+    func requestDidFinish(_ request: SKRequest) {
+        
     }
     
     
@@ -49,9 +57,7 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
             request.delegate = self
             request.start()
             
-            DispatchQueue.main.async {
-                self.blackBackgroundView.removeFromSuperview()
-            }
+            
             
             
         } else {
@@ -114,7 +120,7 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         }*/
         let payment = SKPayment(product: productsArray[0])
         SKPaymentQueue.default().add(payment)
-        self.addLoadingView()
+        //self.addLoadingView()
     }
     @IBAction func buttonPressed_2(_ sender: Any) {
         /*if isButtonPressed2 {
@@ -133,7 +139,7 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         let payment = SKPayment(product: productsArray[1])
         SKPaymentQueue.default().add(payment)
         
-        self.addLoadingView()
+        //self.addLoadingView()
     }
     
     func addLoadingView() {

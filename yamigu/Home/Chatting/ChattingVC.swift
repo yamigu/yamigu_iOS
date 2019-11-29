@@ -108,6 +108,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         Bundle.main.loadNibNamed("ChattingHeaderVIew", owner: self, options: nil)
         collectionView.register(UINib(nibName: "ChattingHeaderVIew", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         
@@ -143,6 +145,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         gesture.delegate = self
         self.collectionView.addGestureRecognizer(gesture)
         
+        getMessages()
         self.checkMessages()
     }
     
@@ -173,7 +176,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        getMessages()
+        
     }
     
     func getMessages() {
@@ -651,6 +654,13 @@ extension ChattingVC {
 
 extension ChattingVC: ChattingImageCellDelegate {
     func viewRecomandPlace() {
-        self.performSegue(withIdentifier: "segue_place", sender: self)
+        DispatchQueue.main.async {
+            self.chatRef.removeObserver(withHandle: self.chatRefHandle)
+            self.ref.removeObserver(withHandle: self.refHandle)
+            
+            self.performSegue(withIdentifier: "segue_place", sender: self)
+        }
+        
+        
     }
 }

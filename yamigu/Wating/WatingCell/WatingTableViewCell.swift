@@ -10,13 +10,15 @@ import UIKit
 import Cosmos
 
 protocol WatingTableViewDelegate : class {
-    func meetingBtnPressed()
+    func meetingBtnPressed(index:Int)
 }
 
 class WatingTableViewCell: UITableViewCell {
     
     weak var delegate : WatingTableViewDelegate!
 
+    var index : Int!
+    
     @IBOutlet weak var view_bottom: UIView!
     @IBOutlet weak var image_bottomBar: UIImageView!
     @IBOutlet weak var button_meeting: UIButton!
@@ -47,7 +49,7 @@ class WatingTableViewCell: UITableViewCell {
     }
     
     @IBAction func meetingBtnPressed(_ sender: Any) {
-        self.delegate.meetingBtnPressed()
+        self.delegate.meetingBtnPressed(index: index)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
