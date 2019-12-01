@@ -56,6 +56,7 @@
 		5528EAC82340964200461B2A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EAC72340964200461B2A /* Login.storyboard */; };
 		5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */; };
 		5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */; };
+		55567B532393BAF800A5F2F8 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55567B522393BAF800A5F2F8 /* AuthenticationServices.framework */; };
 		5582E2312364089C00A9E0FE /* Chatting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5582E2302364089C00A9E0FE /* Chatting.storyboard */; };
 		5582E23323640A1B00A9E0FE /* ChattingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E23223640A1B00A9E0FE /* ChattingVC.swift */; };
 		5582E2352368376B00A9E0FE /* ChattingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5582E2342368376B00A9E0FE /* ChattingCell.swift */; };
@@ -182,6 +183,7 @@
 		5528EAC72340964200461B2A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterMeeting.storyboard; sourceTree = "<group>"; };
 		5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMeetingVC.swift; sourceTree = "<group>"; };
+		55567B522393BAF800A5F2F8 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		5582E2302364089C00A9E0FE /* Chatting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chatting.storyboard; sourceTree = "<group>"; };
 		5582E23223640A1B00A9E0FE /* ChattingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingVC.swift; sourceTree = "<group>"; };
 		5582E2342368376B00A9E0FE /* ChattingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingCell.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FF00FD92387C26A00239345 /* KakaoPlusFriend.framework in Frameworks */,
+				55567B532393BAF800A5F2F8 /* AuthenticationServices.framework in Frameworks */,
 				5582E2422372BE4900A9E0FE /* PushKit.framework in Frameworks */,
 				01DA3566ED289EDDEC22B120 /* Pods_yamigu.framework in Frameworks */,
 				55224DD42356EFEB003FBCA3 /* KakaoCommon.framework in Frameworks */,
@@ -560,6 +563,7 @@
 		E5B000252B1BBE7A11FA8795 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				55567B522393BAF800A5F2F8 /* AuthenticationServices.framework */,
 				9FF00FD82387C26A00239345 /* KakaoPlusFriend.framework */,
 				5582E2412372BE4900A9E0FE /* PushKit.framework */,
 				5582E23F2372B63200A9E0FE /* StoreKit.framework */,
@@ -1061,7 +1065,7 @@
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1092,7 +1096,7 @@
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

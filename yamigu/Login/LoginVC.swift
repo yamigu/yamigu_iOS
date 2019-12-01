@@ -9,9 +9,12 @@
 import UIKit
 import KakaoCommon
 import KakaoOpenSDK
+import AuthenticationServices
+
+
 
 class LoginVC: UIViewController {
-
+    
     @IBOutlet weak var btn_question: UIButton!
     @IBOutlet weak var lbl_description: UILabel!
     @IBOutlet weak var btn_login: UIButton!
@@ -19,6 +22,8 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
 
         lbl_description.text = "학교와 직장이 인증된 이성과\n일주일안에 미팅하기"
+        
+        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -43,10 +48,28 @@ class LoginVC: UIViewController {
                 
             }
         }
+        
+        if #available(iOS 13.0, *) {
+            
+            let btn_appleLogin  = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+            btn_appleLogin.translatesAutoresizingMaskIntoConstraints = false
+            self.view.addSubview(btn_appleLogin)
+            
+            btn_appleLogin.bottomAnchor.constraint(equalTo: self.btn_login.topAnchor, constant: -10.0).isActive = true
+            btn_appleLogin.leadingAnchor.constraint(equalTo: self.btn_login.leadingAnchor, constant: 0).isActive = true
+            btn_appleLogin.trailingAnchor.constraint(equalTo: self.btn_login.trailingAnchor, constant: 0).isActive = true
+            btn_appleLogin.heightAnchor.constraint(equalTo: self.btn_login.heightAnchor, constant: 0).isActive = true
+            
+    
+            btn_appleLogin.addTarget(self, action: #selector(signInButtonPressed), for: .touchUpInside)
+        }
     }
     
     @IBAction func questionPressed(_ sender: Any) {
     }
+    
+    
+
     
     @IBAction func kakaoLoginPressed(_ sender: Any) {
         //
@@ -177,3 +200,65 @@ class LoginVC: UIViewController {
         task.resume()
     }
 }
+
+@available(iOS 13.0, *)
+    extension LoginVC : ASAuthorizationControllerDelegate, ASAuthorizationProvider, ASAuthorizationControllerPresentationContextProviding {
+        
+    
+    
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return view.window!
+    }
+    
+    @objc func signInButtonPressed() {
+        // First you create an apple id provider request with the scope of full name and email
+        let request = ASAuthorizationAppleIDProvider().createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        // Instanstiate and configure the authorization controller
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.presentationContextProvider = self
+        authorizationController.delegate = self
+
+        // Perform the request
+        authorizationController.performRequests()
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        let authError = ASAuthorizationError(_nsError: error as NSError)
+        switch authError.code {
+            // Add cases and handle errors
+        case .unknown: break
+            
+        case .canceled: break
+            
+        case .invalidResponse: break
+            
+        case .notHandled: break
+            
+        case .failed: break
+            
+        @unknown default: break
+            
+        }
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            if let data = credential.authorizationCode, let code = String(data: data, encoding: .utf8) {
+                // Now send the 'code' to your backend to get an API token.
+                exchangeCode(code) { apiToken, error in
+                    // Handle response
+                }
+            } else {
+                // Handle missing authorization code ...
+            }
+        }
+    }
+    
+    func exchangeCode(_ code: String, handler: (String?, Error?) -> Void) {
+        // Call your backend to exchange an API token with the code.
+    }
+    
+}
+
