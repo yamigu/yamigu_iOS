@@ -106,15 +106,15 @@ class LoginVC: UIViewController {
         session.dataTask(with: request) { (data, response, error) in
             if let res = response{
                 
-                //print(res)
+                print(res)
                 
             }
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
                     print(json)
                     
-                    guard let newValue = json as? Dictionary<String, String> else {
+                    guard let newValue = json as? Dictionary<String, Any> else {
                         print("invalid format")
                         return
                         
@@ -122,7 +122,7 @@ class LoginVC: UIViewController {
                     
                     DispatchQueue.main.async {
                         // 동작 실행
-                        authKey = newValue["key"]!
+                        authKey = newValue["key"]! as! String
                         self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
                         
                         
@@ -135,6 +135,40 @@ class LoginVC: UIViewController {
                 }
             }
             }.resume()
+    }
+    
+    func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
+            var jsonString = String(data: data, encoding: .utf8) {
+            //jsonString = jsonString.replacingOccurrences(of: "'", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: " ", with: "")
+            //jsonString = jsonString.replacingOccurrences(of: "\n", with: "")
+            let data = jsonString.data(using: .utf8, allowLossyConversion: false)
+            request.httpBody = data
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                print(res)
+                
+            }
+            
+            DispatchQueue.main.async {
+                // 동작 실행
+
+            }
+        }.resume()
     }
     
     func getUserInfo(urlString : String) {
@@ -246,10 +280,12 @@ class LoginVC: UIViewController {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let credential = authorization.credential as? ASAuthorizationAppleIDCredential {
             if let data = credential.authorizationCode, let code = String(data: data, encoding: .utf8) {
-                // Now send the 'code' to your backend to get an API token.
-                exchangeCode(code) { apiToken, error in
-                    // Handle response
-                }
+                
+                // Handle response
+                let access_token = code
+                print(access_token)
+                let json = ["key": code]
+                self.postRequest2("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
             } else {
                 // Handle missing authorization code ...
             }
@@ -258,6 +294,7 @@ class LoginVC: UIViewController {
     
     func exchangeCode(_ code: String, handler: (String?, Error?) -> Void) {
         // Call your backend to exchange an API token with the code.
+        
     }
     
 }
