@@ -338,7 +338,7 @@ class HomeVC: UIViewController {
     func checkTableView() {
         if self.reviewMeetings.count == 0 && self.myMeetings.count == 0 {
             self.button_addMeeting.isHidden = false
-            self.topConstraint.constant = 73
+            self.topConstraint.constant = 88
         } else {
             self.button_addMeeting.isHidden = true
             self.topConstraint.constant = 15.5
@@ -756,8 +756,20 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         let todaymeetingCount = self.todayMeetings.count
         let reviewMeetingCount = self.reviewMeetings.count
         
-        var height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
-        var reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
+        
+        var height = 0.0
+        if mymeetingCount != 0 {
+            height = 124.0 * Double(mymeetingCount) + 16.0 * Double(mymeetingCount - 1) + Double(54 * matchingMeetingCount)
+        } else {
+            height = 124.0 * Double(mymeetingCount) + Double(54 * matchingMeetingCount)
+        }
+        
+        var reviewHeight = 0.0
+        if reviewMeetingCount != 0 {
+            reviewHeight = 174.0 * Double(reviewMeetingCount) + 11.0 * Double(reviewMeetingCount - 1)
+        } else {
+            reviewHeight = 174.0 * Double(reviewMeetingCount)
+        }
         
         self.myMeetingTableViewHeight.constant = CGFloat(height)
         self.myMeetingReviewTableViewHeight.constant = CGFloat(reviewHeight)
@@ -766,7 +778,10 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
         //self.todayMeetingTableViewHeight.constant = CGFloat(height2)
         
         //height = height + height2
-        let scrollViewHeight = CGFloat(226.0 + 316.5 + height + reviewHeight - 20)
+        var scrollViewHeight = CGFloat(226.0 + 316.5 + height + reviewHeight - 40)
+        if reviewMeetingCount == 0 && mymeetingCount == 0 {
+            scrollViewHeight = CGFloat(226.0 + 316.5 + height + reviewHeight + 47.5)
+        }
         
         DispatchQueue.main.async {
             
