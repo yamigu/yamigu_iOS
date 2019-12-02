@@ -602,11 +602,18 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 let alert = UIAlertController(title: "", message: "미팅이 신청되었어요.\n다른 이성들도 지금 작성한 미팅을 볼 수 있어요", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                    let blackView = UIView()
+                    blackView.frame = self.view.frame
+                    blackView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
                     
+                    blackView.makeToastActivity(.center)
+                    self.view.addSubview(blackView)
+                    
+                    self.postRequest("http://106.10.39.154:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((self.button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
                 }))
                 self.present(alert, animated: true, completion: nil)
                 
-                self.postRequest("http://106.10.39.154:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
+                
             }
         }
         
