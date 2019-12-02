@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ne9-Ql-A5F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ne9-Ql-A5F">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -177,7 +177,7 @@
                                 <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                 <state key="normal" title="삭제하기">
-                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -231,6 +231,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인 연락처(전화번호, 카톡, 이메일 등) 입력 불가" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cv1-6x-Ddd">
+                                <rect key="frame" x="61" y="487" width="293" height="17"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -246,6 +252,7 @@
                             <constraint firstItem="3WF-t2-QTe" firstAttribute="leading" secondItem="6ub-6L-1sv" secondAttribute="leading" id="8XS-AQ-Gbu"/>
                             <constraint firstItem="6ub-6L-1sv" firstAttribute="leading" secondItem="SqJ-wl-55i" secondAttribute="leading" constant="16.5" id="9hU-Zs-5qe"/>
                             <constraint firstItem="ZVh-fJ-35i" firstAttribute="bottom" secondItem="3WF-t2-QTe" secondAttribute="bottom" constant="-13" id="BaF-L7-TKd"/>
+                            <constraint firstItem="cv1-6x-Ddd" firstAttribute="centerX" secondItem="3WF-t2-QTe" secondAttribute="centerX" id="CON-G2-hxA"/>
                             <constraint firstItem="sOC-HN-01v" firstAttribute="height" secondItem="Pjg-tU-WRC" secondAttribute="height" id="E4A-wK-N09"/>
                             <constraint firstItem="RIc-f3-4q2" firstAttribute="top" secondItem="Pjg-tU-WRC" secondAttribute="bottom" id="EQR-vQ-DDD"/>
                             <constraint firstItem="6ub-6L-1sv" firstAttribute="top" secondItem="86h-k1-eJp" secondAttribute="bottom" constant="21.666666666666714" id="FIp-gH-DXl"/>
@@ -256,6 +263,7 @@
                             <constraint firstItem="Pjg-tU-WRC" firstAttribute="centerY" secondItem="mgO-Fy-ilA" secondAttribute="centerY" id="Sgf-6j-vKO"/>
                             <constraint firstItem="90w-TI-1w0" firstAttribute="height" secondItem="oxj-l0-3nn" secondAttribute="height" id="Up3-vP-0vb"/>
                             <constraint firstItem="Pjg-tU-WRC" firstAttribute="width" secondItem="mgO-Fy-ilA" secondAttribute="width" id="Uth-Rs-pNS"/>
+                            <constraint firstItem="cv1-6x-Ddd" firstAttribute="top" secondItem="3WF-t2-QTe" secondAttribute="bottom" constant="22" id="VVf-ej-tDt"/>
                             <constraint firstItem="mgO-Fy-ilA" firstAttribute="width" secondItem="SqJ-wl-55i" secondAttribute="width" multiplier="1/3" id="XrO-Z8-are"/>
                             <constraint firstItem="Pen-s2-LG2" firstAttribute="top" secondItem="sOC-HN-01v" secondAttribute="bottom" id="ZYV-C1-JvA"/>
                             <constraint firstItem="3WF-t2-QTe" firstAttribute="trailing" secondItem="6ub-6L-1sv" secondAttribute="trailing" id="Zq2-Nn-43E"/>
@@ -302,6 +310,7 @@
                         <outlet property="button_request" destination="oxj-l0-3nn" id="vTl-gC-UZe"/>
                         <outlet property="constraint_labelBottom" destination="BaF-L7-TKd" id="lhp-8R-D31"/>
                         <outlet property="height" destination="Xuc-O0-ajP" id="mAT-b6-4HM"/>
+                        <outlet property="label_awareNote" destination="cv1-6x-Ddd" id="gWk-Ti-Qq7"/>
                         <outlet property="label_textCount" destination="ZVh-fJ-35i" id="BJt-p7-z7h"/>
                         <outlet property="label_title" destination="86h-k1-eJp" id="iMU-Jp-eMb"/>
                         <outlet property="tableView" destination="6ub-6L-1sv" id="hfU-f2-PwR"/>

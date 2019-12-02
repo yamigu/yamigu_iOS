@@ -35,6 +35,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var button_request: UIButton!
     @IBOutlet weak var label_title: UILabel!
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var label_awareNote: UILabel!
     
     var myMeetings = [Dictionary<String, Any>]()
     var dateStrings = [String]()
@@ -81,6 +82,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.layer.shadowOpacity = 0.4
         tableView.layer.shadowOffset = CGSize(width: 0, height: 0)
         
+        self.label_awareNote.isHidden = true
         
         NotificationCenter.default.addObserver(
             self,
@@ -185,6 +187,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 isPlace = true
                 
                 self.textView.isHidden = false
+                self.label_awareNote.isHidden = false
                 
                 var type = ""
                 let tmpType = "\(self.meetingDict["meeting_type"]!)"
@@ -223,6 +226,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 isDate = false
                 isPlace = false
                 self.textView.isHidden = false
+                self.label_awareNote.isHidden = false
                 
                 var type = ""
                 let tmpType = "\(self.meetingDict["meeting_type"]!)"
@@ -448,6 +452,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = false
         
         self.textView.isHidden = true
+        self.label_awareNote.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
@@ -466,6 +471,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = false
         
         self.textView.isHidden = true
+        self.label_awareNote.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
@@ -486,6 +492,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = false
         
         self.textView.isHidden = true
+        self.label_awareNote.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
@@ -506,6 +513,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = true
         
         self.textView.isHidden = true
+        self.label_awareNote.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
@@ -514,6 +522,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         if button_place.titleLabel?.text != "선호 장소" {
             self.textView.isHidden = false
+            self.label_awareNote.isHidden = false
             self.button_request.isHidden = false
             self.tableView.isHidden = true
             self.label_textCount.isHidden = false
@@ -531,6 +540,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         isPlace = true
         
         self.textView.isHidden = true
+        self.label_awareNote.isHidden = true
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
@@ -791,6 +801,7 @@ extension RegisterMeetingVC {
                     self.dateBtnPressed(self.button_date)
                 } else {
                     self.textView.isHidden = false
+                    self.label_awareNote.isHidden = false
                     self.button_request.isHidden = false
                     self.tableView.isHidden = true
                     self.label_textCount.isHidden = false
