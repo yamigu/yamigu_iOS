@@ -23,7 +23,20 @@ class LoginVC: UIViewController {
 
         lbl_description.text = "학교와 직장이 인증된 이성과\n일주일안에 미팅하기"
         
+        if #available(iOS 13.0, *) {
+                
+                let btn_appleLogin  = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
+                btn_appleLogin.translatesAutoresizingMaskIntoConstraints = false
+                self.view.addSubview(btn_appleLogin)
+                
+                btn_appleLogin.bottomAnchor.constraint(equalTo: self.btn_login.topAnchor, constant: -10.0).isActive = true
+                btn_appleLogin.leadingAnchor.constraint(equalTo: self.btn_login.leadingAnchor, constant: 0).isActive = true
+                btn_appleLogin.trailingAnchor.constraint(equalTo: self.btn_login.trailingAnchor, constant: 0).isActive = true
+                btn_appleLogin.heightAnchor.constraint(equalTo: self.btn_login.heightAnchor, constant: 0).isActive = true
+                
         
+                btn_appleLogin.addTarget(self, action: #selector(signInButtonPressed), for: .touchUpInside)
+            }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,20 +62,7 @@ class LoginVC: UIViewController {
             }
         }
         
-        if #available(iOS 13.0, *) {
-            
-            let btn_appleLogin  = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
-            btn_appleLogin.translatesAutoresizingMaskIntoConstraints = false
-            self.view.addSubview(btn_appleLogin)
-            
-            btn_appleLogin.bottomAnchor.constraint(equalTo: self.btn_login.topAnchor, constant: -10.0).isActive = true
-            btn_appleLogin.leadingAnchor.constraint(equalTo: self.btn_login.leadingAnchor, constant: 0).isActive = true
-            btn_appleLogin.trailingAnchor.constraint(equalTo: self.btn_login.trailingAnchor, constant: 0).isActive = true
-            btn_appleLogin.heightAnchor.constraint(equalTo: self.btn_login.heightAnchor, constant: 0).isActive = true
-            
-    
-            btn_appleLogin.addTarget(self, action: #selector(signInButtonPressed), for: .touchUpInside)
-        }
+        
     }
     
     @IBAction func questionPressed(_ sender: Any) {
@@ -144,7 +144,7 @@ class LoginVC: UIViewController {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        //request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
@@ -284,7 +284,7 @@ class LoginVC: UIViewController {
                 // Handle response
                 let access_token = code
                 print(access_token)
-                let json = ["key": code]
+                let json = ["access_token": code]
                 self.postRequest2("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
             } else {
                 // Handle missing authorization code ...
