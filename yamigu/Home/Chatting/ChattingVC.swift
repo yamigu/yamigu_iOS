@@ -215,8 +215,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                 
                 
                 let isUnread = dictionary["isUnread"] as! Bool
-                if !isUnread {
-                    let dict = ["isUnread":true]
+                if isUnread {
+                    let dict = ["isUnread":false]
                     self.chatRef.child(snapshot.key).updateChildValues(dict)
                 }
             }
@@ -466,10 +466,10 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             var dict = Dictionary<String, Any>()
             dict["id"] = key
-            dict["isUnread"] = false
+            dict["isUnread"] = true
             self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
             
-            dict["isUnread"] = true
+            dict["isUnread"] = false
             
             self.ref.child("user").child(userDictionary["uid"]! as! String).child("receivedMessages").child(matchingId).child(key!).updateChildValues(dict)
             

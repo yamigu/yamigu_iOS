@@ -252,6 +252,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 button_date.setTitle(monthString + " " + dayString, for: .normal)
                 
                 textView.text = self.meetingDict["appeal"] as! String
+                textView.textColor = UIColor.black
                 
                 self.label_title.text = "자신과 친구들을 표현해 주세요!"
                 

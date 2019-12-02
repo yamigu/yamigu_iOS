@@ -87,12 +87,12 @@
                                         <rect key="frame" x="179" y="16.000000000000007" width="167" height="127.66666666666669"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="윤종서(27)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HOO-8i-I5h">
-                                                <rect key="frame" x="0.0" y="-1" width="167" height="30.666666666666668"/>
+                                                <rect key="frame" x="-10" y="-1" width="187" height="30.666666666666668"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cua-WM-xr0">
-                                                <rect key="frame" x="0.0" y="27.666666666666664" width="167" height="1"/>
+                                                <rect key="frame" x="-10" y="27.666666666666664" width="187" height="1"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="NmK-nt-whv"/>
@@ -104,7 +104,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpz-Q9-8Iv">
-                                                <rect key="frame" x="20" y="32.666666666666664" width="97" height="14"/>
+                                                <rect key="frame" x="10" y="32.666666666666664" width="97" height="14"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <state key="normal" title="닉네임 수정하기" image="icon_change">
                                                     <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -126,7 +126,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용 불가능합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb2-Id-70u">
-                                                <rect key="frame" x="19.999999999999993" y="32.666666666666664" width="97.333333333333314" height="14"/>
+                                                <rect key="frame" x="10" y="32.666666666666664" width="97.333333333333329" height="14"/>
                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                 <color key="textColor" red="0.82364505529999998" green="0.0078649687560000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -142,7 +142,7 @@
                                             <constraint firstItem="hpz-Q9-8Iv" firstAttribute="top" secondItem="HOO-8i-I5h" secondAttribute="bottom" constant="3" id="QuB-WV-MSP"/>
                                             <constraint firstItem="JKM-qE-DOe" firstAttribute="centerX" secondItem="xwr-WX-vYa" secondAttribute="centerX" id="Svu-zS-XGU"/>
                                             <constraint firstAttribute="height" constant="127.68000000000001" id="e2C-M0-ErC"/>
-                                            <constraint firstItem="HOO-8i-I5h" firstAttribute="width" secondItem="xwr-WX-vYa" secondAttribute="width" id="ge8-FH-3CC"/>
+                                            <constraint firstItem="HOO-8i-I5h" firstAttribute="width" secondItem="xwr-WX-vYa" secondAttribute="width" constant="20" id="ge8-FH-3CC"/>
                                             <constraint firstItem="HOO-8i-I5h" firstAttribute="centerX" secondItem="xwr-WX-vYa" secondAttribute="centerX" id="hJT-sf-Bdp"/>
                                             <constraint firstItem="cua-WM-xr0" firstAttribute="leading" secondItem="HOO-8i-I5h" secondAttribute="leading" id="jQr-m5-tzg"/>
                                             <constraint firstItem="qb2-Id-70u" firstAttribute="top" secondItem="HOO-8i-I5h" secondAttribute="bottom" constant="3" id="qgp-eo-YZ0"/>

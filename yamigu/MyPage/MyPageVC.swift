@@ -170,16 +170,25 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
-        print("nickName = \(nickName!)")
-        var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName!)"
+        //let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
+        var nickName = String(utf8String: ((textField.text?.cString(using: .utf8))!))! + string
+        if string == "" {
+            nickName.removeLast()
+        }
+        print("nickName = \(nickName)")
+        print("replacementString = \(string)")
+        
+        print("nickNameLength = \(nickName.utf8.count)")
+        var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName)"
         let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         urlString = String(utf8String: str_url.cString(using: .utf8)!)!
         checkNickname(urlString: urlString, isComp: false)
         
+        
         return true
     }
+    
     
     func checkNickname(urlString : String, isComp : Bool) {
         let url = URL(string: urlString)
@@ -211,13 +220,24 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                         //
                         if str.contains("true") {
                             print(str)
-                            
+                            print("text = \(self.tf_name.text)")
+                            print("count = \(self.tf_name.text?.utf8.count)")
                             self.label_able.isHidden = false
-                            self.label_able.textColor = UIColor(rgb: 0x3129FF)
-                            self.label_able.text = "사용 가능 합니다."
-                            if isComp {
-                                self.postRequest("http://106.10.39.154:9999/api/user/change/nickname/", bodyString:"nickname=\(self.tf_name.text!)")
+                            if (self.tf_name.text?.utf8.count)! > 12 {
+                                self.label_able.textColor = UIColor(rgb: 0xFF0000)
+                                self.label_able.text = "사용 불가능 합니다."
+                            } else {
+                                self.label_able.textColor = UIColor(rgb: 0x3129FF)
+                                self.label_able.text = "사용 가능 합니다."
+                                
+                                if isComp {
+                                    
+                                    self.postRequest("http://106.10.39.154:9999/api/user/change/nickname/", bodyString:"nickname=\(self.tf_name.text!)")
+                                }
                             }
+                           
+                            
+                            
                         } else {
                             self.label_able.isHidden = false
                             self.label_able.textColor = UIColor(rgb: 0xFF0000)

@@ -984,7 +984,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
                 
                 
                 let isUnread = dictionary["isUnread"] as! Bool
-                if !isUnread {
+                if isUnread {
                     count += 1
                 }
             }

@@ -111,7 +111,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)"
+        let urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)" + string
         let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         checkNickname(urlString: str_url)
         
@@ -189,10 +189,17 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async {
                         print(str)
                         if str.contains("true") {
-                            self.isAvailableNickName = true
-                            self.label_check.text = "사용 가능합니다."
-                            self.label_check.textColor = UIColor.blue
-                            self.check()
+                            if ((self.textField_nickName.text?.utf8.count)!) <= 12 {
+                                self.isAvailableNickName = true
+                                self.label_check.text = "사용 가능합니다."
+                                self.label_check.textColor = UIColor.blue
+                                self.check()
+                            } else {
+                                self.isAvailableNickName = false
+                                self.label_check.text = "사용 불가능합니다."
+                                self.label_check.textColor = UIColor.red
+                            }
+                            
                         } else {
                             self.isAvailableNickName = false
                             self.label_check.text = "사용 불가능합니다."

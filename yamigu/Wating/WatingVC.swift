@@ -243,7 +243,7 @@ class WatingVC: UIViewController, UIGestureRecognizerDelegate {
         }
         
         for i in 0..<6 {
-            self.filterView.button_places[i].isSelected = true
+            self.filterView.button_places[i].isSelected = false
             self.filterView.button_places[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
         }
         
@@ -537,7 +537,7 @@ extension WatingVC: FilterViewDelegate {
         }
         
         for i in 0..<6 {
-            self.filterView.button_places[i].isSelected = true
+            self.filterView.button_places[i].isSelected = false
             self.filterView.button_places[i].backgroundColor = UIColor(rgb: 0xC6C6C6)
         }
         
@@ -923,13 +923,15 @@ extension WatingVC: WatingTableViewDelegate {
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
-            let tabbar = self.tabBarController as! MainTC
             
-            if tabbar.menuButton.titleLabel?.text == "3/3" {
-                self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
+            self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+            /*
+             let tabbar = self.tabBarController as! MainTC
+             if tabbar.menuButton.titleLabel?.text == "3/3" {
+                //self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
             } else {
-                self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
-            }
+                //self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+            }*/
             
         }
     }
@@ -1071,7 +1073,13 @@ extension WatingVC: WatingTableViewDelegate {
                         print("\(myMeeting["is_matched"])")
                         
                         if myMeeting.count == 0 {
-                            self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                            let tabbar = self.tabBarController as! MainTC
+                            if tabbar.menuButton.titleLabel?.text == "3/3" {
+                                self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
+                            } else {
+                                self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                            }
+                            
                             
                             /*let alert = UIAlertController(title: "", message: "미팅이 신청되었어요!\n상대방이 수락하면 매칭이 완료됩니다!", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
