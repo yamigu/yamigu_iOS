@@ -10,11 +10,13 @@ import UIKit
 import KakaoCommon
 import KakaoOpenSDK
 import WebKit
+import AuthenticationServices
 
 class RegisterVC_1: UIViewController , WKNavigationDelegate{
     
     var isLogined = true
     var webView = WKWebView()
+    var appleToken : String!
     
     var userDict = Dictionary<String,Any>()
     
@@ -64,14 +66,22 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
             }
         }
         
-        let access_token = (KOSession.shared()?.token?.accessToken)!
-        
-        if access_token != nil {
-            //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
-            self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
-        } else {
-            self.isLogined = false
+        if let access_token = (KOSession.shared()?.token?.accessToken) {
+            if access_token != nil {
+                //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+            } else {
+                self.isLogined = false
+            }
         }
+        
+        if #available(iOS 13.0, *) {
+            if let apple_access_token = appleToken {
+                self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+            }
+        }
+        
+        
     }
     
     func postRequest(_ urlString: String, bodyString: String){

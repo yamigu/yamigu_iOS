@@ -18,6 +18,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var btn_question: UIButton!
     @IBOutlet weak var lbl_description: UILabel!
     @IBOutlet weak var btn_login: UIButton!
+    var appleToken : String!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -68,8 +69,16 @@ class LoginVC: UIViewController {
     @IBAction func questionPressed(_ sender: Any) {
     }
     
-    
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue_agreement" {
+            if let token = self.appleToken {
+                let des = segue.destination as! UINavigationController
+                let reg = des.topViewController as! RegisterVC_1
+                reg.appleToken = self.appleToken
+            }
+           
+        }
+    }
     
     @IBAction func kakaoLoginPressed(_ sender: Any) {
         //
@@ -163,12 +172,29 @@ class LoginVC: UIViewController {
                 print(res)
                 
             }
-            
-            DispatchQueue.main.async {
-                // 동작 실행
-
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        // 동작 실행
+                        authKey = newValue["key"]! as! String
+                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                    }
+                } catch {
+                    print(error)
+                    // 회원가입 이력이 없는경우
+                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                }
             }
-        }.resume()
+            }.resume()
     }
     
     func getUserInfo(urlString : String) {
@@ -284,6 +310,7 @@ class LoginVC: UIViewController {
                 // Handle response
                 let access_token = code
                 print(access_token)
+                self.appleToken = access_token
                 let json = ["access_token": code]
                 self.postRequest2("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
             } else {
@@ -296,6 +323,8 @@ class LoginVC: UIViewController {
         // Call your backend to exchange an API token with the code.
         
     }
+    
+    
     
 }
 

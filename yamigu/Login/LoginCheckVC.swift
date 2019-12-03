@@ -13,6 +13,7 @@ import FirebaseAuth
 import FirebaseMessaging
 import UserNotifications
 import Firebase
+import AuthenticationServices
 
 
 var authKey = ""
@@ -43,7 +44,26 @@ class LoginCheckVC: UIViewController {
                 
             }
         })*/
- 
+        if #available(iOS 13.0, *) {
+            let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
+                switch credentialState {
+                case .authorized:
+                    // The Apple ID credential is valid.
+                    break
+                case .revoked:
+                    // The Apple ID credential is revoked.
+                    break
+                case .notFound:
+                    break
+                    // No credential was found, so show the sign-in UI.
+                    
+                default:
+                    break
+                }
+            }
+        }
+        
         
         print("access token = \(KOSession.shared()?.token?.accessToken)")
         if KOSession.shared()?.token?.accessToken != nil {

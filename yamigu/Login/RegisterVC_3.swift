@@ -74,7 +74,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             json["real_name"] = self.userDict["real_name"] as! String
             json["gender"] = self.userDict["gender"] as! Int
             json["phone"] = self.userDict["phone"] as! String
-            json["is_student"] = self.userDict["is_student"] as! Bool
+            json["is_student"] = self.userDict["is_student"] as! Int
             json["belong"] = self.userDict["belong"] as! String
             json["department"] = self.userDict["department"] as! String
             json["age"] = self.userDict["age"] as! Int

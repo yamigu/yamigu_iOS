@@ -93,7 +93,12 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
             //self.userDict["real_name"] = "김신욱"
             //self.userDict["gender"] = 1
             //self.userDict["phone"] = "010-2512-8143"
-            self.userDict["is_student"] = isCollage
+            if isCollage {
+                self.userDict["is_student"] = 1
+            } else {
+                self.userDict["is_student"] = 0
+            }
+            
             //self.userDict["age"] = 20
             
             performSegue(withIdentifier: "segue_register3", sender: self)
