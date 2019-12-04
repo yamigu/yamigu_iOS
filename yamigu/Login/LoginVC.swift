@@ -186,6 +186,11 @@ class LoginVC: UIViewController {
                     DispatchQueue.main.async {
                         // 동작 실행
                         authKey = newValue["key"]! as! String
+                        do {
+                            try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").saveItem(authKey)
+                        } catch {
+                            print("Unable to save userIdentifier to keychain.")
+                        }
                         self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
                     }
                 } catch {
@@ -309,9 +314,12 @@ class LoginVC: UIViewController {
                 
                 // Handle response
                 let access_token = code
-                print(access_token)
+                print(code)
                 self.appleToken = access_token
                 let json = ["access_token": code]
+                
+                
+                
                 self.postRequest2("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
             } else {
                 // Handle missing authorization code ...

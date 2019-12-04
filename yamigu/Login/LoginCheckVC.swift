@@ -44,61 +44,107 @@ class LoginCheckVC: UIViewController {
                 
             }
         })*/
-        if #available(iOS 13.0, *) {
-            let appleIDProvider = ASAuthorizationAppleIDProvider()
-            appleIDProvider.getCredentialState(forUserID: KeychainItem.currentUserIdentifier) { (credentialState, error) in
-                switch credentialState {
-                case .authorized:
-                    // The Apple ID credential is valid.
-                    break
-                case .revoked:
-                    // The Apple ID credential is revoked.
-                    break
-                case .notFound:
-                    break
-                    // No credential was found, so show the sign-in UI.
+        
+        /*do {
+            try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
+        } catch {
+            
+        }*/
+        if let token = KOSession.shared()?.token?.accessToken {
+            print("access token = \(KOSession.shared()?.token?.accessToken)")
+            if KOSession.shared()?.token?.accessToken != nil {
+                var access_token = (KOSession.shared()?.token?.accessToken)!
+                print("access token2 = \(access_token)")
+                //access_token = (KOSession.shared()?.refreshToken)!
+                //access_token = KOSession.
+                
+                
+                KOSession.shared()?.refreshAccessToken(completionHandler: { (error) in
                     
-                default:
-                    break
+                    print("kakao error = \(error)")
+                    
+                    if error == nil {
+                        access_token = (KOSession.shared()?.token?.accessToken)!
+                        print("refresh token = \(access_token)")
+                        
+                        let json = ["access_token":access_token]
+                        
+                        DispatchQueue.main.async {
+                            self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)", json: json)
+                        }
+                    }
+                })
+                
+                
+                //self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=iOS")
+                //performSegue(withIdentifier: "segue_onboarding", sender: self)
+            } else {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
+                
             }
-        }
-        
-        
-        print("access token = \(KOSession.shared()?.token?.accessToken)")
-        if KOSession.shared()?.token?.accessToken != nil {
-            var access_token = (KOSession.shared()?.token?.accessToken)!
-            print("access token2 = \(access_token)")
-            //access_token = (KOSession.shared()?.refreshToken)!
-            //access_token = KOSession.
-            
-            
-            KOSession.shared()?.refreshAccessToken(completionHandler: { (error) in
+        } else {
+            if #available(iOS 13.0, *) {
+                let appleIDProvider = ASAuthorizationAppleIDProvider()
+                print(KeychainItem.currentUserIdentifier)
                 
-                print("kakao error = \(error)")
+                let keyChain = KeychainItem.currentUserIdentifier
                 
-                if error == nil {
-                    access_token = (KOSession.shared()?.token?.accessToken)!
-                    print("refresh token = \(access_token)")
-                    
-                    let json = ["access_token":access_token]
-                    
+                if keyChain == "" {
                     DispatchQueue.main.async {
-                        self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)", json: json)
+                        self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        //let json = ["access_token":KeychainItem.currentUserIdentifier]
+                        //self.postRequest("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
+                        var token = ""
+                        authKey = KeychainItem.currentUserIdentifier
+                        
+                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                        
+                        InstanceID.instanceID().instanceID { (result, error) in
+                            if let error = error {
+                                print("Error fetching remote instance ID: \(error)")
+                            } else if let result = result {
+                                print("Remote instance ID token: \(result.token)")
+                                print("Remote InstanceID token: \(result.token)")
+                                token = result.token
+                                
+                                var data = [String: Any]()
+                                data["registration_id"] = token
+                                data["type"] = "ios"
+                                
+                                self.postRequest2("http://106.10.39.154:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
+                            }
+                        }
                     }
                 }
-            })
-            
-            
-            //self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=iOS")
-            //performSegue(withIdentifier: "segue_onboarding", sender: self)
-        } else {
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                /*appleIDProvider.getCredentialState(forUserID: keyChain) { (credentialState, error) in
+                    switch credentialState {
+                    case .authorized:
+                        // The Apple ID credential is valid.
+                        
+                        break
+                    case .revoked:
+                        // The Apple ID credential is revoked.
+                        break
+                    case .notFound:
+                        
+                        break
+                        // No credential was found, so show the sign-in UI.
+                        
+                    default:
+                        break
+                    }
+                }*/
             }
-            
         }
+        
+        
     }
+    
     
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
        
