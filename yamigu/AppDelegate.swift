@@ -259,7 +259,73 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         }
         
         // Print full message.
-        print(userInfo)
+        let messageDict = userInfo as! [String : Any]
+        
+        if let wd = UIApplication.shared.delegate?.window {
+            var vc = wd!.rootViewController?.presentedViewController
+        
+            
+            
+            if(vc is UINavigationController) {
+                vc = (vc as! UINavigationController).visibleViewController
+
+            }
+            
+            if(vc is UITabBarController) {
+                vc = vc?.topMostViewController()
+                
+                if(vc is HomeVC) {
+                    /*let homeVC = vc as! HomeVC
+                    let args = messageDict["intentArgs"] as! String
+                    let argsData = args.data(using: .utf8)
+                    let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                    let type = (argsDict["type"] as! Int)
+                    if  type == 3 || type == 5 {
+                        homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                    }*/
+                    
+                    
+                } else if(vc is ChattingVC) {
+                    let chattingVC = vc as! ChattingVC
+                    let args = messageDict["intentArgs"] as! String
+                    let argsData = args.data(using: .utf8)
+                    let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                    
+                    
+                    print(chattingVC.matchDict)
+                    if ("\(chattingVC.matchDict["id"]!)" == "\(argsDict["meeting_id"]!)") {
+                        completionHandler([])
+                    }
+                }
+            }
+
+            if(vc is HomeVC) {
+                /*let homeVC = vc as! HomeVC
+                let args = messageDict["intentArgs"] as! String
+                let argsData = args.data(using: .utf8)
+                let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                let type = (argsDict["type"] as! Int)
+                if  type == 3 || type == 5 {
+                    homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                }*/
+            }
+            
+            if(vc is ChattingVC){
+                let chattingVC = vc as! ChattingVC
+                let args = messageDict["intentArgs"] as! String
+                let argsData = args.data(using: .utf8)
+                let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                
+                
+                print(chattingVC.matchDict)
+                if ("\(chattingVC.matchDict["id"]!)" == "\(argsDict["meeting_id"]!)") {
+                    completionHandler([])
+                }
+            }
+        }
+        
+        print(messageDict)
+        
         
         // Change this to your preferred presentation option
         completionHandler([.alert, .badge, .sound])
@@ -278,5 +344,23 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print(userInfo)
         
         completionHandler()
+    }
+}
+extension UIViewController {
+    func topMostViewController() -> UIViewController {
+        
+        if let presented = self.presentedViewController {
+            return presented.topMostViewController()
+        }
+        
+        if let navigation = self as? UINavigationController {
+            return navigation.visibleViewController?.topMostViewController() ?? navigation
+        }
+        
+        if let tab = self as? UITabBarController {
+            return tab.selectedViewController?.topMostViewController() ?? tab
+        }
+        
+        return self
     }
 }
