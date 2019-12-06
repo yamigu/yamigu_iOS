@@ -275,14 +275,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                 vc = vc?.topMostViewController()
                 
                 if(vc is HomeVC) {
-                    /*let homeVC = vc as! HomeVC
-                    let args = messageDict["intentArgs"] as! String
+                    let homeVC = vc as! HomeVC
+                    /*let args = messageDict["intentArgs"] as! String
                     let argsData = args.data(using: .utf8)
                     let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
                     let type = (argsDict["type"] as! Int)
                     if  type == 3 || type == 5 {
                         homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
                     }*/
+                    let args = messageDict["intentArgs"] as! String
+                    if args == "" {
+                        homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                    }
                     
                     
                 } else if(vc is ChattingVC) {
@@ -300,14 +304,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             }
 
             if(vc is HomeVC) {
-                /*let homeVC = vc as! HomeVC
-                let args = messageDict["intentArgs"] as! String
+                let homeVC = vc as! HomeVC
+                /*let args = messageDict["intentArgs"] as! String
                 let argsData = args.data(using: .utf8)
                 let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
                 let type = (argsDict["type"] as! Int)
                 if  type == 3 || type == 5 {
                     homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
                 }*/
+                let args = messageDict["intentArgs"] as! String
+                if args == "" {
+                    homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                }
             }
             
             if(vc is ChattingVC){

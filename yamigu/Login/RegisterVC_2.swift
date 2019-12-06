@@ -194,7 +194,13 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
                     DispatchQueue.main.async {
                         print(str)
                         if str.contains("true") {
-                            if ((self.textField_nickName.text?.utf8.count)!) <= 12 {
+                            let content = self.textField_nickName.text!
+                            let encodingEUCKR = CFStringConvertEncodingToNSStringEncoding(0x0422)
+                            let size = content.lengthOfBytes(using: String.Encoding(rawValue: encodingEUCKR))
+                            var buffer: [CChar] = [CChar](repeating: 0, count: size)
+                            print("buffer count = \(buffer.count)")
+                            
+                            if buffer.count <= 12 {
                                 self.isAvailableNickName = true
                                 self.label_check.text = "사용 가능합니다."
                                 self.label_check.textColor = UIColor.blue

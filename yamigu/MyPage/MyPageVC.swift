@@ -223,7 +223,14 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                             print("text = \(self.tf_name.text)")
                             print("count = \(self.tf_name.text?.utf8.count)")
                             self.label_able.isHidden = false
-                            if (self.tf_name.text?.utf8.count)! > 12 {
+                            
+                            let content = self.tf_name.text!
+                            let encodingEUCKR = CFStringConvertEncodingToNSStringEncoding(0x0422)
+                            let size = content.lengthOfBytes(using: String.Encoding(rawValue: encodingEUCKR))
+                            var buffer: [CChar] = [CChar](repeating: 0, count: size)
+                            print("buffer count = \(buffer.count)")
+                            //if (self.tf_name.text?.utf8.count)! > 12 {
+                            if buffer.count > 12 {
                                 self.label_able.textColor = UIColor(rgb: 0xFF0000)
                                 self.label_able.text = "사용 불가능 합니다."
                             } else {
