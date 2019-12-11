@@ -18,6 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     
+    var ref: DatabaseReference!
+    var refHandle : DatabaseHandle!
+    
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
         guard let scheme = url.scheme else { return true }
@@ -136,10 +139,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        self.ref = Database.database().reference()
+        self.refHandle = self.ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").observe(.value, with: { (snapshot) in
+            if let dictionary = snapshot.children.allObjects as? [DataSnapshot] {
+                badgeCount = 0
+                for dict in dictionary {
+                    if let data = dict.value as? Dictionary<String, Any> {
+
+                        print("data = \(data)")
+                        
+                        if data["isUnread"] as! Bool {
+                            badgeCount += 1
+                        }
+                    }
+                }
+                //UIApplication.shared.applicationIconBadgeNumber = badgeCount
+                application.applicationIconBadgeNumber = badgeCount
+            }
+        })
     }
+    
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        self.ref.removeObserver(withHandle: refHandle)
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -257,7 +282,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
         }
-        
+        badgeCount = badgeCount + 1
+        UIApplication.shared.applicationIconBadgeNumber = badgeCount
         // Print full message.
         let messageDict = userInfo as! [String : Any]
         
@@ -349,9 +375,72 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         }
         
         // Print full message.
-        print(userInfo)
+        let message = userInfo as! [String: Any]
+        
+        
+        if let wd = UIApplication.shared.delegate?.window {
+            var vc = wd!.rootViewController?.presentedViewController
+            if(vc is UITabBarController) {
+                let tabbarVC = vc as! MainTC
+                vc = vc?.topMostViewController()
+                
+                if(vc is HomeVC) {
+                    if "\(message["clickAction"]!)" == ".ChattingActivity" {
+                        let args = message["intentArgs"] as! String
+                        let argsData = args.data(using: .utf8)
+                        let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                        print(message)
+                        
+                               let meetingId = intentArgs["meeting_id"] as! String
+                               self.goChatVC(meetingId: meetingId)
+                    }
+                } else {
+                    if(vc is RegisterMeetingVC) {
+                        vc?.dismiss(animated: false, completion: {
+                            if "\(message["clickAction"]!)" == ".ChattingActivity" {
+                                let args = message["intentArgs"] as! String
+                                let argsData = args.data(using: .utf8)
+                                let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                                print(message)
+                                
+                                       let meetingId = intentArgs["meeting_id"] as! String
+                                       self.goChatVC(meetingId: meetingId)
+                            }
+                        })
+                    } else {
+                        DispatchQueue.main.async {
+                            tabbarVC.selectedIndex = 0
+                            if "\(message["clickAction"]!)" == ".ChattingActivity" {
+                                let args = message["intentArgs"] as! String
+                                let argsData = args.data(using: .utf8)
+                                let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                                print(message)
+                                
+                                       let meetingId = intentArgs["meeting_id"] as! String
+                                       self.goChatVC(meetingId: meetingId)
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            
+        }
+       
+        
         
         completionHandler()
+    }
+    
+    func goChatVC(meetingId : String) {
+        if let wd = UIApplication.shared.delegate?.window {
+            var vc = wd!.rootViewController?.presentedViewController
+            
+            if(vc is UITabBarController) {
+                let homevc = vc?.topMostViewController() as! HomeVC
+                homevc.goChatting(meetingId: meetingId)
+            }
+        }
     }
 }
 extension UIViewController {

@@ -13,6 +13,7 @@ import FirebaseDatabase
 
 var alarmDicts = Array<Dictionary<String, Any>>()
 var alarmCount = 0
+var badgeCount = 0
 
 class TabBar: UITabBar {
     
@@ -51,6 +52,8 @@ class MainTC: UITabBarController {
                         }
                     }
                 }
+                badgeCount = alarmCount
+                UIApplication.shared.applicationIconBadgeNumber = badgeCount
                 alarmDicts.reverse()
                 let homeController = self.viewControllers![0] as! HomeVC
                 if homeController != nil {

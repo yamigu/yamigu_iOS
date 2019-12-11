@@ -87,6 +87,12 @@ class HomeVC: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         self.view.endEditing(true)
     }
@@ -377,6 +383,65 @@ class HomeVC: UIViewController {
                 } catch {
                     print(error)
                     
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
+    func goChatting(meetingId: String) {
+        self.myMeetings.removeAll()
+        
+        guard let url = URL(string: "http://106.10.39.154:9999/api/meetings/my/") else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Array<Dictionary<String, Any>> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.myMeetings.removeAll()
+                        for value in newValue {
+                            self.myMeetings.append(value)
+                            if (value["is_matched"] as! Bool) {
+                                let matchedMeeting = value["matched_meeting"] as! [String: Any]
+                                if ("\(matchedMeeting["id"]!)") == meetingId {
+                                    self.selectedMyMeeting = value
+                                    self.performSegue(withIdentifier: "segue_chatting", sender: self)
+                                }
+                            }
+                            
+                            
+                        }
+                        
+                    }
+                } catch {
+                    print(error)
                 }
             }
             
