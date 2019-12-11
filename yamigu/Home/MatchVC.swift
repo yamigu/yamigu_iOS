@@ -584,7 +584,13 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 315.0, height: 222.0)
+        var width = 315.0
+        
+        if self.collectionView.frame.size.width < 315.0 {
+            width = Double(self.collectionView.frame.size.width - 30.0)
+        }
+        
+        return CGSize(width: width, height: 222.0)
     }
     
     func collectionView(_ collectionView: UICollectionView,
