@@ -33,6 +33,10 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         }
     }
     
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        
+    }
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         var products = response.products
         DispatchQueue.main.async {
@@ -57,9 +61,6 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 self.productIdentifier as Set<String>)
             request.delegate = self
             request.start()
-            
-            
-            
             
         } else {
             var alert = UIAlertController(title: "In-App Purchases Not Enabled", message: "Please enable In App Purchase in Settings", preferredStyle: UIAlertController.Style.alert)
@@ -87,7 +88,7 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     var isButtonPressed = false
     var isButtonPressed2 = false
     
-    let productIdentifier = Set(["", ""])
+    let productIdentifier = Set(["party.yamigu.www.com.ticket_1", "party.yamigu.www.com.ticket_3"])
     var product: SKProduct?
     var productsArray = Array<SKProduct>()
     

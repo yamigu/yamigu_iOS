@@ -27,25 +27,7 @@ class LoginCheckVC: UIViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        /*KOSession.shared()?.logoutAndClose(completionHandler: { (success, error) in
-            if success {
-                print("access token = \(KOSession.shared()?.token?.accessToken)")
-                if KOSession.shared()?.token?.accessToken != nil {
-                    let access_token = (KOSession.shared()?.token?.accessToken)!
-                    print("access token2 = \(access_token)")
-                    self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
-                    
-                    //performSegue(withIdentifier: "segue_onboarding", sender: self)
-                } else {
-                    
-                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
-                }
-            } else {
-                
-            }
-        })*/
-        
-        
+       
         if let token = KOSession.shared()?.token?.accessToken {
             print("access token = \(KOSession.shared()?.token?.accessToken)")
             if KOSession.shared()?.token?.accessToken != nil {
@@ -117,24 +99,6 @@ class LoginCheckVC: UIViewController {
                         }
                     }
                 }
-                /*appleIDProvider.getCredentialState(forUserID: keyChain) { (credentialState, error) in
-                    switch credentialState {
-                    case .authorized:
-                        // The Apple ID credential is valid.
-                        
-                        break
-                    case .revoked:
-                        // The Apple ID credential is revoked.
-                        break
-                    case .notFound:
-                        
-                        break
-                        // No credential was found, so show the sign-in UI.
-                        
-                    default:
-                        break
-                    }
-                }*/
             }
         }
         
@@ -190,9 +154,6 @@ class LoginCheckVC: UIViewController {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
-        
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
             let jsonString = String(data: data, encoding: .utf8) {

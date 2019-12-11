@@ -304,7 +304,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                             self.tf_name.text = "\(newValue["nickname"] as! String)(\(newValue["age"]!))"
                             self.label_belong.text = newValue["belong"] as? String
                             self.label_department.text = newValue["department"] as? String
-                            
+                            self.button_tickets.setTitle("\(newValue["ticket"]!)", for: .normal)
                             
                             if self.userDict["image"] != nil {
                                 if let imageUrl = URL(string: "\(self.userDict["image"]!)") {

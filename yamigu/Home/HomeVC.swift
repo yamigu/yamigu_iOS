@@ -60,6 +60,7 @@ class HomeVC: UIViewController {
         
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        self.getUserInfo()
         //self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
         //self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
         
@@ -75,14 +76,14 @@ class HomeVC: UIViewController {
         super.viewWillAppear(animated)
         //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
         self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        self.getUserInfo()
         //self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
         //self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
         
         ref = Database.database().reference()
         
         self.label_recommendMeeting.text = "\(userDictionary["nickname"] as! String)님을 위한 추천 미팅"
-        
-        
+        self.button_tickets.titleLabel!.text = "\(userDictionary["ticket"]!)"
         
     }
     
@@ -328,6 +329,54 @@ class HomeVC: UIViewController {
                     }
                 } catch {
                     print(error)
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
+    func getUserInfo() {
+        guard let url = URL(string: "http://106.10.39.154:9999/api/user/info/") else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    userDictionary = newValue
+                    
+                    DispatchQueue.main.async {
+                        self.button_tickets.setTitle("\(newValue["ticket"]!)", for: .normal)
+                        
+                    }
+                } catch {
+                    print(error)
+                    
                 }
             }
             

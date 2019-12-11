@@ -53,11 +53,11 @@
                                 <rect key="frame" x="0.0" y="22" width="414" height="57"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_home_logo" translatesAutoresizingMaskIntoConstraints="NO" id="Ni0-Ym-i6X">
-                                        <rect key="frame" x="5.6666666666666643" y="13.999999999999998" width="121.66666666666669" height="29.333333333333329"/>
+                                        <rect key="frame" x="5.666666666666667" y="28" width="1" height="1"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yEv-ij-uOo">
-                                        <rect key="frame" x="368.66666666666669" y="16.666666666666664" width="33" height="24"/>
-                                        <state key="normal" title="1" image="icon_tickets">
+                                        <rect key="frame" x="400.66666666666669" y="17.666666666666664" width="1" height="22"/>
+                                        <state key="normal" image="icon_tickets">
                                             <color key="titleColor" red="0.20392156862745098" green="0.20392156862745098" blue="0.20392156862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
@@ -65,14 +65,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Lc-sB-GDn">
-                                        <rect key="frame" x="323.66666666666669" y="16.666666666666664" width="20" height="24"/>
+                                        <rect key="frame" x="374.66666666666669" y="17.666666666666664" width="1" height="22"/>
                                         <state key="normal" image="icon_bell"/>
                                         <connections>
                                             <segue destination="Y9h-Zs-wiX" kind="show" id="3qq-ZP-jYN"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="USf-Cw-eaw">
-                                        <rect key="frame" x="333.66666666666669" y="6.6666666666666679" width="20" height="20"/>
+                                        <rect key="frame" x="365.66666666666669" y="5.6666666666666679" width="20" height="20"/>
                                         <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="818-Ld-y8f"/>
@@ -128,7 +128,7 @@
                                         </constraints>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjQ-Vh-4XW">
-                                        <rect key="frame" x="32" y="185" width="350" height="76"/>
+                                        <rect key="frame" x="206.66666666666666" y="185" width="1" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="KIK-mM-mQ9"/>
                                         </constraints>
