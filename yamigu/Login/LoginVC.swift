@@ -67,6 +67,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func questionPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "segue_whatIsYamigu", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
