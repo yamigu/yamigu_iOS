@@ -96,6 +96,7 @@
 		9F1407122379632200C9D491 /* NotisVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1407112379632200C9D491 /* NotisVC.swift */; };
 		9F3AD99D2373D4890005FE71 /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F3AD99C2373D4890005FE71 /* SettingVC.swift */; };
 		9F689460237BAC400036A4C5 /* CertiVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F68945F237BAC400036A4C5 /* CertiVC.swift */; };
+		9F6D4CDE23A0BDEC003B6E1F /* WhatIsYamigu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F6D4CDD23A0BDEC003B6E1F /* WhatIsYamigu.swift */; };
 		9FF00FD92387C26A00239345 /* KakaoPlusFriend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FF00FD82387C26A00239345 /* KakaoPlusFriend.framework */; };
 /* End PBXBuildFile section */
 
@@ -229,6 +230,7 @@
 		9F689476238259EA0036A4C5 /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundB.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundB.ttf"; sourceTree = "<group>"; };
 		9F689477238259EA0036A4C5 /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundR.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundR.ttf"; sourceTree = "<group>"; };
 		9F689478238259EB0036A4C5 /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = NanumSquareRoundEB.ttf; path = "../../../../../../../Volumes/나눔스퀘어라운드 맥용 TTF/NanumSquareRoundEB.ttf"; sourceTree = "<group>"; };
+		9F6D4CDD23A0BDEC003B6E1F /* WhatIsYamigu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatIsYamigu.swift; sourceTree = "<group>"; };
 		9FF00FD82387C26A00239345 /* KakaoPlusFriend.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KakaoPlusFriend.framework; path = "kakao-ios-sdk-1/KakaoPlusFriend.framework"; sourceTree = "<group>"; };
 		D0AA41BF19C032251005C119 /* Pods-yamigu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yamigu.release.xcconfig"; path = "Target Support Files/Pods-yamigu/Pods-yamigu.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -448,6 +450,7 @@
 				55224D93234F10FA003FBCA3 /* RegisterVC_3.swift */,
 				55224DCC2356ECAA003FBCA3 /* LoginCheck.storyboard */,
 				55224DCE2356ECBF003FBCA3 /* LoginCheckVC.swift */,
+				9F6D4CDD23A0BDEC003B6E1F /* WhatIsYamigu.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 				55DD1BC323476DCC00CC820D /* HomeExpectedTableViewCell.swift in Sources */,
 				55224DCF2356ECBF003FBCA3 /* LoginCheckVC.swift in Sources */,
 				9F09984C23694A20006B2750 /* HomeReviewCell.swift in Sources */,
+				9F6D4CDE23A0BDEC003B6E1F /* WhatIsYamigu.swift in Sources */,
 				55224D91234F0ED5003FBCA3 /* AgreementTableViewCell.swift in Sources */,
 				55B09BF22349EA2C006051C2 /* WhatisTableViewCell.swift in Sources */,
 				9F14070B237955E500C9D491 /* NoticesVC.swift in Sources */,
