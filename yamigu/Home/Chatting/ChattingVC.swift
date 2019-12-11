@@ -499,10 +499,19 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             intent_args["date"] = dateFommatter.string(from: date!)
             intent_args["place"] = meetingDict["place_type_name"]!
-            intent_args["type"] = meetingDict["meeting_type"]!
+            
+            let type = self.meetingDict["meeting_type"] as! Int
+            if type == 1 {
+                intent_args["type"] = "2:2 미팅"
+            } else if type == 2{
+                intent_args["type"] = "3:3 미팅"
+            } else {
+                intent_args["type"] = "4:4 미팅"
+            }
+            //intent_args["type"] = meetingDict["meeting_type"]!
             intent_args["meeting_id"] = "\(meetingDict["id"]!)"
             intent_args["matching_id"] = "\(matchingId)"
-            intent_args["manage_name"] = managerData["manager_name"]!
+            intent_args["manager_name"] = managerData["manager_name"]!
             //intent_args["partner_uid"] = matchDict["openby_uid"]!
             intent_args["manager_uid"] = managerData["manager_uid"]!
             intent_args["accepted_at"] = managerData["accepted_at"]!

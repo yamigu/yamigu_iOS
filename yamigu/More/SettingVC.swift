@@ -61,7 +61,18 @@ class SettingVC: UIViewController {
 
         logoutAlert.addAction(UIAlertAction(title: "로그아웃", style: .default, handler: { (action: UIAlertAction!) in
             print("Handle Ok logic here")
-            self.postRequest("http://106.10.39.154:9999/api/auth/logout/")
+           
+            
+            if let kakaoToken = KOSession.shared()?.token?.accessToken {
+                 self.postRequest("http://106.10.39.154:9999/api/auth/logout/")
+            } else {
+                do {
+                    try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
+                    self.dismiss(animated: true, completion: nil)
+                } catch {
+                    
+                }
+            }
             
             
         }))
@@ -122,7 +133,7 @@ class SettingVC: UIViewController {
                         session.logoutAndClose { (success, error) in
                           if success {
                             print("logout success.")
-                            //self.dismiss(animated: true, completion: nil)
+                            self.dismiss(animated: true, completion: nil)
                           } else {
                             print(error?.localizedDescription)
                           }

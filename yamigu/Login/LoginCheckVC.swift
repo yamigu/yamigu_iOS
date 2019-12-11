@@ -45,11 +45,7 @@ class LoginCheckVC: UIViewController {
             }
         })*/
         
-        /*do {
-            try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
-        } catch {
-            
-        }*/
+        
         if let token = KOSession.shared()?.token?.accessToken {
             print("access token = \(KOSession.shared()?.token?.accessToken)")
             if KOSession.shared()?.token?.accessToken != nil {

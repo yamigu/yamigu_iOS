@@ -37,6 +37,7 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         var products = response.products
         DispatchQueue.main.async {
             for product in products {
+                print("productIdentifier = \(product.productIdentifier)")
                 self.productsArray.append(product)
             }
             
@@ -86,7 +87,7 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
     var isButtonPressed = false
     var isButtonPressed2 = false
     
-    let productIdentifier = Set(["party.yamigu.www.com.ticket_1", "party.yamigu.www.com.ticket_3"])
+    let productIdentifier = Set(["", ""])
     var product: SKProduct?
     var productsArray = Array<SKProduct>()
     
@@ -138,7 +139,6 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         }*/
         let payment = SKPayment(product: productsArray[1])
         SKPaymentQueue.default().add(payment)
-        
         //self.addLoadingView()
     }
     
