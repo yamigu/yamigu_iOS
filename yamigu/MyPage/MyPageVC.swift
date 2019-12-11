@@ -11,6 +11,9 @@ import KakaoPlusFriend
 
 class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var scrollContentView: UIView!
+    @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var button_changeProfileImage: UIButton!
     @IBOutlet weak var image_profile: UIImageView!
     @IBOutlet weak var label_belong: UILabel!
@@ -54,7 +57,8 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         
         tf_name.isUserInteractionEnabled = false
         
-        
+        //viewHeightConstraint.constant = scrollContentView.content + 30
+        print("view height: \(viewHeightConstraint.constant)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7au-ma-mdq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7au-ma-mdq">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -138,14 +138,16 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_place_list" translatesAutoresizingMaskIntoConstraints="NO" id="QyE-Uq-hA9">
-                                                <rect key="frame" x="37.666666666666657" y="13" width="339" height="1157"/>
+                                                <rect key="frame" x="18" y="13" width="378" height="1157"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1170" id="9QR-FT-xxY"/>
                                             <constraint firstItem="QyE-Uq-hA9" firstAttribute="top" secondItem="SP0-tm-elV" secondAttribute="top" constant="13" id="fXu-Jc-8d8"/>
+                                            <constraint firstItem="QyE-Uq-hA9" firstAttribute="leading" secondItem="SP0-tm-elV" secondAttribute="leading" constant="18" id="srr-C3-6rD"/>
                                             <constraint firstItem="QyE-Uq-hA9" firstAttribute="centerX" secondItem="SP0-tm-elV" secondAttribute="centerX" id="tIo-KZ-YyI"/>
+                                            <constraint firstAttribute="trailing" secondItem="QyE-Uq-hA9" secondAttribute="trailing" constant="18" id="u20-K5-1nb"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1306,14 +1308,16 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="578"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_yamigu_guide" translatesAutoresizingMaskIntoConstraints="NO" id="1dh-Yz-5oI">
-                                                <rect key="frame" x="37.666666666666657" y="13" width="339" height="565"/>
+                                                <rect key="frame" x="18" y="13" width="378" height="565"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="1dh-Yz-5oI" firstAttribute="leading" secondItem="DtF-h9-icw" secondAttribute="leading" constant="18" id="7IG-fi-XEm"/>
                                             <constraint firstItem="1dh-Yz-5oI" firstAttribute="centerX" secondItem="DtF-h9-icw" secondAttribute="centerX" id="Ric-3N-rZ4"/>
                                             <constraint firstAttribute="height" constant="578" id="XAY-nd-Gyp"/>
                                             <constraint firstItem="1dh-Yz-5oI" firstAttribute="top" secondItem="DtF-h9-icw" secondAttribute="top" constant="13" id="tG3-EF-oCv"/>
+                                            <constraint firstAttribute="trailing" secondItem="1dh-Yz-5oI" secondAttribute="trailing" constant="18" id="uA7-vI-Cs0"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1357,12 +1361,14 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_yamigu_question" translatesAutoresizingMaskIntoConstraints="NO" id="Bnm-SE-huX">
-                                                <rect key="frame" x="27.666666666666657" y="8" width="359" height="587"/>
+                                                <rect key="frame" x="10" y="8" width="394" height="587"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Bnm-SE-huX" secondAttribute="trailing" constant="10" id="7l2-yd-KzT"/>
                                             <constraint firstItem="Bnm-SE-huX" firstAttribute="centerX" secondItem="8jp-on-WzU" secondAttribute="centerX" id="VtU-FA-0Ri"/>
+                                            <constraint firstItem="Bnm-SE-huX" firstAttribute="leading" secondItem="8jp-on-WzU" secondAttribute="leading" constant="10" id="m5t-O3-ewr"/>
                                             <constraint firstAttribute="height" constant="587" id="pSC-kn-fo4"/>
                                             <constraint firstItem="Bnm-SE-huX" firstAttribute="top" secondItem="8jp-on-WzU" secondAttribute="top" constant="8" id="xZQ-XU-MHC"/>
                                         </constraints>
