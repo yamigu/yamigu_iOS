@@ -74,7 +74,12 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             json["real_name"] = self.userDict["real_name"] as! String
             json["gender"] = self.userDict["gender"] as! Int
             json["phone"] = self.userDict["phone"] as! String
-            json["is_student"] = self.userDict["is_student"] as! Bool
+            if self.userDict["is_student"] as! Bool {
+                json["is_student"] = "true"
+            } else {
+                json["is_student"] = "false"
+            }
+            //json["is_student"] = self.userDict["is_student"] as! Bool
             json["belong"] = self.userDict["belong"] as! String
             json["department"] = self.userDict["department"] as! String
             json["age"] = self.userDict["age"] as! Int
@@ -179,7 +184,12 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             json["real_name"] = userDict["real_name"] as! String
             json["gender"] = userDict["gender"] as! Int
             json["phone"] = userDict["phone"] as! String
-            json["is_student"] = userDict["is_student"] as! Bool
+            if self.userDict["is_student"] as! Bool {
+                json["is_student"] = "true"
+            } else {
+                json["is_student"] = "false"
+            }
+            //json["is_student"] = userDict["is_student"] as! Bool
             json["belong"] = userDict["belong"] as! String
             json["department"] = userDict["department"] as! String
             json["age"] = userDict["age"] as! Int
