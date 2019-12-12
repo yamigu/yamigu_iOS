@@ -451,17 +451,19 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             newRef.updateChildValues(messageDict)
             
             if partnerMessageCount > 0 && myMessageCount == 0 {
-                let newRef2 = self.ref.child("message").child(matchingId).childByAutoId()
+                var newRef2 = self.ref.child("message").child(matchingId).childByAutoId()
                 let key2 = newRef2.key
                 
                 var messageDict2 = Dictionary<String, Any>()
-                messageDict2["id"] = key
+                messageDict2["id"] = key2
                 messageDict2["idSender"] = managerData["manager_uid"]!
                 messageDict2["message"] = "###manager-place-content###"
                 messageDict2["userName"] = managerData["manager_name"]!
                 messageDict2["time"] = Date().currentTimeMillis()
                 
                 newRef2.updateChildValues(messageDict2)
+                self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key2!).updateChildValues(messageDict2)
+                self.ref.child("user").child(userDictionary["uid"]! as! String).child("receivedMessages").child(matchingId).child(key2!).updateChildValues(messageDict2)
             }
             
             var dict = Dictionary<String, Any>()
@@ -489,7 +491,9 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             intent_args["partner_belong"] = meetingDict["openby_belong"]!
             intent_args["partner_department"] = meetingDict["openby_department"]!
             intent_args["partner_nickname"] = meetingDict["openby_nickname"]!
-            intent_args["partner_uid"] = "\(matchingDict["id"]!)"
+            
+            //let matched_meeting = meetingDict["matched_meeting"] as! [String:Any]
+            intent_args["partner_uid"] = "\(userDictionary["uid"]!)"
             
             let dateString = meetingDict["date"]! as! String
             let dateFommatter = DateFormatter()
@@ -516,6 +520,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             intent_args["manager_uid"] = managerData["manager_uid"]!
             intent_args["accepted_at"] = managerData["accepted_at"]!
             
+            
             var data = [String:Any]()
             
             data["title"] = meetingDict["openby_nickname"]!
@@ -535,10 +540,13 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         //icon_chatting_alarm
         //self.button_call.tintColor = UIColor(rgb: 0xFF7B22)
         self.view.makeToast("매니저를 호출했어요!")
+        let json = ["matching_id":matchingId]
+        self.postRequest("http://106.10.39.154:9999/api/call_manager/", bodyString: "", json: json)
         self.button_call.setImage(UIImage(named: "icon_chatting_alarm_on"), for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             //self.button_call.tintColor = UIColor(rgb: 0x707070)
             self.button_call.setImage(UIImage(named: "icon_chatting_alarm"), for: .normal)
+            
         }
         
     }

@@ -19,6 +19,9 @@ class LoginVC: UIViewController {
     @IBOutlet weak var lbl_description: UILabel!
     @IBOutlet weak var btn_login: UIButton!
     var appleToken : String!
+    
+    var blackBackground = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -244,7 +247,8 @@ class LoginVC: UIViewController {
                 
                             if ("\(userDictionary["nickname"] ?? "<null>")") != "<null>" {
                                 //self.dismiss(animated: false, completion: nil)
-                                self.performSegue(withIdentifier: "segue_loginCheck", sender: self)
+                                //self.performSegue(withIdentifier: "segue_loginCheck", sender: self)
+                                goToLoginCheckVC()
                                 self.navigationController?.isNavigationBarHidden = true
                             } else {
                                 self.performSegue(withIdentifier: "segue_agreement", sender: self)
@@ -278,6 +282,12 @@ class LoginVC: UIViewController {
     
     @objc func signInButtonPressed() {
         // First you create an apple id provider request with the scope of full name and email
+        blackBackground.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
+        blackBackground.frame = self.view.frame
+        blackBackground.makeToastActivity(.center)
+        self.view.addSubview(blackBackground)
+        
+        
         let request = ASAuthorizationAppleIDProvider().createRequest()
         request.requestedScopes = [.fullName, .email]
 

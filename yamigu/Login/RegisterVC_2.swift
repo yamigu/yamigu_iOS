@@ -93,11 +93,13 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
             //self.userDict["real_name"] = "김신욱"
             //self.userDict["gender"] = 1
             //self.userDict["phone"] = "010-2512-8143"
-            if isCollage {
+            /*if isCollage {
                 self.userDict["is_student"] = 1
             } else {
                 self.userDict["is_student"] = 0
-            }
+            }*/
+            self.userDict["is_student"] = isCollage
+        
             
             //self.userDict["age"] = 20
             

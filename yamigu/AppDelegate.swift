@@ -287,6 +287,19 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         let messageDict = userInfo as! [String : Any]
         
+        if "\(messageDict["clickAction"]!)" == ".NotificationActivity" {
+            if let wd = UIApplication.shared.delegate?.window {
+                var vc = wd!.rootViewController?.presentedViewController
+                vc = vc?.topMostViewController()
+                
+                let alert = UIAlertController(title: "", message: "인증 완료 기념으로 미팅티켓 1장을 무료로 드렸어요.\n신청하기를 눌러 야미구를 시작해보세요!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                    
+                }))
+                vc!.present(alert, animated: true, completion: nil)
+            }
+        }
+        
         if let wd = UIApplication.shared.delegate?.window {
             var vc = wd!.rootViewController?.presentedViewController
         
@@ -377,55 +390,70 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         let message = userInfo as! [String: Any]
         
-        
-        if let wd = UIApplication.shared.delegate?.window {
-            var vc = wd!.rootViewController?.presentedViewController
-            if(vc is UITabBarController) {
-                let tabbarVC = vc as! MainTC
+        if "\(message["clickAction"]!)" == ".NotificationActivity" {
+            if let wd = UIApplication.shared.delegate?.window {
+                var vc = wd!.rootViewController?.presentedViewController
                 vc = vc?.topMostViewController()
                 
-                if(vc is HomeVC) {
-                    if "\(message["clickAction"]!)" == ".ChattingActivity" {
-                        let args = message["intentArgs"] as! String
-                        let argsData = args.data(using: .utf8)
-                        let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
-                        print(message)
-                        
-                               let meetingId = intentArgs["meeting_id"] as! String
-                               self.goChatVC(meetingId: meetingId)
-                    }
-                } else {
-                    if(vc is RegisterMeetingVC) {
-                        vc?.dismiss(animated: false, completion: {
-                            if "\(message["clickAction"]!)" == ".ChattingActivity" {
-                                let args = message["intentArgs"] as! String
-                                let argsData = args.data(using: .utf8)
-                                let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
-                                print(message)
-                                
-                                       let meetingId = intentArgs["meeting_id"] as! String
-                                       self.goChatVC(meetingId: meetingId)
-                            }
-                        })
-                    } else {
-                        DispatchQueue.main.async {
-                            tabbarVC.selectedIndex = 0
-                            if "\(message["clickAction"]!)" == ".ChattingActivity" {
-                                let args = message["intentArgs"] as! String
-                                let argsData = args.data(using: .utf8)
-                                let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
-                                print(message)
-                                
-                                       let meetingId = intentArgs["meeting_id"] as! String
-                                       self.goChatVC(meetingId: meetingId)
-                            }
+                let alert = UIAlertController(title: "", message: "인증 완료 기념으로 미팅티켓 1장을 무료로 드렸어요.\n신청하기를 눌러 야미구를 시작해보세요!", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                    
+                }))
+                vc!.present(alert, animated: true, completion: nil)
+            }
+        } else {
+            if let wd = UIApplication.shared.delegate?.window {
+                var vc = wd!.rootViewController?.presentedViewController
+                if(vc is UITabBarController) {
+                    let tabbarVC = vc as! MainTC
+                    vc = vc?.topMostViewController()
+                    
+                    if(vc is HomeVC) {
+                        if "\(message["clickAction"]!)" == ".ChattingActivity" {
+                            let args = message["intentArgs"] as! String
+                            let argsData = args.data(using: .utf8)
+                            let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                            print(message)
+                            
+                                   let meetingId = intentArgs["meeting_id"] as! String
+                                   self.goChatVC(meetingId: meetingId)
                         }
-                        
+                    } else {
+                        if(vc is RegisterMeetingVC) {
+                            vc?.dismiss(animated: false, completion: {
+                                if "\(message["clickAction"]!)" == ".ChattingActivity" {
+                                    let args = message["intentArgs"] as! String
+                                    let argsData = args.data(using: .utf8)
+                                    let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                                    print(message)
+                                    
+                                           let meetingId = intentArgs["meeting_id"] as! String
+                                           self.goChatVC(meetingId: meetingId)
+                                }
+                            })
+                        } else {
+                            DispatchQueue.main.async {
+                                tabbarVC.selectedIndex = 0
+                                if "\(message["clickAction"]!)" == ".ChattingActivity" {
+                                    let args = message["intentArgs"] as! String
+                                    let argsData = args.data(using: .utf8)
+                                    let intentArgs = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
+                                    print(message)
+                                    
+                                           let meetingId = intentArgs["meeting_id"] as! String
+                                           self.goChatVC(meetingId: meetingId)
+                                }
+                            }
+                            
+                        }
                     }
                 }
+                
             }
-            
         }
+        
+        
+        
        
         
         

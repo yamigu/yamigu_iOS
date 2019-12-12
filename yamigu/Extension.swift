@@ -294,3 +294,23 @@ extension UIFont {
     }
 }
 
+func goToLoginCheckVC() {
+    if let wd = UIApplication.shared.delegate?.window {
+        var vc = wd!.rootViewController?.presentedViewController
+        
+        if(vc is LoginCheckVC) {
+            return
+        } else {
+            if(vc is UINavigationController) {
+                vc = vc?.topMostViewController()
+                vc?.dismiss(animated: false, completion: {
+                    goToLoginCheckVC()
+                })
+            } else {
+                vc?.dismiss(animated: false, completion: {
+                    goToLoginCheckVC()
+                })
+            }
+        }
+    }
+}

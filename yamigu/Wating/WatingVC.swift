@@ -754,7 +754,7 @@ extension WatingVC: FilterViewDelegate {
                     DispatchQueue.main.async {
                         
                         let result = newValue["results"] as! [Dictionary<String, Any>]
-                        self.filterView.compBtn.setTitle("\(result.count)팀 보기", for: .normal)
+                        //self.filterView.compBtn.setTitle("\(result.count)팀 보기", for: .normal)
                         
                     }
                 } catch {
@@ -868,7 +868,7 @@ extension WatingVC: FilterViewDelegate {
                     DispatchQueue.main.async {
                         
                         self.matchingList = newValue["results"] as! [Dictionary<String, Any>]
-                        self.filterView.compBtn.setTitle("\(self.matchingList.count)팀 보기", for: .normal)
+                        //self.filterView.compBtn.setTitle("\(self.matchingList.count)팀 보기", for: .normal)
                         
                         
                         
