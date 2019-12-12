@@ -599,6 +599,14 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                     
                     cell.backgroundColor = UIColor.white
                     
+                    if tableView.frame.size.width < 315 {
+                        cell.label_type.font = UIFont(name: "NanumGothicExtraBold", size: 15.0)
+                        cell.label_day.font = UIFont(name: "NanumGothicExtraBold", size: 15.0)
+                        cell.label_matchingName.font = UIFont(name: "Binggrae", size: 15.0)
+                        cell.label_matchingDepart.font = UIFont(name: "Binggrae", size: 15.0)
+                        cell.label_isMatched.font = UIFont(name: "Binggrae-Bold", size: 20.0)
+                        cell.label_isWating.font = UIFont(name: "Binggrae-Bold", size: 20.0)
+                    }
                     
                 } else {
                     
@@ -727,6 +735,15 @@ extension HomeVC:UITableViewDataSource, UITableViewDelegate {
                                 }
                             }
                         }
+                    }
+                    
+                    if tableView.frame.size.width < 315 {
+                        cell.label_type.font = UIFont(name: "NanumGothicExtraBold", size: 15.0)
+                        cell.label_day.font = UIFont(name: "NanumGothicExtraBold", size: 15.0)
+                        cell.label_matchingName.font = UIFont(name: "Binggrae", size: 15.0)
+                        cell.label_matchingDepart.font = UIFont(name: "Binggrae", size: 15.0)
+                        cell.label_isMatched.font = UIFont(name: "Binggrae-Bold", size: 20.0)
+                        cell.label_isWating.font = UIFont(name: "Binggrae-Bold", size: 20.0)
                     }
                 }
                 

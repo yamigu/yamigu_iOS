@@ -1151,7 +1151,7 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_more_whatis1" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-cy-ebD">
-                                                <rect key="frame" x="19" y="0.0" width="376" height="601"/>
+                                                <rect key="frame" x="5" y="0.0" width="404" height="601"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1159,6 +1159,8 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                             <constraint firstItem="uh5-cy-ebD" firstAttribute="top" secondItem="Lcc-FL-QhR" secondAttribute="top" id="5tU-Rs-k0B"/>
                                             <constraint firstAttribute="height" constant="622" id="8Ei-Jh-wx0"/>
                                             <constraint firstItem="uh5-cy-ebD" firstAttribute="centerX" secondItem="Lcc-FL-QhR" secondAttribute="centerX" id="GCa-4J-E6W"/>
+                                            <constraint firstAttribute="trailing" secondItem="uh5-cy-ebD" secondAttribute="trailing" constant="5" id="L4O-HL-4xB"/>
+                                            <constraint firstItem="uh5-cy-ebD" firstAttribute="leading" secondItem="Lcc-FL-QhR" secondAttribute="leading" constant="5" id="TJH-WF-NTm"/>
                                         </constraints>
                                     </view>
                                 </subviews>

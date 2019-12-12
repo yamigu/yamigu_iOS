@@ -586,8 +586,8 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
         
         var width = 315.0
         
-        if self.collectionView.frame.size.width < 315.0 {
-            width = Double(self.collectionView.frame.size.width - 30.0)
+        if collectionView.frame.size.width <= 320.0 {
+            width = Double(collectionView.frame.size.width - 30.0)
         }
         
         return CGSize(width: width, height: 222.0)
@@ -596,16 +596,30 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView.frame.size.width <= 320 {
+            return (self.collectionView.frame.size.width - 315.0 - 30.0)
+        }
+        
         return (self.collectionView.frame.size.width - 315.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        
+        if collectionView.frame.size.width <= 320 {
+            return (self.collectionView.frame.size.width - 315.0 - 30.0)
+        }
+        
         return (self.collectionView.frame.size.width - 315.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if collectionView.frame.size.width <= 320 {
+            return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+        }
+        
         return UIEdgeInsets(top: 0, left: (self.collectionView.frame.size.width - 315.0) / 2, bottom: 0, right: (self.collectionView.frame.size.width - 315.0) / 2)
     }
     

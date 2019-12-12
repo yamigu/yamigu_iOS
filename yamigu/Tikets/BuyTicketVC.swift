@@ -98,6 +98,10 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
         
         button_ticket_1.setImage(UIImage(named: "image_ticket_1_on"), for: .highlighted)
         button_ticket_2.setImage(UIImage(named: "image_ticket_3_on"), for: .highlighted)
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = ""
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
     }
     
     override func viewWillAppear(_ animated: Bool) {
