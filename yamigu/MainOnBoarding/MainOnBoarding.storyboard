@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f8t-7R-lQ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="f8t-7R-lQ5">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +31,7 @@
                                 <rect key="frame" x="137.66666666666666" y="119" width="138.99999999999997" height="138"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TMY-xh-FCE" customClass="CHIPageControlChimayo" customModule="CHIPageControl">
-                                <rect key="frame" x="173.66666666666666" y="609" width="67" height="10"/>
+                                <rect key="frame" x="173.66666666666666" y="636" width="67" height="10"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -92,7 +92,7 @@
                             <constraint firstItem="J5W-9T-LWg" firstAttribute="centerX" secondItem="Yon-Vg-9BF" secondAttribute="centerX" id="6kp-NX-9WA"/>
                             <constraint firstItem="k7l-Dz-9Ay" firstAttribute="bottom" secondItem="RPf-mD-hn1" secondAttribute="top" constant="2" id="7B7-1u-fZl"/>
                             <constraint firstAttribute="bottom" secondItem="a9O-LN-eX9" secondAttribute="bottom" id="9VM-GI-jvz"/>
-                            <constraint firstAttribute="bottom" secondItem="TMY-xh-FCE" secondAttribute="bottom" constant="117" id="CHC-8M-Pby"/>
+                            <constraint firstAttribute="bottom" secondItem="TMY-xh-FCE" secondAttribute="bottom" constant="90" id="CHC-8M-Pby"/>
                             <constraint firstAttribute="trailing" secondItem="k7l-Dz-9Ay" secondAttribute="trailing" constant="32" id="CQA-gB-Bdz"/>
                             <constraint firstItem="a9O-LN-eX9" firstAttribute="width" secondItem="Yon-Vg-9BF" secondAttribute="width" id="G5g-z2-nlJ"/>
                             <constraint firstItem="J5W-9T-LWg" firstAttribute="top" secondItem="Yon-Vg-9BF" secondAttribute="top" constant="119" id="MNs-NW-2cR"/>
