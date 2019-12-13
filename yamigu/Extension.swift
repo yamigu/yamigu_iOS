@@ -294,8 +294,20 @@ extension UIFont {
     }
 }
 
-func checkTicket() -> Int {
-    guard let url = URL(string: "http://106.10.39.154:9999/api/user/info/") else {return 0}
+func checkTicket(completion: @escaping (_ result: Int) -> Void) {
+    let bgView = UIView()
+    if let wd = UIApplication.shared.delegate?.window {
+        var vc = wd!.rootViewController?.presentedViewController
+        
+        bgView.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        bgView.makeToastActivity(.center)
+        bgView.frame = (vc?.view.frame)!
+        vc?.view.addSubview(bgView)
+        
+    }
+    
+    
+    guard let url = URL(string: "http://106.10.39.154:9999/api/user/info/") else {return}
     
     var request = URLRequest(url: url)
     
@@ -326,11 +338,14 @@ func checkTicket() -> Int {
                     
                 }
                 
-                userDictionary = newValue
                 
+                userDictionary = newValue
+                let tickets = newValue["ticket"] as! Int
                 DispatchQueue.main.async {
-                    return newValue["ticket"] as! Int
+                    bgView.removeFromSuperview()
+                    completion(tickets)
                 }
+                
             } catch {
                 print(error)
                 
@@ -340,7 +355,7 @@ func checkTicket() -> Int {
     })
     task.resume()
     
-    return 0
+    
 }
 
 func goToLoginCheckVC() {

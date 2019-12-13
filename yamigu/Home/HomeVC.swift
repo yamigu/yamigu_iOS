@@ -112,16 +112,19 @@ class HomeVC: UIViewController {
             }))
             self.present(alert, animated: true, completion: nil)
         } else {
-            if checkTicket() == 0 {
-                let alert = UIAlertController(title: "", message: "티켓이 있어야 미팅을 할 수 있어요!\n단, 매칭이 안되면 티켓은 돌려줘요.", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                    
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                let tabView = self.tabBarController as! MainTC
-                tabView.pressed(sender: tabView.menuButton)
+            checkTicket { (tickets) in
+                if tickets == 0 {
+                    let alert = UIAlertController(title: "", message: "티켓이 있어야 미팅을 할 수 있어요!\n단, 매칭이 안되면 티켓은 돌려줘요.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    let tabView = self.tabBarController as! MainTC
+                    tabView.pressed(sender: tabView.menuButton)
+                }
             }
+            
         }
     }
     

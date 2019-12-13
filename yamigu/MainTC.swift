@@ -134,19 +134,22 @@ class MainTC: UITabBarController {
                 }))
                 self.present(alert, animated: true, completion: nil)
             } else {
-                if checkTicket() == 0 {
-                    let alert = UIAlertController(title: "", message: "티켓이 있어야 미팅을 할 수 있어요!\n단, 매칭이 안되면 티켓은 돌려줘요.", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                        
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    if menuButton.titleLabel?.text == "3/3" {
-                        self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
+                checkTicket { (tickets) in
+                    if tickets == 0 {
+                        let alert = UIAlertController(title: "", message: "티켓이 있어야 미팅을 할 수 있어요!\n단, 매칭이 안되면 티켓은 돌려줘요.", preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                            
+                        }))
+                        self.present(alert, animated: true, completion: nil)
                     } else {
-                        self.performSegue(withIdentifier: "segue_registermeeting", sender: self)
+                        if self.menuButton.titleLabel?.text == "3/3" {
+                            self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
+                        } else {
+                            self.performSegue(withIdentifier: "segue_registermeeting", sender: self)
+                        }
                     }
                 }
+                
                 
             }
         
