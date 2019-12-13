@@ -647,7 +647,7 @@ extension WatingVC: FilterViewDelegate {
         body += "maximum_age=\(maximum_age)"
         
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        self.getTmpMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)")
+        self.getTmpMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)", escapedString: escapedString!)
         
         //self.updateUI()
     }
@@ -698,7 +698,7 @@ extension WatingVC: FilterViewDelegate {
         body += "maximum_age=\(maximum_age)"
         
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        self.getMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)")
+        self.getMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)", escapedString: escapedString!)
         self.getFilterMeetingCount(urlString: "http://106.10.39.154:9999/api/meetings/waiting/count/?\(escapedString!)")
         
         self.updateUI()
@@ -716,7 +716,7 @@ extension WatingVC: FilterViewDelegate {
         
     }
     
-    func getTmpMeetingCount(urlString : String) {
+    func getTmpMeetingCount(urlString : String, escapedString: String) {
         guard let url = URL(string: urlString) else {return}
         
         var request = URLRequest(url: url)
@@ -755,7 +755,7 @@ extension WatingVC: FilterViewDelegate {
                         
                         let result = newValue["results"] as! [Dictionary<String, Any>]
                         //self.filterView.compBtn.setTitle("\(result.count)팀 보기", for: .normal)
-                        
+                        self.getFilterMeetingCount(urlString: "http://106.10.39.154:9999/api/meetings/waiting/count/?\(escapedString)")
                     }
                 } catch {
                     print(error)
@@ -829,7 +829,7 @@ extension WatingVC: FilterViewDelegate {
         task.resume()
     }
     
-    func getMeetingCount(urlString : String) {
+    func getMeetingCount(urlString : String, escapedString: String) {
         matchingList.removeAll()
         guard let url = URL(string: urlString) else {return}
         
@@ -869,7 +869,7 @@ extension WatingVC: FilterViewDelegate {
                         
                         self.matchingList = newValue["results"] as! [Dictionary<String, Any>]
                         //self.filterView.compBtn.setTitle("\(self.matchingList.count)팀 보기", for: .normal)
-                        
+                        self.getFilterMeetingCount(urlString: "http://106.10.39.154:9999/api/meetings/waiting/count/?\(escapedString)")
                         
                         
                         self.tableView.reloadData()

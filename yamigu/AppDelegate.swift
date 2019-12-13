@@ -286,8 +286,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         UIApplication.shared.applicationIconBadgeNumber = badgeCount
         // Print full message.
         let messageDict = userInfo as! [String : Any]
+        print(messageDict)
         
-        if "\(messageDict["clickAction"]!)" == ".NotificationActivity" {
+        
+        if "\(messageDict["content"]!)" == "인증이 완료되었어요! 즐거운 야미구 하세요!" {
             if let wd = UIApplication.shared.delegate?.window {
                 var vc = wd!.rootViewController?.presentedViewController
                 vc = vc?.topMostViewController()
@@ -390,7 +392,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         let message = userInfo as! [String: Any]
         
-        if "\(message["clickAction"]!)" == ".NotificationActivity" {
+        if "\(message["content"]!)" == "인증이 완료되었어요! 즐거운 야미구 하세요!" {
             if let wd = UIApplication.shared.delegate?.window {
                 var vc = wd!.rootViewController?.presentedViewController
                 vc = vc?.topMostViewController()

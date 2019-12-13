@@ -283,7 +283,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(message["message"] as! String).width + 32
             
-            cell.profileImageView.contentMode = .scaleToFill
+            cell.profileImageView.contentMode = .scaleAspectFill
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellLeftId, for: indexPath) as! ChattingLeftCell
@@ -314,7 +314,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(message["message"] as! String).width + 32
-            cell.profileImageView.contentMode = .scaleToFill
+            cell.profileImageView.contentMode = .scaleAspectFill
             return cell
         }
         
@@ -364,8 +364,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         profileImageView.downloaded(from: "\(self.managerData["manager_profile"]!)")
         profileImageVIew2.downloaded(from: "\(self.managerData["manager_profile"]!)")
         
-        profileImageView.contentMode = .scaleToFill
-        profileImageVIew2.contentMode = .scaleToFill
+        profileImageView.contentMode = .scaleAspectFill
+        profileImageVIew2.contentMode = .scaleAspectFill
         
         label_name.text = "야미구 매니저 \(self.managerData["manager_name"]!)"
         label_name2.text = "야미구 매니저 \(self.managerData["manager_name"]!)"
@@ -460,6 +460,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
                 messageDict2["message"] = "###manager-place-content###"
                 messageDict2["userName"] = managerData["manager_name"]!
                 messageDict2["time"] = Date().currentTimeMillis()
+                
+                messageDict2["isUnread"] = true
                 
                 newRef2.updateChildValues(messageDict2)
                 self.ref.child("user").child(self.matchDict["openby_uid"]! as! String).child("receivedMessages").child(matchingId).child(key2!).updateChildValues(messageDict2)

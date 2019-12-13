@@ -38,6 +38,7 @@ class MainTC: UITabBarController {
         
         ref = Database.database().reference()
         refHandle = ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").observe(.value, with: { (snapshot) in
+        //refHandle = ref.child("user").child("1158459711").child("notifications").observe(.value, with: { (snapshot) in
             if let dictionary = snapshot.children.allObjects as? [DataSnapshot] {
                 alarmCount = 0
                 alarmDicts.removeAll()
