@@ -59,6 +59,8 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         }
     }
     
+    
+    
     @IBAction func nextCertiBtnPressed(_ sender: Any) {
         DispatchQueue.main.async {
             self.userDict["belong"] = self.text_belong.text
