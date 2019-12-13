@@ -497,184 +497,214 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqf-RM-HRl">
-                                <rect key="frame" x="36" y="7.0000000000000018" width="52.333333333333343" height="20.666666666666671"/>
-                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
-                                <color key="textColor" red="0.12549019610000001" green="0.1450980392" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전공 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKS-JG-toz">
-                                <rect key="frame" x="36" y="84.666666666666671" width="52.333333333333343" height="20.666666666666671"/>
-                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
-                                <color key="textColor" red="0.12549019610000001" green="0.1450980392" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 인증" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3m-aH-5ts">
-                                <rect key="frame" x="36" y="166.33333333333334" width="53" height="21"/>
-                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
-                                <color key="textColor" red="0.12549019610000001" green="0.1450980392" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex) 연세대" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBc-Kv-e2E">
-                                <rect key="frame" x="36" y="32.666666666666664" width="342" height="35.999999999999993"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-df-2yE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXB-jj-fgV">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="620"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pqf-RM-HRl">
+                                                <rect key="frame" x="36" y="7.0000000000000018" width="52.333333333333343" height="20.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
+                                                <color key="textColor" red="0.12549019610000001" green="0.1450980392" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전공 입력" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKS-JG-toz">
+                                                <rect key="frame" x="36" y="94.666666666666671" width="52.333333333333343" height="20.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
+                                                <color key="textColor" red="0.12549019610000001" green="0.1450980392" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="학교 인증" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3m-aH-5ts">
+                                                <rect key="frame" x="36" y="182.33333333333334" width="53" height="21"/>
+                                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="14"/>
+                                                <color key="textColor" red="0.12549019610000001" green="0.1450980392" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex) 전기전자공학부" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XV5-Om-okd">
+                                                <rect key="frame" x="36" y="126" width="342" height="36"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="3Ya-cU-8q5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex) 연세대" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YBc-Kv-e2E">
+                                                <rect key="frame" x="36" y="38.333333333333336" width="342" height="36.000000000000007"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="36" id="MaD-pR-MgF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wea-HF-Fys">
+                                                <rect key="frame" x="36" y="219" width="342" height="128"/>
+                                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128.30000000000001" id="7U2-jv-9Tz"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-FZ-eVF">
+                                                <rect key="frame" x="36" y="219" width="342" height="128"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="128.30000000000001" id="dhI-tZ-Z6C"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
+                                                <state key="normal" title="인증하기" image="icon_certification">
+                                                    <color key="titleColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="certiBtnPressed:" destination="DMI-F0-rv3" eventType="touchUpInside" id="eLP-50-dm1"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 학생증과 전자 학생증만 가능해요 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oD-5e-4Pl">
+                                                <rect key="frame" x="237" y="354" width="141" height="14.666666666666686"/>
+                                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="10"/>
+                                                <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="descriptIon_register" translatesAutoresizingMaskIntoConstraints="NO" id="cnf-rp-gsU">
+                                                <rect key="frame" x="36" y="393" width="342" height="89"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="89" id="itc-MC-JCh"/>
+                                                </constraints>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52V-bb-bUW">
+                                                <rect key="frame" x="36" y="553" width="342" height="42"/>
+                                                <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="42" id="CWw-mq-TPd"/>
+                                                </constraints>
+                                                <state key="normal" title="소속 인증하기">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="certiBelongBtnPressed:" destination="DMI-F0-rv3" eventType="touchUpInside" id="u8I-1Q-5RR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="YBc-Kv-e2E" firstAttribute="top" secondItem="pqf-RM-HRl" secondAttribute="bottom" constant="10.5" id="0PR-B0-fLD"/>
+                                            <constraint firstItem="9oD-5e-4Pl" firstAttribute="trailing" secondItem="Nt1-FZ-eVF" secondAttribute="trailing" id="5Xq-QE-oRm"/>
+                                            <constraint firstItem="YBc-Kv-e2E" firstAttribute="leading" secondItem="ZXB-jj-fgV" secondAttribute="leading" constant="36" id="5Ye-gl-MJ4"/>
+                                            <constraint firstItem="52V-bb-bUW" firstAttribute="trailing" secondItem="cnf-rp-gsU" secondAttribute="trailing" id="7n1-xP-0uT"/>
+                                            <constraint firstItem="oKS-JG-toz" firstAttribute="top" secondItem="pqf-RM-HRl" secondAttribute="bottom" constant="67" id="9cs-q1-qAj"/>
+                                            <constraint firstItem="cnf-rp-gsU" firstAttribute="leading" secondItem="Nt1-FZ-eVF" secondAttribute="leading" id="AvR-bw-aS1"/>
+                                            <constraint firstItem="XV5-Om-okd" firstAttribute="top" secondItem="oKS-JG-toz" secondAttribute="bottom" constant="10.5" id="Dn8-dN-8In"/>
+                                            <constraint firstItem="oKS-JG-toz" firstAttribute="leading" secondItem="pqf-RM-HRl" secondAttribute="leading" id="Dqu-tc-SZi"/>
+                                            <constraint firstAttribute="height" constant="620" id="FCs-C5-1L0"/>
+                                            <constraint firstItem="52V-bb-bUW" firstAttribute="top" secondItem="cnf-rp-gsU" secondAttribute="bottom" constant="71" id="J4P-lr-sDn"/>
+                                            <constraint firstItem="9oD-5e-4Pl" firstAttribute="top" secondItem="Nt1-FZ-eVF" secondAttribute="bottom" constant="7" id="Juu-eV-hJa"/>
+                                            <constraint firstItem="cnf-rp-gsU" firstAttribute="trailing" secondItem="Nt1-FZ-eVF" secondAttribute="trailing" id="UyR-4g-z4u"/>
+                                            <constraint firstItem="f3m-aH-5ts" firstAttribute="leading" secondItem="oKS-JG-toz" secondAttribute="leading" id="W0p-8P-ByF"/>
+                                            <constraint firstItem="cnf-rp-gsU" firstAttribute="top" secondItem="Nt1-FZ-eVF" secondAttribute="bottom" constant="46" id="WhL-hD-Rxe"/>
+                                            <constraint firstItem="pqf-RM-HRl" firstAttribute="leading" secondItem="ZXB-jj-fgV" secondAttribute="leading" constant="36" id="YtH-gL-ORk"/>
+                                            <constraint firstItem="Nt1-FZ-eVF" firstAttribute="width" secondItem="wea-HF-Fys" secondAttribute="width" id="a4g-UB-TBl"/>
+                                            <constraint firstItem="wea-HF-Fys" firstAttribute="top" secondItem="f3m-aH-5ts" secondAttribute="bottom" constant="15.5" id="dIS-0f-rB0"/>
+                                            <constraint firstItem="Nt1-FZ-eVF" firstAttribute="leading" secondItem="wea-HF-Fys" secondAttribute="leading" id="deI-3w-mhZ"/>
+                                            <constraint firstItem="XV5-Om-okd" firstAttribute="leading" secondItem="ZXB-jj-fgV" secondAttribute="leading" constant="36" id="gnL-HO-iJ4"/>
+                                            <constraint firstAttribute="trailing" secondItem="YBc-Kv-e2E" secondAttribute="trailing" constant="36" id="mr9-ay-Wac"/>
+                                            <constraint firstAttribute="trailing" secondItem="XV5-Om-okd" secondAttribute="trailing" constant="36" id="nlc-be-1p7"/>
+                                            <constraint firstItem="f3m-aH-5ts" firstAttribute="top" secondItem="oKS-JG-toz" secondAttribute="bottom" constant="67" id="oF0-Ag-GsA"/>
+                                            <constraint firstItem="52V-bb-bUW" firstAttribute="leading" secondItem="cnf-rp-gsU" secondAttribute="leading" id="pDv-nE-gI6"/>
+                                            <constraint firstItem="wea-HF-Fys" firstAttribute="leading" secondItem="XV5-Om-okd" secondAttribute="leading" id="qLK-Qd-VaM"/>
+                                            <constraint firstItem="wea-HF-Fys" firstAttribute="trailing" secondItem="XV5-Om-okd" secondAttribute="trailing" id="rUI-3F-h7e"/>
+                                            <constraint firstItem="Nt1-FZ-eVF" firstAttribute="height" secondItem="wea-HF-Fys" secondAttribute="height" id="vlD-17-NhY"/>
+                                            <constraint firstItem="Nt1-FZ-eVF" firstAttribute="top" secondItem="wea-HF-Fys" secondAttribute="top" id="wrZ-lb-bE4"/>
+                                            <constraint firstItem="pqf-RM-HRl" firstAttribute="top" secondItem="ZXB-jj-fgV" secondAttribute="top" constant="7" id="wwQ-be-DnS"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="MaD-pR-MgF"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZXB-jj-fgV" secondAttribute="bottom" id="HhK-Sy-wmQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZXB-jj-fgV" secondAttribute="trailing" id="Wcg-96-Izy"/>
+                                    <constraint firstItem="ZXB-jj-fgV" firstAttribute="leading" secondItem="4t1-df-2yE" secondAttribute="leading" id="khC-Qw-bZW"/>
+                                    <constraint firstItem="ZXB-jj-fgV" firstAttribute="width" secondItem="4t1-df-2yE" secondAttribute="width" id="oJF-dj-SBM"/>
+                                    <constraint firstItem="ZXB-jj-fgV" firstAttribute="top" secondItem="4t1-df-2yE" secondAttribute="top" id="pqk-Hu-Yoh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex) 전기전자공학부" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XV5-Om-okd">
-                                <rect key="frame" x="36" y="110.33333333333331" width="342" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="3Ya-cU-8q5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="12"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerradius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52V-bb-bUW">
-                                <rect key="frame" x="36" y="674" width="342" height="42"/>
-                                <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="CWw-mq-TPd"/>
-                                </constraints>
-                                <state key="normal" title="소속 인증하기">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="certiBelongBtnPressed:" destination="DMI-F0-rv3" eventType="touchUpInside" id="u8I-1Q-5RR"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wea-HF-Fys">
-                                <rect key="frame" x="36" y="203" width="342" height="128"/>
-                                <color key="backgroundColor" red="0.85098039219999999" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-FZ-eVF">
-                                <rect key="frame" x="36" y="203" width="342" height="128"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128.30000000000001" id="dhI-tZ-Z6C"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
-                                <state key="normal" title="인증하기" image="icon_certification">
-                                    <color key="titleColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="certiBtnPressed:" destination="DMI-F0-rv3" eventType="touchUpInside" id="eLP-50-dm1"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="descriptIon_register" translatesAutoresizingMaskIntoConstraints="NO" id="cnf-rp-gsU">
-                                <rect key="frame" x="36" y="378.66666666666669" width="342" height="89"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="89" id="itc-MC-JCh"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="* 학생증과 전자 학생증만 가능해요 !" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9oD-5e-4Pl">
-                                <rect key="frame" x="237" y="338" width="141" height="14.666666666666686"/>
-                                <fontDescription key="fontDescription" name="NotoSansChakma-Regular" family="Noto Sans Chakma" pointSize="10"/>
-                                <color key="textColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <viewLayoutGuide key="contentLayoutGuide" id="zBi-df-2dj"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="Sg2-zj-api"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Nt1-FZ-eVF" firstAttribute="top" secondItem="f3m-aH-5ts" secondAttribute="bottom" constant="15.5" id="02z-RV-itZ"/>
-                            <constraint firstItem="pqf-RM-HRl" firstAttribute="top" secondItem="uaQ-q1-78A" secondAttribute="top" constant="7" id="3GD-ki-0TY"/>
-                            <constraint firstItem="XV5-Om-okd" firstAttribute="trailing" secondItem="YBc-Kv-e2E" secondAttribute="trailing" id="5G2-mN-Zv3"/>
-                            <constraint firstItem="XV5-Om-okd" firstAttribute="top" secondItem="oKS-JG-toz" secondAttribute="bottom" constant="5" id="6fW-mp-2Db"/>
-                            <constraint firstItem="Nt1-FZ-eVF" firstAttribute="leading" secondItem="XV5-Om-okd" secondAttribute="leading" id="7VV-BY-Lth"/>
-                            <constraint firstItem="uaQ-q1-78A" firstAttribute="trailing" secondItem="YBc-Kv-e2E" secondAttribute="trailing" constant="36" id="8TB-Hu-M5r"/>
-                            <constraint firstItem="wea-HF-Fys" firstAttribute="top" secondItem="Nt1-FZ-eVF" secondAttribute="top" id="ADx-YK-9BH"/>
-                            <constraint firstItem="52V-bb-bUW" firstAttribute="centerX" secondItem="uaQ-q1-78A" secondAttribute="centerX" id="ANJ-xT-5Lt"/>
-                            <constraint firstItem="wea-HF-Fys" firstAttribute="leading" secondItem="Nt1-FZ-eVF" secondAttribute="leading" id="CBT-BR-HZw"/>
-                            <constraint firstItem="uaQ-q1-78A" firstAttribute="bottom" secondItem="52V-bb-bUW" secondAttribute="bottom" constant="20" id="Eq6-OH-RlF"/>
-                            <constraint firstItem="cnf-rp-gsU" firstAttribute="leading" secondItem="Nt1-FZ-eVF" secondAttribute="leading" id="HIJ-Wn-udJ"/>
-                            <constraint firstItem="cnf-rp-gsU" firstAttribute="centerX" secondItem="uaQ-q1-78A" secondAttribute="centerX" id="IDq-K1-PWT"/>
-                            <constraint firstItem="YBc-Kv-e2E" firstAttribute="top" secondItem="pqf-RM-HRl" secondAttribute="bottom" constant="5" id="J7I-31-6rB"/>
-                            <constraint firstItem="wea-HF-Fys" firstAttribute="bottom" secondItem="Nt1-FZ-eVF" secondAttribute="bottom" id="NjX-0r-poq"/>
-                            <constraint firstItem="cnf-rp-gsU" firstAttribute="trailing" secondItem="Nt1-FZ-eVF" secondAttribute="trailing" id="SLn-DB-fZN"/>
-                            <constraint firstItem="YBc-Kv-e2E" firstAttribute="leading" secondItem="uaQ-q1-78A" secondAttribute="leading" constant="36" id="UOz-dw-81V"/>
-                            <constraint firstItem="oKS-JG-toz" firstAttribute="leading" secondItem="pqf-RM-HRl" secondAttribute="leading" id="Y0R-7L-Cfe"/>
-                            <constraint firstItem="f3m-aH-5ts" firstAttribute="top" secondItem="XV5-Om-okd" secondAttribute="bottom" constant="20" id="a02-Kf-0D8"/>
-                            <constraint firstItem="f3m-aH-5ts" firstAttribute="leading" secondItem="oKS-JG-toz" secondAttribute="leading" id="gJI-9d-s2D"/>
-                            <constraint firstItem="oKS-JG-toz" firstAttribute="top" secondItem="YBc-Kv-e2E" secondAttribute="bottom" constant="16" id="gKl-cr-3dq"/>
-                            <constraint firstItem="pqf-RM-HRl" firstAttribute="leading" secondItem="uaQ-q1-78A" secondAttribute="leading" constant="36" id="hPU-C2-uvI"/>
-                            <constraint firstItem="Nt1-FZ-eVF" firstAttribute="trailing" secondItem="XV5-Om-okd" secondAttribute="trailing" id="lYS-Jh-uOF"/>
-                            <constraint firstItem="cnf-rp-gsU" firstAttribute="top" secondItem="Nt1-FZ-eVF" secondAttribute="bottom" constant="47.666666666666686" id="neC-Cr-aWg"/>
-                            <constraint firstItem="wea-HF-Fys" firstAttribute="trailing" secondItem="Nt1-FZ-eVF" secondAttribute="trailing" id="opS-3D-X5B"/>
-                            <constraint firstItem="52V-bb-bUW" firstAttribute="leading" secondItem="XV5-Om-okd" secondAttribute="leading" id="pAO-8m-1bh"/>
-                            <constraint firstItem="XV5-Om-okd" firstAttribute="leading" secondItem="YBc-Kv-e2E" secondAttribute="leading" id="phE-Q7-1Ob"/>
-                            <constraint firstItem="9oD-5e-4Pl" firstAttribute="trailing" secondItem="Nt1-FZ-eVF" secondAttribute="trailing" id="s0w-s7-nIL"/>
-                            <constraint firstItem="9oD-5e-4Pl" firstAttribute="top" secondItem="Nt1-FZ-eVF" secondAttribute="bottom" constant="6.7000000000000002" id="v6C-px-57M"/>
+                            <constraint firstItem="4t1-df-2yE" firstAttribute="top" secondItem="uaQ-q1-78A" secondAttribute="top" id="7HM-gq-PjN"/>
+                            <constraint firstItem="uaQ-q1-78A" firstAttribute="trailing" secondItem="4t1-df-2yE" secondAttribute="trailing" id="QLI-XU-JQh"/>
+                            <constraint firstItem="uaQ-q1-78A" firstAttribute="bottom" secondItem="4t1-df-2yE" secondAttribute="bottom" id="YGB-9Z-Ys7"/>
+                            <constraint firstItem="4t1-df-2yE" firstAttribute="width" secondItem="uaQ-q1-78A" secondAttribute="width" id="mf6-0h-Vhj"/>
+                            <constraint firstItem="4t1-df-2yE" firstAttribute="leading" secondItem="uaQ-q1-78A" secondAttribute="leading" id="xrD-NE-xXW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uaQ-q1-78A"/>
                     </view>
