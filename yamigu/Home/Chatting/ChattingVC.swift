@@ -38,6 +38,8 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
     var chatRef: DatabaseReference!
     var chatRefHandle : DatabaseHandle!
     
+    var partnerProfileImageUrl = ""
+    
     var myMessageCount = 0
     var partnerMessageCount = 0
     
@@ -97,6 +99,9 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         
         self.navigationController?.title = resultDateString + " || " + placeString + " || " + typeString
         self.title = resultDateString + " || " + typeString
+        
+        let partnerUid = "\(matchDict["openby_uid"]!)"
+        self.postRequestGetImage("http://106.10.39.154:9999/api/user/\(partnerUid)/image/", bodyString: "", json: ["uid":partnerUid])
         
         
     }
@@ -310,7 +315,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             cell.nameLabel.text = message["userName"] as! String
             
-            //cell.profileImageView.downloaded(from: userDictionary["image"] as! String)
+            cell.profileImageView.downloaded(from: partnerProfileImageUrl)
             
             
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(message["message"] as! String).width + 32
@@ -624,6 +629,57 @@ extension ChattingVC {
                     DispatchQueue.main.async {
                         self.dismiss(animated: false, completion: nil)
                     }
+                } catch {
+                    print(error)
+                }
+            }
+        }.resume()
+    }
+    
+    func postRequestGetImage(_ urlString: String, bodyString: String, json: [String: Any]){
+        
+        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //request.httpBody = jsonData
+        
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
+            let jsonString = String(data: data, encoding: .utf8) {
+            print("jsonString = \(jsonString.data(using: .utf8))")
+            request.httpBody = jsonString.data(using: .utf8)!
+        }
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                print(res)
+                
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.partnerProfileImageUrl = newValue["profile_url"] as! String
+                        self.collectionView.reloadData()
+                        
+                    }
+                    
+                    
                 } catch {
                     print(error)
                 }
