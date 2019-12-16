@@ -8,6 +8,8 @@
 
 import UIKit
 import KakaoPlusFriend
+import KakaoLink
+import KakaoMessageTemplate
 
 class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -475,7 +477,80 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     }
     
     @IBAction func shareBtnPressed(_ sender: Any) {
+//        let template = KMTFeedTemplate { (feedTemplateBuilder) in
+//            feedTemplateBuilder.content = KMTContentObject(builderBlock: { (contentBuilder) in
+//                contentBuilder.title = "ㅇㅇㅇ"
+//
+//                //contentBuilder.imageURL = URL(string: RequestURL.thumb)!
+//
+//                contentBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
+//
+//                    linkBuilder.mobileWebURL = URL(string: "https://yamigu.party")!
+//
+//                })
+//
+//            })
+//
+//            feedTemplateBuilder.addButton(KMTButtonObject(builderBlock: { (buttonBuilder) in
+//
+//                buttonBuilder.title = "앱 실행하기"
+//
+//                buttonBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
+//
+//                    linkBuilder.iosExecutionParams = "https://itunes.apple.com/app/id1485834674"
+//
+//                    //linkBuilder.androidExecutionParams = url
+//
+//                })
+//
+//            }))
+//        }
+//        // 카카오링크 실행
+//        KLKTalkLinkCenter.shared().sendDefault(with: template, success: { (warningMsg, argumentMsg) in
+//
+//            // 성공
+//
+//            print("warning message: \(String(describing: warningMsg))")
+//
+//            print("argument message: \(String(describing: argumentMsg))")
+//
+//        }, failure: { (error) in
+//            // 실패
+//
+//            //self.alert(error.localizedDescription)
+//
+//            print("error \(error)")
+//        })
         
+        let template = KMTFeedTemplate.init { (feedTemplateBuilder) in
+            
+            feedTemplateBuilder.content = KMTContentObject.init(builderBlock: { (contentBuilder) in
+                contentBuilder.title = "야미구 - 야! 미팅 하나만 구해줘"
+                contentBuilder.desc = "초대코드: t16vwm를 입력하고 친구와 함께 야미구에서 미팅을..."
+                contentBuilder.imageURL = URL.init(string: "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg")!
+                contentBuilder.link = KMTLinkObject.init(builderBlock: {(linkBuilder) in
+                    linkBuilder.mobileWebURL = URL.init(string: "https://yamigu.party")!
+                })
+            })
+            
+            feedTemplateBuilder.addButton(KMTButtonObject(builderBlock: { (buttonBuilder) in
+                buttonBuilder.title = "야미구 시작하기"
+                buttonBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
+                    
+                    linkBuilder.iosExecutionParams = "https://itunes.apple.com/app/id1485834674"
+                    //linkBuilder.androidExecutionParams = url
+                    
+                })
+                
+            }))
+
+        }
+        
+        KLKTalkLinkCenter.shared().sendDefault(with: template, success: {(warningMsg, argumentMsg) in
+            print("warning message: \(warningMsg)")
+        }, failure: {(error) in
+            print("error \(error)")
+        })
     }
     @IBAction func talkBtnPressed(_ sender: Any) {
         KPFPlusFriend(id: "_xjxamkT").chat()
