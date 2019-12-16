@@ -497,7 +497,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-df-2yE">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-df-2yE">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXB-jj-fgV">
@@ -718,6 +718,7 @@
                         <outlet property="label_certiDetail" destination="9oD-5e-4Pl" id="lC0-8f-bS2"/>
                         <outlet property="label_certificate" destination="f3m-aH-5ts" id="NHh-Mf-G2v"/>
                         <outlet property="label_department" destination="oKS-JG-toz" id="sJn-UL-uQE"/>
+                        <outlet property="scrollView" destination="4t1-df-2yE" id="Bw3-LN-Nqy"/>
                         <outlet property="tf_belong" destination="YBc-Kv-e2E" id="Yda-m3-eVF"/>
                         <outlet property="tf_department" destination="XV5-Om-okd" id="Mvi-Zy-LQc"/>
                     </connections>

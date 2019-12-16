@@ -13,6 +13,9 @@ import Toast_Swift
 
 class RegisterVC_2: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollContainerView: UIView!
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var textField_nickName: UITextField!
     @IBOutlet weak var button_collage: UIButton!
@@ -36,7 +39,22 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name:UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
+        
     }
+    
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+        
+        self.view.endEditing(true)
+        
+    }
+    
     
     @objc func keyboardWillShow(notification:NSNotification){
         self.topConstraint.constant = -200
@@ -87,19 +105,19 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
         checkNickname(urlString: "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
         
         if check() {
-        
+            
             print("\(self.textField_nickName.text!)")
             self.userDict["nickname"] = self.textField_nickName.text!
             //self.userDict["real_name"] = "김신욱"
             //self.userDict["gender"] = 1
             //self.userDict["phone"] = "010-2512-8143"
             /*if isCollage {
-                self.userDict["is_student"] = 1
-            } else {
-                self.userDict["is_student"] = 0
-            }*/
+             self.userDict["is_student"] = 1
+             } else {
+             self.userDict["is_student"] = 0
+             }*/
             self.userDict["is_student"] = isCollage
-        
+            
             
             //self.userDict["age"] = 20
             
@@ -133,18 +151,18 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
         let cell1 = self.tableView.cellForRow(at: index1)
         let cell2 = self.tableView.cellForRow(at: index2)
         
-//        if( cell1!.isSelected && cell2!.isSelected && self.textField_nickName.text != "" ) {
-//            if( isCollage || isOffice ) {
-//                if isAvailableNickName {
-//                    self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
-//                    return true
-//                }
-//            } else {
-//                self.view.makeToast("소속을 선택해주세요!")
-//            }
-//        } else {
-//            self.view.makeToast("약관에 동의해주세요!")
-//        }
+        //        if( cell1!.isSelected && cell2!.isSelected && self.textField_nickName.text != "" ) {
+        //            if( isCollage || isOffice ) {
+        //                if isAvailableNickName {
+        //                    self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
+        //                    return true
+        //                }
+        //            } else {
+        //                self.view.makeToast("소속을 선택해주세요!")
+        //            }
+        //        } else {
+        //            self.view.makeToast("약관에 동의해주세요!")
+        //        }
         
         if cell1!.isSelected && cell2!.isSelected {
             if self.textField_nickName.text != "" {
