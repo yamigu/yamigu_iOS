@@ -245,7 +245,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9p-Pv-CPz">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="u9p-Pv-CPz">
                                 <rect key="frame" x="0.0" y="56" width="414" height="660"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pva-1Q-hwe">
@@ -516,6 +516,8 @@
                         <outlet property="button_collage" destination="9h4-WU-ldC" id="gcj-xx-tt8"/>
                         <outlet property="button_office" destination="vQg-KQ-Dd8" id="RRQ-I6-fH6"/>
                         <outlet property="label_check" destination="Not-4P-rS1" id="qN4-Gx-mqo"/>
+                        <outlet property="scrollContainerView" destination="Pva-1Q-hwe" id="ikA-wq-GjD"/>
+                        <outlet property="scrollView" destination="u9p-Pv-CPz" id="E5H-iM-sWR"/>
                         <outlet property="tableView" destination="IZy-tb-2j8" id="LNc-iy-lct"/>
                         <outlet property="textField_nickName" destination="X6G-1o-BUp" id="os6-yP-ez7"/>
                         <outlet property="topConstraint" destination="Jaf-qf-4XF" id="Lhd-oK-CLu"/>
@@ -534,7 +536,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WTv-xu-iUZ">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="WTv-xu-iUZ">
                                 <rect key="frame" x="0.0" y="56" width="414" height="660"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="maV-nZ-POZ">
@@ -761,6 +763,7 @@
                         <outlet property="label_certiDetail" destination="o8w-3S-pZ2" id="O52-2e-BD6"/>
                         <outlet property="label_certificate" destination="5Kr-ze-o3d" id="FBs-qb-rNF"/>
                         <outlet property="label_department" destination="d5M-V7-oMI" id="FgY-uZ-VlU"/>
+                        <outlet property="scrollView" destination="WTv-xu-iUZ" id="GhW-7H-ugr"/>
                         <outlet property="text_belong" destination="gZ7-88-Dki" id="DNw-fR-kQU"/>
                         <outlet property="text_departmetn" destination="AqR-v7-7kz" id="SKk-pK-igB"/>
                         <segue destination="Fgn-d0-dpk" kind="presentation" identifier="segue_main" id="F4E-gg-26S"/>

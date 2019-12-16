@@ -10,6 +10,7 @@ import UIKit
 
 class CertiVC: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var label_belong: UILabel!
     @IBOutlet weak var tf_belong: UITextField!
     
@@ -39,8 +40,14 @@ class CertiVC: UIViewController {
         setupUI()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+
         self.view.endEditing(true)
+
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.scrollView.endEditing(true)
     }
     
     @IBAction func certiBtnPressed(_ sender: Any) {
@@ -227,6 +234,12 @@ extension CertiVC : UIImagePickerControllerDelegate, UINavigationControllerDeleg
             self.label_certiDetail.text = "사원증, 명함, 사업자등록증, 자격증, 면허증 등 첨부해주세요 !"
             self.imageView_description.image = UIImage(named: "descriptIon_register2")
         }
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

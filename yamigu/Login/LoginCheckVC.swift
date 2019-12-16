@@ -27,6 +27,14 @@ class LoginCheckVC: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        do {
+//            try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
+//            self.dismiss(animated: true, completion: nil)
+//        } catch {
+//            
+//        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
        

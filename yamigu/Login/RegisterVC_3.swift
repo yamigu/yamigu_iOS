@@ -10,6 +10,7 @@ import UIKit
 
 class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var label_belong: UILabel!
     @IBOutlet weak var label_department: UILabel!
     @IBOutlet weak var label_certificate: UILabel!
@@ -45,6 +46,12 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             self.label_certiDetail.text = "사원증, 명함, 사업자등록증, 자격증, 면허증 등 첨부해주세요 !"
             self.imageView_description.image = UIImage(named: "descriptIon_register2")
         }
+        
+        let singleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(MyTapMethod))
+        singleTapGestureRecognizer.numberOfTapsRequired = 1
+        singleTapGestureRecognizer.isEnabled = true
+        singleTapGestureRecognizer.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(singleTapGestureRecognizer)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +66,11 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
         }
     }
     
-    
+    @objc func MyTapMethod(sender: UITapGestureRecognizer) {
+
+        self.view.endEditing(true)
+
+    }
     
     @IBAction func nextCertiBtnPressed(_ sender: Any) {
         DispatchQueue.main.async {
@@ -211,7 +222,7 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
-        self.view.endEditing(true)
+        self.scrollView.endEditing(true)
         self.check()
     }
     
