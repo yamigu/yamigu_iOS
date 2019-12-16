@@ -325,7 +325,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                         homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
                     }*/
                     let args = messageDict["intentArgs"] as! String
-                    if args == "" {
+                    if args == "" || args.contains("match_id") {
                         homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
                     }
                     

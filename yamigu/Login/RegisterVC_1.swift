@@ -50,7 +50,6 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         if let userNickname = userDictionary["nickname"] {
             if "\(userNickname)" == "<null>" {
                 
@@ -217,16 +216,18 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                     if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,Any>
                     {
                        print(jsonArray) // use the json here
-                        self.userDict = jsonArray
                         
-                        let birthDayString = jsonArray["birthdate"] as! String
-                        self.userDict["real_name"] = jsonArray["name"] as! String
-                        self.userDict["phone"] = jsonArray["mobileno"] as! String
-                        self.userDict["gender"] = Int(jsonArray["gender"] as! String)
+                        var phoneNum = jsonArray["mobileno"] as! String
+                        phoneNum.insert("-", at: String.Index(encodedOffset: 3))
+                        phoneNum.insert("-", at: String.Index(encodedOffset: 8))
+                        print(phoneNum)
                         
-                        self.userDict["age"] = self.calcAge(birthday: birthDayString)
+                        let view = UIView()
+                        view.frame = self.webView.frame
+                        view.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
+                        self.webView.addSubview(view)
+                        self.checkPhoneVerify("http://106.10.39.154:9999/api/auth/verify/", bodyString: "phone=\(phoneNum)", jsonArray: jsonArray)
                         
-                        self.performSegue(withIdentifier: "segue_register2", sender: self)
                     } else {
                         print("bad json")
                     }
@@ -269,6 +270,85 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
         }
         
         return age
+    }
+    
+    func checkPhoneVerify(_ urlString: String, bodyString: String, jsonArray: Dictionary<String,Any>){
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        request.httpBody = body
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                //print(res)
+                
+            }
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        if let key = newValue["key"] as? String {
+                            //authKey = key
+                            print("authKey = \(authKey)")
+                            self.postWithdrawalRequest("http://106.10.39.154:9999/api/auth/withdrawal/")
+                            
+                        } else {
+                            self.userDict = jsonArray
+                            
+                            let birthDayString = jsonArray["birthdate"] as! String
+                            self.userDict["real_name"] = jsonArray["name"] as! String
+                            self.userDict["phone"] = jsonArray["mobileno"] as! String
+                            self.userDict["gender"] = Int(jsonArray["gender"] as! String)
+                            
+                            self.userDict["age"] = self.calcAge(birthday: birthDayString)
+                            
+                            self.performSegue(withIdentifier: "segue_register2", sender: self)
+                        }
+                    }
+                } catch {
+                    print(error)
+                    
+                    
+                }
+            }
+        }.resume()
+    }
+    
+    func postWithdrawalRequest(_ urlString: String){
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                print(res)
+                
+            }
+            DispatchQueue.main.async {
+                //goToLoginCheckVC()
+                
+                let alert = UIAlertController(title: "", message: "이미 가입한 핸드폰 번호입니다.", preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }.resume()
     }
     
 }

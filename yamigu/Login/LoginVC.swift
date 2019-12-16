@@ -52,6 +52,10 @@ class LoginVC: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.blackBackground.removeFromSuperview()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         print("\(KOSession.shared()?.token?.accessToken)")
         

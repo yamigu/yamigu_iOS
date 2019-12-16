@@ -110,7 +110,12 @@ class LoginCheckVC: UIViewController {
                         }
                     }
                 }
+            } else {
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                }
             }
+            
         }
         
         
@@ -266,32 +271,41 @@ class LoginCheckVC: UIViewController {
                         userDictionary = newValue
                         print("firebase Auth = \(userDictionary["firebase_token"])")
                         
-                        
-                        Auth.auth().signIn(withCustomToken: "\(userDictionary["firebase_token"]!)", completion: { (result, error) in
-                            
-                            print(error)
-                            
-                            
-                            if error == nil {
-                                print("firebase Auth = \(Auth.auth().currentUser?.uid)")
-                                DispatchQueue.main.async {
-                                    if let userNickname = userDictionary["nickname"] {
-                                        if "\(userNickname)" == "<null>" {
-                                            self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                        if let firebase_token = userDictionary["firebase_token"] {
+                            Auth.auth().signIn(withCustomToken: "\(userDictionary["firebase_token"]!)", completion: { (result, error) in
+                                
+                                print(error)
+                                
+                                
+                                if error == nil {
+                                    print("firebase Auth = \(Auth.auth().currentUser?.uid)")
+                                    DispatchQueue.main.async {
+                                        if let userNickname = userDictionary["nickname"] {
+                                            if "\(userNickname)" == "<null>" {
+                                                self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                                            } else {
+                                                self.performSegue(withIdentifier: "segue_main", sender: self)
+                                            }
                                         } else {
-                                            self.performSegue(withIdentifier: "segue_main", sender: self)
+                                            self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                                         }
-                                    } else {
-                                        self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                                        
+                                        
                                     }
                                     
                                     
+                                    
                                 }
-                                
-                                
+                            })
+                        } else {
+                            do {
+                                try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
+                                self.performSegue(withIdentifier: "segue_onboarding", sender: self)
+                            } catch {
                                 
                             }
-                        })
+                        }
+                        
                     }
                 } catch {
                     print(error)

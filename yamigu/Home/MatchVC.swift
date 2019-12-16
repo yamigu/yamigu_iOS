@@ -482,7 +482,7 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
                 }
 
             } else if meeting_type == "3" {
-                cell.label_meetingType.text = "3:3 미팅"
+                cell.label_meetingType.text = "4:4 미팅"
                 cell.label_meetingType.textColor = color4
                 cell.image_bottom.image = UIImage(named: "orange_bar_3")
                 cell.view_textContainer.bordercolor = color4

@@ -86,7 +86,18 @@ class SettingVC: UIViewController {
         let logoutAlert = UIAlertController(title: "회원탈퇴", message: "회원탈퇴시 3개월간 재가입이 불가능합니다.\n정말 탈퇴하시겠습니까?", preferredStyle: UIAlertController.Style.alert)
 
         logoutAlert.addAction(UIAlertAction(title: "회원탈퇴", style: .default, handler: { (action: UIAlertAction!) in
-            print("Handle Ok logic here")
+            if let kakaoToken = KOSession.shared()?.token?.accessToken {
+                 self.postRequest("http://106.10.39.154:9999/api/auth/logout/")
+            } else {
+                do {
+                    try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
+                    self.dismiss(animated: true, completion: nil)
+                } catch {
+                    
+                }
+            }
+            
+            self.postRequest("http://106.10.39.154:9999/api/auth/withdrawal/")
         }))
 
         logoutAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
