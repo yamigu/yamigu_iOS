@@ -167,10 +167,8 @@
 		5528EA8523407A4000461B2A /* yamigu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yamigu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5528EA8823407A4000461B2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5528EA8A23407A4000461B2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5528EA8D23407A4000461B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5528EA9023407A4000461B2A /* yamigu.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = yamigu.xcdatamodel; sourceTree = "<group>"; };
 		5528EA9223407A4200461B2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5528EA9523407A4200461B2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5528EA9723407A4200461B2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5528EA9C23407A4200461B2A /* yamiguTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yamiguTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5528EAA023407A4200461B2A /* yamiguTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yamiguTests.swift; sourceTree = "<group>"; };
@@ -187,6 +185,8 @@
 		5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMeetingVC.swift; sourceTree = "<group>"; };
 		55567B522393BAF800A5F2F8 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		55567B5423965B4800A5F2F8 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeychainItem.swift; path = yamigu/Login/KeychainItem.swift; sourceTree = SOURCE_ROOT; };
+		55567B5823A7496C00A5F2F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		55567B5923A7496C00A5F2F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5582E2302364089C00A9E0FE /* Chatting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chatting.storyboard; sourceTree = "<group>"; };
 		5582E23223640A1B00A9E0FE /* ChattingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingVC.swift; sourceTree = "<group>"; };
 		5582E2342368376B00A9E0FE /* ChattingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingCell.swift; sourceTree = "<group>"; };
@@ -930,7 +930,7 @@
 		5528EA8C23407A4000461B2A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5528EA8D23407A4000461B2A /* Base */,
+				55567B5823A7496C00A5F2F8 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -938,7 +938,7 @@
 		5528EA9423407A4200461B2A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5528EA9523407A4200461B2A /* Base */,
+				55567B5923A7496C00A5F2F8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

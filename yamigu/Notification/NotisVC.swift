@@ -11,7 +11,7 @@ import FirebaseDatabase
 
 class NotisVC: UIViewController {
     
-    let typeString = ["", "신청!", "매칭!", "거절!", "대기!", "완료!", "취소!"]
+    let typeString = ["", "신청!", "매칭!", "거절!", "완료!", "취소!", "초대!"]
     var ref: DatabaseReference!
     
     @IBOutlet weak var tableView: UITableView!

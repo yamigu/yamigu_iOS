@@ -67,6 +67,8 @@ class HomeMyTableViewCell: UITableViewCell {
         self.button_applyTeam.isHidden = false
         self.button_edit.isHidden = false
         self.view_bottom.isHidden = false
+        
+        self.label_lastChat.text = "매칭이 완료되었습니다. 채팅을 시작해 보세요!"
 
         self.layoutIfNeeded()
     }

@@ -10,7 +10,9 @@ import UIKit
 import KakaoCommon
 import KakaoOpenSDK
 import WebKit
-import AuthenticationServices
+#if canImport(AuthenticationServices) {
+    import AuthenticationServices
+}
 
 class RegisterVC_1: UIViewController , WKNavigationDelegate{
     

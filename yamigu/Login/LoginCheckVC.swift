@@ -13,7 +13,9 @@ import FirebaseAuth
 import FirebaseMessaging
 import UserNotifications
 import Firebase
-import AuthenticationServices
+#if canImport(AuthenticationServices) {
+    import AuthenticationServices
+}
 
 
 var authKey = ""
@@ -28,6 +30,7 @@ class LoginCheckVC: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
        
+        
         if let token = KOSession.shared()?.token?.accessToken {
             print("access token = \(KOSession.shared()?.token?.accessToken)")
             if KOSession.shared()?.token?.accessToken != nil {
