@@ -9,9 +9,12 @@
 import UIKit
 import KakaoCommon
 import KakaoOpenSDK
-#if canImport(AuthenticationServices) {
-    import AuthenticationServices
-}
+#if canImport(AuthenticationServices)
+import AuthenticationServices
+#endif
+
+    
+
 
 
 class LoginVC: UIViewController {

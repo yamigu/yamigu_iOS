@@ -13,9 +13,9 @@ import FirebaseAuth
 import FirebaseMessaging
 import UserNotifications
 import Firebase
-#if canImport(AuthenticationServices) {
-    import AuthenticationServices
-}
+#if canImport(AuthenticationServices)
+import AuthenticationServices
+#endif
 
 
 var authKey = ""
