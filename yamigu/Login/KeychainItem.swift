@@ -147,4 +147,66 @@ struct KeychainItem {
             print("Unable to delete userIdentifier from keychain")
         }
     }
+    
+    static var currentAlarmState: String {
+        do {
+            let alarmState = try KeychainItem(service: "party.yamigu.www.com", account: "alarm").readItem()
+            return alarmState
+        } catch {
+            return ""
+        }
+    }
+    
+    static var currentChatAlarmStat: String {
+        do {
+            let cahtAlarmState = try KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").readItem()
+            return cahtAlarmState
+        } catch {
+            return ""
+        }
+    }
+    
+    static func deleteCurrentAlarmState() {
+        do {
+            try KeychainItem(service: "party.yamigu.www.com", account: "alarm").deleteItem()
+        } catch {
+            print("Unable to delete userIdentifier from keychain")
+        }
+    }
+    
+    static func deleteCurrentChatAlarmState() {
+        do {
+            try KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").deleteItem()
+        } catch {
+            print("Unable to delete userIdentifier from keychain")
+        }
+    }
+    
+    static func toggleAlarmState() {
+        do {
+            try state = KeychainItem(service: "party.yamigu.www.com", account: "alarm").readItem()
+            
+            if state == "on" {
+                
+            } else if state == "off" {
+                
+            }
+        } catch {
+            print("Unable toggle")
+        }
+    }
+    
+    static func toggleChatAlarmState() {
+        do {
+            try state = KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").readItem()
+            
+            if state == "on" {
+                
+            } else if state == "off" {
+                
+            }
+        } catch {
+            print("Unable toggle")
+        }
+    }
 }
