@@ -56,6 +56,7 @@
 		5528EAC82340964200461B2A /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EAC72340964200461B2A /* Login.storyboard */; };
 		5528EACB2340A17500461B2A /* RegisterMeeting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */; };
 		5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */; };
+		552DBB4E23A8DFB40039B9E2 /* LanchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552DBB4D23A8DFB40039B9E2 /* LanchScreenVC.swift */; };
 		55567B532393BAF800A5F2F8 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55567B522393BAF800A5F2F8 /* AuthenticationServices.framework */; };
 		55567B5523965B4800A5F2F8 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55567B5423965B4800A5F2F8 /* KeychainItem.swift */; };
 		5582E2312364089C00A9E0FE /* Chatting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5582E2302364089C00A9E0FE /* Chatting.storyboard */; };
@@ -184,6 +185,7 @@
 		5528EAC72340964200461B2A /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		5528EACA2340A17500461B2A /* RegisterMeeting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RegisterMeeting.storyboard; sourceTree = "<group>"; };
 		5528EACC2340AA3000461B2A /* RegisterMeetingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMeetingVC.swift; sourceTree = "<group>"; };
+		552DBB4D23A8DFB40039B9E2 /* LanchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanchScreenVC.swift; sourceTree = "<group>"; };
 		55567B522393BAF800A5F2F8 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		55567B5423965B4800A5F2F8 /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeychainItem.swift; path = yamigu/Login/KeychainItem.swift; sourceTree = SOURCE_ROOT; };
 		55567B5823A7496C00A5F2F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 				55224D95234F42B1003FBCA3 /* MainTC.swift */,
 				5528EA9223407A4200461B2A /* Assets.xcassets */,
 				5528EA9423407A4200461B2A /* LaunchScreen.storyboard */,
+				552DBB4D23A8DFB40039B9E2 /* LanchScreenVC.swift */,
 				5582E23C236C229200A9E0FE /* GoogleService-Info.plist */,
 				5528EA9723407A4200461B2A /* Info.plist */,
 				5528EA8F23407A4000461B2A /* yamigu.xcdatamodeld */,
@@ -877,6 +880,7 @@
 				55DD1BCF23476E0B00CC820D /* HomeCollectionViewCell.swift in Sources */,
 				5528EABF23408C7600461B2A /* MainOnBoardingVC.swift in Sources */,
 				04618BA223484980002DF8A8 /* WatingVC.swift in Sources */,
+				552DBB4E23A8DFB40039B9E2 /* LanchScreenVC.swift in Sources */,
 				5528EACD2340AA3000461B2A /* RegisterMeetingVC.swift in Sources */,
 				5528EA8923407A4000461B2A /* AppDelegate.swift in Sources */,
 				5582E2352368376B00A9E0FE /* ChattingCell.swift in Sources */,

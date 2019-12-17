@@ -408,13 +408,18 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         if "\(message["content"]!)" == "인증이 완료되었어요! 즐거운 야미구 하세요!" {
             if let wd = UIApplication.shared.delegate?.window {
                 var vc = wd!.rootViewController?.presentedViewController
-                vc = vc?.topMostViewController()
                 
-                let alert = UIAlertController(title: "", message: "인증 완료 기념으로 미팅티켓 1장을 무료로 드렸어요.\n신청하기를 눌러 야미구를 시작해보세요!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                if(vc is UITabBarController) {
+                     vc = vc?.topMostViewController()
                     
-                }))
-                vc!.present(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "", message: "인증 완료 기념으로 미팅티켓 1장을 무료로 드렸어요.\n신청하기를 눌러 야미구를 시작해보세요!", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                        
+                    }))
+                    vc!.present(alert, animated: true, completion: nil)
+                } else {
+                    certificationAlert = true
+                }
             }
         } else {
             if let wd = UIApplication.shared.delegate?.window {

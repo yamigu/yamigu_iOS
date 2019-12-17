@@ -36,6 +36,8 @@ class MainTC: UITabBarController {
         super.viewDidLoad()
         setupMiddleButton()
         
+        
+        
         ref = Database.database().reference()
         refHandle = ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").observe(.value, with: { (snapshot) in
         //refHandle = ref.child("user").child("1158459711").child("notifications").observe(.value, with: { (snapshot) in
@@ -85,6 +87,17 @@ class MainTC: UITabBarController {
         if homeController != nil {
             homeController.myMeetings.removeAll()
             homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        }
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if certificationAlert {
+            let alert = UIAlertController(title: "", message: "인증 완료 기념으로 미팅티켓 1장을 무료로 드렸어요.\n신청하기를 눌러 야미구를 시작해보세요!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                certificationAlert = false
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     

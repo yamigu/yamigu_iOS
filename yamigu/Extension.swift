@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+var certificationAlert = false
 
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
