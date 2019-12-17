@@ -209,6 +209,10 @@ class RegisterVC_3: UIViewController, UIImagePickerControllerDelegate, UINavigat
             //
             //json["cert_img"] = userDict["cert_img"] as! Data
             
+            if let friendCode = userDict["friend_code"] as? String {
+                json["friend_code"] = friendCode
+            }
+            
             self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
             
             var jsonImg = Dictionary<String, Data>()

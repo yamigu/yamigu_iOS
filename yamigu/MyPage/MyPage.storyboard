@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T0q-dY-M4f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="T0q-dY-M4f">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -454,6 +454,7 @@
                         <outlet property="label_able" destination="qb2-Id-70u" id="2Ps-nC-UJL"/>
                         <outlet property="label_belong" destination="ePe-Xb-H4x" id="Fe1-BV-BLC"/>
                         <outlet property="label_department" destination="JKM-qE-DOe" id="5P0-ns-Zag"/>
+                        <outlet property="label_inviteCode" destination="kfi-HB-QkD" id="o2b-4z-pQk"/>
                         <outlet property="label_verified" destination="w5y-y2-aYz" id="N2T-qw-5Bp"/>
                         <outlet property="scrollContentView" destination="SxZ-lO-xr7" id="ifK-lL-abw"/>
                         <outlet property="tf_name" destination="HOO-8i-I5h" id="ech-vb-oAY"/>

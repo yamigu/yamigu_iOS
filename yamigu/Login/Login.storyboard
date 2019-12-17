@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIM-ZU-Fn3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eIM-ZU-Fn3">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -519,6 +519,7 @@
                         <outlet property="scrollContainerView" destination="Pva-1Q-hwe" id="ikA-wq-GjD"/>
                         <outlet property="scrollView" destination="u9p-Pv-CPz" id="E5H-iM-sWR"/>
                         <outlet property="tableView" destination="IZy-tb-2j8" id="LNc-iy-lct"/>
+                        <outlet property="textField_friendCode" destination="B3O-9n-PM7" id="7wn-VR-Vbt"/>
                         <outlet property="textField_nickName" destination="X6G-1o-BUp" id="os6-yP-ez7"/>
                         <outlet property="topConstraint" destination="Jaf-qf-4XF" id="Lhd-oK-CLu"/>
                         <segue destination="3D2-e3-hsB" kind="show" identifier="segue_register3" id="usw-bH-WUs"/>

@@ -17,6 +17,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var scrollContainerView: UIView!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textField_friendCode: UITextField!
     @IBOutlet weak var textField_nickName: UITextField!
     @IBOutlet weak var button_collage: UIButton!
     @IBOutlet weak var button_office: UIButton!
@@ -108,15 +109,10 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
             
             print("\(self.textField_nickName.text!)")
             self.userDict["nickname"] = self.textField_nickName.text!
-            //self.userDict["real_name"] = "김신욱"
-            //self.userDict["gender"] = 1
-            //self.userDict["phone"] = "010-2512-8143"
-            /*if isCollage {
-             self.userDict["is_student"] = 1
-             } else {
-             self.userDict["is_student"] = 0
-             }*/
             self.userDict["is_student"] = isCollage
+            if self.textField_friendCode.text! != "" {
+                self.userDict["friend_code"] = self.textField_friendCode.text!
+            }
             
             
             //self.userDict["age"] = 20

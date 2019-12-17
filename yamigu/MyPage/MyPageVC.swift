@@ -38,6 +38,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     @IBOutlet weak var button_notification: UIButton!
     @IBOutlet weak var button_tickets: UIButton!
     
+    @IBOutlet weak var label_inviteCode: UILabel!
     var userDict = Dictionary<String, Any>()
     
     var isStudent = 1
@@ -311,7 +312,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                             self.label_belong.text = newValue["belong"] as? String
                             self.label_department.text = newValue["department"] as? String
                             self.button_tickets.setTitle("\(newValue["ticket"]!)", for: .normal)
-                            
+                            self.label_inviteCode.text = "\(newValue["invite_code"]!)"
                             if self.userDict["image"] != nil {
                                 if let imageUrl = URL(string: "\(self.userDict["image"]!)") {
                                     
@@ -526,8 +527,8 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
             
             feedTemplateBuilder.content = KMTContentObject.init(builderBlock: { (contentBuilder) in
                 contentBuilder.title = "야미구 - 야! 미팅 하나만 구해줘"
-                contentBuilder.desc = "초대코드: t16vwm를 입력하고 친구와 함께 야미구에서 미팅을..."
-                contentBuilder.imageURL = URL.init(string: "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg")!
+                contentBuilder.desc = "초대코드: \(self.label_inviteCode.text!)를 입력하고 친구와 함께 야미구에서 미팅을..."
+                contentBuilder.imageURL = URL.init(string: "http://106.10.39.154:9999/media/yamigu_kakao_share2.png")!
                 contentBuilder.link = KMTLinkObject.init(builderBlock: {(linkBuilder) in
                     linkBuilder.mobileWebURL = URL.init(string: "https://yamigu.party")!
                 })
