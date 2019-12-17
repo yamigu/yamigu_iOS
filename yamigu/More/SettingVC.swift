@@ -33,15 +33,40 @@ class SettingVC: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let alarmState = KeychainItem.currentAlarmState
+        let chatAlarmState = KeychainItem.currentChatAlarmStat
+        
+        if alarmState == "on" {
+            switch_pushNoti.isOn = true
+        } else {
+            switch_pushNoti.isOn = false
+        }
+        
+        if chatAlarmState == "on" {
+            switch_chattingNoti.isOn = true
+        } else {
+            switch_chattingNoti.isOn = false
+        }
+    }
+    
     @IBAction func switch_pushNoti(_ sender: UISwitch) {
+        KeychainItem.toggleAlarmState()
         if !switch_pushNoti.isOn {
             if switch_chattingNoti.isOn {
                 switch_chattingNoti.isOn = false
+                KeychainItem.toggleChatAlarmState()
             }
         }
     }
     
     @IBAction func switch_chattingNoti(_ sender: UISwitch) {
+        if !switch_pushNoti.isOn {
+            switch_chattingNoti.isOn = false
+        } else {
+            KeychainItem.toggleChatAlarmState()
+        }
+        
     }
     
     @objc func privacyStatementsTap(_ sender: UITapGestureRecognizer? = nil) {
@@ -183,6 +208,8 @@ extension SettingVC {
         
         self.view_privacyStatementsDetail.isHidden = true
         self.view_serviceAccessTermsDetail.isHidden = true
+        
+        
     }
     
     

@@ -138,7 +138,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1170"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_place_list" translatesAutoresizingMaskIntoConstraints="NO" id="QyE-Uq-hA9">
-                                                <rect key="frame" x="18" y="13" width="378" height="2314"/>
+                                                <rect key="frame" x="18" y="13" width="378" height="1157"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -196,19 +196,19 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOH-RP-qS3">
-                                                    <rect key="frame" x="32" y="33" width="29" height="21"/>
+                                                    <rect key="frame" x="32" y="33" width="31.666666666666671" height="21"/>
                                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kdX-em-Tid">
-                                                    <rect key="frame" x="32" y="61.999999999999993" width="19.333333333333329" height="12.666666666666664"/>
+                                                    <rect key="frame" x="32" y="61.999999999999993" width="20.666666666666671" height="12.666666666666664"/>
                                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QY-3o-FAs">
-                                                    <rect key="frame" x="350" y="29.666666666666671" width="44" height="44"/>
+                                                    <rect key="frame" x="372" y="40.666666666666664" width="22" height="22"/>
                                                     <state key="normal" image="icon_next"/>
                                                 </button>
                                             </subviews>
@@ -253,7 +253,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noi-Qb-v2u">
-                                <rect key="frame" x="13" y="58" width="29" height="21"/>
+                                <rect key="frame" x="13.000000000000002" y="58" width="31.666666666666671" height="21"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -307,16 +307,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcy-lU-yw4">
-                                <rect key="frame" x="39" y="47" width="34.666666666666657" height="23.333333333333329"/>
+                                <rect key="frame" x="39" y="47" width="37.666666666666657" height="23.333333333333329"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDA-B6-OsI">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jDA-B6-OsI">
                                 <rect key="frame" x="0.0" y="77.333333333333329" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="푸시 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cn3-yv-y0F">
-                                        <rect key="frame" x="39" y="17" width="52.333333333333343" height="16.333333333333329"/>
+                                        <rect key="frame" x="39" y="17" width="56.666666666666657" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -353,11 +353,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiV-6l-bVt">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TiV-6l-bVt">
                                 <rect key="frame" x="0.0" y="127.33333333333331" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="채팅 알림" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c5a-5J-C7E">
-                                        <rect key="frame" x="39" y="17.000000000000014" width="52.333333333333343" height="16.333333333333329"/>
+                                        <rect key="frame" x="39" y="17.000000000000014" width="56.666666666666657" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -395,10 +395,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHj-du-I9J">
-                                <rect key="frame" x="0.0" y="77.333333333333329" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="170.33333333333334" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공지사항" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5PL-2o-gzU">
-                                        <rect key="frame" x="39" y="17" width="48.666666666666657" height="16.333333333333329"/>
+                                        <rect key="frame" x="39" y="17" width="52.666666666666657" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -423,22 +423,22 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-Df-JDh">
-                                <rect key="frame" x="39" y="147.33333333333334" width="34.666666666666657" height="23.333333333333343"/>
+                                <rect key="frame" x="39" y="240.33333333333334" width="37.666666666666657" height="23.333333333333343"/>
                                 <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5S-2Y-xcx">
-                                <rect key="frame" x="0.0" y="177.66666666666666" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="270.66666666666669" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 버전" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jbq-Hf-OjL">
-                                        <rect key="frame" x="39" y="17" width="40.333333333333343" height="16.333333333333329"/>
+                                        <rect key="frame" x="39" y="17" width="43.666666666666657" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sW-GO-Vg2">
-                                        <rect key="frame" x="348" y="18" width="27" height="14"/>
+                                        <rect key="frame" x="345.66666666666669" y="18" width="29.333333333333314" height="14"/>
                                         <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="12"/>
                                         <color key="textColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -465,10 +465,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UVF-AZ-3fw">
-                                <rect key="frame" x="0.0" y="227.66666666666666" width="414" height="49.999999999999972"/>
+                                <rect key="frame" x="0.0" y="320.66666666666669" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보 취급방침" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCu-Gd-jxE">
-                                        <rect key="frame" x="39" y="17" width="101" height="16.333333333333329"/>
+                                        <rect key="frame" x="38.999999999999993" y="17" width="109.33333333333331" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -493,10 +493,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-EY-9Ah">
-                                <rect key="frame" x="0.0" y="277.66666666666669" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="370.66666666666669" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xef-jk-Xa6">
-                                        <rect key="frame" x="39.000000000000007" y="17" width="88.666666666666686" height="16.333333333333329"/>
+                                        <rect key="frame" x="38.999999999999993" y="17" width="96.333333333333314" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -521,10 +521,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AFY-n1-Phk">
-                                <rect key="frame" x="0.0" y="327.66666666666669" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="420.66666666666669" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그아웃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="azC-Iz-ffr">
-                                        <rect key="frame" x="39" y="17" width="48.666666666666657" height="16.333333333333329"/>
+                                        <rect key="frame" x="39" y="17" width="52.666666666666657" height="16.333333333333329"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -549,7 +549,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfh-gy-wFy">
-                                <rect key="frame" x="177" y="683" width="60" height="28"/>
+                                <rect key="frame" x="174.66666666666666" y="684" width="65" height="27"/>
                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="13"/>
                                 <state key="normal" title="야미구 탈퇴">
                                     <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -559,7 +559,7 @@
                                 </connections>
                             </button>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0to-Dk-ICh">
-                                <rect key="frame" x="177" y="706" width="60" height="1"/>
+                                <rect key="frame" x="174.66666666666666" y="706" width="65" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="ME6-UD-kcC"/>
@@ -569,7 +569,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="서비스 이용약관" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGm-7t-0TF">
-                                        <rect key="frame" x="143.66666666666666" y="25" width="126.66666666666666" height="24"/>
+                                        <rect key="frame" x="138.33333333333331" y="25" width="137.33333333333331" height="24"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -754,7 +754,7 @@ d. 회원은 구매시점으로부터 7일 이내인 경우 환불이 가능하�
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFw-Xp-Lvw">
-                                        <rect key="frame" x="364" y="20" width="30" height="30"/>
+                                        <rect key="frame" x="379" y="20" width="15" height="22"/>
                                         <state key="normal" image="btn_close"/>
                                         <connections>
                                             <action selector="closeDetailBtnPressed:" destination="YLE-QE-2vy" eventType="touchUpInside" id="RvB-J1-G8m"/>
@@ -777,13 +777,13 @@ d. 회원은 구매시점으로부터 7일 이내인 경우 환불이 가능하�
                                 <rect key="frame" x="0.0" y="44" width="414" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보 취급방침" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NX-Mt-y4A">
-                                        <rect key="frame" x="135" y="25" width="144" height="24"/>
+                                        <rect key="frame" x="129" y="25" width="156" height="24"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3sV-dF-DTp">
-                                        <rect key="frame" x="364" y="20" width="30" height="30"/>
+                                        <rect key="frame" x="379" y="20" width="15" height="22"/>
                                         <state key="normal" image="btn_close"/>
                                         <connections>
                                             <action selector="closeDetailBtnPressed:" destination="YLE-QE-2vy" eventType="touchUpInside" id="v2T-mQ-sW6"/>
@@ -1018,6 +1018,7 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                             <constraint firstItem="HEq-2a-Uwk" firstAttribute="bottom" secondItem="2Z7-mf-H9a" secondAttribute="bottom" constant="25" id="4cm-My-X16"/>
                             <constraint firstItem="HEq-2a-Uwk" firstAttribute="bottom" secondItem="jfh-gy-wFy" secondAttribute="bottom" constant="25" id="6Ap-4c-10Y"/>
                             <constraint firstItem="HEq-2a-Uwk" firstAttribute="trailing" secondItem="2Z7-mf-H9a" secondAttribute="trailing" id="6PK-xw-Av3"/>
+                            <constraint firstItem="TiV-6l-bVt" firstAttribute="bottom" secondItem="KHj-du-I9J" secondAttribute="top" constant="7" id="7ka-i3-FmQ"/>
                             <constraint firstItem="2Z7-mf-H9a" firstAttribute="top" secondItem="HEq-2a-Uwk" secondAttribute="top" id="CQI-Ao-jOl"/>
                             <constraint firstItem="U5S-2Y-xcx" firstAttribute="centerX" secondItem="KHj-du-I9J" secondAttribute="centerX" id="Crw-mZ-lVE"/>
                             <constraint firstItem="QOb-bw-pEz" firstAttribute="leading" secondItem="HEq-2a-Uwk" secondAttribute="leading" id="DNK-e9-JCY"/>
@@ -1039,7 +1040,6 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                             <constraint firstItem="AFY-n1-Phk" firstAttribute="centerX" secondItem="TnQ-EY-9Ah" secondAttribute="centerX" id="dca-hn-U8z"/>
                             <constraint firstItem="vcy-lU-yw4" firstAttribute="leading" secondItem="HEq-2a-Uwk" secondAttribute="leading" constant="39" id="e7L-hu-yb3"/>
                             <constraint firstItem="TiV-6l-bVt" firstAttribute="centerX" secondItem="jDA-B6-OsI" secondAttribute="centerX" id="eRw-OT-scS"/>
-                            <constraint firstItem="KHj-du-I9J" firstAttribute="top" secondItem="vcy-lU-yw4" secondAttribute="bottom" constant="7" id="gqg-05-Se9"/>
                             <constraint firstItem="U5S-2Y-xcx" firstAttribute="top" secondItem="cLP-Df-JDh" secondAttribute="bottom" constant="7" id="h9k-r1-HVp"/>
                             <constraint firstItem="jDA-B6-OsI" firstAttribute="centerX" secondItem="HEq-2a-Uwk" secondAttribute="centerX" id="iO5-4y-REN"/>
                             <constraint firstItem="TnQ-EY-9Ah" firstAttribute="width" secondItem="UVF-AZ-3fw" secondAttribute="width" id="n7f-7M-juB"/>
@@ -1151,7 +1151,7 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="622"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_more_whatis1" translatesAutoresizingMaskIntoConstraints="NO" id="uh5-cy-ebD">
-                                                <rect key="frame" x="5" y="0.0" width="404" height="1202"/>
+                                                <rect key="frame" x="5" y="0.0" width="404" height="601"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1265,10 +1265,10 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="text_place_description" translatesAutoresizingMaskIntoConstraints="NO" id="0y0-ap-g8d">
-                                <rect key="frame" x="24" y="59" width="578" height="104"/>
+                                <rect key="frame" x="24" y="59" width="289" height="52"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RfL-76-R0o">
-                                <rect key="frame" x="18" y="175" width="378" height="561"/>
+                                <rect key="frame" x="18" y="123" width="378" height="613"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>
@@ -1310,7 +1310,7 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="578"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_yamigu_guide" translatesAutoresizingMaskIntoConstraints="NO" id="1dh-Yz-5oI">
-                                                <rect key="frame" x="18" y="13" width="378" height="1130"/>
+                                                <rect key="frame" x="18" y="13" width="378" height="565"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1363,7 +1363,7 @@ PC방 등 외부 장소에서 '야미구'를 이용하실 경우 해킹 프로�
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="587"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_yamigu_question" translatesAutoresizingMaskIntoConstraints="NO" id="Bnm-SE-huX">
-                                                <rect key="frame" x="10" y="8" width="394" height="1174"/>
+                                                <rect key="frame" x="10" y="8" width="394" height="587"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

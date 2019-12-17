@@ -288,6 +288,19 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let messageDict = userInfo as! [String : Any]
         print(messageDict)
         
+        let alarmState = KeychainItem.currentAlarmState
+        let chatAlarmState = KeychainItem.currentChatAlarmStat
+        
+        if alarmState == "off" {
+            completionHandler([])
+        } else {
+            if "\(messageDict["clickAction"]!)" == ".ChattingActivity" {
+                if chatAlarmState == "off" {
+                    completionHandler([])
+                }
+            }
+        }
+        
         
         if "\(messageDict["content"]!)" == "인증이 완료되었어요! 즐거운 야미구 하세요!" {
             if let wd = UIApplication.shared.delegate?.window {

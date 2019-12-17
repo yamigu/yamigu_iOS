@@ -184,12 +184,20 @@ struct KeychainItem {
     
     static func toggleAlarmState() {
         do {
-            try state = KeychainItem(service: "party.yamigu.www.com", account: "alarm").readItem()
+            let state = try  KeychainItem(service: "party.yamigu.www.com", account: "alarm").readItem()
             
             if state == "on" {
-                
+                do {
+                    try KeychainItem(service: "party.yamigu.www.com", account: "alarm").saveItem("off")
+                } catch {
+                    print("Unable to save userIdentifier to keychain.")
+                }
             } else if state == "off" {
-                
+                do {
+                    try KeychainItem(service: "party.yamigu.www.com", account: "alarm").saveItem("on")
+                } catch {
+                    print("Unable to save userIdentifier to keychain.")
+                }
             }
         } catch {
             print("Unable toggle")
@@ -198,15 +206,39 @@ struct KeychainItem {
     
     static func toggleChatAlarmState() {
         do {
-            try state = KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").readItem()
+            let state = try KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").readItem()
             
             if state == "on" {
-                
+                do {
+                    try KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").saveItem("off")
+                } catch {
+                    print("Unable to save userIdentifier to keychain.")
+                }
             } else if state == "off" {
-                
+                do {
+                    try KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").saveItem("on")
+                } catch {
+                    print("Unable to save userIdentifier to keychain.")
+                }
             }
         } catch {
             print("Unable toggle")
+        }
+    }
+    
+    static func registerAlarmState() {
+        do {
+            try KeychainItem(service: "party.yamigu.www.com", account: "alarm").saveItem("on")
+        } catch {
+            print("Unable to save userIdentifier to keychain.")
+        }
+    }
+    
+    static func registerChatAlarmState() {
+        do {
+            try KeychainItem(service: "party.yamigu.www.com", account: "chatAlarm").saveItem("on")
+        } catch {
+            print("Unable to save userIdentifier to keychain.")
         }
     }
 }

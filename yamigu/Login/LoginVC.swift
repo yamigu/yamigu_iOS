@@ -104,6 +104,9 @@ class LoginVC: UIViewController {
             if error == nil {
                 let access_token = (KOSession.shared()?.token?.accessToken)!
                 self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                
+                KeychainItem.registerAlarmState()
+                KeychainItem.registerChatAlarmState()
             }
             
             
@@ -337,6 +340,8 @@ class LoginVC: UIViewController {
                 self.appleToken = access_token
                 let json = ["access_token": code]
                 
+                KeychainItem.registerAlarmState()
+                KeychainItem.registerChatAlarmState()
                 
                 
                 self.postRequest2("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
