@@ -48,6 +48,8 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
         singleTapGestureRecognizer.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(singleTapGestureRecognizer)
         
+        textField_nickName.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
+        
     }
     
     @objc func MyTapMethod(sender: UITapGestureRecognizer) {
@@ -132,12 +134,16 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)" + string
-        let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        checkNickname(urlString: str_url)
+        
         
         
         return true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)"
+        let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        checkNickname(urlString: str_url)
     }
     
     func check() -> Bool {

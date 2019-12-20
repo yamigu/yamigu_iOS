@@ -59,6 +59,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         button_cancel.tintColor = .clear
         
         tf_name.isUserInteractionEnabled = false
+        tf_name.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: UIControl.Event.editingChanged)
         
         //viewHeightConstraint.constant = scrollContentView.content + 30
         print("view height: \(viewHeightConstraint.constant)")
@@ -73,6 +74,45 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(gesture:)))
 
         image_profile.addGestureRecognizer(tapGesture)
+        
+        if "\(userDictionary["nickname"]!)" == "<null>" {
+            print("is null")
+        }
+        else if userDictionary["nickname"] == nil {
+        }
+        else {
+            self.tf_name.text = "\(userDictionary["nickname"] as! String)(\(userDictionary["age"]!))"
+            self.label_belong.text = userDictionary["belong"] as? String
+            self.label_department.text = userDictionary["department"] as? String
+            self.button_tickets.setTitle("\(userDictionary["ticket"]!)", for: .normal)
+            self.label_inviteCode.text = "\(userDictionary["invite_code"]!)"
+            if self.userDict["image"] != nil {
+                if let imageUrl = URL(string: "\(userDictionary["image"]!)") {
+                    
+                    self.image_profile.downloaded(from: imageUrl)
+                    self.image_profile.contentMode = .scaleAspectFill
+                }
+            } else {
+                self.image_profile.image = UIImage(named: "sample_profile")
+            }
+            
+            if userDictionary["user_certified"] as? Int != 2 {
+                self.label_verified.isHidden = true
+                self.view_blur.isHidden = false
+                self.button_verifyBelong.isHidden = false
+                
+                if userDictionary["user_certified"] as? Int == 1 {
+                    self.button_verifyBelong.setTitle("인증 진행중입니다", for: .normal)
+                }
+                else if userDictionary["user_certified"] as? Int == 0 {
+                    
+                }
+            } else {
+                self.label_verified.isHidden = false
+                self.view_blur.isHidden = true
+                self.button_verifyBelong.isHidden = true
+            }
+        }
     }
     
     @objc func imageTapped(gesture: UIGestureRecognizer) {
@@ -178,12 +218,20 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         //let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
-        var nickName = String(utf8String: ((textField.text?.cString(using: .utf8))!))! + string
+        
+        
+        
+        return true
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        var nickName = String(utf8String: ((textField.text?.cString(using: .utf8))!))!
+        /*nickName = String(utf8String: nickName.cString(using: .utf8)!)!
         if string == "" {
             nickName.removeLast()
-        }
-        print("nickName = \(nickName)")
-        print("replacementString = \(string)")
+        }*/
+        //print("nickName = \(nickName)")
+        //print("replacementString = \(string)")
         
         print("nickNameLength = \(nickName.utf8.count)")
         var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName)"
@@ -191,9 +239,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         
         urlString = String(utf8String: str_url.cString(using: .utf8)!)!
         checkNickname(urlString: urlString, isComp: false)
-        
-        
-        return true
+
     }
     
     
@@ -209,7 +255,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
             
-            print(response)
+            //print(response)
             
             guard error == nil && data != nil else {
                 if let err = error {
@@ -226,7 +272,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                     DispatchQueue.main.async {
                         //
                         if str.contains("true") {
-                            print(str)
+                            //print(str)
                             print("text = \(self.tf_name.text)")
                             print("count = \(self.tf_name.text?.utf8.count)")
                             self.label_able.isHidden = false
@@ -478,51 +524,6 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     }
     
     @IBAction func shareBtnPressed(_ sender: Any) {
-//        let template = KMTFeedTemplate { (feedTemplateBuilder) in
-//            feedTemplateBuilder.content = KMTContentObject(builderBlock: { (contentBuilder) in
-//                contentBuilder.title = "ㅇㅇㅇ"
-//
-//                //contentBuilder.imageURL = URL(string: RequestURL.thumb)!
-//
-//                contentBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
-//
-//                    linkBuilder.mobileWebURL = URL(string: "https://yamigu.party")!
-//
-//                })
-//
-//            })
-//
-//            feedTemplateBuilder.addButton(KMTButtonObject(builderBlock: { (buttonBuilder) in
-//
-//                buttonBuilder.title = "앱 실행하기"
-//
-//                buttonBuilder.link = KMTLinkObject(builderBlock: { (linkBuilder) in
-//
-//                    linkBuilder.iosExecutionParams = "https://itunes.apple.com/app/id1485834674"
-//
-//                    //linkBuilder.androidExecutionParams = url
-//
-//                })
-//
-//            }))
-//        }
-//        // 카카오링크 실행
-//        KLKTalkLinkCenter.shared().sendDefault(with: template, success: { (warningMsg, argumentMsg) in
-//
-//            // 성공
-//
-//            print("warning message: \(String(describing: warningMsg))")
-//
-//            print("argument message: \(String(describing: argumentMsg))")
-//
-//        }, failure: { (error) in
-//            // 실패
-//
-//            //self.alert(error.localizedDescription)
-//
-//            print("error \(error)")
-//        })
-        
         let template = KMTFeedTemplate.init { (feedTemplateBuilder) in
             
             feedTemplateBuilder.content = KMTContentObject.init(builderBlock: { (contentBuilder) in

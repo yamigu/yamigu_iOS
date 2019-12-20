@@ -291,7 +291,7 @@ class HomeVC: UIViewController {
                         
                         self.checkTableView()
                         
-                        
+                        self.recommendMeetings.removeAll()
                         self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
                     }
                 } catch {
@@ -336,9 +336,12 @@ class HomeVC: UIViewController {
                     }
                     
                     DispatchQueue.main.async {
+                        self.recommendMeetings.removeAll()
                         for value in newValue {
                             self.recommendMeetings.append(value)
                         }
+                        
+                        self.pageController.numberOfPages = newValue.count
                         
                         self.myMeetingTableView.reloadData()
                         self.myMeetingReviewTableView.reloadData()
@@ -1223,18 +1226,14 @@ extension HomeVC: HomeReviewDelegate {
         self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
         let cell = self.myMeetingReviewTableView.cellForRow(at: IndexPath(row: 0, section: index)) as! HomeReviewCell
-        cell.heightConstraint.constant = 0.0
-        cell.contentView.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
-        cell.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
-        cell.writeReviewEndView.isHidden = true
+        cell.writeReviewEndView.isHidden = false
+        cell.textReviewContainerView.isHidden = true
+        cell.firstView.isHidden = true
+        cell.endViewHeightConstraint.constant = 0.0
         
-        for view in cell.subviews {
-            if view != cell.contentView {
-                view.isHidden = true
-            }
-        }
         
-        UIView.animate(withDuration: 0.0, animations: {
+        
+        UIView.animate(withDuration: 1.0, animations: {
             cell.layoutIfNeeded()
         }) { (comp) in
             if comp {
@@ -1264,19 +1263,12 @@ extension HomeVC: HomeReviewDelegate {
         self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
         let cell = self.myMeetingReviewTableView.cellForRow(at: IndexPath(row: 0, section: index)) as! HomeReviewCell
+        cell.writeReviewEndView.isHidden = false
+               cell.textReviewContainerView.isHidden = true
+               cell.firstView.isHidden = true
+               cell.endViewHeightConstraint.constant = 0.0
         
-        cell.heightConstraint.constant = 0.0
-        cell.contentView.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
-        cell.heightAnchor.constraint(equalToConstant: 0.0).isActive = true
-        cell.writeReviewEndView.isHidden = true
-        
-        for view in cell.subviews {
-            if view != cell.contentView {
-                view.isHidden = true
-            }
-        }
-        
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             cell.layoutIfNeeded()
         }) { (comp) in
             if comp {

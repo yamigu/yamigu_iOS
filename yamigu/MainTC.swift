@@ -25,7 +25,7 @@ class MainTC: UITabBarController {
     
     var ref: DatabaseReference!
     var refHandle : DatabaseHandle!
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tabBar.invalidateIntrinsicContentSize()
@@ -40,18 +40,33 @@ class MainTC: UITabBarController {
         
         ref = Database.database().reference()
         refHandle = ref.child("user").child(userDictionary["uid"]! as! String).child("notifications").observe(.value, with: { (snapshot) in
-        //refHandle = ref.child("user").child("1158459711").child("notifications").observe(.value, with: { (snapshot) in
+            //refHandle = ref.child("user").child("1158459711").child("notifications").observe(.value, with: { (snapshot) in
             if let dictionary = snapshot.children.allObjects as? [DataSnapshot] {
                 alarmCount = 0
                 alarmDicts.removeAll()
                 for dict in dictionary {
                     if let data = dict.value as? Dictionary<String, Any> {
-
+                        
                         alarmDicts.append(data)
                         print("data = \(data)")
                         
                         if data["isUnread"] as! Bool {
                             alarmCount += 1
+                            
+                            if data["content"] as! String == "인증이 완료되었어요! 즐거운 야미구 하세요!" {
+                                
+                                if let wd = UIApplication.shared.delegate?.window {
+                                    var vc = wd!.rootViewController?.presentedViewController
+                                    vc = vc?.topMostViewController()
+                                    
+                                    let alert = UIAlertController(title: "", message: "인증 완료 기념으로 미팅티켓 1장을 무료로 드렸어요.\n신청하기를 눌러 야미구를 시작해보세요!", preferredStyle: UIAlertController.Style.alert)
+                                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                                        certificationAlert = false
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }
+                                
+                            }
                         }
                     }
                 }
@@ -135,37 +150,37 @@ class MainTC: UITabBarController {
     }
     
     @objc func pressed(sender: UIButton!) {
-            if (userDictionary["user_certified"] as! Int == 0) {
-                let alert = UIAlertController(title: "", message: "소속을 인증해야 미팅 할 수 있어요", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                    
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else if (userDictionary["user_certified"] as! Int == 1) {
-                let alert = UIAlertController(title: "", message: "인증이 진행중이에요!", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                    
-                }))
-                self.present(alert, animated: true, completion: nil)
-            } else {
-                checkTicket { (tickets) in
-                    if tickets == 0 {
-                        let alert = UIAlertController(title: "", message: "티켓이 있어야 미팅을 할 수 있어요!\n단, 매칭이 안되면 티켓은 돌려줘요.", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                            
-                        }))
-                        self.present(alert, animated: true, completion: nil)
+        if (userDictionary["user_certified"] as! Int == 0) {
+            let alert = UIAlertController(title: "", message: "소속을 인증해야 미팅 할 수 있어요", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else if (userDictionary["user_certified"] as! Int == 1) {
+            let alert = UIAlertController(title: "", message: "인증이 진행중이에요!", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            checkTicket { (tickets) in
+                if tickets == 0 {
+                    let alert = UIAlertController(title: "", message: "티켓이 있어야 미팅을 할 수 있어요!\n단, 매칭이 안되면 티켓은 돌려줘요.", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
+                        
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    if self.menuButton.titleLabel?.text == "3/3" {
+                        self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
                     } else {
-                        if self.menuButton.titleLabel?.text == "3/3" {
-                            self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
-                        } else {
-                            self.performSegue(withIdentifier: "segue_registermeeting", sender: self)
-                        }
+                        self.performSegue(withIdentifier: "segue_registermeeting", sender: self)
                     }
                 }
-                
-                
             }
+            
+            
+        }
         
         
         
@@ -206,7 +221,7 @@ class MainTC: UITabBarController {
                     print(error)
                 }
             }
-            }.resume()
+        }.resume()
     }
-
+    
 }

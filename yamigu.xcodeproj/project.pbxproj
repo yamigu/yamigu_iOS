@@ -1081,7 +1081,7 @@
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1093,6 +1093,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1185,7 +1186,7 @@
 				CODE_SIGN_ENTITLEMENTS = yamigu/yamigu.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6Q5H8262SG;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1197,6 +1198,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.4;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

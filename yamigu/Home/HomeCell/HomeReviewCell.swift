@@ -17,6 +17,7 @@ class HomeReviewCell: UITableViewCell {
     
     weak var delegate : HomeReviewDelegate?
     
+    @IBOutlet weak var endViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var label_meetingDate: UILabel!
     @IBOutlet weak var button_writeReview: UIButton!
     
@@ -24,6 +25,7 @@ class HomeReviewCell: UITableViewCell {
     @IBOutlet weak var textReviewContainerView: UIView!
     @IBOutlet weak var textview_review: UITextView!
     
+    @IBOutlet weak var firstView: UIView!
     @IBOutlet var button_skip: [UIButton]!
     
     var index: Int!
@@ -33,7 +35,7 @@ class HomeReviewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+        self.selectionStyle = .none
         setupUI()
         
         

@@ -169,6 +169,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+       
+        
         
         KOSession.handleDidBecomeActive()
     }
@@ -303,6 +305,8 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         
         if "\(messageDict["content"]!)" == "인증이 완료되었어요! 즐거운 야미구 하세요!" {
+            certificationAlert = true
+            
             if let wd = UIApplication.shared.delegate?.window {
                 var vc = wd!.rootViewController?.presentedViewController
                 vc = vc?.topMostViewController()

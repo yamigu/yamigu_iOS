@@ -25,6 +25,16 @@ class SettingVC: UIViewController {
     @IBOutlet weak var view_privacyStatementsDetail: UIView!
     @IBOutlet weak var view_serviceAccessTermsDetail: UIView!
     
+    let blackBackgroundView : UIView = {
+        let view = UIView()
+        
+        
+        view.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
+        view.makeToastActivity(.center)
+        
+        return view
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,37 +44,37 @@ class SettingVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let alarmState = KeychainItem.currentAlarmState
-        let chatAlarmState = KeychainItem.currentChatAlarmStat
-        
-        if alarmState == "on" {
-            switch_pushNoti.isOn = true
-        } else {
-            switch_pushNoti.isOn = false
-        }
-        
-        if chatAlarmState == "on" {
-            switch_chattingNoti.isOn = true
-        } else {
-            switch_chattingNoti.isOn = false
-        }
+        blackBackgroundView.frame = self.view.frame
+        self.view.addSubview(blackBackgroundView)
+        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
     }
     
     @IBAction func switch_pushNoti(_ sender: UISwitch) {
-        KeychainItem.toggleAlarmState()
         if !switch_pushNoti.isOn {
+             self.postRequest("http://106.10.39.154:9999/api/turn_off/push/")
             if switch_chattingNoti.isOn {
                 switch_chattingNoti.isOn = false
-                KeychainItem.toggleChatAlarmState()
+                self.postRequest("http://106.10.39.154:9999/api/turn_off/chat/")
             }
+        }  else {
+            self.postRequest("http://106.10.39.154:9999/api/turn_on/push/")
         }
+        
+        
     }
     
     @IBAction func switch_chattingNoti(_ sender: UISwitch) {
         if !switch_pushNoti.isOn {
             switch_chattingNoti.isOn = false
+            
         } else {
-            KeychainItem.toggleChatAlarmState()
+            self.postRequest("http://106.10.39.154:9999/api/turn_off/chat/")
+        }
+        
+        if switch_chattingNoti.isOn {
+            self.postRequest("http://106.10.39.154:9999/api/turn_on/chat/")
+        } else {
+            self.postRequest("http://106.10.39.154:9999/api/turn_off/chat/")
         }
         
     }
@@ -210,6 +220,103 @@ extension SettingVC {
         self.view_serviceAccessTermsDetail.isHidden = true
         
         
+    }
+    
+    func getUserInfo(urlString : String) {
+        guard let url = URL(string: urlString) else {return}
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "get"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { (data: Data?, response: URLResponse?, error: Error?) in
+            
+            print(response)
+            
+            guard error == nil && data != nil else {
+                if let err = error {
+                    print(err.localizedDescription)
+                }
+                return
+            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    print(json)
+                    
+                    guard let newValue = json as? Dictionary<String, Any> else {
+                        print("invalid format")
+                        return
+                        
+                    }
+                    
+                    userDictionary = newValue
+                    DispatchQueue.main.async {
+                        let pushState = newValue["push_on"] as! Bool
+                        let chatState = newValue["chat_on"] as! Bool
+                        
+                        if pushState {
+                            self.switch_pushNoti.isOn = true
+                        } else {
+                            self.switch_pushNoti.isOn = false
+                        }
+                        
+                        if chatState {
+                            self.switch_chattingNoti.isOn = true
+                        } else {
+                            self.switch_chattingNoti.isOn = false
+                        }
+                        
+                        self.blackBackgroundView.removeFromSuperview()
+                        
+                    }
+                } catch {
+                    print(error)
+                    
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
+    func postRequest(_ urlString: String, bodyString: String){
+        guard let url = URL(string: urlString) else {return}
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        //[serializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        //[serializer setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
+        let body = bodyString.data(using:String.Encoding.utf8, allowLossyConversion: false)
+        request.httpBody = body
+        //let data : Data = NSKeyedArchiver.archivedData(withRootObject: self.userDict)
+        //JSONSerialization.isValidJSONObject(self.userDict)
+        //request.httpBody = data
+        let session = URLSession.shared
+        session.dataTask(with: request) { (data, response, error) in
+            if let res = response{
+                
+                print(res)
+                
+            }
+            if let _data = data {
+                if let strData = NSString(data: _data, encoding: String.Encoding.utf8.rawValue) {
+                    let str = String(strData)
+                    print(str)
+                    
+                    DispatchQueue.main.async {
+                    }
+                }
+            }else{
+                print("data nil")
+            }
+        }.resume()
     }
     
     

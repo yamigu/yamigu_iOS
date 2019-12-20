@@ -427,6 +427,8 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             
             let dateString = detailsDict["date"] as! String
             let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+            dateFormatter.locale = Locale(identifier: "ko_kr")
             
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let date = dateFormatter.date(from:dateString)
@@ -513,6 +515,8 @@ extension MatchVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
             
             let dateString = detailsDict["date"] as! String
             let dateFormatter = DateFormatter()
+            dateFormatter.timeZone = TimeZone(abbreviation: "KST")
+            dateFormatter.locale = Locale(identifier: "ko_kr")
             
             dateFormatter.dateFormat = "yyyy-MM-dd"
             let date = dateFormatter.date(from:dateString)

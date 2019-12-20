@@ -320,6 +320,15 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             cell.bubbleWidthAnchor?.constant = estimateFrameForText(message["message"] as! String).width + 32
             cell.profileImageView.contentMode = .scaleAspectFill
+            
+            if (message["idSender"] as! String) == (managerData["manager_uid"] as! String) {
+                cell.bubbleView.backgroundColor = UIColor(rgb: 0xFFF2E6)
+                cell.nameLabel.textColor = UIColor(rgb: 0xFF7B22)
+                
+                cell.nameLabel.text = managerData["manager_name"] as! String
+                cell.profileImageView.downloaded(from: managerData["manager_profile"] as! String)
+                cell.profileImageView.contentMode = .scaleAspectFill
+            }
             return cell
         }
         

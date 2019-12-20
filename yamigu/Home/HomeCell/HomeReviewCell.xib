@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -157,6 +157,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="174" id="1l0-9F-sJt"/>
                             <constraint firstItem="1nd-u2-SOV" firstAttribute="centerX" secondItem="KFS-iJ-SEJ" secondAttribute="centerX" id="DQI-Gy-4QV"/>
                             <constraint firstItem="QUQ-VI-Zie" firstAttribute="centerX" secondItem="KFS-iJ-SEJ" secondAttribute="centerX" id="G6i-uI-uOf"/>
                             <constraint firstItem="QUQ-VI-Zie" firstAttribute="top" secondItem="KFS-iJ-SEJ" secondAttribute="top" constant="64" id="cMf-0k-hvm"/>
@@ -168,21 +169,23 @@
                     <constraint firstItem="0IE-QU-ijO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0cz-6n-shY"/>
                     <constraint firstItem="KFS-iJ-SEJ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="1La-R0-clC"/>
                     <constraint firstItem="nzr-xz-ANA" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="7gf-Dx-IyL"/>
-                    <constraint firstItem="KFS-iJ-SEJ" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="KDX-6P-CBZ"/>
                     <constraint firstItem="nzr-xz-ANA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Mqp-82-VZM"/>
                     <constraint firstItem="nzr-xz-ANA" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="SmJ-xR-EcY"/>
                     <constraint firstItem="nzr-xz-ANA" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="X0j-Rd-taw"/>
                     <constraint firstItem="0IE-QU-ijO" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="bWb-q6-wK2"/>
                     <constraint firstItem="0IE-QU-ijO" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="c2g-1x-WMe"/>
-                    <constraint firstItem="KFS-iJ-SEJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gq9-ye-LyB"/>
                     <constraint firstItem="KFS-iJ-SEJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="mrr-h0-b41"/>
                     <constraint firstItem="0IE-QU-ijO" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="sB9-aS-ef0"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="KFS-iJ-SEJ" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" id="dcD-8f-PEa"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="button_writeReview" destination="8IW-Gh-BKM" id="hUp-WL-Qe6"/>
-                <outlet property="heightConstraint" destination="KDX-6P-CBZ" id="5gO-Bo-ncf"/>
+                <outlet property="endViewHeightConstraint" destination="1l0-9F-sJt" id="rGn-eL-92c"/>
+                <outlet property="firstView" destination="0IE-QU-ijO" id="qXZ-dR-nAI"/>
                 <outlet property="label_meetingDate" destination="eDV-yp-qra" id="QK6-xL-CvY"/>
                 <outlet property="textReviewContainerView" destination="nzr-xz-ANA" id="9aN-Bq-UAx"/>
                 <outlet property="textview_review" destination="Kp7-x9-Wqc" id="vNU-LX-zia"/>
