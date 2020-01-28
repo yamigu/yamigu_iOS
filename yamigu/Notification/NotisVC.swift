@@ -78,11 +78,13 @@ extension NotisVC: UITableViewDelegate, UITableViewDataSource {
         dateFomatter.locale = Locale(identifier: "ko_kr")
         dateFomatter.timeZone = TimeZone(abbreviation: "KST")
         //cell.timeLabel.text = dateFomatter.string(from: date).replacingOccurrences(of: "00", with: "12")
-         
-        if daysBetween(start: date, end: Date()) > 0 {
-            time.text = "1일전"
-        } else if daysBetween(start: date, end: Date()) > 30 {
-            time.text = "1달전"
+        let dayBetween = daysBetween(start: date, end: Date())
+        if dayBetween > 0 && dayBetween < 30 {
+            
+            time.text = "\(dayBetween)일전"
+        } else if daysBetween(start: date, end: Date()) >= 30 {
+            let monthBetween = dayBetween / 30
+            time.text = "\(monthBetween)달전"
         } else {
             time.text = "\(Int(minutesBetweenDates(oldDate: date, newDate: Date())))분전"
             

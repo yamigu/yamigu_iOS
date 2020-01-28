@@ -28,10 +28,10 @@ class BuyTicketVC: UIViewController, SKProductsRequestDelegate, SKPaymentTransac
                 
                 if transaction.payment.productIdentifier == "party.yamigu.www.com.ticket_1" {
                     let json = ["purchase_number":1]
-                    self.postRequest("http://106.10.39.154:9999/api/buyticket/", bodyString: "", json: json)
+                    self.postRequest("http://13.124.126.30:9999/api/buyticket/", bodyString: "", json: json)
                 } else {
                     let json = ["purchase_number":3]
-                    self.postRequest("http://106.10.39.154:9999/api/buyticket/", bodyString: "", json: json)
+                    self.postRequest("http://13.124.126.30:9999/api/buyticket/", bodyString: "", json: json)
                 }
                 
                 SKPaymentQueue.default().finishTransaction(transaction)

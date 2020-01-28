@@ -647,7 +647,7 @@ extension WatingVC: FilterViewDelegate {
         body += "maximum_age=\(maximum_age)"
         
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        self.getTmpMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)", escapedString: escapedString!)
+        self.getTmpMeetingCount(urlString:"http://13.124.126.30:9999/api/meetings/waiting/?\(escapedString!)", escapedString: escapedString!)
         
         //self.updateUI()
     }
@@ -698,8 +698,8 @@ extension WatingVC: FilterViewDelegate {
         body += "maximum_age=\(maximum_age)"
         
         let escapedString = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        self.getMeetingCount(urlString:"http://106.10.39.154:9999/api/meetings/waiting/?\(escapedString!)", escapedString: escapedString!)
-        self.getFilterMeetingCount(urlString: "http://106.10.39.154:9999/api/meetings/waiting/count/?\(escapedString!)")
+        self.getMeetingCount(urlString:"http://13.124.126.30:9999/api/meetings/waiting/?\(escapedString!)", escapedString: escapedString!)
+        self.getFilterMeetingCount(urlString: "http://13.124.126.30:9999/api/meetings/waiting/count/?\(escapedString!)")
         
         self.updateUI()
         
@@ -712,7 +712,7 @@ extension WatingVC: FilterViewDelegate {
             self.view.layoutIfNeeded()
         }
         
-        print("http://106.10.39.154:9999/api/meetings/count/?\(escapedString!)")
+        print("http://13.124.126.30:9999/api/meetings/count/?\(escapedString!)")
         
     }
     
@@ -755,7 +755,7 @@ extension WatingVC: FilterViewDelegate {
                         
                         let result = newValue["results"] as! [Dictionary<String, Any>]
                         //self.filterView.compBtn.setTitle("\(result.count)팀 보기", for: .normal)
-                        self.getFilterMeetingCount(urlString: "http://106.10.39.154:9999/api/meetings/waiting/count/?\(escapedString)")
+                        self.getFilterMeetingCount(urlString: "http://13.124.126.30:9999/api/meetings/waiting/count/?\(escapedString)")
                     }
                 } catch {
                     print(error)
@@ -869,7 +869,7 @@ extension WatingVC: FilterViewDelegate {
                         
                         self.matchingList = newValue["results"] as! [Dictionary<String, Any>]
                         //self.filterView.compBtn.setTitle("\(self.matchingList.count)팀 보기", for: .normal)
-                        self.getFilterMeetingCount(urlString: "http://106.10.39.154:9999/api/meetings/waiting/count/?\(escapedString)")
+                        self.getFilterMeetingCount(urlString: "http://13.124.126.30:9999/api/meetings/waiting/count/?\(escapedString)")
                         
                         
                         self.tableView.reloadData()
@@ -924,13 +924,13 @@ extension WatingVC: WatingTableViewDelegate {
             self.present(alert, animated: true, completion: nil)
         } else {
             
-            self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+            self.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
             /*
              let tabbar = self.tabBarController as! MainTC
              if tabbar.menuButton.titleLabel?.text == "3/3" {
                 //self.view.makeToast("미팅은 일주일에 3번까지만 가능해요!")
             } else {
-                //self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                //self.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
             }*/
             
         }
@@ -941,7 +941,7 @@ extension WatingVC: WatingTableViewDelegate {
         
         
         
-        //self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
+        //self.postRequest("http://13.124.126.30:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString)&place=\(place)&meeting_id=\(meeting_id)")
     }
     
     func postRequest(_ urlString: String, bodyString: String){
@@ -1085,7 +1085,7 @@ extension WatingVC: WatingTableViewDelegate {
                                         }))
                                         self.present(alert, animated: true, completion: nil)
                                     } else {
-                                        self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                                        self.postRequest("http://13.124.126.30:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
                                     }
                                 }
                                 
@@ -1108,7 +1108,7 @@ extension WatingVC: WatingTableViewDelegate {
                                 if Int("\(myMeeting["is_matched"]!)") == 1 {
                                     self.view.makeToast("하루에 미팅은 한 번만 가능해요!")
                                 }
-                                self.postRequest("http://106.10.39.154:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
+                                self.postRequest("http://13.124.126.30:9999/api/matching/send_request/", bodyString: "meeting_type=\(meeting_type)&date=\(dateString2)&place=\(place)&meeting_id=\(meeting_id)")
                                 let alert = UIAlertController(title: "", message: "미팅이 신청되었어요!\n상대방이 수락하면 매칭이 완료됩니다!", preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
                                     

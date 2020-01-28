@@ -46,18 +46,18 @@ class SettingVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         blackBackgroundView.frame = self.view.frame
         self.view.addSubview(blackBackgroundView)
-        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+        self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
     }
     
     @IBAction func switch_pushNoti(_ sender: UISwitch) {
         if !switch_pushNoti.isOn {
-             self.postRequest("http://106.10.39.154:9999/api/turn_off/push/")
+             self.postRequest("http://13.124.126.30:9999/api/turn_off/push/")
             if switch_chattingNoti.isOn {
                 switch_chattingNoti.isOn = false
-                self.postRequest("http://106.10.39.154:9999/api/turn_off/chat/")
+                self.postRequest("http://13.124.126.30:9999/api/turn_off/chat/")
             }
         }  else {
-            self.postRequest("http://106.10.39.154:9999/api/turn_on/push/")
+            self.postRequest("http://13.124.126.30:9999/api/turn_on/push/")
         }
         
         
@@ -68,13 +68,13 @@ class SettingVC: UIViewController {
             switch_chattingNoti.isOn = false
             
         } else {
-            self.postRequest("http://106.10.39.154:9999/api/turn_off/chat/")
+            self.postRequest("http://13.124.126.30:9999/api/turn_off/chat/")
         }
         
         if switch_chattingNoti.isOn {
-            self.postRequest("http://106.10.39.154:9999/api/turn_on/chat/")
+            self.postRequest("http://13.124.126.30:9999/api/turn_on/chat/")
         } else {
-            self.postRequest("http://106.10.39.154:9999/api/turn_off/chat/")
+            self.postRequest("http://13.124.126.30:9999/api/turn_off/chat/")
         }
         
     }
@@ -99,7 +99,7 @@ class SettingVC: UIViewController {
            
             
             if let kakaoToken = KOSession.shared()?.token?.accessToken {
-                 self.postRequest("http://106.10.39.154:9999/api/auth/logout/")
+                 self.postRequest("http://13.124.126.30:9999/api/auth/logout/")
             } else {
                 do {
                     try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
@@ -122,7 +122,7 @@ class SettingVC: UIViewController {
 
         logoutAlert.addAction(UIAlertAction(title: "회원탈퇴", style: .default, handler: { (action: UIAlertAction!) in
             if let kakaoToken = KOSession.shared()?.token?.accessToken {
-                 self.postRequest("http://106.10.39.154:9999/api/auth/logout/")
+                 self.postRequest("http://13.124.126.30:9999/api/auth/logout/")
             } else {
                 do {
                     try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
@@ -132,7 +132,7 @@ class SettingVC: UIViewController {
                 }
             }
             
-            self.postRequest("http://106.10.39.154:9999/api/auth/withdrawal/")
+            self.postRequest("http://13.124.126.30:9999/api/auth/withdrawal/")
         }))
 
         logoutAlert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))

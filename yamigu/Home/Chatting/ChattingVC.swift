@@ -101,7 +101,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
         self.title = resultDateString + " || " + typeString
         
         let partnerUid = "\(matchDict["openby_uid"]!)"
-        self.postRequestGetImage("http://106.10.39.154:9999/api/user/\(partnerUid)/image/", bodyString: "", json: ["uid":partnerUid])
+        self.postRequestGetImage("http://13.124.126.30:9999/api/user/\(partnerUid)/image/", bodyString: "", json: ["uid":partnerUid])
         
         
     }
@@ -444,7 +444,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             var json = Dictionary<String, Any>()
             json["match_id"] = self.matchingId
             
-            self.postRequest2("http://106.10.39.154:9999/api/matching/cancel_matching/", bodyString: "", json: json)
+            self.postRequest2("http://13.124.126.30:9999/api/matching/cancel_matching/", bodyString: "", json: json)
         }))
         
         present(logoutAlert, animated: true, completion: nil)
@@ -496,10 +496,7 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             
             var json = [String:Any]()
             
-            //json["receiverId"] = matchDict["openby_uid"]!
             json["receiverId"] = matchDict["openby_uid"]!
-            //json["message"] = self.tf_message.text!
-            //json["activity"] = "ChattingActivity"
             let matchingDict = meetingDict["matched_meeting"] as! [String: Any]
             
             var intent_args = [String:Any]()
@@ -508,7 +505,6 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             intent_args["partner_department"] = meetingDict["openby_department"]!
             intent_args["partner_nickname"] = meetingDict["openby_nickname"]!
             
-            //let matched_meeting = meetingDict["matched_meeting"] as! [String:Any]
             intent_args["partner_uid"] = "\(userDictionary["uid"]!)"
             
             let dateString = meetingDict["date"]! as! String
@@ -528,11 +524,10 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             } else {
                 intent_args["type"] = "4:4 미팅"
             }
-            //intent_args["type"] = meetingDict["meeting_type"]!
+            
             intent_args["meeting_id"] = "\(meetingDict["id"]!)"
             intent_args["matching_id"] = "\(matchingId)"
             intent_args["manager_name"] = managerData["manager_name"]!
-            //intent_args["partner_uid"] = matchDict["openby_uid"]!
             intent_args["manager_uid"] = managerData["manager_uid"]!
             intent_args["accepted_at"] = managerData["accepted_at"]!
             
@@ -547,20 +542,18 @@ class ChattingVC: UIViewController, UICollectionViewDelegate, UICollectionViewDa
             json["data"] = data
             
             
-            self.postRequest("http://106.10.39.154:9999/api/fcm/send_push/", bodyString: "", json: json)
+            self.postRequest("http://13.124.126.30:9999/api/fcm/send_push/", bodyString: "", json: json)
             
             self.tf_message.text = ""
         }
     }
     @IBAction func callBtnPressed(_ sender: Any) {
         //icon_chatting_alarm
-        //self.button_call.tintColor = UIColor(rgb: 0xFF7B22)
         self.view.makeToast("매니저를 호출했어요!")
         let json = ["matching_id":matchingId]
-        self.postRequest("http://106.10.39.154:9999/api/call_manager/", bodyString: "", json: json)
+        self.postRequest("http://13.124.126.30:9999/api/call_manager/", bodyString: "", json: json)
         self.button_call.setImage(UIImage(named: "icon_chatting_alarm_on"), for: .normal)
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            //self.button_call.tintColor = UIColor(rgb: 0x707070)
             self.button_call.setImage(UIImage(named: "icon_chatting_alarm"), for: .normal)
             
         }
@@ -591,20 +584,14 @@ extension ChattingVC {
     func estimateFrameForText(_ text: String) -> CGRect {
         let size = CGSize(width: 200, height: 1000)
         let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-        //return NSString(string: text).boundingRect(with: size, options: options, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.init(name: "NanumGothic", size: 14.0)]), context: nil)
-        
         return NSString(string: text).boundingRect(with: size, options: options, attributes: convertToOptionalNSAttributedStringKeyDictionary([convertFromNSAttributedStringKey(NSAttributedString.Key.font): UIFont.systemFont(ofSize: 14.0)]), context: nil)
     }
     func postRequest2(_ urlString: String, bodyString: String, json: [String: Any]){
-        
-        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        //request.httpBody = jsonData
         
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
@@ -647,14 +634,10 @@ extension ChattingVC {
     
     func postRequestGetImage(_ urlString: String, bodyString: String, json: [String: Any]){
         
-        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        //request.httpBody = jsonData
-        
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
@@ -698,14 +681,10 @@ extension ChattingVC {
     
     func postRequest(_ urlString: String, bodyString: String, json: [String: Any]){
         
-        //let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        //request.httpBody = jsonData
-        
         guard let url = URL(string: urlString) else {return}
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),

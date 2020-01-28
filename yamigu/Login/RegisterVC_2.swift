@@ -105,7 +105,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func certiBtnPrssed(_ sender: Any) {
-        checkNickname(urlString: "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
+        checkNickname(urlString: "http://13.124.126.30:9999/api/user/validation/nickname/\(self.textField_nickName.text!)")
         
         if check() {
             
@@ -141,7 +141,7 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        let urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(self.textField_nickName.text!)"
+        let urlString = "http://13.124.126.30:9999/api/user/validation/nickname/\(self.textField_nickName.text!)"
         let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         checkNickname(urlString: str_url)
     }
@@ -153,18 +153,6 @@ class RegisterVC_2: UIViewController, UITextFieldDelegate {
         let cell1 = self.tableView.cellForRow(at: index1)
         let cell2 = self.tableView.cellForRow(at: index2)
         
-        //        if( cell1!.isSelected && cell2!.isSelected && self.textField_nickName.text != "" ) {
-        //            if( isCollage || isOffice ) {
-        //                if isAvailableNickName {
-        //                    self.button_certi.backgroundColor = UIColor(rgb: 0xFF7B22)
-        //                    return true
-        //                }
-        //            } else {
-        //                self.view.makeToast("소속을 선택해주세요!")
-        //            }
-        //        } else {
-        //            self.view.makeToast("약관에 동의해주세요!")
-        //        }
         
         if cell1!.isSelected && cell2!.isSelected {
             if self.textField_nickName.text != "" {

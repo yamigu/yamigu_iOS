@@ -69,7 +69,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         tf_name.text = "\(userDictionary["nickname"] as! String)(\(userDictionary["age"]!))"
         self.button_notification.setTitle(" \(alarmCount)", for: .normal)
         
-        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+        self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(imageTapped(gesture:)))
 
@@ -147,7 +147,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
             //jsonImg["uploaded_file"] = self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
             jsonImg.updateValue(self.image_profile.image!.jpegData(compressionQuality: 0.1)!, forKey: "uploaded_file")
             
-            self.postRequestImage("http://106.10.39.154:9999/api/user/change/avata/", bodyString: "uploaded_file=", json: jsonImg)
+            self.postRequestImage("http://13.124.126.30:9999/api/user/change/avata/", bodyString: "uploaded_file=", json: jsonImg)
         } else {
             // error
         }
@@ -168,7 +168,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
     @IBAction func compBtnPressed(_ sender: Any) {
         let nickName = String(utf8String: self.tf_name.text!.cString(using: .utf8)!)
         print("nickName = \(nickName!)")
-        var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName!)"
+        var urlString = "http://13.124.126.30:9999/api/user/validation/nickname/\(nickName!)"
         let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         urlString = String(utf8String: str_url.cString(using: .utf8)!)!
@@ -234,7 +234,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
         //print("replacementString = \(string)")
         
         print("nickNameLength = \(nickName.utf8.count)")
-        var urlString = "http://106.10.39.154:9999/api/user/validation/nickname/\(nickName)"
+        var urlString = "http://13.124.126.30:9999/api/user/validation/nickname/\(nickName)"
         let str_url = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         
         urlString = String(utf8String: str_url.cString(using: .utf8)!)!
@@ -292,7 +292,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
                                 
                                 if isComp {
                                     
-                                    self.postRequest("http://106.10.39.154:9999/api/user/change/nickname/", bodyString:"nickname=\(self.tf_name.text!)")
+                                    self.postRequest("http://13.124.126.30:9999/api/user/change/nickname/", bodyString:"nickname=\(self.tf_name.text!)")
                                 }
                             }
                            
@@ -529,7 +529,7 @@ class MyPageVC: UIViewController, UITextFieldDelegate, UIImagePickerControllerDe
             feedTemplateBuilder.content = KMTContentObject.init(builderBlock: { (contentBuilder) in
                 contentBuilder.title = "야미구 - 야! 미팅 하나만 구해줘"
                 contentBuilder.desc = "초대코드: \(self.label_inviteCode.text!)를 입력하고 친구와 함께 야미구에서 미팅을..."
-                contentBuilder.imageURL = URL.init(string: "http://106.10.39.154:9999/media/yamigu_kakao_share2.png")!
+                contentBuilder.imageURL = URL.init(string: "http://13.124.126.30:9999/media/yamigu_kakao_share2.png")!
                 contentBuilder.link = KMTLinkObject.init(builderBlock: {(linkBuilder) in
                     linkBuilder.mobileWebURL = URL.init(string: "https://yamigu.party")!
                 })

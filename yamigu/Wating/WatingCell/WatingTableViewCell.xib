@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -185,8 +185,8 @@
                             <constraint firstItem="A25-bZ-drJ" firstAttribute="centerY" secondItem="mNx-nq-yvN" secondAttribute="centerY" id="vdv-C3-Kyn"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="ebp-Pe-biv">
-                        <rect key="frame" x="0.0" y="175" width="350" height="5"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="view_bottomBar" translatesAutoresizingMaskIntoConstraints="NO" id="ebp-Pe-biv">
+                        <rect key="frame" x="-12.5" y="175" width="375" height="5"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jBt-L3-beM">
                         <rect key="frame" x="0.0" y="178" width="350" height="44"/>
@@ -210,8 +210,8 @@
                     <constraint firstAttribute="trailing" secondItem="lDx-kB-WiZ" secondAttribute="trailing" id="I5L-Lf-lXs"/>
                     <constraint firstItem="lDx-kB-WiZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Ktj-ae-c2b"/>
                     <constraint firstAttribute="bottom" secondItem="mNx-nq-yvN" secondAttribute="bottom" id="P2f-An-bDg"/>
+                    <constraint firstItem="ebp-Pe-biv" firstAttribute="width" secondItem="lDx-kB-WiZ" secondAttribute="width" multiplier="1.07143" id="V3m-oh-iaw"/>
                     <constraint firstAttribute="trailing" secondItem="mNx-nq-yvN" secondAttribute="trailing" id="V4f-D8-y8w"/>
-                    <constraint firstItem="ebp-Pe-biv" firstAttribute="width" secondItem="mNx-nq-yvN" secondAttribute="width" id="Xuu-IM-SQJ"/>
                     <constraint firstItem="lDx-kB-WiZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="ZTW-68-jxI"/>
                     <constraint firstItem="jBt-L3-beM" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="cnu-Re-o5g"/>
                     <constraint firstItem="ebp-Pe-biv" firstAttribute="centerX" secondItem="mNx-nq-yvN" secondAttribute="centerX" id="lrv-8Q-Nwn"/>

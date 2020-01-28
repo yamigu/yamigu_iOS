@@ -308,7 +308,7 @@ func checkTicket(completion: @escaping (_ result: Int) -> Void) {
     }
     
     
-    guard let url = URL(string: "http://106.10.39.154:9999/api/user/info/") else {return}
+    guard let url = URL(string: "http://13.124.126.30:9999/api/user/info/") else {return}
     
     var request = URLRequest(url: url)
     

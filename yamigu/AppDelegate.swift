@@ -339,11 +339,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                     let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
                     let type = (argsDict["type"] as! Int)
                     if  type == 3 || type == 5 {
-                        homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                        homeVC.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
                     }*/
                     let args = messageDict["intentArgs"] as! String
                     if args == "" || args.contains("match_id") {
-                        homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                        homeVC.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
                     }
                     
                     
@@ -368,11 +368,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
                 let argsDict = try! JSONSerialization.jsonObject(with: argsData!, options: .allowFragments) as! [String: Any]
                 let type = (argsDict["type"] as! Int)
                 if  type == 3 || type == 5 {
-                    homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                    homeVC.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
                 }*/
                 let args = messageDict["intentArgs"] as! String
                 if args == "" {
-                    homeVC.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                    homeVC.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
                 }
             }
             

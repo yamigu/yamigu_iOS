@@ -110,7 +110,7 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpz-Q9-8Iv">
-                                                                <rect key="frame" x="10" y="32.666666666666664" width="97" height="14"/>
+                                                                <rect key="frame" x="35" y="32.666666666666664" width="97" height="14"/>
                                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                                 <state key="normal" title="닉네임 수정하기" image="icon_change">
                                                                     <color key="titleColor" red="1" green="0.4823529412" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
@@ -132,7 +132,7 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="사용 불가능합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qb2-Id-70u">
-                                                                <rect key="frame" x="10" y="32.666666666666664" width="97.333333333333329" height="14"/>
+                                                                <rect key="frame" x="34.999999999999993" y="32.666666666666664" width="97.333333333333314" height="14"/>
                                                                 <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="12"/>
                                                                 <color key="textColor" red="0.82364505529999998" green="0.0078649687560000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <nil key="highlightedColor"/>
@@ -140,10 +140,10 @@
                                                         </subviews>
                                                         <color key="backgroundColor" red="0.98431092499999995" green="0.97652727370000003" blue="0.97635596989999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
+                                                            <constraint firstItem="qb2-Id-70u" firstAttribute="centerX" secondItem="HOO-8i-I5h" secondAttribute="centerX" id="2MZ-Pt-B8o"/>
                                                             <constraint firstItem="JKM-qE-DOe" firstAttribute="top" secondItem="ePe-Xb-H4x" secondAttribute="bottom" id="Bly-4M-xVt"/>
                                                             <constraint firstItem="cua-WM-xr0" firstAttribute="bottom" secondItem="HOO-8i-I5h" secondAttribute="bottom" constant="-1" id="IVL-FE-F4f"/>
                                                             <constraint firstItem="ePe-Xb-H4x" firstAttribute="centerX" secondItem="JKM-qE-DOe" secondAttribute="centerX" id="MFq-Oy-RdQ"/>
-                                                            <constraint firstItem="qb2-Id-70u" firstAttribute="leading" secondItem="HOO-8i-I5h" secondAttribute="leading" constant="20" id="NDF-yf-Q3L"/>
                                                             <constraint firstItem="HOO-8i-I5h" firstAttribute="top" secondItem="xwr-WX-vYa" secondAttribute="top" constant="-1" id="NGp-cs-7Sl"/>
                                                             <constraint firstItem="hpz-Q9-8Iv" firstAttribute="top" secondItem="HOO-8i-I5h" secondAttribute="bottom" constant="3" id="QuB-WV-MSP"/>
                                                             <constraint firstItem="JKM-qE-DOe" firstAttribute="centerX" secondItem="xwr-WX-vYa" secondAttribute="centerX" id="Svu-zS-XGU"/>
@@ -151,9 +151,9 @@
                                                             <constraint firstItem="HOO-8i-I5h" firstAttribute="width" secondItem="xwr-WX-vYa" secondAttribute="width" constant="20" id="ge8-FH-3CC"/>
                                                             <constraint firstItem="HOO-8i-I5h" firstAttribute="centerX" secondItem="xwr-WX-vYa" secondAttribute="centerX" id="hJT-sf-Bdp"/>
                                                             <constraint firstItem="cua-WM-xr0" firstAttribute="leading" secondItem="HOO-8i-I5h" secondAttribute="leading" id="jQr-m5-tzg"/>
+                                                            <constraint firstItem="hpz-Q9-8Iv" firstAttribute="centerX" secondItem="HOO-8i-I5h" secondAttribute="centerX" id="kwQ-in-sqs"/>
                                                             <constraint firstItem="qb2-Id-70u" firstAttribute="top" secondItem="HOO-8i-I5h" secondAttribute="bottom" constant="3" id="qgp-eo-YZ0"/>
                                                             <constraint firstItem="cua-WM-xr0" firstAttribute="trailing" secondItem="HOO-8i-I5h" secondAttribute="trailing" id="snN-3a-15H"/>
-                                                            <constraint firstItem="hpz-Q9-8Iv" firstAttribute="leading" secondItem="HOO-8i-I5h" secondAttribute="leading" constant="20" id="vd8-qE-ZbI"/>
                                                             <constraint firstAttribute="bottom" secondItem="JKM-qE-DOe" secondAttribute="bottom" id="xHO-Qc-iXP"/>
                                                         </constraints>
                                                     </view>

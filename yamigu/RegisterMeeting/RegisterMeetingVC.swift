@@ -140,8 +140,10 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        } else {
+        }
         return true
     }
     
@@ -158,7 +160,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         button_editMeeting.isHidden = true
         button_deleteCard.isHidden = true
         
-        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        self.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
         
         if isEdit || isRequest {
             self.button_people.isUserInteractionEnabled = false
@@ -166,7 +168,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             self.button_placeUnderline.backgroundColor = UIColor(rgb: 0xFF7B22)
             self.button_place.setTitleColor(UIColor(rgb: 0xFF7B22), for: .normal)
             self.button_place.setImage(self.buttonSelected, for: .normal)
-    
+            
         } else {
             self.button_people.isUserInteractionEnabled = true
             self.button_date.isUserInteractionEnabled = true
@@ -276,7 +278,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             
             DispatchQueue.main.async {
                 homeController.myMeetings.removeAll()
-                homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                homeController.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
             }
             
         }
@@ -302,7 +304,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         dict["meeting_id"] = "\(self.meetingDict["id"]!)"
         
         
-        self.postRequest2("http://106.10.39.154:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
+        self.postRequest2("http://13.124.126.30:9999/api/meetings/edit/", bodyString: "\"meeting_id\"=\"\(id)\"&meeting_type=\(self.selectedType + 1)&date=\((button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)", json: dict)
         
         /*DispatchQueue.main.async {
          self.dismiss(animated: true, completion: nil)
@@ -314,7 +316,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         let dict : [String: Any] = ["meeting_id" : id]
         print(dict)
         
-        self.postRequest2("http://106.10.39.154:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+        self.postRequest2("http://13.124.126.30:9999/api/meetings/delete/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
         
         /*DispatchQueue.main.async {
          self.dismiss(animated: true, completion: nil)
@@ -456,7 +458,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-                
+        
         self.label_title.text = "몇명이서 미팅 나가요?"
         
         
@@ -475,9 +477,9 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-                
+        
         self.label_title.text = "언제가 좋아요?"
-       
+        
         if button_date.titleLabel?.text != "날짜" {
             //self.button_place.sendActions(for: .allEvents)
             placeBtnHandler()
@@ -496,9 +498,9 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-                
+        
         self.label_title.text = "언제가 좋아요?"
-       
+        
         /*
          if button_date.titleLabel?.text != "날짜" {
          self.button_place.sendActions(for: .allEvents)
@@ -517,7 +519,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-                
+        
         self.label_title.text = "어디가 좋아요?"
         
         if button_place.titleLabel?.text != "선호 장소" {
@@ -526,7 +528,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
             self.button_request.isHidden = false
             self.tableView.isHidden = true
             self.label_textCount.isHidden = false
-                        
+            
             self.label_title.text = "자신과 친구들을 표현해 주세요!"
             //self.label_bottom_description.text = "타 지역은 추후 업데이트 예정"
         }
@@ -544,7 +546,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
         self.button_request.isHidden = true
         self.tableView.isHidden = false
         self.label_textCount.isHidden = true
-                
+        
         self.label_title.text = "어디가 좋아요?"
         
         self.tableView.reloadData()
@@ -572,7 +574,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
-                    self.postRequest("http://106.10.39.154:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((self.button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
+                    self.postRequest("http://13.124.126.30:9999/api/meetings/create/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((self.button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)")
                     
                 }))
                 
@@ -609,7 +611,7 @@ class RegisterMeetingVC: UIViewController, UITableViewDataSource, UITableViewDel
                     blackView.makeToastActivity(.center)
                     self.view.addSubview(blackView)
                     
-                    self.postRequest("http://106.10.39.154:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((self.button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
+                    self.postRequest("http://13.124.126.30:9999/api/matching/send_request_new/", bodyString: "meeting_type=\(self.selectedType + 1)&date=\((self.button_date.titleLabel?.text!)!)&place=\(self.selectedPlace + 1)&appeal=\(self.textView.text!)&meeting_id=\(self.meetingDict["id"]!)")
                 }))
                 self.present(alert, animated: true, completion: nil)
                 
@@ -741,8 +743,8 @@ extension RegisterMeetingVC {
             
             cell!.layer.opacity = 1.0
             
-            }, completion: { (_) -> Void in
-                gradient.removeFromSuperlayer()
+        }, completion: { (_) -> Void in
+            gradient.removeFromSuperlayer()
         })
         
         
@@ -812,7 +814,7 @@ extension RegisterMeetingVC {
                     self.button_request.isHidden = false
                     self.tableView.isHidden = true
                     self.label_textCount.isHidden = false
-                                        
+                    
                     self.label_title.text = "자신과 친구들을 표현해 주세요!"
                 }
                 
@@ -841,9 +843,9 @@ extension RegisterMeetingVC {
         
         cell.contentView.backgroundColor = UIColor.clear
         
-//        if indexPath.row % 2 == 0 {
-//            cell.contentView.backgroundColor = UIColor(rgb: 0xFCFCFC)
-//        }
+        //        if indexPath.row % 2 == 0 {
+        //            cell.contentView.backgroundColor = UIColor(rgb: 0xFCFCFC)
+        //        }
         
         cell.layer.masksToBounds = true
         cell.layer.cornerRadius = 4

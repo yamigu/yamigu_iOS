@@ -30,12 +30,11 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
     
     @IBAction func verificationBtnPressed(_ sender: Any) {
         if !isLogined {
-            //performSegue(withIdentifier: "segue_register2", sender: self)
             webView.frame = self.view.frame
             self.view.addSubview(webView)
             webView.navigationDelegate = self
             
-            guard let url = URL(string:"http://106.10.39.154:5000/checkplus_main") else {return}
+            guard let url = URL(string:"http://13.124.126.30:5000/checkplus_main") else {return}
 
             let request = URLRequest(url: url)
 
@@ -58,7 +57,7 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                     let loginVC = self.presentingViewController as! LoginVC
                     
                     let access_token = (KOSession.shared()?.token?.accessToken)!
-                    loginVC.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                    loginVC.postRequest("http://13.124.126.30:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
                 }
                 //self.dismiss(animated: false, completion: nil)
                 self.dismiss(animated: false, completion: nil)
@@ -69,8 +68,7 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
         
         if let access_token = (KOSession.shared()?.token?.accessToken) {
             if access_token != nil {
-                //self.postRequest("http://147.47.208.44:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
-                self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
             } else {
                 self.isLogined = false
             }
@@ -78,7 +76,7 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
         
         if #available(iOS 13.0, *) {
             if let apple_access_token = appleToken {
-                self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
             }
         }
         
@@ -114,10 +112,9 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                         let loginVC = self.presentingViewController as! LoginVC
                         
                         let access_token = (KOSession.shared()?.token?.accessToken)!
-                        loginVC.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                        loginVC.postRequest("http://13.124.126.30:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
                         
                         self.dismiss(animated: false, completion: nil)
-                        //self.navigationController!.dismiss(animated: false, completion: nil)
                         
                     }
                 } catch {
@@ -172,7 +169,7 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                             let loginVC = self.presentingViewController as! LoginVC
                             
                             let access_token = (KOSession.shared()?.token?.accessToken)!
-                            loginVC.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                            loginVC.postRequest("http://13.124.126.30:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
                             
                             self.dismiss(animated: false, completion: nil)
                         }
@@ -180,7 +177,6 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                 } catch {
                     print(error)
                     // 회원가입 이력이 없는경우
-                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
             }
             
@@ -226,7 +222,7 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                         view.frame = self.webView.frame
                         view.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
                         self.webView.addSubview(view)
-                        self.checkPhoneVerify("http://106.10.39.154:9999/api/auth/verify/", bodyString: "phone=\(phoneNum)", jsonArray: jsonArray)
+                        self.checkPhoneVerify("http://13.124.126.30:9999/api/auth/verify/", bodyString: "phone=\(phoneNum)", jsonArray: jsonArray)
                         
                     } else {
                         print("bad json")
@@ -261,9 +257,9 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
         
         if (birthMonth - nowMonth) >= 0 {
             if (nowDay - birthDay) >= 0 {
-                age += 2
-            } else {
                 age += 1
+            } else {
+                age += 2
             }
         } else {
             age += 1
@@ -301,7 +297,7 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                         if let key = newValue["key"] as? String {
                             //authKey = key
                             print("authKey = \(authKey)")
-                            self.postWithdrawalRequest("http://106.10.39.154:9999/api/auth/withdrawal/")
+                            self.postWithdrawalRequest("http://13.124.126.30:9999/api/auth/withdrawal/")
                             
                         } else {
                             self.userDict = jsonArray
@@ -340,8 +336,6 @@ class RegisterVC_1: UIViewController , WKNavigationDelegate{
                 
             }
             DispatchQueue.main.async {
-                //goToLoginCheckVC()
-                
                 let alert = UIAlertController(title: "", message: "이미 가입한 핸드폰 번호입니다.", preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action: UIAlertAction!) in
                     self.dismiss(animated: true, completion: nil)

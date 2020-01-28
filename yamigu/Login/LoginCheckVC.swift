@@ -28,12 +28,6 @@ class LoginCheckVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        do {
-//            try KeychainItem(service: "party.yamigu.www.com", account: "userIdentifier").deleteItem()
-//            self.dismiss(animated: true, completion: nil)
-//        } catch {
-//            
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,10 +38,6 @@ class LoginCheckVC: UIViewController {
             if KOSession.shared()?.token?.accessToken != nil {
                 var access_token = (KOSession.shared()?.token?.accessToken)!
                 print("access token2 = \(access_token)")
-                //access_token = (KOSession.shared()?.refreshToken)!
-                //access_token = KOSession.
-                
-                
                 KOSession.shared()?.refreshAccessToken(completionHandler: { (error) in
                     
                     print("kakao error = \(error)")
@@ -59,14 +49,11 @@ class LoginCheckVC: UIViewController {
                         let json = ["access_token":access_token]
                         
                         DispatchQueue.main.async {
-                            self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)", json: json)
+                            self.postRequest("http://13.124.126.30:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)", json: json)
                         }
                     }
                 })
                 
-                
-                //self.postRequest2("http://147.47.208.44:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=iOS")
-                //performSegue(withIdentifier: "segue_onboarding", sender: self)
             } else {
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "segue_onboarding", sender: self)
@@ -86,12 +73,10 @@ class LoginCheckVC: UIViewController {
                     }
                 } else {
                     DispatchQueue.main.async {
-                        //let json = ["access_token":KeychainItem.currentUserIdentifier]
-                        //self.postRequest("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
                         var token = ""
                         authKey = KeychainItem.currentUserIdentifier
                         
-                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                        self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
                         
                         InstanceID.instanceID().instanceID { (result, error) in
                             if let error = error {
@@ -105,7 +90,7 @@ class LoginCheckVC: UIViewController {
                                 data["registration_id"] = token
                                 data["type"] = "ios"
                                 
-                                self.postRequest2("http://106.10.39.154:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
+                                self.postRequest2("http://13.124.126.30:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
                             }
                         }
                     }
@@ -128,7 +113,6 @@ class LoginCheckVC: UIViewController {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
   
         
@@ -202,7 +186,7 @@ class LoginCheckVC: UIViewController {
                         authKey = newValue["key"]!
                         
                         
-                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                        self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
                         
                         InstanceID.instanceID().instanceID { (result, error) in
                             if let error = error {
@@ -216,7 +200,7 @@ class LoginCheckVC: UIViewController {
                                 data["registration_id"] = token
                                 data["type"] = "ios"
                                 
-                                self.postRequest2("http://106.10.39.154:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
+                                self.postRequest2("http://13.124.126.30:9999/api/fcm/register_device/", bodyString: "registration_id=\(token)&type=ios", json: data)
                             }
                         }
                         

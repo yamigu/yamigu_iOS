@@ -58,11 +58,11 @@ class HomeVC: UIViewController {
         self.setupTableView()
         self.setupCollectionView()
         
-        //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
-        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        //self.getTodayMeeting(urlString: "http://13.124.126.30:9999/api/meetings/today/")
+        self.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
         self.getUserInfo()
-        //self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
-        //self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
+        //self.getMyMeetingReview(urlString: "http://13.124.126.30:9999/api/meetings/my_past/")
+        //self.getRecomandMeeting(urlString: "http://13.124.126.30:9999/api/meetings/recommendation/")
         
         ref = Database.database().reference()
         
@@ -74,11 +74,11 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.getTodayMeeting(urlString: "http://106.10.39.154:9999/api/meetings/today/")
-        self.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+        //self.getTodayMeeting(urlString: "http://13.124.126.30:9999/api/meetings/today/")
+        self.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
         self.getUserInfo()
-        //self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
-        //self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
+        //self.getMyMeetingReview(urlString: "http://13.124.126.30:9999/api/meetings/my_past/")
+        //self.getRecomandMeeting(urlString: "http://13.124.126.30:9999/api/meetings/recommendation/")
         
         ref = Database.database().reference()
         
@@ -226,7 +226,7 @@ class HomeVC: UIViewController {
                         let tabbarController = self.tabBarController as! MainTC
                         tabbarController.menuButton.setTitle("\(self.myMeetings.count)/3", for: .normal)
                         
-                        self.getMyMeetingReview(urlString: "http://106.10.39.154:9999/api/meetings/my_past/")
+                        self.getMyMeetingReview(urlString: "http://13.124.126.30:9999/api/meetings/my_past/")
                     }
                 } catch {
                     print(error)
@@ -292,7 +292,7 @@ class HomeVC: UIViewController {
                         self.checkTableView()
                         
                         self.recommendMeetings.removeAll()
-                        self.getRecomandMeeting(urlString: "http://106.10.39.154:9999/api/meetings/recommendation/")
+                        self.getRecomandMeeting(urlString: "http://13.124.126.30:9999/api/meetings/recommendation/")
                     }
                 } catch {
                     print(error)
@@ -357,7 +357,7 @@ class HomeVC: UIViewController {
     }
     
     func getUserInfo() {
-        guard let url = URL(string: "http://106.10.39.154:9999/api/user/info/") else {return}
+        guard let url = URL(string: "http://13.124.126.30:9999/api/user/info/") else {return}
         
         var request = URLRequest(url: url)
         
@@ -407,7 +407,7 @@ class HomeVC: UIViewController {
     func goChatting(meetingId: String) {
         self.myMeetings.removeAll()
         
-        guard let url = URL(string: "http://106.10.39.154:9999/api/meetings/my/") else {return}
+        guard let url = URL(string: "http://13.124.126.30:9999/api/meetings/my/") else {return}
         
         var request = URLRequest(url: url)
         
@@ -1223,7 +1223,7 @@ extension HomeVC: HomeReviewDelegate {
         let id = "\(self.reviewMeetings[index]["id"]!)"
         let dict : [String: Any] = ["meeting_id" : id, "feedback" : review]
         
-        self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
+        self.postRequest2("http://13.124.126.30:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
         let cell = self.myMeetingReviewTableView.cellForRow(at: IndexPath(row: 0, section: index)) as! HomeReviewCell
         cell.writeReviewEndView.isHidden = false
@@ -1260,7 +1260,7 @@ extension HomeVC: HomeReviewDelegate {
         let review = ""
         let dict : [String: Any] = ["meeting_id" : id, "feedback" : review]
         
-        self.postRequest2("http://106.10.39.154:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
+        self.postRequest2("http://13.124.126.30:9999/api/meetings/feedback/", bodyString: "\"meeting_id\"=\"\(id)\"&feedback=\(review)", json: dict)
         
         let cell = self.myMeetingReviewTableView.cellForRow(at: IndexPath(row: 0, section: index)) as! HomeReviewCell
         cell.writeReviewEndView.isHidden = false

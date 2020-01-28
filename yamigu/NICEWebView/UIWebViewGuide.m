@@ -13,7 +13,7 @@
 @implementation UIWebVIewGuide
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *url =  [NSString stringWithFormat:@"%@", @"http://106.10.39.154:5000/checkplus_main"];	//회원사의 휴대폰본인확인 호출url을 입력해 주세요.
+    NSString *url =  [NSString stringWithFormat:@"%@", @"http://13.124.126.30:5000/checkplus_main"];	//회원사의 휴대폰본인확인 호출url을 입력해 주세요.
     
   
     

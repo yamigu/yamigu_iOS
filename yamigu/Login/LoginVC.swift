@@ -102,19 +102,17 @@ class LoginVC: UIViewController {
             print("error = \(error)")
             
             if error == nil {
+                self.blackBackground.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
+                self.blackBackground.frame = self.view.frame
+                self.blackBackground.makeToastActivity(.center)
+                self.view.addSubview(self.blackBackground)
+                
                 let access_token = (KOSession.shared()?.token?.accessToken)!
-                self.postRequest("http://106.10.39.154:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
+                self.postRequest("http://13.124.126.30:9999/api/oauth/kakao/", bodyString: "access_token=\(access_token)")
                 
                 KeychainItem.registerAlarmState()
                 KeychainItem.registerChatAlarmState()
             }
-            
-            
-            /*if (KOSession.shared()?.isOpen())! {
-                
-            } else {
-                
-            }*/
             
         })
     }
@@ -147,7 +145,7 @@ class LoginVC: UIViewController {
                     DispatchQueue.main.async {
                         // 동작 실행
                         authKey = newValue["key"]! as! String
-                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                        self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
                         
                         
                         
@@ -155,7 +153,6 @@ class LoginVC: UIViewController {
                 } catch {
                     print(error)
                     // 회원가입 이력이 없는경우
-                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
             }
             }.resume()
@@ -167,15 +164,10 @@ class LoginVC: UIViewController {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        //request.setValue("Token \(authKey)", forHTTPHeaderField: "Authorization")
         
         
         if let data = try? JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed),
             var jsonString = String(data: data, encoding: .utf8) {
-            //jsonString = jsonString.replacingOccurrences(of: "'", with: "")
-            //jsonString = jsonString.replacingOccurrences(of: " ", with: "")
-            //jsonString = jsonString.replacingOccurrences(of: "\n", with: "")
             let data = jsonString.data(using: .utf8, allowLossyConversion: false)
             request.httpBody = data
         }
@@ -206,12 +198,10 @@ class LoginVC: UIViewController {
                         } catch {
                             print("Unable to save userIdentifier to keychain.")
                         }
-                        self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+                        self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
                     }
                 } catch {
                     print(error)
-                    // 회원가입 이력이 없는경우
-                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
             }
             }.resume()
@@ -257,8 +247,6 @@ class LoginVC: UIViewController {
                         if let nick = userDictionary["nickname"] {
                 
                             if ("\(userDictionary["nickname"] ?? "<null>")") != "<null>" {
-                                //self.dismiss(animated: false, completion: nil)
-                                //self.performSegue(withIdentifier: "segue_loginCheck", sender: self)
                                 goToLoginCheckVC()
                                 self.navigationController?.isNavigationBarHidden = true
                             } else {
@@ -272,8 +260,6 @@ class LoginVC: UIViewController {
                     }
                 } catch {
                     print(error)
-                    // 회원가입 이력이 없는경우
-                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
             }
             
@@ -344,7 +330,7 @@ class LoginVC: UIViewController {
                 KeychainItem.registerChatAlarmState()
                 
                 
-                self.postRequest2("http://106.10.39.154:9999/api/oauth/apple/", bodyString: "", json: json)
+                self.postRequest2("http://13.124.126.30:9999/api/oauth/apple/", bodyString: "", json: json)
             } else {
                 // Handle missing authorization code ...
             }

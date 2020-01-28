@@ -51,7 +51,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             
             DispatchQueue.main.async {
                 homeController.myMeetings.removeAll()
-                homeController.getMyMeeting(urlString: "http://106.10.39.154:9999/api/meetings/my/")
+                homeController.getMyMeeting(urlString: "http://13.124.126.30:9999/api/meetings/my/")
             }
         }
     }
@@ -82,8 +82,8 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
         
         let id = "\(self.matchingDict["id"]!)"
         
-        self.getReceiveMatching(urlString: "http://106.10.39.154:9999/api/matching/received_request/?meeting_id=\(id)")
-        self.getRequestMatching(urlString: "http://106.10.39.154:9999/api/matching/sent_request/?meeting_id=\(id)")
+        self.getReceiveMatching(urlString: "http://13.124.126.30:9999/api/matching/received_request/?meeting_id=\(id)")
+        self.getRequestMatching(urlString: "http://13.124.126.30:9999/api/matching/sent_request/?meeting_id=\(id)")
     }
     
     func setupCollectionView() {
@@ -139,7 +139,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             if self.receiveMatchingList.count != 0 {
                 let id = "\(self.receiveMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
-                self.postRequest("http://106.10.39.154:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+                self.postRequest("http://13.124.126.30:9999/api/matching/decline_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
                 
                 self.view.makeToast("미팅을 거절했어요!")
                 
@@ -155,7 +155,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
                 let id = "\(self.requestMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
                 
-                self.postRequest("http://106.10.39.154:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
+                self.postRequest("http://13.124.126.30:9999/api/matching/cancel_request/", bodyString: "\"meeting_id\"=\"\(id)\"", json: dict)
             }
             
             
@@ -166,7 +166,7 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             if self.receiveMatchingList.count != 0 {
                 let id = "\(self.receiveMatchingList[newPage]["id"]!)"
                 let dict : [String: Any] = ["request_id" : id]
-                self.postRequest("http://106.10.39.154:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
+                self.postRequest("http://13.124.126.30:9999/api/matching/accept_request/", bodyString: "\"request_id\"=\"\(id)\"", json: dict)
                 self.blackBackgroundView.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
                 self.blackBackgroundView.makeToastActivity(.center)
                 self.blackBackgroundView.frame = self.view.frame
@@ -214,10 +214,10 @@ class MatchVC: UIViewController, UINavigationBarDelegate {
             
             if let data = data {
                 DispatchQueue.main.async {
-                    if urlString == "http://106.10.39.154:9999/api/matching/decline_request/" {
+                    if urlString == "http://13.124.126.30:9999/api/matching/decline_request/" {
                         let id = "\(self.matchingDict["id"]!)"
                         self.blackBackgroundView.removeFromSuperview()
-                        self.getReceiveMatching(urlString: "http://106.10.39.154:9999/api/matching/received_request/?meeting_id=\(id)")
+                        self.getReceiveMatching(urlString: "http://13.124.126.30:9999/api/matching/received_request/?meeting_id=\(id)")
                         
                     } else {
                         self.dismiss(animated: true, completion: nil)

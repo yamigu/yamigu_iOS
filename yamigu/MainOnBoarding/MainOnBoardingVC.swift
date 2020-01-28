@@ -41,7 +41,7 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
         print("authKey = \(authKey)")
         
         if KOSession.shared()?.token?.accessToken != nil && authKey != "" {
-            self.getUserInfo(urlString: "http://106.10.39.154:9999/api/user/info/")
+            self.getUserInfo(urlString: "http://13.124.126.30:9999/api/user/info/")
             
         }
         
@@ -128,9 +128,6 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
             self.pageControl.set(progress: currentPage, animated: true)
         }
         
-        //self.mainImage.image = UIImage(named: images[currentPage])
-        //self.lbl_description.text = descriptions[currentPage]
-        //self.lbl_title.text = descriptions[currentPage]
         print("pageNum = \(currentPage)")
         print("currentX = \(currentX)")
         
@@ -200,7 +197,6 @@ class MainOnBoardingVC: UIViewController, UIScrollViewDelegate {
                 } catch {
                     print(error)
                     // 회원가입 이력이 없는경우
-                    //self.performSegue(withIdentifier: "segue_onboarding", sender: self)
                 }
             }
             

@@ -103,7 +103,7 @@ class CertiVC: UIViewController {
         json["department"] = self.userDict["department"] as! String
         json["age"] = self.userDict["age"] as! Int
         
-        self.postRequest2("http://106.10.39.154:9999/api/auth/signup/", bodyString: bodyString, json: json)
+        self.postRequest2("http://13.124.126.30:9999/api/auth/signup/", bodyString: bodyString, json: json)
         
 //        let imageData = imageView_certi.image!.jpegData(compressionQuality: 1)
 //
@@ -112,7 +112,7 @@ class CertiVC: UIViewController {
         //jsonImg["uploaded_file"] = self.imageView_certi.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
         jsonImg.updateValue(self.imageView_certi.image!.jpegData(compressionQuality: 0.1)!, forKey: "uploaded_file")
 
-        self.postRequestImage("http://106.10.39.154:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
+        self.postRequestImage("http://13.124.126.30:9999/api/user/certificate/", bodyString: "uploaded_file=", json: jsonImg)
     }
     
     
